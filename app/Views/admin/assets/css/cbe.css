@@ -1,0 +1,743 @@
+/* body {
+    height: 100vh;
+} */
+
+/* =========== CBE LOGIN PAGE =========== */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+/* .sidebar{
+    background-color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 50px var(--grey-300);
+    z-index: 1;
+    padding-top: 1rem;
+} */
+
+.student-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2.5px dashed var(--clr-green);
+    background-color: #ffffff00;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.student-pic img {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.student-name {
+    font-size: 1.5rem;
+}
+
+.main {
+    background-color: var(--grey-200);
+    min-height: 100vh;
+    /* Set a minimum height of 100vh */
+    height: auto;
+    /* Allow the height to grow with its content */
+}
+
+.regNum {
+    font-size: 14px;
+}
+
+.student-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.student-detail {
+    border: 2px solid var(--grey-200);
+    border-radius: 8px;
+    width: 85%;
+    padding: 8px;
+}
+
+.main-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-red);
+    padding: 0.75rem 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+.main-footer p {
+    font-size: 14px;
+}
+
+.rules-main {
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+}
+
+/* .instructions{
+} */
+
+.rules-main ul {
+    list-style: none;
+}
+
+.start-sec {
+    height: 200px;
+}
+
+button.submitBtn {
+    /* padding: 1rem 3.5rem; */
+    padding: 0.5rem 2rem;
+    font-size: 24px;
+    /* border-radius: 3rem; */
+}
+
+
+/* body {
+    height: 100vh;
+} */
+
+/* =========== CBE LOGIN PAGE =========== */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+/* 
+.sidebar{
+    background-color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 50px var(--grey-300);
+    z-index: 1;
+    padding-top: 1rem;
+} */
+
+/* .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    z-index: 996;
+    transition: all 0.3s;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #46D848 transparent;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+    background-color: white;
+} */
+
+.student-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2.5px solid var(--clr-green);
+    background-color: #ffffff00;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.student-pic img {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.student-name {
+    font-size: 1.5rem;
+}
+
+.main {
+    background-color: var(--grey-200);
+    /* height: 100vh; */
+}
+
+.regNum {
+    font-size: 14px;
+}
+
+.student-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.student-detail {
+    border: 2px solid var(--grey-200);
+    border-radius: 8px;
+    width: 85%;
+    padding: 0.5rem;
+}
+
+.main-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-red);
+    padding: 0.75rem 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+.main-footer p {
+    font-size: 14px;
+}
+
+.questions {
+    margin-top: 0.5rem;
+}
+
+.questions-main {
+    width: 85%;
+    margin: 0 auto;
+    /* display: grid;
+    grid-template-columns: 1fr 270px; */
+    gap: 2rem;
+}
+
+.timers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Ensure space between the time and attempts container */
+    position: fixed;
+    top: 0;
+    left: 240px;
+    /* Adjust as needed based on the width of your sidebar */
+    right: 0;
+    z-index: 999;
+    margin-left: 50px;
+    margin-right: 23px;
+    border-radius: 8px;
+    max-width: calc(100% - 230px);
+    /* Adjust to account for sidebar width and padding */
+    box-sizing: border-box;
+    /* Ensure padding is included in the max-width calculation */
+}
+
+.question-timer {
+    margin-right: 20px;
+    /* Adjust margin between elements */
+}
+
+
+
+#questionsContainer {
+    /* margin-top: 60px; */
+    padding-top: 60px;
+}
+
+.caution img{
+    display: none; /* Initially hide the caution icon */
+}
+.caution img {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+
+
+
+.question-timer {
+    padding: 0.7rem 1.4rem;
+    color: var(--clr-white);
+    font-weight: 600;
+    width: max-content;
+    font-weight: 600;
+}
+
+.timers .question-timer:first-child {
+    background-color: var(--clr-green);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.timers .question-timer:last-child {
+    background-color: var(--grey-800);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 275px;
+}
+
+.questionBtns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* .question {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+} */
+
+.question {
+    font-size: 1.3rem;
+    counter-reset: question-counter;
+    font-weight: bold; /* Make the question text bold */
+}
+
+.question span {
+    font-weight: bold; /* Make the question number normal weight */
+    background-color: var(--clr-green);
+    color: white;
+    border-radius: 4px;
+    padding: 0px 20px;
+
+}
+
+
+.answer label {
+    font-size: 20px;
+}
+.answer-label {
+   display: inline-flex;
+   align-items:last baseline;
+}
+
+.answer {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px; /* Adjust spacing between answers if needed */
+}
+
+.answer input[type="radio"] {
+    width: 20px; /* Set width of radio button */
+    height: 20px; /* Set height of radio button */
+    margin-right: 10px; /* Adjust spacing between radio button and label if needed */
+    border-radius: 50%; /* Create a circular shape */
+    border: 2px solid #888; /* Add border */
+}
+
+.answer input[type="radio"]:checked {
+    background-color: green; /* Change background color when checked */
+    border-color: green; /* Change border color when checked */
+    border: 2px solid #888; /* Add border */
+
+}
+
+.answer-text {
+    margin-left: 20px; /* Adjust indentation of text block if needed */
+    line-height: 1.5; /* Adjust line height for better readability */
+}
+
+
+.questionNums {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 10px;
+    border: 1.5px solid var(--grey-400);
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 60px;
+    /* Adjust as needed to match the height of the fixed timer container */
+}
+
+.aside {
+    padding: 10px;
+    border: 1.5px solid var(--grey-400);
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 60px;
+}
+
+
+
+/* .calculator {
+    width: 200px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+.calculator {
+    position: fixed;
+    top: 190px;
+    right: 40px;
+    width: 200px;
+    max-height: calc(100vh - 190px); /* Adjusted max-height */
+    background-color: rgb(123, 119, 119);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-in-out; /* Changed transition duration */
+    transform: translateX(100%);
+    z-index: 999;
+    overflow: auto;
+}
+
+
+/* Animation classes */
+.slide-right {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(100%);
+}
+
+.slide-left {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
+
+
+/* .calculator {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+    z-index: 999;
+} */
+
+.hidden {
+    transform: translateX(100%);
+    display: none;
+}
+
+
+.floating-button {
+    position: fixed;
+    bottom: 5px;
+    right: 40px;
+    background-color: #007bff; /* Button background color */
+    color: white;
+    border: none;
+    /* border-radius: 50%; */
+    padding: 10px; /* Adjust padding as needed */
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.floating-button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+
+#display {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}
+
+.buttons button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #e0e0e0;
+}
+
+.buttons button:active {
+    background-color: #d0d0d0;
+}
+
+
+
+
+
+.questionNum {
+    font-size: 13px;
+    color: var(--grey-800);
+    border: 1.5px solid var(--grey-400);
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.completed {
+    background-color: red;
+    color:white;
+}
+
+.correct {
+    background-color: #28a745; /* Green background color */
+    color: white; /* White text color */
+    font-weight: bold; /* Bold text */
+    /* Add any additional styling as needed */
+}
+
+.incorrect {
+    background-color: #dc3545; /* Red background for incorrect answers */
+    color: white; /* White text color */
+}
+
+.thead-green th{
+    background-color: green;
+}
+
+
+
+.cbtSubjects {
+    display: flex; /* Use Flexbox instead of Grid */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 10px;
+    padding: 10px;
+    border: 1.5px solid var(--grey-400);
+    justify-content: center;
+    align-items: center;
+    /* position: sticky; */
+    top: 60px;
+    /* Adjust as needed to match the height of the fixed timer container */
+}
+
+.cbtSubject {
+    flex-grow: 1; /* Allow items to grow */
+    min-width: 150px; /* Set a minimum width for each subject */
+    font-size: 13px;
+    color: var(--grey-800);
+    border: 1.5px solid var(--clr-green);
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 10px; /* Add margin to create spacing between items */
+    margin-right: 10px; /* Add margin between subjects */
+}
+.cbtSubject:hover {
+    background-color: var(--clr-green);
+    color: white;
+}
+
+#search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    flex: 1; /* Allow the input to take up remaining space */
+    padding: 5px; /* Add padding to the input */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Add border radius */
+    font-size: 14px; /* Set font size */
+}
+
+#searchButton {
+    padding: 5px 10px; /* Add padding to the button */
+    background-color: black; /* Set background color */
+    color: #fff; /* Set text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 14px; /* Set font size */
+    margin-left: 5px; /* Add margin between input and button */
+    transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: green; /* Change background color on hover */
+}
+
+
+
+
+
+.submitExam {
+    background-color: var(--clr-green);
+    /* padding: 0.7rem 2.8rem; */
+    /* padding: 0.7rem; */
+    font-size: 25px;
+    /* border-radius: 2rem; */
+}
+
+.submitExam:hover {
+    background-color: var(--clr-red);
+}
+
+.submitExamBtn {
+    /* height: 200px; */
+}
+
+
+/* body {
+    height: 100vh;
+} */
+
+/* =========== CBE LOGIN PAGE =========== */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+.login-sidebar{
+    background-color: var(--clr-green);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 1rem;
+    width: 200px;
+    height: 200px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.navlogo {
+    /* margin-bottom: 1rem; */
+    /* width: 200px;
+    height: 200px; */
+    padding: 5px 0px;
+    border-bottom: #e3e4e7 solid 2px;
+    /* border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem; */
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: cfenter;
+}
+
+.navlogo img {
+    height: 50px;
+}
+
+.jeta-name {
+    font-size: 1.5rem;
+}
+
+/* form {
+    height: 100vh;
+} */
+
+/* form>div {
+    width: 65%;
+} */
+
+.regContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: max-content;
+}
+
+/* CBE Inputs */
+input.regInput {
+    height: 40px;
+    width: 400px;
+    border-radius: 8px;
+    border: 2px solid rgb(170, 170, 170);
+    padding: 8px;
+    outline: none;
+    font-size: 14px;
+    font-family: var(--ff-main);
+}
+
+.loginBtn {
+    outline: none;
+    border: 0;
+    color: white;
+    background-color: var(--clr-red);
+    font-size: 18px;
+    border-radius: 8px;
+    height: 100%;
+    padding: 0 1.8rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    width: max-content;
+}
+
+.submitBtn:hover {
+    box-shadow: 3px 0px 20px rgb(255, 172, 172);
+}
+
+.main-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-red);
+    padding: 0.75rem 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+.main-footer p {
+    font-size: 14px;
+}
+
+.login-main {
+    background-image: url(../img/exambackground.jpeg);
+    background-size: cover;
+}

@@ -1,0 +1,202 @@
+CRITICAL - 2024-08-13 00:05:35 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: checkout]
+in APPPATH/Controllers/CheckoutController.php on line 19.
+ 1 APPPATH/Controllers/CheckoutController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/home/learnxac/learnxa/app/Controllers/CheckoutController.php', 19)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CheckoutController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CheckoutController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 07:27:34 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "quizzes/index.php"
+[Method: GET, Route: quizzes]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('quizzes/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('quizzes/index', [], true)
+ 3 APPPATH/Controllers/QuizController.php(53): view('quizzes/index', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\QuizController->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\QuizController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 07:27:57 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/createAndEditLesson.php"
+[Method: GET, Route: admin/lesson]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/createAndEditLesson.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/createAndEditLesson', [], true)
+ 3 APPPATH/Controllers/Pages.php(198): view('admin/createAndEditLesson', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pages->createAndEditLesson()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 07:28:33 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/createAndEditCoupon.php"
+[Method: GET, Route: admin/coupon]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/createAndEditCoupon.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/createAndEditCoupon.php', [], true)
+ 3 APPPATH/Controllers/Pages.php(164): view('admin/createAndEditCoupon.php')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pages->createAndEditCoupon()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 12:53:42 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: checkout]
+in APPPATH/Controllers/CheckoutController.php on line 19.
+ 1 APPPATH/Controllers/CheckoutController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/home/learnxac/learnxa/app/Controllers/CheckoutController.php', 19)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CheckoutController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CheckoutController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 12:53:51 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: checkout]
+in APPPATH/Controllers/CheckoutController.php on line 19.
+ 1 APPPATH/Controllers/CheckoutController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/home/learnxac/learnxa/app/Controllers/CheckoutController.php', 19)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CheckoutController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CheckoutController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-08-13 13:00:11 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): Unable to connect to ssl://smtp.gmail.com:465 (Network is unreachable) in /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): Un...', '/home/learnxac/...', 1896)
+#1 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1896): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 60)
+#2 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 /home/learnxac/learnxa/app/Controllers/PaymentController.php(127): CodeIgniter\Email\Email->send()
+#6 /home/learnxac/learnxa/app/Controllers/PaymentController.php(88): App\Controllers\PaymentController->sendConfirmationEmail(Array)
+#7 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\PaymentController->verifyPayment()
+#8 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#9 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 /home/learnxac/public_html/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-08-13 13:00:11 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-08-13 13:00:11 --> 
+ERROR - 2024-08-13 13:00:11 --> Failed to send registration confirmation email to omppeak@gmail.com. Error: Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 13 Aug 2024 13:00:10 +0000
+From: &quot;LearnXa&quot; &lt;elearnxa@gmail.com&gt;
+Return-Path: &lt;elearnxa@gmail.com&gt;
+To: omppeak@gmail.com
+Subject: =?UTF-8?Q?LearnXa=20Registration=20Confirmation?=
+Reply-To: &lt;elearnxa@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: elearnxa@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66bb58da750263.50104803@gmail.com&gt;
+Mime-Version: 1.0
+
+</pre>
+ERROR - 2024-08-13 13:00:12 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): Unable to connect to ssl://smtp.gmail.com:465 (Network is unreachable) in /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): Un...', '/home/learnxac/...', 1896)
+#1 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1896): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 60)
+#2 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Email/Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 /home/learnxac/learnxa/app/Controllers/PaymentController.php(148): CodeIgniter\Email\Email->send()
+#6 /home/learnxac/learnxa/app/Controllers/PaymentController.php(89): App\Controllers\PaymentController->sendDefaultPasswordEmail('omppeak@gmail.c...', 'Odewaye')
+#7 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\PaymentController->verifyPayment()
+#8 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#9 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 /home/learnxac/public_html/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-08-13 13:00:12 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-08-13 13:00:12 --> Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-08-13 13:00:12 --> Failed to send default password email to omppeak@gmail.com. Error: Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 13 Aug 2024 13:00:10 +0000
+From: &quot;LearnXa&quot; &lt;elearnxa@gmail.com&gt;
+Return-Path: &lt;elearnxa@gmail.com&gt;
+To: omppeak@gmail.com
+Subject: =?UTF-8?Q?LearnXa=20Registration=20-=20Your=20Password?=
+Reply-To: &lt;elearnxa@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: elearnxa@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66bb58db894734.38848033@gmail.com&gt;
+Mime-Version: 1.0
+
+</pre>
+ERROR - 2024-08-13 13:01:45 --> mysqli_sql_exception: Duplicate entry 'omppeak@gmail.com' for key 'email' in /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:310
+Stack trace:
+#0 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(310): mysqli->query('INSERT INTO `us...', 0)
+#1 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Database/BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2333): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 /home/learnxac/learnxa/app/Controllers/PaymentController.php(80): CodeIgniter\Model->insert(Array)
+#8 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\PaymentController->verifyPayment()
+#9 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#10 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /home/learnxac/learnxa/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /home/learnxac/public_html/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-08-13 13:01:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry 'omppeak@gmail.com' for key 'email'
+[Method: GET, Route: verify-payment]
+in SYSTEMPATH/Database/BaseConnection.php on line 686.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2333): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (:first_name:, :last_name:, :username:, :email:, :phone_number:, :password_hash:, :role_id:, :payment_status:, :amount_paid:, :payment_confirmation_code:, :address:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH/Controllers/PaymentController.php(80): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\PaymentController->verifyPayment()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 13:01:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry 'omppeak@gmail.com' for key 'email'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 315.
+ 1 SYSTEMPATH/Database/BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (\'Mayomi\', \'Odewaye\', \'mayomi.odewaye.66bb5938d40e1\', \'omppeak@gmail.com\', \'08149594986\', \'$2y$10$Em7lTwOIIXgbJ1ZPocGzgeDSNY7WAfu4lDoVM.eZOZvmCs3DqhkB6\', \'5\', \'success\', 2000, \'LXA202408137180\', \'Nigeria.\', \'2024-08-13 13:01:44\', \'2024-08-13 13:01:44\')')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (\'Mayomi\', \'Odewaye\', \'mayomi.odewaye.66bb5938d40e1\', \'omppeak@gmail.com\', \'08149594986\', \'$2y$10$Em7lTwOIIXgbJ1ZPocGzgeDSNY7WAfu4lDoVM.eZOZvmCs3DqhkB6\', \'5\', \'success\', 2000, \'LXA202408137180\', \'Nigeria.\', \'2024-08-13 13:01:44\', \'2024-08-13 13:01:44\')')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2333): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (:first_name:, :last_name:, :username:, :email:, :phone_number:, :password_hash:, :role_id:, :payment_status:, :amount_paid:, :payment_confirmation_code:, :address:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH/Controllers/PaymentController.php(80): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\PaymentController->verifyPayment()
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 13:01:45 --> [Caused by] mysqli_sql_exception: Duplicate entry 'omppeak@gmail.com' for key 'email'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 310.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(310): mysqli->query('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (\'Mayomi\', \'Odewaye\', \'mayomi.odewaye.66bb5938d40e1\', \'omppeak@gmail.com\', \'08149594986\', \'$2y$10$Em7lTwOIIXgbJ1ZPocGzgeDSNY7WAfu4lDoVM.eZOZvmCs3DqhkB6\', \'5\', \'success\', 2000, \'LXA202408137180\', \'Nigeria.\', \'2024-08-13 13:01:44\', \'2024-08-13 13:01:44\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (\'Mayomi\', \'Odewaye\', \'mayomi.odewaye.66bb5938d40e1\', \'omppeak@gmail.com\', \'08149594986\', \'$2y$10$Em7lTwOIIXgbJ1ZPocGzgeDSNY7WAfu4lDoVM.eZOZvmCs3DqhkB6\', \'5\', \'success\', 2000, \'LXA202408137180\', \'Nigeria.\', \'2024-08-13 13:01:44\', \'2024-08-13 13:01:44\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (\'Mayomi\', \'Odewaye\', \'mayomi.odewaye.66bb5938d40e1\', \'omppeak@gmail.com\', \'08149594986\', \'$2y$10$Em7lTwOIIXgbJ1ZPocGzgeDSNY7WAfu4lDoVM.eZOZvmCs3DqhkB6\', \'5\', \'success\', 2000, \'LXA202408137180\', \'Nigeria.\', \'2024-08-13 13:01:44\', \'2024-08-13 13:01:44\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2333): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`first_name`, `last_name`, `username`, `email`, `phone_number`, `password_hash`, `role_id`, `payment_status`, `amount_paid`, `payment_confirmation_code`, `address`, `created_at`, `updated_at`) VALUES (:first_name:, :last_name:, :username:, :email:, :phone_number:, :password_hash:, :role_id:, :payment_status:, :amount_paid:, :payment_confirmation_code:, :address:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH/Controllers/PaymentController.php(80): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\PaymentController->verifyPayment()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-13 13:49:55 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: checkout]
+in APPPATH/Controllers/CheckoutController.php on line 19.
+ 1 APPPATH/Controllers/CheckoutController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/home/learnxac/learnxa/app/Controllers/CheckoutController.php', 19)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CheckoutController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CheckoutController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
