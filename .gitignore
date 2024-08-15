@@ -22,7 +22,7 @@ ehthumbs.db
 writable/logs/
 *.log
 
-# Cache
+# Cache files
 writable/cache/
 *.cache
 
@@ -41,12 +41,14 @@ writable/session/
 *.swo
 
 # CodeIgniter specific directories
-writable/uploads/  # For uploaded files
-writable/backup/   # Backup files if you have any
-writable/logs/     # Log files
-writable/cache/    # Cache files
-writable/session/  # Session files
-public/uploads/    # If you use public folder for uploads
+# Exclude everything in writable/uploads
+writable/uploads/*
+# Include the uploads directory itself and any files or subdirectories you want to track
+!writable/uploads/
+!writable/uploads/**/
+
+# Exclude backup files if you have any
+writable/backup/
 
 # Exclude local configuration files
 application/config/*.php
