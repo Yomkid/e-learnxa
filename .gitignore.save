@@ -1,0 +1,53 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+/vendor/
+
+# Build output
+/build/
+
+# IDE/editor config
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Log files
+writable/logs/
+*.log
+
+# Cache
+writable/cache/
+*.cache
+
+# Session files
+writable/session/
+
+# Compiled or generated files
+*.class
+*.o
+*.so
+*.dll
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# CodeIgniter specific directories
+writable/uploads/  # For uploaded files
+writable/backup/   # Backup files if you have any
+writable/logs/     # Log files
+writable/cache/    # Cache files
+writable/session/  # Session files
+public/uploads/    # If you use public folder for uploads
+
+# Exclude local configuration files
+application/config/*.php
+
