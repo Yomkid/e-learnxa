@@ -39,7 +39,7 @@ class TimetableController extends BaseController
     //     $courses = $courseModel->findAll();
     
     //     // Corrected return statement with associative array
-    //     return view('timetables/index', [
+    //     return view('admin/timetables/index', [
     //         'timetables' => $timetables,
     //         'courses' => $courses
     //     ]);
@@ -52,7 +52,7 @@ class TimetableController extends BaseController
 
     // If you want to show the list of Timetables for a specific course, you need to handle it accordingly
     // Here we're just returning the basic list for demonstration
-    return view('timetables/index', [
+    return view('admin/timetables/index', [
         'timetables' => $timetables,
         'courses' => $courses,
         // For simplicity, these are left out in this context, you would fetch them in the appropriate method
@@ -65,7 +65,7 @@ class TimetableController extends BaseController
 
     public function create()
     {
-        return view('timetables/create');
+        return view('admin/timetables/create');
     }
 
     public function store()
@@ -272,7 +272,7 @@ class TimetableController extends BaseController
             }
         }
 
-        return redirect()->to(base_url('timetables/'.$courseId))->with('success', 'timetables added successfully.');
+        return redirect()->to(base_url('admin/timetables/'.$courseId))->with('success', 'timetables added successfully.');
     }
 
     public function removeTimetable($courseId, $timetableId)

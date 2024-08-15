@@ -26,7 +26,7 @@ class QuestionBankController extends Controller
     public function index()
     {
         $data['quizzes'] = $this->quizModel->findAll();
-        return view('questionbank/index', $data);
+        return view('admin/questionbank/index', $data);
     }
 
     public function getQuizzes()

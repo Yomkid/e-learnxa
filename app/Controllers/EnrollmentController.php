@@ -7,7 +7,7 @@ class EnrollmentController extends BaseController
     public function indexT()
     {
         
-        return view('payment_status/course_enrollment_success');
+        return view('admin/payment_status/course_enrollment_success');
     }
     public function index()
     {
@@ -29,6 +29,6 @@ class EnrollmentController extends BaseController
         ];
 
         $model->save($data);
-        return redirect()->to('/payment-gateway');
+        return redirect()->to('admin/payment-gateway');
     }
 }

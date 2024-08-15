@@ -31,21 +31,6 @@ class AssignmentController extends BaseController
     }
 
 
-    // public function index()
-    // {
-    //     $assignmentModel = new AssignmentModel();
-    //     $courseModel = new CourseModel();
-        
-    //     $assignments = $assignmentModel->findAll();
-    //     $courses = $courseModel->findAll();
-    
-    //     // Corrected return statement with associative array
-    //     return view('assignments/index', [
-    //         'assignments' => $assignments,
-    //         'courses' => $courses
-    //     ]);
-    // }
-
     public function index()
 {
     $assignments = $this->assignmentModel->findAll();
@@ -53,7 +38,7 @@ class AssignmentController extends BaseController
 
     // If you want to show the list of assignments for a specific course, you need to handle it accordingly
     // Here we're just returning the basic list for demonstration
-    return view('assignments/index', [
+    return view('admin/asssignments/index', [
         'assignments' => $assignments,
         'courses' => $courses,
         // For simplicity, these are left out in this context, you would fetch them in the appropriate method
@@ -66,7 +51,7 @@ class AssignmentController extends BaseController
 
     public function create()
     {
-        return view('assignments/create');
+        return view('admin/asssignments/create');
     }
 
     public function store()
@@ -275,7 +260,7 @@ class AssignmentController extends BaseController
             }
         }
 
-        return redirect()->to(base_url('assignments/'.$courseId))->with('success', 'assignments added successfully.');
+        return redirect()->to(base_url('admin/asssignments/'.$courseId))->with('success', 'assignments added successfully.');
     }
 
     public function removeassignment($courseId, $assignmentId)

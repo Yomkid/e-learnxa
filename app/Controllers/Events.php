@@ -14,7 +14,7 @@ class Events extends BaseController
         $data['metaKeywords'] = 'Integrate FullCalendar in Codeigniter';
         $data['title'] = "Integrate FullCalendar in Codeigniter | TechArise";
         $data['breadcrumbs'] = array('Integrate FullCalendar in Codeigniter' => '#');
-        return view('calendar/calendar', $data);
+        return view('admin/calendar/calendar', $data);
     }
 
     // load event data

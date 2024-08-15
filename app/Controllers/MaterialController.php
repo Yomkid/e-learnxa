@@ -37,7 +37,7 @@ class MaterialController extends BaseController
 
     // If you want to show the list of materials for a specific course, you need to handle it accordingly
     // Here we're just returning the basic list for demonstration
-    return view('materials/index', [
+    return view('admin/materials/index', [
         'materials' => $materials,
         'courses' => $courses,
         // For simplicity, these are left out in this context, you would fetch them in the appropriate method
@@ -50,7 +50,7 @@ class MaterialController extends BaseController
 
     public function create()
     {
-        return view('materials/create');
+        return view('admin/materials/create');
     }
 
     public function store()
@@ -278,7 +278,7 @@ class MaterialController extends BaseController
             }
         }
 
-        return redirect()->to(base_url('materials/'.$courseId))->with('success', 'materials added successfully.');
+        return redirect()->to(base_url('admin/materials/'.$courseId))->with('success', 'materials added successfully.');
     }
 
     public function removematerial($courseId, $materialId)

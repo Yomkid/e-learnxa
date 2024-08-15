@@ -47,17 +47,17 @@ class AuthReg extends Controller
             // Redirect based on role_id
             switch ($user['role_id']) {
                 case 1: // Assuming 1 is for 'admin'
-                    return redirect()->to(base_url('admin/dashboard'));
+                    return redirect()->to(base_url('admin'));
                 case 2: // Assuming 2 is for 'super_admin'
-                    return redirect()->to(base_url('super_admin/dashboard'));
+                    return redirect()->to(base_url('/super_admin'));
                 case 3: // Assuming 3 is for 'instructor'
-                    return redirect()->to(base_url('instructor/dashboard'));
+                    return redirect()->to(base_url('/instructor'));
                 case 4: // Assuming 4 is for 'moderator'
-                    return redirect()->to(base_url('moderator/dashboard'));
+                    return redirect()->to(base_url('/moderator'));
                 case 5: // Assuming 5 is for 'student'
-                    return redirect()->to(base_url('student/dashboard'));
+                    return redirect()->to(base_url('/student'));
                 default:
-                    return redirect()->to(base_url('dashboard'));
+                    return redirect()->to(base_url('/student'));
             }
         } else {
             $this->session->setFlashdata('error', 'Invalid Email or Password.');
@@ -121,7 +121,7 @@ class AuthReg extends Controller
         }
 
         // Load the dashboard view
-        return view('student/dashboard');
+        return view('student');
     }
 
     public function acknowledgementSlip()

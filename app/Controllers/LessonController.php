@@ -185,7 +185,7 @@ class LessonController extends BaseController
 
     public function index()
     {
-        return view('lessons/index');
+        return view('admin/lessons/index');
     }
 
     public function getAllLessons()

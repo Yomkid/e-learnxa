@@ -37,7 +37,7 @@ class QuizController extends BaseController
     //     $courses = $courseModel->findAll();
     
     //     // Corrected return statement with associative array
-    //     return view('quizzes/index', [
+    //     return view('admin/quizzes/index', [
     //         'quizzes' => $quizzes,
     //         'courses' => $courses
     //     ]);
@@ -50,7 +50,7 @@ class QuizController extends BaseController
 
     // If you want to show the list of quizzes for a specific course, you need to handle it accordingly
     // Here we're just returning the basic list for demonstration
-    return view('admin/quizzes/index', [
+    return view('admin/admin/quizzes/index', [
         'quizzes' => $quizzes,
         'courses' => $courses,
         // For simplicity, these are left out in this context, you would fetch them in the appropriate method
@@ -63,7 +63,7 @@ class QuizController extends BaseController
 
     public function create()
     {
-        return view('quizzes/create');
+        return view('admin/quizzes/create');
     }
 
     public function store()
@@ -244,7 +244,7 @@ class QuizController extends BaseController
     //     // Fetch all quizzes for the add/remove functionality
     //     $allQuizzes = $this->quizModel->findAll();
 
-    //     return view('quizzes/index', [
+    //     return view('admin/quizzes/index', [
     //         'course' => $course,
     //         'assignedQuizzes' => $quizzes,
     //         'allQuizzes' => $allQuizzes
@@ -273,7 +273,7 @@ class QuizController extends BaseController
     //     // Debug output
     //     log_message('debug', print_r($allQuizzes, true));
     
-    //     return view('quizzes/index', [
+    //     return view('admin/quizzes/index', [
     //         'course' => $course,
     //         'assignedQuizzes' => $assignedQuizzes,
     //         'allQuizzes' => $allQuizzes
@@ -321,7 +321,7 @@ class QuizController extends BaseController
             }
         }
 
-        return redirect()->to(base_url('quizzes/'.$courseId))->with('success', 'Quizzes added successfully.');
+        return redirect()->to(base_url('admin/quizzes/'.$courseId))->with('success', 'Quizzes added successfully.');
     }
 
     public function removeQuiz($courseId, $quizId)
