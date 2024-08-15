@@ -50,7 +50,7 @@ class QuizController extends BaseController
 
     // If you want to show the list of quizzes for a specific course, you need to handle it accordingly
     // Here we're just returning the basic list for demonstration
-    return view('quizzes/index', [
+    return view('admin/quizzes/index', [
         'quizzes' => $quizzes,
         'courses' => $courses,
         // For simplicity, these are left out in this context, you would fetch them in the appropriate method
