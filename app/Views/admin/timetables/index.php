@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
     <title>Timetable Management | LearnXa</title>
@@ -26,38 +25,37 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
 
-    <!--- FullCalendar plugin --->
-    <link href='packages/core/main.css' rel='stylesheet' />
+     <!--- FullCalendar plugin --->
+     <link href='packages/core/main.css' rel='stylesheet' />
     <link href='packages/daygrid/main.css' rel='stylesheet' />
     <link href='packages/list/main.css' rel='stylesheet' />
 
-    <style>
-        /* styles.css */
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+<style>
+    /* styles.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
-        .select2-container--default .select2-results__option {
-            display: flex;
-            align-items: center;
-        }
+    .select2-container--default .select2-results__option {
+        display: flex;
+        align-items: center;
+    }
 
-        .fc-sun {
-            color: red;
-        }
+    .fc-sun {
+        color: red;
+    }
 
-        .fc-ltr .fc-dayGrid-view .fc-day-top .fc-day-number {
-            float: none;
-        }
+    .fc-ltr .fc-dayGrid-view .fc-day-top .fc-day-number {
+        float: none;
+    }
 
-        .fc-day-top {
-            text-align: center !important;
-        }
+    .fc-day-top {
+        text-align: center !important;
+    }
 
-        .floating-btn {
+    .floating-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -88,7 +86,6 @@
             z-index: 1;
             padding: 20px;
         }
-
         .watermark {
             position: absolute;
             top: 50%;
@@ -96,22 +93,18 @@
             transform: translate(-50%, -50%);
             opacity: 0.1;
             z-index: 0;
-            pointer-events: none;
-            /* Makes the watermark non-interactive */
-            user-select: none;
-            /* Prevents text selection */
+            pointer-events: none; /* Makes the watermark non-interactive */
+            user-select: none;    /* Prevents text selection */
         }
 
         .watermark img {
-            width: 300px;
-            /* Adjust the size as needed */
+            width: 300px; /* Adjust the size as needed */
             height: auto;
         }
-    </style>
+</style>
 
 
 </head>
-
 <body>
     <?php include(APPPATH . 'Views/admin/include/sidebar.php'); ?>
     <main id="main" class="main thecontent p-0">
@@ -124,43 +117,40 @@
             <!-- Tab Navigation -->
             <ul class="nav nav-tabs" id="timetableTabs" role="tablist">
                 <li class="nav-item">
-                    <a class="btn nav-link" id="add-timetable-tab" data-toggle="modal"
-                        data-target="#createTimetableModal" role="tab" aria-controls="add-timetable"
-                        aria-selected="false">ADD Timetable</a>
+                    <a class="btn nav-link" id="add-timetable-tab" data-toggle="modal" data-target="#createTimetableModal" role="tab"
+                        aria-controls="add-timetable" aria-selected="false">ADD Timetable</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" id="timetable-bank-tab" data-toggle="tab" href="#timetable-bank"
-                        role="tab" aria-controls="timetable-bank" aria-selected="true">Timetable Lists</a>
+                    <a class="nav-link active" id="timetable-bank-tab" data-toggle="tab" href="#timetable-bank" role="tab"
+                        aria-controls="timetable-bank" aria-selected="true">Timetable Lists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="add-bulk-timetable-tab" data-toggle="tab" href="#add-bulk-timetable"
-                        role="tab" aria-controls="bulk-timetable" aria-selected="false">Import</a>
+                    <a class="nav-link" id="add-bulk-timetable-tab" data-toggle="tab" href="#add-bulk-timetable" role="tab"
+                        aria-controls="bulk-timetable" aria-selected="false">Import</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="export-timetable-tab" data-toggle="tab" href="#export-timetable" role="tab"
                         aria-controls="export-timetable" aria-selected="false">Export</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="assign-timetables-tab" data-toggle="tab" href="#assign-timetables"
-                        role="tab" aria-controls="assign-timetable" aria-selected="false">Assign</a>
+                    <a class="nav-link" id="assign-timetables-tab" data-toggle="tab" href="#assign-timetables" role="tab"
+                        aria-controls="assign-timetable" aria-selected="false">Assign</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="timetable-calendar-preview-tab" data-toggle="tab"
-                        href="#timetable-calendar-preview" role="tab" aria-controls="timetable-calendar-preview"
-                        aria-selected="false">Calendars</a>
+                    <a class="nav-link" id="timetable-calendar-preview-tab" data-toggle="tab" href="#timetable-calendar-preview" role="tab"
+                        aria-controls="timetable-calendar-preview" aria-selected="false">Calendars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="timetable-preview-tab" data-toggle="tab" href="#timetable-preview"
-                        role="tab" aria-controls="timetable-preview" aria-selected="false">Timetables</a>
+                    <a class="nav-link" id="timetable-preview-tab" data-toggle="tab" href="#timetable-preview" role="tab"
+                        aria-controls="timetable-preview" aria-selected="false">Timetables</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="timetable-settings-tab" data-toggle="tab" href="#timetable-settings"
-                        role="tab" aria-controls="timetable-settings" aria-selected="false">Settings</a>
+                    <a class="nav-link" id="timetable-settings-tab" data-toggle="tab" href="#timetable-settings" role="tab"
+                        aria-controls="timetable-settings" aria-selected="false">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="timetable-calnedar-setup-tab" data-toggle="tab"
-                        href="#timetable-calendar-setup" role="tab" aria-controls="timetable-calendar-setup"
-                        aria-selected="false">Setup</a>
+                    <a class="nav-link" id="timetable-calnedar-setup-tab" data-toggle="tab" href="#timetable-calendar-setup" role="tab"
+                        aria-controls="timetable-calendar-setup" aria-selected="false">Setup</a>
                 </li>
             </ul>
 
@@ -169,28 +159,28 @@
             <div class="tab-content" id="questionTabsContent">
                 <!-- Display validation errors if any -->
                 <?php if (session()->has('message')) : ?>
-                <?= view('include/message') ?>
+                    <?= view('include/message') ?>
                 <?php endif ?>
 
                 <!-- Timetable Bank Tab -->
                 <div class="tab-pane fade show active" id="timetable-bank" role="tabpanel"
                     aria-labelledby="timetable-bank-tab">
                     <div class="row my-2">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" id="search" class="form-control" placeholder="Search Timetables...">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" id="search" class="form-control" placeholder="Search Timetables...">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <select id="sort" class="form-control">
-                                    <option value="name_asc">Sort by Name (A-Z)</option>
-                                    <option value="name_desc">Sort by Name (Z-A)</option>
-                                    <option value="id_asc">Sort by ID (Ascending)</option>
-                                    <option value="id_desc">Sort by ID (Descending)</option>
-                                </select>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                        <select id="sort" class="form-control">
+                                            <option value="name_asc">Sort by Name (A-Z)</option>
+                                            <option value="name_desc">Sort by Name (Z-A)</option>
+                                            <option value="id_asc">Sort by ID (Ascending)</option>
+                                            <option value="id_desc">Sort by ID (Descending)</option>
+                                        </select>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <div class="card shadow-sm">
                         <div class="card-body">
@@ -217,14 +207,12 @@
                 </div>
 
                 <!-- Bulk Upload Section -->
-                <div class="tab-pane fade" id="add-bulk-timetable" role="tabpanel"
-                    aria-labelledby="add-bulk-timetable-tab">
-
+                <div class="tab-pane fade" id="add-bulk-timetable" role="tabpanel" aria-labelledby="add-bulk-timetable-tab">
+                    
                     <form id="bulkUploadForm" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="timetable_file">Upload Timetable File (CSV/Excel)</label>
-                            <input type="file" id="timetable_file" name="timetable_file" class="form-control"
-                                accept=".csv, .xlsx" required>
+                            <input type="file" id="timetable_file" name="timetable_file" class="form-control" accept=".csv, .xlsx" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </form>
@@ -238,10 +226,9 @@
                             <select id="timetable_id" name="timetable_id" class="form-control">
                                 <option value="">All Timetables</option>
                                 <?php if (!empty($timetables)): ?>
-                                <?php foreach ($timetables as $timetable): ?>
-                                <option value="<?= $timetable['timetable_id'] ?>"><?= $timetable['timetable_name'] ?>
-                                </option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($timetables as $timetable): ?>
+                                        <option value="<?= $timetable['timetable_id'] ?>"><?= $timetable['timetable_name'] ?></option>
+                                    <?php endforeach; ?>
                                 <?php endif; ?>
                             </select>
                         </div>
@@ -256,24 +243,20 @@
                         <button type="submit" class="btn btn-primary">Export Calendars</button>
                     </form>
                 </div>
-                <!-- Assign Timetables to Course -->
-                <!-- Assign Timetables to Course -->
-                <div class="tab-pane fade mt-2" id="assign-timetables" role="tabpanel"
-                    aria-labelledby="assign-timetables-tab">
-                    <form id="assignTimetablesForm" action="<?= base_url('timetables/assignTimetables') ?>"
-                        method="post">
+               <!-- Assign Timetables to Course --> <!-- Assign Timetables to Course -->
+                <div class="tab-pane fade mt-2" id="assign-timetables" role="tabpanel" aria-labelledby="assign-timetables-tab">
+                    <form id="assignTimetablesForm" action="<?= base_url('timetables/assignTimetables') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="course_id">Select Course</label>
                             <select id="assign_course_id" name="course_id" class="form-control" required>
                                 <option value="">Select a course</option>
                                 <?php if (!empty($courses)): ?>
-                                <?php foreach ($courses as $course): ?>
-                                <option value="<?= $course['course_id'] ?>"
-                                    data-image="<?= base_url('uploads/' . $course['course_image']) ?>">
-                                    <?= $course['course_title'] ?>
-                                </option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($courses as $course): ?>
+                                        <option value="<?= $course['course_id'] ?>" data-image="<?= base_url('uploads/' . $course['course_image']) ?>">
+                                            <?= $course['course_title'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 <?php endif; ?>
                             </select>
                         </div>
@@ -284,8 +267,7 @@
 
 
                 <!-- Timetable Calendar -->
-                <div class="tab-pane fade mt-2" id="timetable-calendar-preview" role="tabpanel"
-                    aria-labelledby="timetable-calendar-preview-tab">
+                <div class="tab-pane fade mt-2" id="timetable-calendar-preview" role="tabpanel" aria-labelledby="timetable-calendar-preview-tab">
                     <!-- Select Timetable -->
                     <div class="form-group">
                         <label for="timetable_calendar_id">Select Timetable</label>
@@ -293,9 +275,7 @@
                             <!-- Populate with existing Timetables -->
                             <option value="" disabled selected>Select a timetable</option>
                             <?php foreach ($timetables as $timetable): ?>
-                            <option value="<?= $timetable['timetable_id'] ?>"
-                                data-url="<?= $timetable['timetable_url'] ?>"><?= $timetable['timetable_name'] ?>
-                            </option>
+                                <option value="<?= $timetable['timetable_id'] ?>" data-url="<?= $timetable['timetable_url'] ?>"><?= $timetable['timetable_name'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -316,11 +296,10 @@
                     </section>
                 </div>
 
-
+               
 
                 <!-- Timetable Preview -->
-                <div class="tab-pane fade mt-2" id="timetable-preview" role="tabpanel"
-                    aria-labelledby="timetable-preview-tab">
+                <div class="tab-pane fade mt-2" id="timetable-preview" role="tabpanel" aria-labelledby="timetable-preview-tab">
                     <!-- Select Timetable -->
                     <div class="form-group">
                         <label for="timetable_preview_id">Select Timetable</label>
@@ -328,8 +307,7 @@
                             <!-- Populate with existing Timetables -->
                             <option value="" disabled selected>Select a timetable</option>
                             <?php foreach ($timetables as $timetable): ?>
-                            <option value="<?= $timetable['timetable_id'] ?>"><?= $timetable['timetable_name'] ?>
-                            </option>
+                                <option value="<?= $timetable['timetable_id'] ?>"><?= $timetable['timetable_name'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -367,15 +345,13 @@
                             </div>
                         </div>
                     </div>
-
+                      
                 </div>
 
 
                 <!-- Timetable Settings -->
-                <div class="tab-pane fade mt-2" id="timetable-settings" role="tabpanel"
-                    aria-labelledby="timetable-settings-tab">
-                    <form id="timetableSettingsForm" action="<?= base_url('timetables/updateSettings') ?>"
-                        method="post">
+                <div class="tab-pane fade mt-2" id="timetable-settings" role="tabpanel" aria-labelledby="timetable-settings-tab">
+                    <form id="timetableSettingsForm" action="<?= base_url('timetables/updateSettings') ?>" method="post">
                         <!-- Select Timetable -->
                         <div class="form-group">
                             <label for="timetable_id">Select Timetable</label>
@@ -386,7 +362,7 @@
                             </select>
                         </div>
 
-
+                        
                         <!-- Timetable Status -->
                         <div class="form-group">
                             <label for="timetable_status">Timetable Status</label>
@@ -396,35 +372,31 @@
                                 <option value="published">Published (Publicly Visible)</option>
                             </select>
                         </div>
-
+                        
                         <!-- Assign Timetable and Dates -->
                         <div class="form-group">
                             <label for="assign_timetable_dates">Assign Timetable and Dates</label>
-                            <input type="text" id="assign_timetable_dates" name="assign_timetable_dates"
-                                class="form-control" placeholder="Enter course and date details">
+                            <input type="text" id="assign_timetable_dates" name="assign_timetable_dates" class="form-control" placeholder="Enter course and date details">
                         </div>
-
+                        
                         <!-- Time Limit -->
                         <div class="form-group">
                             <label for="time_limit">Time Limit (minutes)</label>
-                            <input type="number" id="time_limit" name="time_limit" class="form-control"
-                                placeholder="Enter time limit in minutes">
+                            <input type="number" id="time_limit" name="time_limit" class="form-control" placeholder="Enter time limit in minutes">
                         </div>
-
+                        
                         <!-- Attempts Allowed -->
                         <div class="form-group">
                             <label for="attempts_allowed">Attempts Allowed</label>
-                            <input type="number" id="attempts_allowed" name="attempts_allowed" class="form-control"
-                                placeholder="Enter number of attempts allowed">
+                            <input type="number" id="attempts_allowed" name="attempts_allowed" class="form-control" placeholder="Enter number of attempts allowed">
                         </div>
-
+                        
                         <!-- Passing Score -->
                         <div class="form-group">
                             <label for="passing_score">Passing Score (%)</label>
-                            <input type="number" id="passing_score" name="passing_score" class="form-control"
-                                placeholder="Enter passing score percentage">
+                            <input type="number" id="passing_score" name="passing_score" class="form-control" placeholder="Enter passing score percentage">
                         </div>
-
+                        
                         <!-- Grades -->
                         <div class="form-group">
                             <label for="grades">Grades</label>
@@ -433,32 +405,29 @@
                                 <option value="percentage">Percentage</option>
                             </select>
                         </div>
-
+                        
                         <!-- Retakes -->
                         <div class="form-group">
                             <label for="retakes">Retakes Allowed</label>
-                            <input type="number" id="retakes" name="retakes" class="form-control"
-                                placeholder="Enter number of retakes allowed">
+                            <input type="number" id="retakes" name="retakes" class="form-control" placeholder="Enter number of retakes allowed">
                         </div>
-
+                        
                         <button type="submit" class="btn btn-primary">Save Settings</button>
                     </form>
                 </div>
 
                 <!-- Timetable Calendar Setup -->
-                <div class="tab-pane fade mt-2" id="timetable-calendar-setup" role="tabpanel"
-                    aria-labelledby="timetable-calendar-setup-tab">
+                <div class="tab-pane fade mt-2" id="timetable-calendar-setup" role="tabpanel" aria-labelledby="timetable-calendar-setup-tab">
                     <form id="timetableSetupForm" action="<?= base_url('timetables/updateSettings') ?>" method="post">
-
+                       
 
                         <!-- Calendar API Key Setup -->
                         <div class="form-group">
                             <label for="assign_timetable_dates">API Key Setup</label>
-                            <input type="text" id="calendar_apikey_setup" name="calendar_apikey_setup"
-                                class="form-control" placeholder="Enter Calendar APIKey">
+                            <input type="text" id="calendar_apikey_setup" name="calendar_apikey_setup" class="form-control" placeholder="Enter Calendar APIKey">
                         </div>
-
-
+                        
+                        
                         <button type="submit" class="btn btn-primary">Save Settings</button>
                     </form>
                 </div>
@@ -469,10 +438,9 @@
                 <img src="./assets/img/omppeak-logo.png" alt="Watermark">
             </div>
     </main>
-
+    
     <!-- Modal for Creating Timetable -->
-    <div class="modal fade" id="createTimetableModal" tabindex="-1" role="dialog"
-        aria-labelledby="createTimetableModalLabel" aria-hidden="true">
+    <div class="modal fade" id="createTimetableModal" tabindex="-1" role="dialog" aria-labelledby="createTimetableModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -486,13 +454,11 @@
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="timetable_name">Timetable Name</label>
-                            <input type="text" id="timetable_name" name="timetable_name" class="form-control"
-                                value="<?= old('timetable_name') ?>" required>
+                            <input type="text" id="timetable_name" name="timetable_name" class="form-control" value="<?= old('timetable_name') ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="timetable_url">Timetable Calendar URL</label>
-                            <input type="text" id="timetable_url" name="timetable_url" class="form-control"
-                                value="<?= old('timetable_url') ?>" required>
+                            <input type="text" id="timetable_url" name="timetable_url" class="form-control" value="<?= old('timetable_url') ?>" required>
                         </div>
                         <!-- <div class="form-group">
                             <label for="timetable_apikey">API KEY</label>
@@ -500,11 +466,10 @@
                         </div> -->
                         <div class="form-group">
                             <label for="timetable_description">Timetable Content</label>
-                            <textarea id="timetable_description" name="timetable_description" class="form-control"
-                                rows="4"><?= old('timetable_description') ?></textarea>
+                            <textarea id="timetable_description" name="timetable_description" class="form-control" rows="4"><?= old('timetable_description') ?></textarea>
                         </div>
-
-
+                        
+                        
                         <button type="submit" class="btn btn-primary">Save Timetable</button>
                     </form>
                 </div>
@@ -513,8 +478,7 @@
     </div>
 
     <!-- Modal for Editing Timetable -->
-    <div class="modal fade" id="editTimetableModal" tabindex="-1" role="dialog"
-        aria-labelledby="editTimetableModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editTimetableModal" tabindex="-1" role="dialog" aria-labelledby="editTimetableModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -529,13 +493,11 @@
                         <input type="hidden" id="edit_timetable_id" name="timetable_id">
                         <div class="form-group">
                             <label for="edit_timetable_name">Timetable Name</label>
-                            <input type="text" id="edit_timetable_name" name="timetable_name" class="form-control"
-                                required>
+                            <input type="text" id="edit_timetable_name" name="timetable_name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="edit_timetable_description">Description</label>
-                            <textarea id="edit_timetable_description" name="timetable_description" class="form-control"
-                                rows="4"></textarea>
+                            <textarea id="edit_timetable_description" name="timetable_description" class="form-control" rows="4"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Update Timetable</button>
                     </form>
@@ -544,8 +506,7 @@
         </div>
     </div>
     <!-- Modal for Editing Timetable -->
-    <div class="modal fade" id="previewTimetableModal" tabindex="-1" role="dialog"
-        aria-labelledby="previewTimetableModalLabel" aria-hidden="true">
+    <div class="modal fade" id="previewTimetableModal" tabindex="-1" role="dialog" aria-labelledby="previewTimetableModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -563,8 +524,8 @@
     </div>
 
 
-
-    </div>
+   
+</div>
 
 
     <script src="<?= base_url('packages/core/main.js') ?>"></script>
@@ -576,14 +537,15 @@
     <script src="<?= base_url('packages/list/main.js') ?>"></script>
     <script src="<?= base_url('packages/google-calendar/main.js') ?>"></script>
     <script>
-        $(document).ready(function () {
+       
+        $(document).ready(function() {
             $('#export-options').hide();
 
-            $('#export-btn').click(function () {
+            $('#export-btn').click(function() {
                 $('#export-options').toggle();
             });
 
-            $(document).click(function (event) {
+            $(document).click(function(event) {
                 if (!$(event.target).closest('#export-btn, #export-options').length) {
                     $('#export-options').hide();
                 }
@@ -639,9 +601,7 @@
                 let csv = XLSX.utils.sheet_to_csv(XLSX.utils.table_to_sheet(clonedTable));
 
                 // Create a blob from the CSV string
-                let blob = new Blob([csv], {
-                    type: 'text/csv;charset=utf-8;'
-                });
+                let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
 
                 // Create a link element to download the CSV with course title in filename
                 let link = document.createElement('a');
@@ -667,9 +627,7 @@
                 let tableHTML = clonedTable.outerHTML;
 
                 // Create a blob from the HTML string
-                let blob = new Blob([tableHTML], {
-                    type: 'application/msword;charset=utf-8;'
-                });
+                let blob = new Blob([tableHTML], { type: 'application/msword;charset=utf-8;' });
 
                 // Create a link element to download the Word document with course title in filename
                 let link = document.createElement('a');
@@ -696,25 +654,21 @@
             addHeaderToTable(clonedTable, courseTitle);
 
             // Create a new jsPDF instance
-            const {
-                jsPDF
-            } = window.jspdf;
+            const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
             // Use autoTable to generate the PDF table
-            doc.autoTable({
-                html: clonedTable
-            });
+            doc.autoTable({ html: clonedTable });
 
             // Save the PDF with course title in filename
             doc.save(`${courseTitle}_Timetable.pdf`);
         });
 
 
-
-        $(document).ready(function () {
+        
+        $(document).ready(function() {
             $('#assign_course_id').select2();
-            $('#assign_course_id').change(function () {
+            $('#assign_course_id').change(function() {
                 var course_id = $(this).val();
                 if (course_id) {
                     fetchTimetablesForCourse(course_id);
@@ -722,32 +676,31 @@
             });
 
 
-            $('#timetable_preview_id').change(function () {
-                const timetableId = $(this).val();
-                if (timetableId) {
-                    $.ajax({
-                        url: `<?= base_url('timetables/getTimetableDetails') ?>/${timetableId}`,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function (response) {
-                            if (response.timetable) {
-                                $('#timetablePreview').html(`
+            $('#timetable_preview_id').change(function() {
+            const timetableId = $(this).val();
+            if (timetableId) {
+                $.ajax({
+                    url: `<?= base_url('timetables/getTimetableDetails') ?>/${timetableId}`,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.timetable) {
+                            $('#timetablePreview').html(`
                                 <div class="mb-3 font-weight-bold border p-2 shadow-sm">${response.timetable.timetable_name} Timetable</div>
                                 <p>${response.timetable.timetable_description}</p>
                             `);
-                            } else {
-                                $('#timetablePreview').html('<p>Timetable not found</p>');
-                            }
-                        },
-                        error: function () {
-                            $('#timetablePreview').html(
-                                '<p>Failed to fetch timetable details</p>');
+                        } else {
+                            $('#timetablePreview').html('<p>Timetable not found</p>');
                         }
-                    });
-                } else {
-                    $('#timetablePreview').html('');
-                }
-            });
+                    },
+                    error: function() {
+                        $('#timetablePreview').html('<p>Failed to fetch timetable details</p>');
+                    }
+                });
+            } else {
+                $('#timetablePreview').html('');
+            }
+        });
         });
 
         function fetchTimetablesForCourse(course_id) {
@@ -800,18 +753,17 @@
 
                         TimetableSection.append(tableHtml);
                     } else {
-                        TimetableSection.append(
-                            '<p>No Timetables assigned to this course. Please assign Timetables.</p>');
+                        TimetableSection.append('<p>No Timetables assigned to this course. Please assign Timetables.</p>');
                     }
 
-
+                
                 })
                 .catch(error => {
                     console.error('Error fetching Timetables for course:', error);
                 });
         }
 
-
+    
         function removeTimetableFromCourse(courseId, TimetableId) {
             if (confirm('Are you sure you want to remove this Timetable from the course?')) {
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -822,35 +774,35 @@
                 }
 
                 axios.post(`<?= base_url('timetables/removeTimetable') ?>/${courseId}/${timetableId}`, {}, {
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        }
-                    })
-                    .then(response => {
-                        console.log(response.data); // Log response for debugging
-                        if (response.data.status === 'success') {
-                            alert(response.data.message);
-                            fetchTimetablesForCourse(courseId); // Refresh the list
-                        } else {
-                            alert(response.data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error removing Timetable from course:', error);
-                    });
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                })
+                .then(response => {
+                    console.log(response.data); // Log response for debugging
+                    if (response.data.status === 'success') {
+                        alert(response.data.message);
+                        fetchTimetablesForCourse(courseId); // Refresh the list
+                    } else {
+                        alert(response.data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error removing Timetable from course:', error);
+                });
             }
         }
 
 
-        $(document).ready(function () {
-            $('#timetable_id').change(function () {
+        $(document).ready(function() {
+            $('#timetable_id').change(function() {
                 const timetableId = $(this).val();
                 if (timetableId) {
                     $.ajax({
                         url: `<?= base_url('timetables/getTimetableDetails') ?>/${timetableId}`,
                         type: 'GET',
                         dataType: 'json',
-                        success: function (response) {
+                        success: function(response) {
                             if (response.timetables) {
                                 $('#timetablePreview').html(`
                                     <h3>${response.timetables.timetable_name}</h3>
@@ -860,9 +812,8 @@
                                 $('#timetablePreview').html('<p>Timetable not found</p>');
                             }
                         },
-                        error: function () {
-                            $('#timetablePreview').html(
-                                '<p>Failed to fetch timetable details</p>');
+                        error: function() {
+                            $('#timetablePreview').html('<p>Failed to fetch timetable details</p>');
                         }
                     });
                 } else {
@@ -872,15 +823,15 @@
         });
 
 
-
-
-
+        
+        
+        
         let editorInstance;
         let editEditorInstance;
         let isFormDirty = false;
 
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
 
             ClassicEditor
                 .create(document.querySelector('#timetable_description'))
@@ -910,17 +861,16 @@
                     console.error(error);
                 });
 
-            document.getElementById('timetableForm').addEventListener('submit', function () {
+            document.getElementById('timetableForm').addEventListener('submit', function() {
                 if (editorInstance) {
                     document.getElementById('timetable_description').value = editorInstance.getData();
                 }
                 isFormDirty = false; // Reset the form dirty flag on submit
             });
 
-            document.getElementById('editTimetableForm').addEventListener('submit', function () {
+            document.getElementById('editTimetableForm').addEventListener('submit', function() {
                 if (editEditorInstance) {
-                    document.getElementById('edit_timetable_description').value = editEditorInstance
-                        .getData();
+                    document.getElementById('edit_timetable_description').value = editEditorInstance.getData();
                 }
                 isFormDirty = false; // Reset the form dirty flag on submit
             });
@@ -935,22 +885,21 @@
             const search = document.getElementById('search').value;
             const sort = document.getElementById('sort').value;
 
-            axios.get('<?= base_url('
-                    timetables / list ') ?>', {
-                        params: {
-                            search: search,
-                            sort: sort
-                        }
-                    })
-                .then(response => {
-                    const Timetables = response.data.timetables;
-                    const pagination = response.data.pagination;
-                    const tbody = document.getElementById('timetableTableBody');
-                    const paginationElem = document.getElementById('pagination');
+            axios.get('<?= base_url('timetables/list') ?>', {
+                params: {
+                    search: search,
+                    sort: sort
+                }
+            })
+            .then(response => {
+                const Timetables = response.data.timetables;
+                const pagination = response.data.pagination;
+                const tbody = document.getElementById('timetableTableBody');
+                const paginationElem = document.getElementById('pagination');
 
-                    tbody.innerHTML = '';
-                    Timetables.forEach(timetable => {
-                        const row = `
+                tbody.innerHTML = '';
+                Timetables.forEach(timetable => {
+                    const row = `
                         <tr>
                             <td>${timetable.timetable_id}</td>
                             <td>${timetable.timetable_name}</td>
@@ -962,43 +911,42 @@
                             </td>
                         </tr>
                     `;
-                        tbody.insertAdjacentHTML('beforeend', row);
-                    });
+                    tbody.insertAdjacentHTML('beforeend', row);
+                });
 
-                    paginationElem.innerHTML = '';
-                    for (let i = 1; i <= pagination.totalPages; i++) {
-                        const activeClass = i === pagination.currentPage ? 'active' : '';
-                        const pageItem = `
+                paginationElem.innerHTML = '';
+                for (let i = 1; i <= pagination.totalPages; i++) {
+                    const activeClass = i === pagination.currentPage ? 'active' : '';
+                    const pageItem = `
                         <li class="page-item ${activeClass}">
                             <a class="page-link" href="#" onclick="loadPage(${i})">${i}</a>
                         </li>
                     `;
-                        paginationElem.insertAdjacentHTML('beforeend', pageItem);
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+                    paginationElem.insertAdjacentHTML('beforeend', pageItem);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
         }
 
         function loadPage(page) {
-            axios.get('<?= base_url('
-                    timetables / list ') ?>', {
-                        params: {
-                            search: document.getElementById('search').value,
-                            sort: document.getElementById('sort').value,
-                            page: page
-                        }
-                    })
-                .then(response => {
-                    const Timetables = response.data.timetables;
-                    const pagination = response.data.pagination;
-                    const tbody = document.getElementById('timetableTableBody');
-                    const paginationElem = document.getElementById('pagination');
+            axios.get('<?= base_url('timetables/list') ?>', {
+                params: {
+                    search: document.getElementById('search').value,
+                    sort: document.getElementById('sort').value,
+                    page: page
+                }
+            })
+            .then(response => {
+                const Timetables = response.data.timetables;
+                const pagination = response.data.pagination;
+                const tbody = document.getElementById('timetableTableBody');
+                const paginationElem = document.getElementById('pagination');
 
-                    tbody.innerHTML = '';
-                    Timetables.forEach(Timetable => {
-                        const row = `
+                tbody.innerHTML = '';
+                Timetables.forEach(Timetable => {
+                    const row = `
                         <tr>
                             <td>${timetable.timetable_id}</td>
                             <td>${timetable.timetable_name}</td>
@@ -1009,43 +957,42 @@
                             </td>
                         </tr>
                     `;
-                        tbody.insertAdjacentHTML('beforeend', row);
-                    });
+                    tbody.insertAdjacentHTML('beforeend', row);
+                });
 
-                    paginationElem.innerHTML = '';
-                    for (let i = 1; i <= pagination.totalPages; i++) {
-                        const activeClass = i === pagination.currentPage ? 'active' : '';
-                        const pageItem = `
+                paginationElem.innerHTML = '';
+                for (let i = 1; i <= pagination.totalPages; i++) {
+                    const activeClass = i === pagination.currentPage ? 'active' : '';
+                    const pageItem = `
                         <li class="page-item ${activeClass}">
                             <a class="page-link" href="#" onclick="loadPage(${i})">${i}</a>
                         </li>
                     `;
-                        paginationElem.insertAdjacentHTML('beforeend', pageItem);
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+                    paginationElem.insertAdjacentHTML('beforeend', pageItem);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
         }
 
         function openEditModal(timetableId) {
-            axios.get('<?= base_url('
-                    timetables / edit / ') ?>' + TimetableId)
-                .then(response => {
-                    const Timetable = response.data.timetable;
+            axios.get('<?= base_url('timetables/edit/') ?>' + TimetableId)
+            .then(response => {
+                const Timetable = response.data.timetable;
 
-                    document.getElementById('edit_timetable_id').value = Timetable.timetable_id;
-                    document.getElementById('edit_timetable_name').value = Timetable.timetable_name;
-                    editEditorInstance.setData(timetable.timetable_description);
+                document.getElementById('edit_timetable_id').value = Timetable.timetable_id;
+                document.getElementById('edit_timetable_name').value = Timetable.timetable_name;
+                editEditorInstance.setData(timetable.timetable_description);
 
-                    $('#editTimetableModal').modal('show');
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+                $('#editTimetableModal').modal('show');
+            })
+            .catch(error => {
+                console.error(error);
+            });
         }
 
-        $('#createTimetableModal').on('hide.bs.modal', function (e) {
+        $('#createTimetableModal').on('hide.bs.modal', function(e) {
             if (isFormDirty) {
                 if (!confirm('You have unsaved changes. Are you sure you want to close the modal?')) {
                     e.preventDefault();
@@ -1055,7 +1002,7 @@
             }
         });
 
-        $('#editTimetableModal').on('hide.bs.modal', function (e) {
+        $('#editTimetableModal').on('hide.bs.modal', function(e) {
             if (isFormDirty) {
                 if (!confirm('You have unsaved changes. Are you sure you want to close the modal?')) {
                     e.preventDefault();
@@ -1065,7 +1012,7 @@
             }
         });
 
-        window.addEventListener('beforeunload', function (event) {
+        window.addEventListener('beforeunload', function(event) {
             if (isFormDirty) {
                 event.preventDefault();
                 event.returnValue = 'Changes you made may not be saved.';
@@ -1145,63 +1092,63 @@
 
 
         document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('load-calendar');
+    var calendarEl = document.getElementById('load-calendar');
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['interaction', 'dayGrid', 'timeGrid', 'list', 'googleCalendar',
-                    'momentTimezonePlugin', 'momentPlugin'
-                ],
-                initialView: 'dayGridMonth',
-                firstDay: 1,
-                locale: 'en',
-                timeZone: 'local',
-                editable: true,
-                selectable: true,
-                selectHelper: true,
-                displayEventTime: true,
-                buttonIcons: true,
-                weekNumbers: false,
-                navLinks: true,
-                editable: true,
-                eventLimit: true,
-                header: {
-                    left: 'prevYear, prev,next, nextYear, today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-                },
-                buttonText: {
-                    today: "Today",
-                    month: "Month",
-                    week: "Week",
-                    day: "Day",
-                    listMonth: 'List'
-                },
-                googleCalendarApiKey: 'AIzaSyB6to01Dz3W6iHj5oQjkvt4JOybvT0J4eA',
-                eventSources: [], // Initially empty, will be updated on selection
-                loading: function (bool) {
-                    document.getElementById('loading').style.display = bool ? 'block' : 'none';
-                },
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: ['interaction', 'dayGrid', 'timeGrid', 'list', 'googleCalendar',
+            'momentTimezonePlugin', 'momentPlugin'
+        ],
+        initialView: 'dayGridMonth',
+        firstDay: 1,
+        locale: 'en',
+        timeZone: 'local',
+        editable: true,
+        selectable: true,
+        selectHelper: true,
+        displayEventTime: true,
+        buttonIcons: true,
+        weekNumbers: false,
+        navLinks: true,
+        editable: true,
+        eventLimit: true,
+        header: {
+            left: 'prevYear, prev,next, nextYear, today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        },
+        buttonText: {
+            today: "Today",
+            month: "Month",
+            week: "Week",
+            day: "Day",
+            listMonth: 'List'
+        },
+        googleCalendarApiKey: 'AIzaSyB6to01Dz3W6iHj5oQjkvt4JOybvT0J4eA',
+        eventSources: [], // Initially empty, will be updated on selection
+        loading: function (bool) {
+            document.getElementById('loading').style.display = bool ? 'block' : 'none';
+        },
+    });
+
+    calendar.render();
+
+    // Event handler for timetable selection
+    document.getElementById('timetable_calendar_id').addEventListener('change', function () {
+        var selectedOption = this.options[this.selectedIndex];
+        var timetableUrl = selectedOption.getAttribute('data-url');
+
+        // Update the calendar with new URL
+        calendar.removeAllEventSources(); // Remove existing event sources
+        if (timetableUrl) {
+            calendar.addEventSource({
+                url: timetableUrl,
+                dataType: 'jsonp',
+                className: 'feed_one'
             });
-
-            calendar.render();
-
-            // Event handler for timetable selection
-            document.getElementById('timetable_calendar_id').addEventListener('change', function () {
-                var selectedOption = this.options[this.selectedIndex];
-                var timetableUrl = selectedOption.getAttribute('data-url');
-
-                // Update the calendar with new URL
-                calendar.removeAllEventSources(); // Remove existing event sources
-                if (timetableUrl) {
-                    calendar.addEventSource({
-                        url: timetableUrl,
-                        dataType: 'jsonp',
-                        className: 'feed_one'
-                    });
-                }
-                calendar.refetchEvents(); // Refetch events
-            });
-        });
+        }
+        calendar.refetchEvents(); // Refetch events
+    });
+});
 
 
         // Toggle sidebar when the toggle button is clicked
@@ -1232,5 +1179,4 @@
 
 
 </body>
-
 </html>
