@@ -128,7 +128,7 @@
 
                 <!-- Export to CSV -->
                 <div class="tab-pane fade" id="export-quiz" role="tabpanel" aria-labelledby="export-quiz-tab">
-                    <form action="<?= base_url('quizzes/exportQuizzes') ?>" method="post">
+                    <form action="<?= base_url('admin/quizzes/exportQuizzes') ?>" method="post">
                         <div class="form-group">
                             <label for="quiz_id">Select Quiz</label>
                             <select id="quiz_id" name="quiz_id" class="form-control">
@@ -153,7 +153,7 @@
                 </div>
                <!-- Assign Quizzes to Course --> <!-- Assign Quizzes to Course -->
                 <div class="tab-pane fade mt-2" id="assign-quizzes" role="tabpanel" aria-labelledby="assign-quizzes-tab">
-                    <form id="assignQuizzesForm" action="<?= base_url('quizzes/assignQuizzes') ?>" method="post">
+                    <form id="assignQuizzesForm" action="<?= base_url('admin/quizzes/assignQuizzes') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="course_id">Select Course</label>
@@ -176,7 +176,7 @@
 
                 <!-- Quiz Settings -->
                 <div class="tab-pane fade mt-2" id="quiz-settings" role="tabpanel" aria-labelledby="quiz-settings-tab">
-                    <form id="quizSettingsForm" action="<?= base_url('quizzes/updateSettings') ?>" method="post">
+                    <form id="quizSettingsForm" action="<?= base_url('admin/quizzes/updateSettings') ?>" method="post">
                         <!-- Select Quiz -->
                         <div class="form-group">
                             <label for="quiz_id">Select Quiz</label>
@@ -254,7 +254,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="quizForm" action="<?= base_url('quizzes/store') ?>" method="post">
+                    <form id="quizForm" action="<?= base_url('admin/quizzes/store') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="quiz_name">Quiz Name</label>
@@ -282,7 +282,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editQuizForm" action="<?= base_url('quizzes/update') ?>" method="post">
+                    <form id="editQuizForm" action="<?= base_url('admin/quizzes/update') ?>" method="post">
                         <?= csrf_field() ?>
                         <input type="hidden" id="edit_quiz_id" name="quiz_id">
                         <div class="form-group">
@@ -330,7 +330,7 @@
             });
 
             function fetchQuizzesForCourse(course_id) {
-                axios.get(`<?= base_url('quizzes/getQuizzesForCourse') ?>/${course_id}`)
+                axios.get(`<?= base_url('admin/quizzes/getQuizzesForCourse') ?>/${course_id}`)
                     .then(response => {
                         var quizzes = response.data.assignedQuizzes;
                         var availableQuizzes = response.data.allQuizzes;
@@ -399,7 +399,7 @@
             return;
         }
 
-        axios.post(`<?= base_url('quizzes/removeQuiz') ?>/${courseId}/${quizId}`, {}, {
+        axios.post(`<?= base_url('admin/quizzes/removeQuiz') ?>/${courseId}/${quizId}`, {}, {
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             }
@@ -498,7 +498,7 @@
             const search = document.getElementById('search').value;
             const sort = document.getElementById('sort').value;
 
-            axios.get('<?= base_url('quizzes/list') ?>', {
+            axios.get('<?= base_url('admin/quizzes/list') ?>', {
                 params: {
                     search: search,
                     sort: sort
@@ -520,7 +520,7 @@
                             <td>
                                 <button class="btn btn-success btn-sm" onclick="openPreviewModal(${quiz.quiz_id})" data-toggle="modal" data-target="#previewQuizModal">Preview</button>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${quiz.quiz_id})" data-toggle="modal" data-target="#editQuizModal">Edit</button>
-                                <a href="<?= base_url('quizzes/delete/') ?>${quiz.quiz_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Quiz?')">Delete</a>
+                                <a href="<?= base_url('admin/quizzes/delete/') ?>${quiz.quiz_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Quiz?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -544,7 +544,7 @@
         }
 
         function loadPage(page) {
-            axios.get('<?= base_url('quizzes/list') ?>', {
+            axios.get('<?= base_url('admin/quizzes/list') ?>', {
                 params: {
                     search: document.getElementById('search').value,
                     sort: document.getElementById('sort').value,
@@ -566,7 +566,7 @@
                             <td>${quiz.quiz_description}</td>
                             <td>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${quiz.quiz_id})" data-toggle="modal" data-target="#editQuizModal">Edit</button>
-                                <a href="<?= base_url('quizzes/delete/') ?>${quiz.quiz_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Quiz?')">Delete</a>
+                                <a href="<?= base_url('admin/quizzes/delete/') ?>${quiz.quiz_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Quiz?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -590,7 +590,7 @@
         }
 
         function openEditModal(quizId) {
-            axios.get('<?= base_url('quizzes/edit/') ?>' + quizId)
+            axios.get('<?= base_url('admin/quizzes/edit/') ?>' + quizId)
             .then(response => {
                 const quiz = response.data.quiz;
 

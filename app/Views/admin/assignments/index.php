@@ -563,7 +563,7 @@
                         <tr>
                             <td>${assignment.assignment_id}</td>
                             <td>${assignment.assignment_name}</td>
-                            <td>${assignment.assignment_description}</td>
+                            <!-- <td>${assignment.assignment_description}</td> -->
                             <td>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${assignment.assignment_id})" data-toggle="modal" data-target="#editassignmentModal">Edit</button>
                                 <a href="<?= base_url('admin/assignments/delete/') ?>${assignment.assignment_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this assignment?')">Delete</a>

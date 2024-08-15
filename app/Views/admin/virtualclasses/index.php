@@ -25,18 +25,18 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
 
-     <!--- FullCalendar plugin --->
-     <link href='packages/core/main.css' rel='stylesheet' />
-    <link href='packages/daygrid/main.css' rel='stylesheet' />
-    <link href='packages/list/main.css' rel='stylesheet' />
+      <!--- FullCalendar plugin --->
+      <link href="<?= base_url('packages/core/main.css') ?>" rel='stylesheet' />
+    <link href="<?= base_url('packages/daygrid/main.css') ?>" rel='stylesheet' />
+    <link href="<?= base_url('packages/list/main.css') ?>" rel='stylesheet' />
 
 <style>
     /* styles.css */
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
 
     .select2-container--default .select2-results__option {
         display: flex;

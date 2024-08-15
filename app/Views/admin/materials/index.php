@@ -128,7 +128,7 @@
 
                 <!-- Export to CSV -->
                 <div class="tab-pane fade" id="export-material" role="tabpanel" aria-labelledby="export-material-tab">
-                    <form action="<?= base_url('materials/exportMaterials') ?>" method="post">
+                    <form action="<?= base_url('admin/materials/exportMaterials') ?>" method="post">
                         <div class="form-group">
                             <label for="material_id">Select Material</label>
                             <select id="material_id" name="material_id" class="form-control">
@@ -153,7 +153,7 @@
                 </div>
                <!-- Assign Materials to Course --> <!-- Assign Materials to Course -->
                 <div class="tab-pane fade mt-2" id="assign-materials" role="tabpanel" aria-labelledby="assign-materials-tab">
-                    <form id="assignMaterialsForm" action="<?= base_url('materials/assignMaterials') ?>" method="post">
+                    <form id="assignMaterialsForm" action="<?= base_url('admin/materials/assignMaterials') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="course_id">Select Course</label>
@@ -176,7 +176,7 @@
 
                 <!-- Material Settings -->
                 <div class="tab-pane fade mt-2" id="material-settings" role="tabpanel" aria-labelledby="material-settings-tab">
-                    <form id="materialSettingsForm" action="<?= base_url('materials/updateSettings') ?>" method="post">
+                    <form id="materialSettingsForm" action="<?= base_url('admin/materials/updateSettings') ?>" method="post">
                         <!-- Select Material -->
                         <div class="form-group">
                             <label for="material_id">Select Material</label>
@@ -254,7 +254,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="materialForm" action="<?= base_url('materials/store') ?>" method="post">
+                    <form id="materialForm" action="<?= base_url('admin/materials/store') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="material_name">Material Name</label>
@@ -287,7 +287,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editMaterialForm" action="<?= base_url('materials/update') ?>" method="post">
+                    <form id="editMaterialForm" action="<?= base_url('admin/materials/update') ?>" method="post">
                         <?= csrf_field() ?>
                         <input type="hidden" id="edit_material_id" name="material_id">
                         <div class="form-group">
@@ -335,7 +335,7 @@
             });
 
             function fetchMaterialsForCourse(course_id) {
-                axios.get(`<?= base_url('materials/getMaterialsForCourse') ?>/${course_id}`)
+                axios.get(`<?= base_url('admin/materials/getMaterialsForCourse') ?>/${course_id}`)
                     .then(response => {
                         var Materials = response.data.assignedmaterials;
                         var availableMaterials = response.data.allmaterials;
@@ -404,7 +404,7 @@
                         return;
                     }
 
-                    axios.post(`<?= base_url('materials/removeMaterial') ?>/${courseId}/${materialId}`, {}, {
+                    axios.post(`<?= base_url('admin/materials/removeMaterial') ?>/${courseId}/${materialId}`, {}, {
                         headers: {
                             'X-CSRF-TOKEN': csrfToken
                         }
@@ -427,59 +427,6 @@
 
 
 
-            // document.getElementById('courseImage').addEventListener('change', function (event) {
-            //     const file = event.target.files[0];
-            //     if (file) {
-            //         const reader = new FileReader();
-
-            //         const progressBar = document.getElementById('progressBar');
-            //         const progressContainer = document.getElementById('progressContainer');
-            //         const imagePreview = document.getElementById('imagePreview');
-            //         const cancelIcon = document.getElementById('cancelIcon');
-
-            //         progressContainer.style.display = 'block';
-
-            //         reader.onprogress = function (e) {
-            //             if (e.lengthComputable) {
-            //                 const percentLoaded = Math.round((e.loaded / e.total) * 100);
-            //                 progressBar.value = percentLoaded;
-            //             }
-            //         };
-
-            //         reader.onload = function (e) {
-            //             imagePreview.src = e.target.result;
-            //             imagePreview.style.display = 'block';
-            //             progressContainer.style.display = 'none';
-            //             cancelIcon.style.display = 'block';
-            //         };
-
-            //         reader.readAsDataURL(file);
-            //     }
-            // });
-
-            // function removeImage() {
-            //     document.getElementById('courseImage').value = '';
-            //     document.getElementById('imagePreview').style.display = 'none';
-            //     document.getElementById('cancelIcon').style.display = 'none';
-            //     document.getElementById('imagePreview').src = '#';
-            // }
-
-            // document.getElementById('imagePreview').addEventListener('click', function () {
-            //     const zoomedImageContainer = document.getElementById('zoomedImageContainer');
-            //     const zoomedImage = document.getElementById('zoomedImage');
-            //     zoomedImage.src = this.src;
-            //     zoomedImageContainer.style.display = 'flex';
-            // });
-
-            // function closeZoomedImage() {
-            //     document.getElementById('zoomedImageContainer').style.display = 'none';
-            // }
-
-
-
-
-
-        
         
         
         let editorInstance;
@@ -488,17 +435,6 @@
 
 
         document.addEventListener('DOMContentLoaded', function() {
-
-
-
-            
-
-
-
-
-           
-            
-
 
 
             ClassicEditor
@@ -553,7 +489,7 @@
             const search = document.getElementById('search').value;
             const sort = document.getElementById('sort').value;
 
-            axios.get('<?= base_url('materials/list') ?>', {
+            axios.get('<?= base_url('admin/admin/materials/list') ?>', {
                 params: {
                     search: search,
                     sort: sort
@@ -575,7 +511,7 @@
                             <td>
                                 <button class="btn btn-success btn-sm" onclick="openPreviewModal(${material.material_id})" data-toggle="modal" data-target="#previewMaterialModal">Preview</button>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${material.material_id})" data-toggle="modal" data-target="#editMaterialModal">Edit</button>
-                                <a href="<?= base_url('materials/delete/') ?>${material.material_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Material?')">Delete</a>
+                                <a href="<?= base_url('admin/materials/delete/') ?>${material.material_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Material?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -599,7 +535,7 @@
         }
 
         function loadPage(page) {
-            axios.get('<?= base_url('materials/list') ?>', {
+            axios.get('<?= base_url('admin/materials/list') ?>', {
                 params: {
                     search: document.getElementById('search').value,
                     sort: document.getElementById('sort').value,
@@ -621,7 +557,7 @@
                             <td>${material.material_description}</td>
                             <td>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${material.material_id})" data-toggle="modal" data-target="#editMaterialModal">Edit</button>
-                                <a href="<?= base_url('materials/delete/') ?>${material.material_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Material?')">Delete</a>
+                                <a href="<?= base_url('admin/materials/delete/') ?>${material.material_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Material?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -645,7 +581,7 @@
         }
 
         function openEditModal(materialId) {
-            axios.get('<?= base_url('materials/edit/') ?>' + MaterialId)
+            axios.get('<?= base_url('admin/materials/edit/') ?>' + MaterialId)
             .then(response => {
                 const Material = response.data.material;
 

@@ -26,9 +26,9 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
 
      <!--- FullCalendar plugin --->
-     <link href='packages/core/main.css' rel='stylesheet' />
-    <link href='packages/daygrid/main.css' rel='stylesheet' />
-    <link href='packages/list/main.css' rel='stylesheet' />
+     <link href="<?= base_url('packages/core/main.css') ?>" rel='stylesheet' />
+    <link href="<?= base_url('packages/daygrid/main.css') ?>" rel='stylesheet' />
+    <link href="<?= base_url('packages/list/main.css') ?>" rel='stylesheet' />
 
 <style>
     /* styles.css */
@@ -220,7 +220,7 @@ body, html {
 
                 <!-- Export to CSV -->
                 <div class="tab-pane fade" id="export-timetable" role="tabpanel" aria-labelledby="export-timetable-tab">
-                    <form action="<?= base_url('timetables/exportTimetables') ?>" method="post">
+                    <form action="<?= base_url('admin/timetables/exportTimetables') ?>" method="post">
                         <div class="form-group">
                             <label for="timetable_id">Select Timetable</label>
                             <select id="timetable_id" name="timetable_id" class="form-control">
@@ -245,7 +245,7 @@ body, html {
                 </div>
                <!-- Assign Timetables to Course --> <!-- Assign Timetables to Course -->
                 <div class="tab-pane fade mt-2" id="assign-timetables" role="tabpanel" aria-labelledby="assign-timetables-tab">
-                    <form id="assignTimetablesForm" action="<?= base_url('timetables/assignTimetables') ?>" method="post">
+                    <form id="assignTimetablesForm" action="<?= base_url('admin/timetables/assignTimetables') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="course_id">Select Course</label>
@@ -351,7 +351,7 @@ body, html {
 
                 <!-- Timetable Settings -->
                 <div class="tab-pane fade mt-2" id="timetable-settings" role="tabpanel" aria-labelledby="timetable-settings-tab">
-                    <form id="timetableSettingsForm" action="<?= base_url('timetables/updateSettings') ?>" method="post">
+                    <form id="timetableSettingsForm" action="<?= base_url('admin/timetables/updateSettings') ?>" method="post">
                         <!-- Select Timetable -->
                         <div class="form-group">
                             <label for="timetable_id">Select Timetable</label>
@@ -418,7 +418,7 @@ body, html {
 
                 <!-- Timetable Calendar Setup -->
                 <div class="tab-pane fade mt-2" id="timetable-calendar-setup" role="tabpanel" aria-labelledby="timetable-calendar-setup-tab">
-                    <form id="timetableSetupForm" action="<?= base_url('timetables/updateSettings') ?>" method="post">
+                    <form id="timetableSetupForm" action="<?= base_url('admin/timetables/updateSettings') ?>" method="post">
                        
 
                         <!-- Calendar API Key Setup -->
@@ -450,7 +450,7 @@ body, html {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="timetableForm" action="<?= base_url('timetables/store') ?>" method="post">
+                    <form id="timetableForm" action="<?= base_url('admin/timetables/store') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="timetable_name">Timetable Name</label>
@@ -488,7 +488,7 @@ body, html {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editTimetableForm" action="<?= base_url('timetables/update') ?>" method="post">
+                    <form id="editTimetableForm" action="<?= base_url('admin/timetables/update') ?>" method="post">
                         <?= csrf_field() ?>
                         <input type="hidden" id="edit_timetable_id" name="timetable_id">
                         <div class="form-group">
@@ -680,7 +680,7 @@ body, html {
             const timetableId = $(this).val();
             if (timetableId) {
                 $.ajax({
-                    url: `<?= base_url('timetables/getTimetableDetails') ?>/${timetableId}`,
+                    url: `<?= base_url('admin/timetables/getTimetableDetails') ?>/${timetableId}`,
                     type: 'GET',
                     dataType: 'json',
                     success: function(response) {
@@ -704,7 +704,7 @@ body, html {
         });
 
         function fetchTimetablesForCourse(course_id) {
-            axios.get(`<?= base_url('timetables/getTimetablesForCourse') ?>/${course_id}`)
+            axios.get(`<?= base_url('admin/timetables/getTimetablesForCourse') ?>/${course_id}`)
                 .then(response => {
                     var Timetables = response.data.assignedTimetables;
                     var availableTimetables = response.data.alltimetables;
@@ -773,7 +773,7 @@ body, html {
                     return;
                 }
 
-                axios.post(`<?= base_url('timetables/removeTimetable') ?>/${courseId}/${timetableId}`, {}, {
+                axios.post(`<?= base_url('admin/timetables/removeTimetable') ?>/${courseId}/${timetableId}`, {}, {
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     }
@@ -799,7 +799,7 @@ body, html {
                 const timetableId = $(this).val();
                 if (timetableId) {
                     $.ajax({
-                        url: `<?= base_url('timetables/getTimetableDetails') ?>/${timetableId}`,
+                        url: `<?= base_url('admin/timetables/getTimetableDetails') ?>/${timetableId}`,
                         type: 'GET',
                         dataType: 'json',
                         success: function(response) {
@@ -885,7 +885,7 @@ body, html {
             const search = document.getElementById('search').value;
             const sort = document.getElementById('sort').value;
 
-            axios.get('<?= base_url('timetables/list') ?>', {
+            axios.get('<?= base_url('admin/timetables/list') ?>', {
                 params: {
                     search: search,
                     sort: sort
@@ -907,7 +907,7 @@ body, html {
                             <td>
                                 <button class="btn btn-success btn-sm" onclick="openPreviewModal(${timetable.timetable_id})" data-toggle="modal" data-target="#previewTimetableModal">Preview</button>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${timetable.timetable_id})" data-toggle="modal" data-target="#editTimetableModal">Edit</button>
-                                <a href="<?= base_url('timetables/delete/') ?>${timetable.timetable_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Timetable?')">Delete</a>
+                                <a href="<?= base_url('admin/timetables/delete/') ?>${timetable.timetable_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Timetable?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -931,7 +931,7 @@ body, html {
         }
 
         function loadPage(page) {
-            axios.get('<?= base_url('timetables/list') ?>', {
+            axios.get('<?= base_url('admin/timetables/list') ?>', {
                 params: {
                     search: document.getElementById('search').value,
                     sort: document.getElementById('sort').value,
@@ -953,7 +953,7 @@ body, html {
                             <td>${timetable.timetable_description}</td>
                             <td>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${timetable.timetable_id})" data-toggle="modal" data-target="#editTimetableModal">Edit</button>
-                                <a href="<?= base_url('timetables/delete/') ?>${timetable.timetable_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Timetable?')">Delete</a>
+                                <a href="<?= base_url('admin/timetables/delete/') ?>${timetable.timetable_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Timetable?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -977,7 +977,7 @@ body, html {
         }
 
         function openEditModal(timetableId) {
-            axios.get('<?= base_url('timetables/edit/') ?>' + TimetableId)
+            axios.get('<?= base_url('admin/timetables/edit/') ?>' + TimetableId)
             .then(response => {
                 const Timetable = response.data.timetable;
 

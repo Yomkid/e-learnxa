@@ -37,7 +37,7 @@
 
         function fetchLessonData() {
             $.ajax({
-                url: '<?= base_url('lessons/getAllLessons') ?>',
+                url: '<?= base_url('admin/lesson/getAllLessons') ?>',
                 type: 'GET',
                 dataType: 'json',
                 success: function(response) {

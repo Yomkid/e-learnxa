@@ -96,7 +96,7 @@ $('#courseSelect').change(function () {
     var courseId = $(this).val();
     if (courseId) {
         $.ajax({
-            url: '<?= base_url('lesson/getModules') ?>',
+            url: '<?= base_url('admin/lesson/getModules') ?>',
             type: 'GET',
             data: { course_id: courseId },
             success: function (response) {
@@ -133,7 +133,7 @@ $(document).on('click', '.module-btn', function () {
     saveFormData(currentModuleId);
 
     $.ajax({
-        url: '<?= base_url('lesson/getModuleDetails') ?>',
+        url: '<?= base_url('admin/lesson/getModuleDetails') ?>',
         type: 'GET',
         data: { module_id: moduleId },
         success: function (response) {
@@ -205,7 +205,7 @@ $('#lessonForm').on('submit', function (event) {
     var formData = $(this).serialize() + '&lesson_content=' + encodeURIComponent(editorInstance.getData());
 
     $.ajax({
-        url: '<?= base_url('lesson/save') ?>',
+        url: '<?= base_url('admin/lesson/save') ?>',
         type: 'POST',
         data: formData,
         success: function (response) {

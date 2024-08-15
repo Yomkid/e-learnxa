@@ -155,129 +155,135 @@ $routes->get('error', 'AdminController:::error');
 $routes->group('admin', function($routes) {
     $routes->get('/', 'Pages::Admin'); //Good
 
-// Module route
-$routes->group('modules', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'ModuleController::index'); // List all modules
-    $routes->get('create', 'ModuleController::create'); // Show the form to create a new module
-    $routes->post('store', 'ModuleController::store'); // Handle the form submission to create a new module
-    $routes->get('edit/(:num)', 'ModuleController::edit/$1'); // Show the form to edit an existing module
-    $routes->post('update/(:num)', 'ModuleController::update/$1'); // Handle the form submission to update an existing module
-    $routes->get('delete/(:num)', 'ModuleController::delete/$1'); // Delete an existing module
+    // Module route
+    $routes->group('modules', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'ModuleController::index'); // List all modules
+        $routes->get('create', 'ModuleController::create'); // Show the form to create a new module
+        $routes->post('store', 'ModuleController::store'); // Handle the form submission to create a new module
+        $routes->get('edit/(:num)', 'ModuleController::edit/$1'); // Show the form to edit an existing module
+        $routes->post('update/(:num)', 'ModuleController::update/$1'); // Handle the form submission to update an existing module
+        $routes->get('delete/(:num)', 'ModuleController::delete/$1'); // Delete an existing module
+    });
+
+    // Quiz route
+    $routes->group('quizzes', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'QuizController::index'); // List all quizzes
+        $routes->get('create', 'QuizController::create'); // Show the form to create a new quiz
+        $routes->get('list', 'QuizController::list');
+        $routes->post('assignQuizzes', 'QuizController::assignQuizzes'); // Assign Quizzes to a course
+        $routes->post('store', 'QuizController::store'); // Handle the form submission to create a new quiz
+        $routes->get('edit/(:num)', 'QuizController::edit/$1'); // Show the form to edit an existing quiz
+        $routes->post('update', 'QuizController::update/$1'); // Handle the form submission to update an existing quiz
+        $routes->get('delete/(:num)', 'QuizController::delete/$1'); // Delete an existing quiz
+        $routes->get('view/(:num)', 'QuizController::viewCourse/$1');
+        $routes->post('addQuizzes', 'QuizController::addQuizzes');
+        $routes->post('removeQuiz/(:num)/(:num)', 'QuizController::removeQuiz/$1/$2');
+        $routes->get('getQuizzesForCourse/(:num)', 'QuizController::getQuizzesForCourse/$1');
+    });
+
+
+    // Questions Routes
+    $routes->group('questionbank', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'QuestionBankController::index'); // List all questions
+        $routes->get('list', 'QuestionBankController::list'); // List questions with search, sort, and pagination
+        $routes->post('store', 'QuestionBankController::store'); // Add a new question
+        $routes->post('multiQuestionStore', 'QuestionBankController::multiQuestionStore'); // Add a new question
+        $routes->post('bulkUpload', 'QuestionBankController::bulkUpload'); // Add a new bulk question
+        $routes->post('exportQuestions', 'QuestionBankController::exportQuestions'); // Add a new question
+        $routes->get('edit/(:num)', 'QuestionBankController::edit/$1'); // Get question details for editing
+        $routes->post('update', 'QuestionBankController::update'); // Update an existing question
+        $routes->get('delete/(:num)', 'QuestionBankController::delete/$1'); // Delete a question
+        $routes->post('upload', 'QuestionBankController::upload'); // Bulk upload questions from file
+    });
+
+
+    // Assignments route
+    $routes->group('assignments', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'AssignmentController::index'); // List all quizzes
+        $routes->get('create', 'AssignmentController::create'); // Show the form to create a new quiz
+        $routes->get('list', 'AssignmentController::list');
+        $routes->post('assignAssignments', 'AssignmentController::assignAssignments'); // Assign Quizzes to a course
+        $routes->post('store', 'AssignmentController::store'); // Handle the form submission to create a new quiz
+        $routes->get('edit/(:num)', 'AssignmentController::edit/$1'); // Show the form to edit an existing quiz
+        $routes->post('update', 'AssignmentController::update/$1'); // Handle the form submission to update an existing quiz
+        $routes->post('exportAssignments', 'AssignmentController::exportAssignments'); // Add a new question
+        $routes->get('delete/(:num)', 'AssignmentController::delete/$1'); // Delete an existing quiz
+        $routes->get('view/(:num)', 'AssignmentController::viewCourse/$1');
+        $routes->post('addQuizzes', 'AssignmentController::addQuizzes');
+        $routes->post('removeAssignment/(:num)/(:num)', 'AssignmentController::removeAssignment/$1/$2');
+        $routes->get('getAssignmentsForCourse/(:num)', 'AssignmentController::getAssignmentsForCourse/$1');
+    });
+
+    // Materials route
+    $routes->group('materials', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'MaterialController::index'); // List all quizzes
+        $routes->get('create', 'MaterialController::create'); // Show the form to create a new quiz
+        $routes->get('list', 'MaterialController::list');
+        $routes->post('assignMaterials', 'MaterialController::assignMaterials'); // Assign Quizzes to a course
+        $routes->post('store', 'MaterialController::store'); // Handle the form submission to create a new quiz
+        $routes->get('edit/(:num)', 'MaterialController::edit/$1'); // Show the form to edit an existing quiz
+        $routes->post('update', 'MaterialController::update/$1'); // Handle the form submission to update an existing quiz
+        $routes->post('exportMaterials', 'MaterialController::exportMaterials'); // Add a new question
+        $routes->get('delete/(:num)', 'MaterialController::delete/$1'); // Delete an existing quiz
+        $routes->get('view/(:num)', 'MaterialController::viewCourse/$1');
+        $routes->post('addMaterials', 'MaterialController::addMaterials');
+        $routes->post('removeMaterial/(:num)/(:num)', 'MaterialController::removeMaterial/$1/$2');
+        $routes->get('getMaterialsForCourse/(:num)', 'MaterialController::getMaterialsForCourse/$1');
+    });
+
+    // Timetables route
+    $routes->group('timetables', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'TimetableController::index'); // List all quizzes
+        $routes->get('create', 'TimetableController::create'); // Show the form to create a new quiz
+        $routes->get('list', 'TimetableController::list');
+        $routes->post('assignTimetables', 'TimetableController::assignTimetables'); // Assign Quizzes to a course
+        $routes->post('store', 'TimetableController::store'); // Handle the form submission to create a new quiz
+        $routes->get('edit/(:num)', 'TimetableController::edit/$1'); // Show the form to edit an existing quiz
+        $routes->post('update', 'TimetableController::update/$1'); // Handle the form submission to update an existing quiz
+        $routes->post('exportTimetables', 'TimetableController::exportTimetables'); // Add a new question
+        $routes->get('delete/(:num)', 'TimetableController::delete/$1'); // Delete an existing quiz
+        $routes->get('view/(:num)', 'TimetableController::viewCourse/$1');
+        $routes->post('addTimetables', 'TimetableController::addTimetables');
+        $routes->post('removeTimetable/(:num)/(:num)', 'TimetableController::removeTimetable/$1/$2');
+        $routes->get('getTimetablesForCourse/(:num)', 'TimetableController::getTimetablesForCourse/$1');
+        $routes->get('getTimetableDetails/(:num)', 'TimetableController::getTimetableDetails/$1');
+    });
+
+    // VirtualClasses route
+    $routes->group('virtualclasses', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'VirtualClassController::index'); // List all quizzes
+        $routes->get('create', 'VirtualClassController::create'); // Show the form to create a new quiz
+        $routes->get('list', 'VirtualClassController::list');
+        $routes->post('store', 'VirtualClassController::store'); // Handle the form submission to create a new quiz
+        $routes->get('edit/(:num)', 'VirtualClassController::edit/$1'); // Show the form to edit an existing quiz
+        $routes->post('update', 'VirtualClassController::update/$1'); // Handle the form submission to update an existing quiz
+        $routes->post('exportVirtualClasses', 'VirtualClassController::exportVirtualClasses'); // Add a new question
+        $routes->get('delete/(:num)', 'VirtualClassController::delete/$1'); // Delete an existing quiz
+        $routes->get('view/(:num)', 'VirtualClassController::viewCourse/$1');
+        $routes->post('addVirtualClasses', 'VirtualClassController::addVirtualClasses');
+        $routes->post('assignCoursesForVirtualClass', 'VirtualClassController::assignCoursesForVirtualClass'); // Assign Quizzes to a course
+        $routes->get('getCoursesForVirtualClass/(:num)', 'VirtualClassController::getCoursesForVirtualClass/$1');
+        $routes->post('removeCourseFromVirtualClass/(:num)/(:num)', 'VirtualClassController::removeCourseFromVirtualClass/$1/$2');
+        $routes->get('getVirtualClassDetails/(:num)', 'VirtualClassController::getVirtualClassDetails/$1');
+        $routes->get('getTimetablesForClass/(:num)', 'VirtualClassController::getTimetablesForClass/$1');
+        $routes->post('assignVirtualClassesTimetable', 'VirtualClassController::assignVirtualClassesTimetable');
+        $routes->post('removeVirtualClassTimetable/(:num)/(:num)', 'VirtualClassController::removeVirtualClassTimetable/$1/$2');
+
+    });
+
+
+
+    // Lesson Routes
+    $routes->group('lesson', function($routes) {
+        $routes->get('/', 'LessonController::index');
+        // getModules
+        $routes->get('getModules', 'LessonController::getModules');
+        $routes->get('getModuleDetails', 'LessonController::getModuleDetails');
+        $routes->get('getAllLessons', 'LessonController::getAllLessons');
+        // Save Lesson
+        $routes->post('save', 'LessonController::saveLesson');
+    });
+
 });
 
-// Quiz route
-$routes->group('quizzes', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'QuizController::index'); // List all quizzes
-    $routes->get('create', 'QuizController::create'); // Show the form to create a new quiz
-    $routes->get('list', 'QuizController::list');
-    $routes->post('assignQuizzes', 'QuizController::assignQuizzes'); // Assign Quizzes to a course
-    $routes->post('store', 'QuizController::store'); // Handle the form submission to create a new quiz
-    $routes->get('edit/(:num)', 'QuizController::edit/$1'); // Show the form to edit an existing quiz
-    $routes->post('update', 'QuizController::update/$1'); // Handle the form submission to update an existing quiz
-    $routes->get('delete/(:num)', 'QuizController::delete/$1'); // Delete an existing quiz
-    $routes->get('view/(:num)', 'QuizController::viewCourse/$1');
-    $routes->post('addQuizzes', 'QuizController::addQuizzes');
-    $routes->post('removeQuiz/(:num)/(:num)', 'QuizController::removeQuiz/$1/$2');
-    $routes->get('getQuizzesForCourse/(:num)', 'QuizController::getQuizzesForCourse/$1');
-});
 
-
-// Questions Routes
-$routes->group('questionbank', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'QuestionBankController::index'); // List all questions
-    $routes->get('list', 'QuestionBankController::list'); // List questions with search, sort, and pagination
-    $routes->post('store', 'QuestionBankController::store'); // Add a new question
-    $routes->post('multiQuestionStore', 'QuestionBankController::multiQuestionStore'); // Add a new question
-    $routes->post('bulkUpload', 'QuestionBankController::bulkUpload'); // Add a new bulk question
-    $routes->post('exportQuestions', 'QuestionBankController::exportQuestions'); // Add a new question
-    $routes->get('edit/(:num)', 'QuestionBankController::edit/$1'); // Get question details for editing
-    $routes->post('update', 'QuestionBankController::update'); // Update an existing question
-    $routes->get('delete/(:num)', 'QuestionBankController::delete/$1'); // Delete a question
-    $routes->post('upload', 'QuestionBankController::upload'); // Bulk upload questions from file
-});
-
-
-// Assignments route
-$routes->group('assignments', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'AssignmentController::index'); // List all quizzes
-    $routes->get('create', 'AssignmentController::create'); // Show the form to create a new quiz
-    $routes->get('list', 'AssignmentController::list');
-    $routes->post('assignAssignments', 'AssignmentController::assignAssignments'); // Assign Quizzes to a course
-    $routes->post('store', 'AssignmentController::store'); // Handle the form submission to create a new quiz
-    $routes->get('edit/(:num)', 'AssignmentController::edit/$1'); // Show the form to edit an existing quiz
-    $routes->post('update', 'AssignmentController::update/$1'); // Handle the form submission to update an existing quiz
-    $routes->post('exportAssignments', 'AssignmentController::exportAssignments'); // Add a new question
-    $routes->get('delete/(:num)', 'AssignmentController::delete/$1'); // Delete an existing quiz
-    $routes->get('view/(:num)', 'AssignmentController::viewCourse/$1');
-    $routes->post('addQuizzes', 'AssignmentController::addQuizzes');
-    $routes->post('removeAssignment/(:num)/(:num)', 'AssignmentController::removeAssignment/$1/$2');
-    $routes->get('getAssignmentsForCourse/(:num)', 'AssignmentController::getAssignmentsForCourse/$1');
-});
-
-// Materials route
-$routes->group('materials', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'MaterialController::index'); // List all quizzes
-    $routes->get('create', 'MaterialController::create'); // Show the form to create a new quiz
-    $routes->get('list', 'MaterialController::list');
-    $routes->post('assignMaterials', 'MaterialController::assignMaterials'); // Assign Quizzes to a course
-    $routes->post('store', 'MaterialController::store'); // Handle the form submission to create a new quiz
-    $routes->get('edit/(:num)', 'MaterialController::edit/$1'); // Show the form to edit an existing quiz
-    $routes->post('update', 'MaterialController::update/$1'); // Handle the form submission to update an existing quiz
-    $routes->post('exportMaterials', 'MaterialController::exportMaterials'); // Add a new question
-    $routes->get('delete/(:num)', 'MaterialController::delete/$1'); // Delete an existing quiz
-    $routes->get('view/(:num)', 'MaterialController::viewCourse/$1');
-    $routes->post('addMaterials', 'MaterialController::addMaterials');
-    $routes->post('removeMaterial/(:num)/(:num)', 'MaterialController::removeMaterial/$1/$2');
-    $routes->get('getMaterialsForCourse/(:num)', 'MaterialController::getMaterialsForCourse/$1');
-});
-
-// Timetables route
-$routes->group('timetables', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'TimetableController::index'); // List all quizzes
-    $routes->get('create', 'TimetableController::create'); // Show the form to create a new quiz
-    $routes->get('list', 'TimetableController::list');
-    $routes->post('assignTimetables', 'TimetableController::assignTimetables'); // Assign Quizzes to a course
-    $routes->post('store', 'TimetableController::store'); // Handle the form submission to create a new quiz
-    $routes->get('edit/(:num)', 'TimetableController::edit/$1'); // Show the form to edit an existing quiz
-    $routes->post('update', 'TimetableController::update/$1'); // Handle the form submission to update an existing quiz
-    $routes->post('exportTimetables', 'TimetableController::exportTimetables'); // Add a new question
-    $routes->get('delete/(:num)', 'TimetableController::delete/$1'); // Delete an existing quiz
-    $routes->get('view/(:num)', 'TimetableController::viewCourse/$1');
-    $routes->post('addTimetables', 'TimetableController::addTimetables');
-    $routes->post('removeTimetable/(:num)/(:num)', 'TimetableController::removeTimetable/$1/$2');
-    $routes->get('getTimetablesForCourse/(:num)', 'TimetableController::getTimetablesForCourse/$1');
-    $routes->get('getTimetableDetails/(:num)', 'TimetableController::getTimetableDetails/$1');
-});
-
-// VirtualClasses route
-$routes->group('virtualclasses', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'VirtualClassController::index'); // List all quizzes
-    $routes->get('create', 'VirtualClassController::create'); // Show the form to create a new quiz
-    $routes->get('list', 'VirtualClassController::list');
-    $routes->post('store', 'VirtualClassController::store'); // Handle the form submission to create a new quiz
-    $routes->get('edit/(:num)', 'VirtualClassController::edit/$1'); // Show the form to edit an existing quiz
-    $routes->post('update', 'VirtualClassController::update/$1'); // Handle the form submission to update an existing quiz
-    $routes->post('exportVirtualClasses', 'VirtualClassController::exportVirtualClasses'); // Add a new question
-    $routes->get('delete/(:num)', 'VirtualClassController::delete/$1'); // Delete an existing quiz
-    $routes->get('view/(:num)', 'VirtualClassController::viewCourse/$1');
-    $routes->post('addVirtualClasses', 'VirtualClassController::addVirtualClasses');
-    $routes->post('assignCoursesForVirtualClass', 'VirtualClassController::assignCoursesForVirtualClass'); // Assign Quizzes to a course
-    $routes->get('getCoursesForVirtualClass/(:num)', 'VirtualClassController::getCoursesForVirtualClass/$1');
-    $routes->post('removeCourseFromVirtualClass/(:num)/(:num)', 'VirtualClassController::removeCourseFromVirtualClass/$1/$2');
-    $routes->get('getVirtualClassDetails/(:num)', 'VirtualClassController::getVirtualClassDetails/$1');
-    $routes->get('getTimetablesForClass/(:num)', 'VirtualClassController::getTimetablesForClass/$1');
-    $routes->post('assignVirtualClassesTimetable', 'VirtualClassController::assignVirtualClassesTimetable');
-    $routes->post('removeVirtualClassTimetable/(:num)/(:num)', 'VirtualClassController::removeVirtualClassTimetable/$1/$2');
-
-});
-});
-
-
-// getModules
-$routes->get('lesson/getModules', 'LessonController::getModules');
-$routes->get('lesson/getModuleDetails', 'LessonController::getModuleDetails');
-$routes->get('lessons', 'LessonController::index');
-$routes->get('lessons/getAllLessons', 'LessonController::getAllLessons');
-
-// Lesson
-$routes->post('lesson/save', 'LessonController::saveLesson');

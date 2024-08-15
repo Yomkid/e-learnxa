@@ -11,7 +11,7 @@
         <?php include(APPPATH . 'Views/admin/include/nav2.php'); ?>
         <div class="container mt-2" id="mainContent">
             <div class="mb-3 font-weight-bold">MODULES MANAGEMENT</div>
-            <a href="<?= base_url('modules/create') ?>" class="btn btn-primary mb-3">Create Module</a>
+            <a href="<?= base_url('admin/modules/create') ?>" class="btn btn-primary mb-3">Create Module</a>
             <?php if(session()->getFlashdata('success')): ?>
                 <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
             <?php endif; ?>
@@ -35,8 +35,8 @@
                                 <td><?= $module['module_name'] ?></td>
                                 <td><?= $module['module_description'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('modules/edit/'.$module['module_id']) ?>" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="<?= base_url('modules/delete/'.$module['module_id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this module?')">Delete</a>
+                                    <a href="<?= base_url('admin/modules/edit/'.$module['module_id']) ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="<?= base_url('admin/modules/delete/'.$module['module_id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this module?')">Delete</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

@@ -23,7 +23,7 @@ class LessonController extends BaseController
         return $this->response->setJSON(['lessons' => $lessons]);
     }
 
-    
+
     public function getModules() {
         $course_id = $this->request->getGet('course_id');
         $moduleModel = new ModuleModel();
@@ -61,54 +61,6 @@ class LessonController extends BaseController
     return $this->response->setJSON($details);
 }
 
-
-    // public function saveLesson()
-    // {
-    //     $moduleId = $this->request->getPost('module_id');
-    //     $lessonTitle = $this->request->getPost('lesson_title');
-    //     $lessonContent = $this->request->getPost('lesson_content');
-    //     $hasVideo = $this->request->getPost('has_video');
-    //     $videoId = $this->request->getPost('video_id');
-    //     $hasQuiz = $this->request->getPost('has_quiz');
-    //     $quizId = $this->request->getPost('quiz_id');
-    //     $hasAssignment = $this->request->getPost('has_assignment');
-    //     $assignmentId = $this->request->getPost('assignment_id');
-    //     $hasResource = $this->request->getPost('has_resource');
-    //     $resourceId = $this->request->getPost('resource_id');
-    //     $duration = $this->request->getPost('duration');
-
-    //     if (empty($moduleId)) {
-    //         return redirect()->back()->with('error', 'Module ID is required.');
-    //     }
-
-    //     $moduleModel = new ModuleModel();
-    //     if (!$moduleModel->find($moduleId)) {
-    //         return redirect()->back()->with('error', 'Invalid Module ID.');
-    //     }
-
-    //     $lessonData = [
-    //         'module_id' => $moduleId,
-    //         'lesson_title' => $lessonTitle,
-    //         'lesson_content' => $lessonContent,
-    //         'has_video' => $hasVideo,
-    //         'video_id' => $videoId,
-    //         'has_quiz' => $hasQuiz,
-    //         'quiz_id' => $quizId,
-    //         'has_assignment' => $hasAssignment,
-    //         'assignment_id' => $assignmentId,
-    //         'has_resource' => $hasResource,
-    //         'resource_id' => $resourceId,
-    //         'duration' => $duration,
-    //     ];
-
-    //     $lessonModel = new LessonModel();
-    //     if ($lessonModel->save($lessonData)) {
-    //         return redirect()->to('/admin/lesson')
-    //             ->with('success', 'The Lesson saved successfully.');
-    //     } else {
-    //         return redirect()->back()->with('error', 'Failed to save the lesson.');
-    //     }
-    // }
 
 
     public function saveLesson()
@@ -188,17 +140,6 @@ class LessonController extends BaseController
             }
         }
     }
-    
-
-    // public function getAllLessons()
-    // {
-    //     $lessonModel = new LessonModel();
-    //     $lessons = $lessonModel->findAll();
-        
-    //     return view('lessonsTest/index', ['lessons' => $lessons]);
-    // }
-
-    
 
 
 }

@@ -13,7 +13,7 @@
             <div class="mb-3 font-weight-bold">Edit Module</div>
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form action="<?= base_url('modules/update/'.$module['module_id']) ?>" method="post">
+                    <form action="<?= base_url('admin/modules/update/'.$module['module_id']) ?>" method="post">
                         <div class="form-group">
                             <label for="course_id">Course</label>
                             <select class="form-control" id="course_id" name="course_id" required>
