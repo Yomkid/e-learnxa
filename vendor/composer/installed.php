@@ -1,9 +1,15 @@
 <?php return array(
     'root' => array(
         'name' => 'codeigniter4/appstarter',
+<<<<<<< HEAD
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => NULL,
+=======
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '1e41c503aae60fe78a4f86cb6b1b8cb1b04aa011',
+>>>>>>> ce8e28d (Save local changes before merge)
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +17,15 @@
     ),
     'versions' => array(
         'codeigniter4/appstarter' => array(
+<<<<<<< HEAD
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'reference' => NULL,
+=======
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '1e41c503aae60fe78a4f86cb6b1b8cb1b04aa011',
+>>>>>>> ce8e28d (Save local changes before merge)
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
