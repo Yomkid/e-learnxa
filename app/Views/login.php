@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="form-header mb-3 d-flex justify-content-between align-items-center">
                     <a class="navbar-brand" href="index.php">Learn<span style="color: #007bff;">X</span>a</a>
-                    <h5 class="mr-3">LOGIN</h5>
+                    <h5 class="mr-3">LOGINR</h5>
                 </div>
                 <div class="learnxa-login-container box-shadow">
                     <div class="row">
