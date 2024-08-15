@@ -33,3 +33,19 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H learnxa.com >> ~/.ssh/known_hosts
           ssh learnxac@learnxa.com "cd /home/learnxac/learnxa && git pull origin main && composer install --no-dev"
+          - name: Deploy to Server
+          env:
+            SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          run: |
+            mkdir -p ~/.ssh/
+            echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            ssh-keyscan -H learnxa.com >> ~/.ssh/known_hosts
+            ssh learnxac@learnxa.com "
+              cd /home/learnxac/learnxa
+              git status
+              git pull origin main
+              composer install --no-dev
+              ls -l
+            "
+        
