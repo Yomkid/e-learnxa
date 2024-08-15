@@ -129,16 +129,11 @@ $routes->get('admin/financial-report', 'Pages::financialReport'); //Under financ
 $routes->get('admin/general-settings', 'Pages::generalSettings'); //Settings
 $routes->get('admin/instructor-assignment', 'Pages::instructorAssignment'); //Should be under User Management
 $routes->get('admin/integration-settings', 'Pages::integrationSettings'); //Should be under settings
-// $routes->get('admin/lesson-list', 'Pages::lessonList'); //Already Done
-// $routes->get('admin/module-list', 'Pages::moduleList'); //Already Done
 $routes->get('admin/payment-gateway-setup', 'Pages::paymentGatewaySetup'); //Under Payment Management (Settings)
-// $routes->get('admin/quiz-management', 'Pages::quizManagement'); //Done
 $routes->get('admin/transaction-list', 'Pages::transactionList');
 $routes->get('admin/user', 'Pages::user');
 $routes->get('admin/user-rofile', 'Pages::userProfile');
-// $routes->get('admin/assignment', 'Pages::createAndEditAssignment');
-// $routes->get('admin/quiz', 'Pages::createAndEditQuiz');
-// $routes->get('admin/video', 'Pages::createAndEditVideo');
+
 
 
 
@@ -183,7 +178,6 @@ $routes->group('quizzes', ['namespace' => 'App\Controllers'], function($routes) 
     $routes->get('view/(:num)', 'QuizController::viewCourse/$1');
     $routes->post('addQuizzes', 'QuizController::addQuizzes');
     $routes->post('removeQuiz/(:num)/(:num)', 'QuizController::removeQuiz/$1/$2');
-    // $routes->post('removeQuiz', 'QuizController::removeQuiz');
     $routes->get('getQuizzesForCourse/(:num)', 'QuizController::getQuizzesForCourse/$1');
 });
 
@@ -217,7 +211,6 @@ $routes->group('assignments', ['namespace' => 'App\Controllers'], function($rout
     $routes->get('view/(:num)', 'AssignmentController::viewCourse/$1');
     $routes->post('addQuizzes', 'AssignmentController::addQuizzes');
     $routes->post('removeAssignment/(:num)/(:num)', 'AssignmentController::removeAssignment/$1/$2');
-    // $routes->post('removeQuiz', 'QuizController::removeQuiz');
     $routes->get('getAssignmentsForCourse/(:num)', 'AssignmentController::getAssignmentsForCourse/$1');
 });
 
@@ -235,7 +228,6 @@ $routes->group('materials', ['namespace' => 'App\Controllers'], function($routes
     $routes->get('view/(:num)', 'MaterialController::viewCourse/$1');
     $routes->post('addMaterials', 'MaterialController::addMaterials');
     $routes->post('removeMaterial/(:num)/(:num)', 'MaterialController::removeMaterial/$1/$2');
-    // $routes->post('removeQuiz', 'QuizController::removeQuiz');
     $routes->get('getMaterialsForCourse/(:num)', 'MaterialController::getMaterialsForCourse/$1');
 });
 
@@ -253,7 +245,6 @@ $routes->group('timetables', ['namespace' => 'App\Controllers'], function($route
     $routes->get('view/(:num)', 'TimetableController::viewCourse/$1');
     $routes->post('addTimetables', 'TimetableController::addTimetables');
     $routes->post('removeTimetable/(:num)/(:num)', 'TimetableController::removeTimetable/$1/$2');
-    // $routes->post('removeQuiz', 'QuizController::removeQuiz');
     $routes->get('getTimetablesForCourse/(:num)', 'TimetableController::getTimetablesForCourse/$1');
     $routes->get('getTimetableDetails/(:num)', 'TimetableController::getTimetableDetails/$1');
 });
@@ -274,7 +265,6 @@ $routes->group('virtualclasses', ['namespace' => 'App\Controllers'], function($r
     $routes->get('getCoursesForVirtualClass/(:num)', 'VirtualClassController::getCoursesForVirtualClass/$1');
     $routes->post('removeCourseFromVirtualClass/(:num)/(:num)', 'VirtualClassController::removeCourseFromVirtualClass/$1/$2');
     $routes->get('getVirtualClassDetails/(:num)', 'VirtualClassController::getVirtualClassDetails/$1');
-
     $routes->get('getTimetablesForClass/(:num)', 'VirtualClassController::getTimetablesForClass/$1');
     $routes->post('assignVirtualClassesTimetable', 'VirtualClassController::assignVirtualClassesTimetable');
     $routes->post('removeVirtualClassTimetable/(:num)/(:num)', 'VirtualClassController::removeVirtualClassTimetable/$1/$2');

@@ -59,7 +59,7 @@ class VirtualClassController extends BaseController
 
         // If you want to show the list of VirtualClasses for a specific course, you need to handle it accordingly
         // Here we're just returning the basic list for demonstration
-        return view('virtualclasses/index', [
+        return view('admin/admin/virtualclasses/index', [
             'virtualClasses' => $virtualClasses,
             'courses' => $courses,
             'timtables' => $timetables,
@@ -74,7 +74,7 @@ class VirtualClassController extends BaseController
 
     public function create()
     {
-        return view('virtualClasses/create');
+        return view('admin/admin/virtualclasses/create');
     }
 
     public function store()
@@ -90,7 +90,7 @@ class VirtualClassController extends BaseController
 
         if ($VirtualClassModel->save($data)) {
             $successMessage = "The VirtualClass has been added successfully";
-            return redirect()->to('/virtualclasses')
+            return redirect()->to('/admin/admin/virtualclasses')
                 ->with('success', $successMessage)
                 ->with('message_type', 'success')
                 ->with('message', $successMessage);
@@ -172,7 +172,7 @@ class VirtualClassController extends BaseController
         $VirtualClassModel = new VirtualClassModel();
         
         if ($VirtualClassModel->delete($id)) {
-            return redirect()->to('/virtualclasses')->with('success', 'VirtualClass deleted successfully.');
+            return redirect()->to('/admin/admin/virtualclasses')->with('success', 'VirtualClass deleted successfully.');
         } else {
             return redirect()->back()->with('errors', 'Failed to delete VirtualClass');
         }
@@ -220,7 +220,7 @@ class VirtualClassController extends BaseController
         }
 
         $successMessage = "The Courses have been assigned to the Class successfully";
-        return redirect()->to('/virtualclasses')
+        return redirect()->to('/admin/virtualclasses')
             ->with('success', $successMessage)
             ->with('message_type', 'success')
             ->with('message', $successMessage);
@@ -342,7 +342,7 @@ public function removeCourseFromVirtualClass($virtualClassId, $courseId)
         }
 
         $successMessage = "The Timetables have been assigned to the Class successfully";
-        return redirect()->to('/virtualclasses')
+        return redirect()->to('/admin/virtualclasses')
             ->with('success', $successMessage)
             ->with('message_type', 'success')
             ->with('message', $successMessage);

@@ -143,25 +143,25 @@ class Pages extends BaseController
     // Course Details
     public function courseDetails()
     {
-        return view('admin/courseDetails.php');
+        return view('admin/course_management/courseDetails.php');
     }
 
     // Course Management\
     public function courseManagement()
     {
-        return view('admin/courseManagement.php');
+        return view('admin/course_management/courseManagement.php');
     }
 
     // Course Performance Reports
     public function coursePerformanceReport()
     {
-        return view('admin/coursePerformanceReport.php');
+        return view('admin/course_management/coursePerformanceReport.php');
     }
 
     // Create and Edit Coupon
     public function createAndEditCoupon()
     {
-        return view('admin/createAndEditCoupon.php');
+        return view('admin/course_management/createAndEditCoupon.php');
     }
 
     // Create and Edit Course
@@ -177,7 +177,7 @@ class Pages extends BaseController
     // Create and Edit Category
     public function createAndEditCategory()
     {
-        return view('admin/createAndEditCategory.php');
+        return view('admin/course_management/createAndEditCategory.php');
     }
 
     
@@ -187,7 +187,7 @@ class Pages extends BaseController
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
 
-        return view('admin/createAndEditTopic.php', ['categories' => $categories]);
+        return view('admin/course_management/createAndEditTopic.php', ['categories' => $categories]);
     }
 
     // Create and Edit Lesson\
@@ -195,21 +195,17 @@ class Pages extends BaseController
     {
         $courseModel = new CourseModel();
         $data['courses'] = $courseModel->findAll();
-        return view('admin/createAndEditLesson', $data);
+        return view('admin/course_management/createAndEditLesson', $data);
     }
 
-    // Create and Edit Module
-    public function createAndEditModule()
-    {
-        return view('admin/createAndEditModule.php');
-    }
+   
 
     // Create and Edit Assignment
     public function createAndEditAssignment()
     {
         $courseModel = new CourseModel();
         $data['courses'] = $courseModel->findAll();
-        return view('admin/createAndEditAssignment', $data);
+        return view('admin/course_management/createAndEditAssignment', $data);
     }
     // Create and Edit Videos
     public function createAndEditVideo()
@@ -265,43 +261,43 @@ class Pages extends BaseController
     // Enrollment List
     public function enrollmentList()
     {
-        return view('admin/enrollmentList.php');
+        return view('admin/course_management/enrollmentList.php');
     }
 
     // Enrollment Management
     public function enrollmentManagement()
     {
-        return view('admin/enrollmentManagement.php');
+        return view('admin/course_management/enrollmentManagement.php');
     }
 
     // Enrollment Request
     public function enrollmentRequest()
     {
-        return view('admin/enrollmentRequest.php');
+        return view('admin/course_management/enrollmentRequest.php');
     }
 
     // FAQ Management (Frequently Ask Question)
     public function faqManagement()
     {
-        return view('admin/faqManagement.php');
+        return view('admin/settings/faqManagement.php');
     }
 
     // Financial Management
     public function financialManagement()
     {
-        return view('admin/financialManagement.php');
+        return view('admin/financial_management/financialManagement.php');
     }
 
     // Financial Report
     public function financialReport()
     {
-        return view('admin/financialReport.php');
+        return view('admin/financial_management/financialReport.php');
     }
 
     // General Settings
     public function generalSettings()
     {
-        return view('admin/generalSettings.php');
+        return view('admin/settings/generalSettings.php');
     }
 
     // Instructor Assignment
@@ -316,63 +312,48 @@ class Pages extends BaseController
         return view('admin/integrationSettings.php');
     }
 
-    // Lesson List
-    public function lessonList()
-    {
-        return view('admin/lessonList.php');
-    }
-
-    // Module List
-    public function moduleList()
-    {
-        return view('admin/moduleList.php');
-    }
+    
 
     // Payment Gateway Setup
     public function paymentGatewaySetup()
     {
-        return view('admin/paymentGatewaySetup.php');
+        return view('admin/settings/paymentGatewaySetup.php');
     }
 
-    // Quiz Management
-    public function quizManagement()
-    {
-        return view('admin/quizManagement.php');
-    }
-
+    
     // Role Management
     public function roleManagement()
     {
-        return view('admin/roleManagement.php');
+        return view('admin/role_management/roleManagement.php');
     }
 
     // Security Settings
     public function securitySettings()
     {
-        return view('admin/securitySettings.php');
+        return view('admin/settings/securitySettings.php');
     }
 
     // Transaction List
     public function transactionList()
     {
-        return view('admin/transactionList.php');
+        return view('admin/financial_management/transactionList.php');
     }
 
     // Users
     public function user()
     {
-        return view('admin/user.php');
+        return view('admin/user_management/user.php');
     }
 
     // User Management
     public function userManagement()
     {
-        return view('admin/userManagement.php');
+        return view('admin/user_management/userManagement.php');
     }
 
     // User Profile
     public function userProfile()
     {
-        return view('admin/userProfile.php');
+        return view('admin/user_management/userProfile.php');
     }
 }
