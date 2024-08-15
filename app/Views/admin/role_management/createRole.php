@@ -1,4 +1,5 @@
 <?php include(APPPATH .'Views/admin/include/head.php'); ?>
+<title>Role Management | LearnXa</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">

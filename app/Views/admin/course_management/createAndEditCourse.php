@@ -1,4 +1,5 @@
 <?php include(APPPATH .'Views/admin/include/head.php'); ?>
+<title>Course Management | LearnXa</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -56,7 +57,7 @@
     <main id="main" class="main p-0">
         <?php include(APPPATH . 'Views/admin/include/nav2.php'); ?>
         <div class="container mt-2" id="mainContent">
-            <div class="mb-3 font-weight-bold">Create/Edit Course</div>
+            <div class="mb-3 font-weight-bold">COURSE MANAGEMENT</div>
             <section class="create-edit-course">
                 <div class="card shadow-sm">
                     <div class="card-body">

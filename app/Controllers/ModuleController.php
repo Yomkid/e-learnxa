@@ -15,7 +15,7 @@ class ModuleController extends BaseController
         $moduleModel = new ModuleModel();
         $modules = $moduleModel->findAll();
 
-        return view('admin/modules/index', ['modules' => $modules]);
+        return view('/admin/modules/index', ['modules' => $modules]);
     }
 
     public function create()
@@ -23,7 +23,7 @@ class ModuleController extends BaseController
         $courseModel = new CourseModel();
         $courses = $courseModel->findAll();
 
-        return view('admin/modules/create', ['courses' => $courses]);
+        return view('/admin/modules/create', ['courses' => $courses]);
     }
 
     public function store()
@@ -36,7 +36,7 @@ class ModuleController extends BaseController
         ];
         $moduleModel->save($data);
 
-        return redirect()->to('/modules')->with('success', 'Module created successfully');
+        return redirect()->to('/admin/modules')->with('success', 'Module created successfully');
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class ModuleController extends BaseController
         $module = $moduleModel->find($id);
         $courses = $courseModel->findAll();
 
-        return view('admin/modules/edit', ['module' => $module, 'courses' => $courses]);
+        return view('/admin/modules/edit', ['module' => $module, 'courses' => $courses]);
     }
 
     public function update($id)
@@ -59,7 +59,7 @@ class ModuleController extends BaseController
         ];
         $moduleModel->update($id, $data);
 
-        return redirect()->to('/modules')->with('success', 'Module updated successfully');
+        return redirect()->to('/admin/modules')->with('success', 'Module updated successfully');
     }
 
     public function delete($id)
@@ -67,6 +67,6 @@ class ModuleController extends BaseController
         $moduleModel = new ModuleModel();
         $moduleModel->delete($id);
 
-        return redirect()->to('/modules')->with('success', 'Module deleted successfully');
+        return redirect()->to('/admin/modules')->with('success', 'Module deleted successfully');
     }
 }

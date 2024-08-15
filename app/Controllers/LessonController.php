@@ -9,6 +9,21 @@ use App\Models\LessonModel;
 
 class LessonController extends BaseController
 {
+
+    public function index()
+    {
+        return view('admin/lessons/index');
+    }
+
+    public function getAllLessons()
+    {
+        $lessonModel = new LessonModel();
+        $lessons = $lessonModel->findAll();
+        
+        return $this->response->setJSON(['lessons' => $lessons]);
+    }
+
+    
     public function getModules() {
         $course_id = $this->request->getGet('course_id');
         $moduleModel = new ModuleModel();
@@ -183,18 +198,7 @@ class LessonController extends BaseController
     //     return view('lessonsTest/index', ['lessons' => $lessons]);
     // }
 
-    public function index()
-    {
-        return view('admin/lessons/index');
-    }
-
-    public function getAllLessons()
-    {
-        $lessonModel = new LessonModel();
-        $lessons = $lessonModel->findAll();
-        
-        return $this->response->setJSON(['lessons' => $lessons]);
-    }
+    
 
 
 }

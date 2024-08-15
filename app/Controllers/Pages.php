@@ -125,19 +125,19 @@ class Pages extends BaseController
     // Analytics and Reports
     public function AnalyticsAndReports()
     {
-        return view('admin/AnalyticsAndReports.php');
+        return view('admin/analytics/AnalyticsAndReports.php');
     }
 
     // Announcements (Notification)
     public function Announcements()
     {
-        return view('admin/Announcements.php');
+        return view('admin/announcement/Announcements.php');
     }
 
     // Backup and Restore
     public function BackupRestore()
     {
-        return view('admin/backupRestore.php');
+        return view('admin/settings/backupRestore.php');
     }
 
     // Course Details
@@ -212,7 +212,7 @@ class Pages extends BaseController
     {
         $courseModel = new CourseModel();
         $data['courses'] = $courseModel->findAll();
-        return view('admin/createAndEditVideo', $data);
+        return view('admin/videos/createAndEditVideo', $data);
     }
     // Create and Edit Quiz
     public function createAndEditQuiz()
@@ -225,13 +225,13 @@ class Pages extends BaseController
     // Create Role
     public function createRole()
     {
-        return view('admin/createRole.php');
+        return view('admin/role_management/createRole.php');
     }
 
     // Edit Role
     public function editRole()
     {
-        return view('admin/editRole.php');
+        return view('admin/role_management/editRole.php');
     }
 
     // Create User

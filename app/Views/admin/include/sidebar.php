@@ -56,19 +56,19 @@
       </a>
     </li>
     <li>
-      <a href="/quizzes" class="nav-link link-dark">
+      <a href="/admin/quizzes" class="nav-link link-dark">
         <i class="bi bi-file-earmark-text me-2"></i>
         Quiz Management
       </a>
     </li>
     <li>
-      <a href="/questionbank" class="nav-link link-dark">
+      <a href="/admin/questionbank" class="nav-link link-dark">
         <i class="bi bi-journal-text me-2"></i>
         Question Bank
       </a>
     </li>
     <li>
-      <a href="/modules" class="nav-link link-dark">
+      <a href="/admin/modules" class="nav-link link-dark">
         <i class="bi bi-journal-text me-2"></i>
         Course Modules
       </a>
@@ -80,19 +80,19 @@
       </a>
     </li>
     <li>
-      <a href="/assignments" class="nav-link link-dark">
+      <a href="/admin/assignments" class="nav-link link-dark">
         <i class="bi bi-file-earmark-text me-2"></i>
         Assignments
       </a>
     </li>
     <li>
-      <a href="/timetables" class="nav-link link-dark">
+      <a href="/admin/timetables" class="nav-link link-dark">
         <i class="bi bi-gear me-2"></i>
         Timetables
       </a>
     </li>
     <li>
-      <a href="/virtualclasses" class="nav-link link-dark">
+      <a href="/admin/virtualclasses" class="nav-link link-dark">
         <i class="bi bi-bell me-2"></i>
         Virtual Classes
       </a>

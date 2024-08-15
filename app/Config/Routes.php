@@ -112,7 +112,6 @@ $routes->get('admin/coupon', 'Pages::createAndEditCoupon'); //it should be under
 $routes->get('admin/course', 'Pages::createAndEditCourse'); //Good
 $routes->get('admin/category', 'Pages::createAndEditCategory'); //Good it should be under course
 $routes->get('admin/topic', 'Pages::createAndEditTopic');//Good it should be under course
-$routes->get('admin/lesson', 'Pages::createAndEditLesson'); //Good (all good should be standalone)
 $routes->get('admin/create-role', 'Pages::createRole'); //It should be under use management
 $routes->get('admin/edit-role', 'Pages::editRole'); //under role (modal)
 $routes->get('admin/createUser', 'Pages::createUser'); //Under usermanagement ***
@@ -154,7 +153,7 @@ $routes->get('error', 'AdminController:::error');
 
 
 $routes->group('admin', function($routes) {
-    $routes->get('admin', 'Pages::Admin'); //Good
+    $routes->get('/', 'Pages::Admin'); //Good
 
 // Module route
 $routes->group('modules', ['namespace' => 'App\Controllers'], function($routes) {

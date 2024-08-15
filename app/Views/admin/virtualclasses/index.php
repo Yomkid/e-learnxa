@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
+    <title>Virtual Class Management | LearnXa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

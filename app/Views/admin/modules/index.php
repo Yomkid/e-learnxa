@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
+    <title>Modules Management | LearnXa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -9,7 +10,7 @@
     <main id="main" class="main p-0">
         <?php include(APPPATH . 'Views/admin/include/nav2.php'); ?>
         <div class="container mt-2" id="mainContent">
-            <div class="mb-3 font-weight-bold">Modules</div>
+            <div class="mb-3 font-weight-bold">MODULES MANAGEMENT</div>
             <a href="<?= base_url('modules/create') ?>" class="btn btn-primary mb-3">Create Module</a>
             <?php if(session()->getFlashdata('success')): ?>
                 <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>

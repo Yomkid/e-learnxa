@@ -3,6 +3,7 @@
 
 <head>
     <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
+    <title>Lesson Management | LearnXa</title>
     <style>
         .module-btn {
             display: block;

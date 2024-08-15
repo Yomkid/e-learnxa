@@ -1,4 +1,5 @@
 <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
+<title>Topic Management | LearnXa</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -39,7 +40,7 @@
             <div class="spinner"></div>
         </div>
         <div class="container mt-2" id="mainContent">
-            <div class="mb-3 font-weight-bold">Create/Edit Topic</div>
+            <div class="mb-3 font-weight-bold">TOPIC MANAGEMENT</div>
             <section class="create-edit-course">
                 <div class="card shadow-sm">
                     <div class="card-body">

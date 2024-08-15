@@ -90,7 +90,7 @@ class VirtualClassController extends BaseController
 
         if ($VirtualClassModel->save($data)) {
             $successMessage = "The VirtualClass has been added successfully";
-            return redirect()->to('/admin/admin/virtualclasses')
+            return redirect()->to('/admin/virtualclasses')
                 ->with('success', $successMessage)
                 ->with('message_type', 'success')
                 ->with('message', $successMessage);
@@ -172,7 +172,7 @@ class VirtualClassController extends BaseController
         $VirtualClassModel = new VirtualClassModel();
         
         if ($VirtualClassModel->delete($id)) {
-            return redirect()->to('/admin/admin/virtualclasses')->with('success', 'VirtualClass deleted successfully.');
+            return redirect()->to('/admin/virtualclasses')->with('success', 'VirtualClass deleted successfully.');
         } else {
             return redirect()->back()->with('errors', 'Failed to delete VirtualClass');
         }
