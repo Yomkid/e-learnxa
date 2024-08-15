@@ -76,7 +76,7 @@ $routes->group('student', ['namespace' => 'App\Controllers'], function($routes) 
     $routes->get('payment', 'Pages::payment');
     $routes->get('timetable', 'Pages::timeTable');
     $routes->get('profile', 'Pages::profile');
-    $routes->get('assignments', 'Pages::assignment');
+    // $routes->get('assignments', 'Pages::assignment');
     $routes->get('community', 'Pages::Community');
     $routes->get('notification', 'Pages::Notification');
     $routes->get('virtual-class', 'Pages::VirtualClass');
@@ -103,7 +103,6 @@ $routes->group('admin', function($routes) {
 
 
 // Admin Routes
-$routes->get('admin', 'Pages::Admin'); //Good
 $routes->get('admin/analytics', 'Pages::analyticsAndReports'); //Good
 $routes->get('admin/announcements', 'Pages::Announcements'); //Good 
 $routes->get('admin/backup', 'Pages::backupRestore'); //Good
@@ -154,6 +153,8 @@ $routes->get('success', 'AdminController:::success');
 $routes->get('error', 'AdminController:::error');
 
 
+$routes->group('admin', function($routes) {
+    $routes->get('admin', 'Pages::Admin'); //Good
 
 // Module route
 $routes->group('modules', ['namespace' => 'App\Controllers'], function($routes) {
@@ -269,6 +270,7 @@ $routes->group('virtualclasses', ['namespace' => 'App\Controllers'], function($r
     $routes->post('assignVirtualClassesTimetable', 'VirtualClassController::assignVirtualClassesTimetable');
     $routes->post('removeVirtualClassTimetable/(:num)/(:num)', 'VirtualClassController::removeVirtualClassTimetable/$1/$2');
 
+});
 });
 
 
