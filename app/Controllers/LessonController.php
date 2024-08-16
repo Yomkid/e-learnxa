@@ -12,7 +12,9 @@ class LessonController extends BaseController
 
     public function index()
     {
-        return view('admin/lessons/index');
+        $courseModel = new CourseModel();
+        $data['courses'] = $courseModel->findAll();
+        return view('admin/lessons/index', $data);
     }
 
     public function getAllLessons()

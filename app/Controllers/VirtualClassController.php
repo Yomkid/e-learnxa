@@ -59,7 +59,7 @@ class VirtualClassController extends BaseController
 
         // If you want to show the list of VirtualClasses for a specific course, you need to handle it accordingly
         // Here we're just returning the basic list for demonstration
-        return view('admin/admin/virtualclasses/index', [
+        return view('admin/virtualclasses/index', [
             'virtualClasses' => $virtualClasses,
             'courses' => $courses,
             'timtables' => $timetables,
@@ -74,7 +74,7 @@ class VirtualClassController extends BaseController
 
     public function create()
     {
-        return view('admin/admin/virtualclasses/create');
+        return view('admin/virtualclasses/create');
     }
 
     public function store()
