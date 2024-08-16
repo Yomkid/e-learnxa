@@ -165,14 +165,14 @@ class Pages extends BaseController
     }
 
     // Create and Edit Course
-    public function createAndEditCourse()
-    {
-        $topicModel = new TopicsModel();
-        $data['topics'] = $topicModel->findAll();
+    // public function createAndEditCourse()
+    // {
+    //     $topicModel = new TopicsModel();
+    //     $data['topics'] = $topicModel->findAll();
 
-        // return view('create_course', $data);
-        return view('admin/course_management/createAndEditCourse', $data);
-    }
+    //     // return view('create_course', $data);
+    //     return view('admin/course_management/createAndEditCourse', $data);
+    // }
 
     // Create and Edit Category
     public function createAndEditCategory()

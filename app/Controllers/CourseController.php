@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CourseModel;
 use App\Models\CourseTopicModel;
+use App\Models\TopicsModel;
 use DateTime;
 
 class CourseController extends BaseController
@@ -16,6 +17,7 @@ class CourseController extends BaseController
         $data['courses'] = $courseModel->getCourses();
         echo view('courses', $data);
     }
+
 
     public function description($slug)
     {
@@ -94,6 +96,26 @@ class CourseController extends BaseController
 
         // Redirect to checkout page
         return redirect()->to('/checkout');
+    }
+
+
+
+
+    public function createAndEditCourse()
+    {
+        $courseModel = new courseModel();
+        $courses = $courseModel->findAll();
+
+        $topicModel = new TopicsModel();
+        $topics = $topicModel->findAll();
+
+        $data = [
+            'topics' => $topics,
+            'courses' => $courses,
+        ];
+
+        // return view('create_course', $data);
+        return view('admin/courses/index', $data);
     }
 
 
@@ -257,5 +279,17 @@ class CourseController extends BaseController
         } else {
             return redirect()->back()->withInput()->with('errors', 'Failed to update course')->with('message_type', 'error');
         }
+    }
+
+    public function deleteCourse($id)
+    {
+        $courseModel = new CourseModel();
+        $courseModel->delete($id);
+
+        $successMessage = "Selected course was deleted successfully";
+        return redirect()->to('/admin/course')
+        ->with('success', $successMessage)
+        ->with('message_type', 'success')
+        ->with('message', $successMessage);
     }
 }

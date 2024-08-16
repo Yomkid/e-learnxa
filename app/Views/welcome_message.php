@@ -18,7 +18,7 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/include/styles.css">
     <link rel="stylesheet" href="/assets/css/course.css">
     <link rel="stylesheet" href="/assets/css/home.css">
 </head>

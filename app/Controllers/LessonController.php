@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ModuleModel;
 use App\Models\LessonModel;
+use App\Models\CourseModel;
 
 class LessonController extends BaseController
 {

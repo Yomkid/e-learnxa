@@ -64,9 +64,9 @@
                                     </div>
                                     <button type="submit" class="enroll-btn mb-3">Login</button>
                                     <div>Don't have an account yet? <span style="color: #007bff;"><a
-                                                href="generate-invoice.php">Register</a></span></div>
+                                                href="generate-invoice">Register</a></span></div>
                                     <div>Forgot Password? <span style="color: #007bff;"><a
-                                                href="forgot-password.php">Reset</a></span></div>
+                                                href="#forgot-password">Reset</a></span></div>
                                 </form>
 
                             </div>

@@ -25,7 +25,6 @@ $routes->get('verify-payment', 'PaymentController::verifyPayment');
 // $routes->get('courses', 'Pages::courses');
 $routes->get('courses', 'CourseController::index');
 $routes->get('course/(:segment)', 'CourseController::description/$1'); // View course details by slug
-$routes->post('courses/update/(:num)', 'CourseController::updateCourse/$1'); // Update an existing course by ID
 // $routes->get('checkout', 'Pages::courseCheckout');
 $routes->get('enroll/(:num)', 'CourseController::enroll/$1');
 $routes->get('checkout', 'CheckoutController::index');
@@ -109,7 +108,6 @@ $routes->get('admin/backup', 'Pages::backupRestore'); //Good
 $routes->get('admin/course-details', 'Pages::courseDetails');
 $routes->get('admin/course-performance-report', 'Pages::coursePerformanceReport'); //It should be in analytics
 $routes->get('admin/coupon', 'Pages::createAndEditCoupon'); //it should be under products
-$routes->get('admin/course', 'Pages::createAndEditCourse'); //Good
 $routes->get('admin/category', 'Pages::createAndEditCategory'); //Good it should be under course
 $routes->get('admin/topic', 'Pages::createAndEditTopic');//Good it should be under course
 $routes->get('admin/create-role', 'Pages::createRole'); //It should be under use management
@@ -135,17 +133,6 @@ $routes->get('admin/user-rofile', 'Pages::userProfile');
 
 
 
-// Course Management Backend Logics
-$routes->post('course/save', 'CourseController::saveCourse');
-$routes->post('category/save', 'CourseManagementController::saveCategory');
-$routes->post('topic/save', 'CourseManagementController::saveTopic');
-
-
-// Admin Authentication Routes
-$routes->get('admin/register', 'AdminController::register');
-$routes->post('admin/eregister', 'AdminController::saveAdmin');
-
-
 
 //Routes for Success and Error Message
 $routes->get('success', 'AdminController:::success');
@@ -154,6 +141,23 @@ $routes->get('error', 'AdminController:::error');
 
 $routes->group('admin', function($routes) {
     $routes->get('/', 'Pages::Admin'); //Good
+
+
+    $routes->group('course', function($routes) {
+        // Course Management Backend Logics
+        $routes->get('/', 'CourseController::createAndEditCourse'); //Good
+        $routes->post('save', 'CourseController::saveCourse');
+        $routes->post('update/(:num)', 'CourseController::updateCourse/$1'); // Update an existing course by ID
+        $routes->post('delete/(:num)', 'CourseController::deleteCourse/$1'); // Delete Course by ID
+    });
+
+    $routes->post('category/save', 'CourseManagementController::saveCategory');
+    $routes->post('topic/save', 'CourseManagementController::saveTopic');
+
+
+    // Admin Authentication Routes
+    $routes->get('register', 'AdminController::register');
+    $routes->post('eregister', 'AdminController::saveAdmin');
 
     // Module route
     $routes->group('modules', ['namespace' => 'App\Controllers'], function($routes) {
