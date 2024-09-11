@@ -6,6 +6,22 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+
+
+ $routes->get('/launch', 'Launch::index');
+
+ $routes->get('/send-notifications', 'NotificationController::sendNotifications');
+ 
+ $routes->post('notify-me', 'NotificationController::notifyMe');
+
+
+
+
+
+
+
+
+
 // General Route for the webpage
 $routes->get('/', 'Home::index');
 $routes->get('become-teacher', 'Pages::becomeTeacher');
