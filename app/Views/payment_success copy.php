@@ -73,7 +73,7 @@
         </div>
         <div class="success-footer">
             <p>If you have any questions, please contact us at <a href="mailto:LearnXa@gmail.com">LearnXa@gmail.com</a> or call 08149594986.</p>
-            <p>Save this for future reference</p>
+            <a href="<?= base_url('activate') ?>" class="btn btn-primary">Activate your Account</a>
         </div>
     </div>
 

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php include(APPPATH . 'Views/include/newNav3.php'); ?>
+    <?php include(APPPATH . 'Views/include/newNav2.php'); ?>
     <div class="form-wrapper">
         <div class="">
             <div class="container">
@@ -76,9 +76,12 @@
                     </form>
                 </div>
             </div>
-           
+            <p class="text-center text-light">Already a member? <span style="color: #007bff;"
+                    class="font-weight-bold"><a href="<?= base_url('login') ?>" style="color: #007bff;">Login</a></span>
+            </p>
         </div>
     </div>
+    <?php include(APPPATH . 'Views/include/footer1.php'); ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

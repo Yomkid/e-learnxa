@@ -29,7 +29,7 @@ $routes->get('category', 'Pages::category');
 // $routes->get('course-description', 'Pages::courseDescription');
 $routes->get('virtual-courses', 'Pages::virtualClassCourses');
 $routes->get('instructor', 'Pages::instructor');
-$routes->get('login', 'Pages::login');
+$routes->get('XXXloginXXX', 'Pages::login');
 $routes->get('generate-invoice', 'AuthReg::generateInvoice');
 $routes->get('invoice', 'AuthReg::Invoice'); // Use POST for form submission
 $routes->get('acknowledgement-slip', 'AuthReg::acknowledgementSlip');
