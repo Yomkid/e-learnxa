@@ -8,14 +8,14 @@ use CodeIgniter\Router\RouteCollection;
 
 
 
- $routes->get('/launch', 'Launch::index');
+ $routes->get('/', 'Launch::index');
 
  $routes->get('/send-notifications', 'NotificationController::sendNotifications');
  
  $routes->post('notify-me', 'NotificationController::notifyMe');
 
 
-
+$routes->get('/stats', 'Home::webStats');
 
 
 
@@ -23,7 +23,7 @@ use CodeIgniter\Router\RouteCollection;
 
 
 // General Route for the webpage
-$routes->get('/', 'Home::index');
+$routes->get('/XXXXX', 'Home::index');
 $routes->get('become-teacher', 'Pages::becomeTeacher');
 $routes->get('category', 'Pages::category');
 // $routes->get('course-description', 'Pages::courseDescription');
