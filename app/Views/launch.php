@@ -119,6 +119,9 @@
                     <h1>Our New Learning Platform is Launching Soon!</h1>
                     <p>Get ready for something amazing. We're creating a better learning experience for you on <b>October 1st, 2024!</b></p>
 
+
+                    <button class="btn btn-primary">Register Now!</button>
+
                     <!-- Countdown Timer -->
                     <div class="countdown" id="countdownTimer">00:00:00:00</div>
 
