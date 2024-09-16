@@ -115,7 +115,7 @@
     <script>
         function payWithCard() {
             var handler = PaystackPop.setup({
-                key: 'pk_test_18bd358872baeae63db2133cc291cd2e92df0015', // Replace with your Paystack public key
+                key: 'pk_live_36904b6efa931af23c7e4d04a60a911d2719a194',
                 email: '<?= $email ?>',
                 amount: 200000, // Amount in kobo
                 currency: 'NGN',
