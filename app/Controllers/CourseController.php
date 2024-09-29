@@ -6,6 +6,9 @@ use App\Controllers\BaseController;
 use App\Models\CourseModel;
 use App\Models\CourseTopicModel;
 use App\Models\TopicsModel;
+use App\Models\CourseEnrollmentModel;
+use App\Models\ModuleModel;
+use App\Models\QuizModel;
 use DateTime;
 
 class CourseController extends BaseController
@@ -281,15 +284,67 @@ class CourseController extends BaseController
         }
     }
 
+    // public function deleteCourse($id)
+    // {
+    //     $courseModel = new CourseModel();
+    //     $courseModel->delete($id);
+
+    //     $successMessage = "Selected course was deleted successfully";
+    //     return redirect()->to('/admin/course')
+    //     ->with('success', $successMessage)
+    //     ->with('message_type', 'success')
+    //     ->with('message', $successMessage);
+    // }
+
     public function deleteCourse($id)
     {
         $courseModel = new CourseModel();
-        $courseModel->delete($id);
+        $db = \Config\Database::connect();
 
-        $successMessage = "Selected course was deleted successfully";
-        return redirect()->to('/admin/course')
-        ->with('success', $successMessage)
-        ->with('message_type', 'success')
-        ->with('message', $successMessage);
+        // Start a database transaction
+        $db->transStart();
+
+        try {
+            // Delete related records (enrollments, modules, quizzes)
+            $enrollmentModel = new CourseEnrollmentModel(); // Assuming this model exists
+            $enrollmentModel->where('course_id', $id)->delete();
+
+            $moduleModel = new ModuleModel(); // Assuming this model exists
+            $moduleModel->where('course_id', $id)->delete();
+
+            $quizModel = new QuizModel(); // Assuming this model exists
+            $quizModel->where('course_id', $id)->delete();
+
+            // Delete the course itself
+            $courseModel->delete($id);
+
+            // Complete the transaction
+            $db->transComplete();
+
+            // Check transaction status
+            if ($db->transStatus() === FALSE) {
+                // If transaction fails, rollback and show a friendly error message
+                throw new \Exception('Failed to delete the course. Please try again later.');
+            }
+
+            // If everything is successful, show a success message
+            $successMessage = "Selected course was deleted successfully.";
+            return redirect()->to('/admin/course')
+                ->with('success', $successMessage)
+                ->with('message_type', 'success');
+
+        } catch (\Exception $e) {
+            // Rollback the transaction if there's an error
+            $db->transRollback();
+
+            // Log the actual error for debugging purposes
+            log_message('error', 'Error deleting course with ID ' . $id . ': ' . $e->getMessage());
+
+            // Show a user-friendly error message
+            return redirect()->to('/admin/course')
+                ->with('error', 'An error occurred while deleting the course. Please contact support.')
+                ->with('message_type', 'error');
+        }
     }
+
 }
