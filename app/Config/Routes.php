@@ -164,7 +164,7 @@ $routes->group('admin', function($routes) {
         $routes->get('/', 'CourseController::createAndEditCourse'); //Good
         $routes->post('save', 'CourseController::saveCourse');
         $routes->post('update/(:num)', 'CourseController::updateCourse/$1'); // Update an existing course by ID
-        $routes->post('delete/(:num)', 'CourseController::deleteCourse/$1'); // Delete Course by ID
+        $routes->get('delete/(:num)', 'CourseController::deleteCourse/$1'); // Delete Course by ID
     });
 
     $routes->post('category/save', 'CourseManagementController::saveCategory');

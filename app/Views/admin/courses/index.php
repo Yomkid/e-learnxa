@@ -65,7 +65,7 @@
         
                 <li class="nav-item">
                     <a class="nav-link active" id="course-bank-tab" data-toggle="tab" href="#course-bank" role="tab"
-                        aria-controls="course-bank" aria-selected="true">course Lists</a>
+                        aria-controls="course-bank" aria-selected="true">Course Lists</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="add-course-tab" data-toggle="tab" href="#add-course" role="tab"
@@ -97,21 +97,21 @@
                 <div class="tab-pane fade show active" id="assignment-bank" role="tabpanel"
                     aria-labelledby="assignment-bank-tab">
                     <div class="row my-2">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" id="search" class="form-control" placeholder="Search assignments...">
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" id="search" class="form-control" placeholder="Search assignments...">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <select id="sort" class="form-control">
-                                        <option value="name_asc">Sort by Name (A-Z)</option>
-                                        <option value="name_desc">Sort by Name (Z-A)</option>
-                                        <option value="id_asc">Sort by ID (Ascending)</option>
-                                        <option value="id_desc">Sort by ID (Descending)</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select id="sort" class="form-control">
+                                    <option value="name_asc">Sort by Name (A-Z)</option>
+                                    <option value="name_desc">Sort by Name (Z-A)</option>
+                                    <option value="id_asc">Sort by ID (Ascending)</option>
+                                    <option value="id_desc">Sort by ID (Descending)</option>
+                                </select>
                             </div>
+                        </div>
                     </div>
                     <div class="card shadow-sm">
                         <div class="card-body">
@@ -161,7 +161,7 @@
                                 <div id="loading">
                                     <div class="spinner"></div>
                                 </div>
-                                <form action="<?= base_url('course/save') ?>" method="post" enctype="multipart/form-data"
+                                <form action="<?= base_url('admin/course/save') ?>" method="post" enctype="multipart/form-data"
                                     onsubmit="showLoadingSpinner()" novalidayte>
                                     <!-- Display validation errors if any -->
                                     <?php if (session()->has('message')) : ?>
@@ -346,14 +346,7 @@
                             </div>
                         </div>
                     </section>
-                </div>
-
-             
-              
-
-
-
-                
+                </div>                
 
             </div>
 

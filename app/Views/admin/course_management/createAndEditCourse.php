@@ -58,200 +58,198 @@
         <?php include(APPPATH . 'Views/admin/include/nav2.php'); ?>
         <div class="container mt-2" id="mainContent">
             <div class="mb-3 font-weight-bold">COURSE MANAGEMENT</div>
-            <section class="create-edit-course">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <!-- Loading Spinner -->
-                        <div id="loading">
-                            <div class="spinner"></div>
-                        </div>
-                        <form action="<?= base_url('course/save') ?>" method="post" enctype="multipart/form-data"
-                            onsubmit="showLoadingSpinner()" novalidayte>
-                            <!-- Display validation errors if any -->
-                            <?php if (session()->has('message')) : ?>
-                            <?= view('include/message') ?>
-                            <?php endif ?>
+                <section class="create-edit-course">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <!-- Loading Spinner -->
+                            <div id="loading">
+                                <div class="spinner"></div>
+                            </div>
+                            <form action="<?= base_url('/admin/course/save') ?>" method="post" enctype="multipart/form-data"
+                                onsubmit="showLoadingSpinner()" novalidayte>
+                                <!-- Display validation errors if any -->
+                                <?php if (session()->has('message')) : ?>
+                                <?= view('include/message') ?>
+                                <?php endif ?>
 
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <!-- :::::::::::::::::Course Title::::::::::::::: -->
-                                    <div class="form-group">
-                                        <label for="courseTitle" class="font-weight-bold">Course Title</label>
-                                        <input type="text" class="form-control" id="courseTitle" name="course_title"
-                                            placeholder="Enter course title" required>
-                                    </div>
-
-                                    <!-- :::::::::::::::::Course Tagline::::::::::::::: -->
-                                    <div class="form-group">
-                                        <label for="courseTagline" class="font-weight-bold">Course Tagline</label>
-                                        <textarea class="form-control" id="courseTagline" name="course_tagline" rows="3"
-                                            placeholder="Enter Course Tagline"></textarea>
-                                    </div>
-
-                                    <!-- :::::::::::::::::Course Overview::::::::::::::: -->
-                                    <div class="form-group">
-                                        <label for="courseOverview" class="font-weight-bold">Course Overview</label>
-                                        <textarea class="form-control" id="courseOverview" name="course_overview"
-                                            rows="3" placeholder="Enter Course Overview"></textarea>
-                                    </div>
-                                    <!-- :::::::::::::::::Skills you'll aquired::::::::::::::: -->
-                                    <div class="form-group">
-                                        <label for="skillsAcquired" class="font-weight-bold">Skills Acquired</label>
-                                        <textarea class="form-control" id="skillsAcquired" name="skills_acquired"
-                                            rows="3" placeholder="Enter skills acquired"></textarea>
-                                    </div>
-                                    <!-- :::::::::::::::::Requirements::::::::::::::: -->
-                                    <div class="form-group">
-                                        <label for="requirements" class="font-weight-bold">Requirements</label>
-                                        <textarea class="form-control" id="requirements" name="requirements" rows="3"
-                                            placeholder="Enter course requirements"></textarea>
-                                    </div>
-
-                                    <!-- :::::::::::::::::Course Compact::::::::::::::: -->
-                                    <div class="font-weight-bold">Course Compact</div>
-                                    <div class="accordion" id="accordionExample">
-                                        <!-- Dynamic Accordion Sections will be added here -->
-                                    </div>
-                                    <button type="button" id="addSection" class="btn btn-secondary mt-3">Add
-                                        Section</button>
-
-
-                                    <!-- :::::::::::::::::Description::::::::::::::: -->
-                                    <div class="form-group">
-                                        <label for="courseDescription" class="font-weight-bold">Course
-                                            Description</label>
-                                        <!-- <textarea id="courseDescription" name="course_description" class="form-control"></textarea> -->
-                                        <textarea id="courseDescription" name="course_description"
-                                            class="form-control"></textarea>
-                                    </div>
-                                    <!-- :::::::::::::::::Course Image::::::::::::::: -->
-                                    <div class="form-group">
-                                        <label for="courseImage" class="font-weight-bold">Course Image</label>
-                                        <input type="file" class="form-control-file" id="courseImage"
-                                            name="course_image">
-                                        <div id="progressContainer">
-                                            <progress id="progressBar" value="0" max="100" class="w-100"></progress>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <!-- :::::::::::::::::Course Title::::::::::::::: -->
+                                        <div class="form-group">
+                                            <label for="courseTitle" class="font-weight-bold">Course Title</label>
+                                            <input type="text" class="form-control" id="courseTitle" name="course_title"
+                                                placeholder="Enter course title" required>
                                         </div>
-                                        <div id="imagePreviewContainer" style="position: relative;">
-                                            <img id="imagePreview" src="#" alt="Image Preview" width="200">
-                                            <div id="cancelIcon" onclick="removeImage()">&times;</div>
+
+                                        <!-- :::::::::::::::::Course Tagline::::::::::::::: -->
+                                        <div class="form-group">
+                                            <label for="courseTagline" class="font-weight-bold">Course Tagline</label>
+                                            <textarea class="form-control" id="courseTagline" name="course_tagline" rows="3"
+                                                placeholder="Enter Course Tagline"></textarea>
                                         </div>
+
+                                        <!-- :::::::::::::::::Course Overview::::::::::::::: -->
+                                        <div class="form-group">
+                                            <label for="courseOverview" class="font-weight-bold">Course Overview</label>
+                                            <textarea class="form-control" id="courseOverview" name="course_overview"
+                                                rows="3" placeholder="Enter Course Overview"></textarea>
+                                        </div>
+                                        <!-- :::::::::::::::::Skills you'll aquired::::::::::::::: -->
+                                        <div class="form-group">
+                                            <label for="skillsAcquired" class="font-weight-bold">Skills Acquired</label>
+                                            <textarea class="form-control" id="skillsAcquired" name="skills_acquired"
+                                                rows="3" placeholder="Enter skills acquired"></textarea>
+                                        </div>
+                                        <!-- :::::::::::::::::Requirements::::::::::::::: -->
+                                        <div class="form-group">
+                                            <label for="requirements" class="font-weight-bold">Requirements</label>
+                                            <textarea class="form-control" id="requirements" name="requirements" rows="3"
+                                                placeholder="Enter course requirements"></textarea>
+                                        </div>
+
+                                        <!-- :::::::::::::::::Course Compact::::::::::::::: -->
+                                        <div class="font-weight-bold">Course Compact</div>
+                                        <div class="accordion" id="accordionExample">
+                                            <!-- Dynamic Accordion Sections will be added here -->
+                                        </div>
+                                        <button type="button" id="addSection" class="btn btn-secondary mt-3">Add
+                                            Section</button>
+
+
+                                        <!-- :::::::::::::::::Description::::::::::::::: -->
+                                        <div class="form-group">
+                                            <label for="courseDescription" class="font-weight-bold">Course
+                                                Description</label>
+                                            <!-- <textarea id="courseDescription" name="course_description" class="form-control"></textarea> -->
+                                            <textarea id="courseDescription" name="course_description"
+                                                class="form-control"></textarea>
+                                        </div>
+                                        <!-- :::::::::::::::::Course Image::::::::::::::: -->
+                                        <div class="form-group">
+                                            <label for="courseImage" class="font-weight-bold">Course Image</label>
+                                            <input type="file" class="form-control-file" id="courseImage"
+                                                name="course_image">
+                                            <div id="progressContainer">
+                                                <progress id="progressBar" value="0" max="100" class="w-100"></progress>
+                                            </div>
+                                            <div id="imagePreviewContainer" style="position: relative;">
+                                                <img id="imagePreview" src="#" alt="Image Preview" width="200">
+                                                <div id="cancelIcon" onclick="removeImage()">&times;</div>
+                                            </div>
+                                        </div>
+
+
+                                        <div id="zoomedImageContainer" onclick="closeZoomedImage()">
+                                            <img id="zoomedImage" src="#" alt="Zoomed Image">
+                                        </div>
+
                                     </div>
-
-
-                                    <div id="zoomedImageContainer" onclick="closeZoomedImage()">
-                                        <img id="zoomedImage" src="#" alt="Zoomed Image">
-                                    </div>
-
-                                </div>
-                                <div class="col-md-3 pt-2 border">
-                                    <!-- Select Topic -->
+                                    <div class="col-md-3 pt-2 border">
+                                        <!-- Select Topic -->
+                                        <div class="form-group">
+                                            <label for="courseTopic">Topic</label>
+                                            <select class="form-control" id="courseTopic" name="topic_ids[]"
+                                            multiple required>
+                                            <!-- <select class="form-control" id="courseTopic" name="topic_ids[]"
+                                                multiple="multiple" multiple required> -->
+                                                <?php foreach ($topics as $topic) : ?>
+                                                <option value="<?= $topic['topic_id'] ?>"><?= $topic['topic_name'] ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+            
+                                    <!-- Assign Instructor -->
                                     <div class="form-group">
-                                        <label for="courseTopic">Topic</label>
-                                        <select class="form-control" id="courseTopic" name="topic_ids[]"
-                                         multiple required>
-                                        <!-- <select class="form-control" id="courseTopic" name="topic_ids[]"
-                                            multiple="multiple" multiple required> -->
-                                            <?php foreach ($topics as $topic) : ?>
-                                            <option value="<?= $topic['topic_id'] ?>"><?= $topic['topic_name'] ?></option>
-                                            <?php endforeach; ?>
+                                        <label for="courseInstructor">Instructor</label>
+                                        <select class="form-control" id="courseInstructor" name="instructor_id" requinred>
+                                            <option value="">Select Instructor</option>
+                                            <!-- Populate this with instructor data from the database -->
                                         </select>
                                     </div>
-        
-                                <!-- Assign Instructor -->
-                                <div class="form-group">
-                                    <label for="courseInstructor">Instructor</label>
-                                    <select class="form-control" id="courseInstructor" name="instructor_id" requinred>
-                                        <option value="">Select Instructor</option>
-                                        <!-- Populate this with instructor data from the database -->
-                                    </select>
+
+                                    <!-- Course Price -->
+                                    <div class="form-group">
+                                        <label for="coursePrice">Price</label>
+                                        <input type="number" step="0.01" class="form-control" id="coursePrice" name="price"
+                                            placeholder="Enter course price" value="0.00" rejquired>
+                                    </div>
+
+                                    <!-- Rating -->
+                                    <div class="form-group">
+                                        <label for="courseRating">Rating</label>
+                                        <input type="number" step="0.01" class="form-control" id="courseRating"
+                                            name="rating" placeholder="Enter course rating" value="0.00" requijred>
+                                    </div>
+
+                                    <!-- Rating Count -->
+                                    <div class="form-group">
+                                        <label for="ratingCount">Rating Count</label>
+                                        <input type="number" class="form-control" id="ratingCount" name="rating_count"
+                                            placeholder="Enter rating count" value="0" requijkred>
+                                    </div>
+
+                                    <!-- Course Duration -->
+                                    <div class="form-group">
+                                        <label for="courseDuration">Duration</label>
+                                        <input type="text" class="form-control" id="courseDuration" name="duration"
+                                            placeholder="Enter course duration" requirred>
+                                    </div>
+
+                                    <!-- Course Languages -->
+                                    <div class="form-group">
+                                        <label for="courseLanguage">Language</label>
+                                        <input type="text" class="form-control" id="courseLanguage" name="language"
+                                            placeholder="Enter course language" renquirred>
+                                    </div>
+
+                                    <!-- Enrollment Count -->
+                                    <div class="form-group">
+                                        <label for="enrollmentCount">Enrollment Count</label>
+                                        <input type="number" class="form-control" id="enrollmentCount"
+                                            name="enrollment_count" placeholder="Enter enrollment count" value="0" req>
+                                    </div>
+
+                                    <!-- Uploaded Date -->
+                                    <div class="form-group">
+                                        <label for="uploadedDate">Uploaded Date</label>
+                                        <input type="date" class="form-control" id="uploadedDate" name="uploaded_date"
+                                            requikred>
+                                    </div>
+
+                                    <!-- Course Modules Number -->
+                                    <!-- Total Course Module -->
+                                    <div class="form-group mt-3">
+                                        <label for="courseModuleCount">Total Course Module</label>
+                                        <input type="number" step="0" class="form-control" id="courseModuleCount"
+                                            name="course_module_count" placeholder="Course Module" value="0" readonly>
+                                    </div>
+
+                                    <!-- Is Featured -->
+                                    <div class="form-group">
+                                        <label for="isFeatured">Is Featured</label>
+                                        <select class="form-control" id="isFeatured" name="is_featured">
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                    </div>
+                                    <!-- Course Type -->
+                                    <div class="form-group">
+                                        <label for="isFeatured">Course Type</label>
+                                        <select class="form-control" id="courseType" name="course_type">
+                                            <option value="0">Course On Demand</option>
+                                            <option value="1">Virtual Course</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <!-- Course Price -->
-                                <div class="form-group">
-                                    <label for="coursePrice">Price</label>
-                                    <input type="number" step="0.01" class="form-control" id="coursePrice" name="price"
-                                        placeholder="Enter course price" value="0.00" rejquired>
+                                <div class="col-md-9">
+                                    <button type="submit" class="btn btn-primary col-md-12">Upload Course</button>
                                 </div>
-
-                                <!-- Rating -->
-                                <div class="form-group">
-                                    <label for="courseRating">Rating</label>
-                                    <input type="number" step="0.01" class="form-control" id="courseRating"
-                                        name="rating" placeholder="Enter course rating" value="0.00" requijred>
-                                </div>
-
-                                <!-- Rating Count -->
-                                <div class="form-group">
-                                    <label for="ratingCount">Rating Count</label>
-                                    <input type="number" class="form-control" id="ratingCount" name="rating_count"
-                                        placeholder="Enter rating count" value="0" requijkred>
-                                </div>
-
-                                <!-- Course Duration -->
-                                <div class="form-group">
-                                    <label for="courseDuration">Duration</label>
-                                    <input type="text" class="form-control" id="courseDuration" name="duration"
-                                        placeholder="Enter course duration" requirred>
-                                </div>
-
-                                <!-- Course Languages -->
-                                <div class="form-group">
-                                    <label for="courseLanguage">Language</label>
-                                    <input type="text" class="form-control" id="courseLanguage" name="language"
-                                        placeholder="Enter course language" renquirred>
-                                </div>
-
-                                <!-- Enrollment Count -->
-                                <div class="form-group">
-                                    <label for="enrollmentCount">Enrollment Count</label>
-                                    <input type="number" class="form-control" id="enrollmentCount"
-                                        name="enrollment_count" placeholder="Enter enrollment count" value="0" req>
-                                </div>
-
-                                <!-- Uploaded Date -->
-                                <div class="form-group">
-                                    <label for="uploadedDate">Uploaded Date</label>
-                                    <input type="date" class="form-control" id="uploadedDate" name="uploaded_date"
-                                        requikred>
-                                </div>
-
-                                <!-- Course Modules Number -->
-                                <!-- Total Course Module -->
-                                <div class="form-group mt-3">
-                                    <label for="courseModuleCount">Total Course Module</label>
-                                    <input type="number" step="0" class="form-control" id="courseModuleCount"
-                                        name="course_module_count" placeholder="Course Module" value="0" readonly>
-                                </div>
-
-                                <!-- Is Featured -->
-                                <div class="form-group">
-                                    <label for="isFeatured">Is Featured</label>
-                                    <select class="form-control" id="isFeatured" name="is_featured">
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
-                                    </select>
-                                </div>
-                                <!-- Course Type -->
-                                <div class="form-group">
-                                    <label for="isFeatured">Course Type</label>
-                                    <select class="form-control" id="courseType" name="course_type">
-                                        <option value="0">Course On Demand</option>
-                                        <option value="1">Virtual Course</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-9">
-                                <button type="submit" class="btn btn-primary col-md-12">Upload Course</button>
-                            </div>
+                            </form>
+                        </div>
                     </div>
-
-                    <!-- Upload Button -->
-                    </form>
-                </div>
-        </div>
-        </section>
+                </section>
+            </div>
         </div>
     </main>
 
