@@ -214,8 +214,7 @@
                             </ol>
                         </nav>
                         <h1><?= $title ?></h1>
-                        <p>The modern JavaScript course for everyone! Master JavaScript with projects, challenges, and
-                            theory. Many courses in one!</p>
+                        <p><?= $tagline ?></p>
                         <div class="course-rating">
                             <span class="rating">4.5</span>
                             <span class="rating-stars" style="color: #ffc107;">
@@ -277,8 +276,7 @@
 
             <!-- Course Description for Mobile -->
             <div class="thumbnail-course-tagline">
-                <p class="fs-6">The modern JavaScript course for everyone! Master JavaScript with projects, challenges,
-                    and theory. Many courses in one!</p>
+                <p class="fs-6"><?= $tagline ?></p>
             </div>
 
 
@@ -292,7 +290,7 @@
                     <i class="fa fa-star-half-alt"></i>
                 </span>
                 <span class="rating-count">(1,234)</span>
-                <span><b>23</b> Students already enrolled</span>
+                <span><b><?= $enrollment_count ?></b> Students already enrolled</span>
             </div>
 
             <div class="mt-1">
@@ -307,8 +305,8 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <div><i class="fas fa-calendar-alt"></i> Created on <b>June 3, 2024</b></div>
-                    <div><i class="fas fa-globe"></i></i> Language: <b>Pidgin English</b></div>
+                    <div><i class="fas fa-calendar-alt"></i> Created on <b><?= $created_at ?></b></div>
+                    <div><i class="fas fa-globe"></i></i> Language: <b><?= $language ?></b></div>
                     <!-- <div><i class="fas fa-language"></i> Language: <b>Pidgin English</b></div> -->
                 </div>
             </div>
@@ -356,7 +354,7 @@
                     <div class="course-info d-md-none">
                         <div class="font-weight-bold mb-1">Course Features:</div>
                         <div class="lh-sm">
-                            <p><i class="fas fa-clock"></i> 40 Hours</p>
+                            <p><i class="fas fa-clock"></i> <?= $duration ?> Hours</p>
                             <p><i class="fas fa-tv"></i> Live Class and Video Suggestions</p>
                             <p><i class="fas fa-book"></i> 18 Articles</p>
                             <p><i class="fas fa-download"></i> 12 Downloadable Resources</p>
@@ -415,19 +413,17 @@
                         <h2>Meet the Instructor</h2>
                         <div class="d-flex align-items-start">
                             <div class="instructor-section-img">
-                                <img src="../assets/img/animated.jpeg" alt="">
+                                <img src="../assets/img/profile-img.jpg" alt="">
                             </div>
                             <div class="instructor-details">
-                                <a href="instructor.php">
-                                    <h4 style="color: #007bff; font-weight:bold;">Matthew Morris</h4>
+                                <a href="instructor">
+                                    <h4 style="color: #007bff; font-weight:bold;">Mayomi Odewaye</h4>
                                 </a>
-                                <p style="font-size: 16px; font-weight:500;">Senior Web Developer and Educator</p>
+                                <p style="font-size: 16px; font-weight:500;">Software Engineer / Data Analyst / Project Manager</p>
                             </div>
                         </div>
                         <div class="about-instructor mt-4">
-                            <p>With over 10 years of experience in web development and teaching, Matthew Morris brings a
-                                wealth of
-                                knowledge and a passion for coding to this comprehensive JavaScript course.</p>
+                            <p>Mayomi Odewaye is a dynamic and accomplished professional who has made significant contributions to the fields of software engineering, data analysis, and project management. With a strong academic background and practical experience in Python programming, Machine Learning, Web Development, and PHP, Mayomi is passionate about teaching and mentoring aspiring developers. As the founder of KrossCheck, Mayomi is dedicated to providing innovative solutions that enhance the educational experience and streamline academic processes.</p>
                         </div>
                     </div>
                 </div>
