@@ -44,7 +44,7 @@
             <section class="create-edit-course">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="<?= base_url('topic/save') ?>" method="post" enctype="multipart/form-data"
+                        <form action="<?= base_url('admin/topic/save') ?>" method="post" enctype="multipart/form-data"
                             onsubmit="showLoadingSpinner()">
                             <div class="row">
                                 <div class="col-md-4">

@@ -59,7 +59,7 @@
      <?php if (session()->has('message')) : ?>
                                     <?= view('include/message') ?>
                                     <?php endif ?>
-                        <form action="<?= base_url('category/save') ?>" method="post" enctype="multipart/form-data" onsubmit="showLoadingSpinner()">
+                        <form action="<?= base_url('admin/category/save') ?>" method="post" enctype="multipart/form-data" onsubmit="showLoadingSpinner()">
             
                             <div class="form-group">
                                 <label for="categoryName">Category Name</label>
