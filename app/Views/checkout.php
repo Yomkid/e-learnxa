@@ -46,6 +46,7 @@
 
                     <div class="payment-method-container border p-3 my-4">
     <h2>Payment Method</h2>
+    <p>You can pay with Paystack or Flutterwave</p>
     <div class="payment-method">
         <input type="radio" id="paystack" name="paymentMethod" value="paystack" checked>
         <label for="paystack"><img src="./assets/img/paystack-ii.webp" alt="Paystack"></label>
