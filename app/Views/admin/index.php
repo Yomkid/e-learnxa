@@ -152,36 +152,24 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <img src="./assets/img/cplus.jpg" alt="Graphic Design" class=""
-                                                style="width: 50px; height: 50px; margin-right: 10px;">
-                                            Complete Graphic Design Course
-                                        </div>
-                                        <span class="badge badge-primary badge-pill">$3500</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <img src="./assets/img/cplus.jpg" alt="AI Bootcamp" class=""
-                                                style="width: 50px; height: 50px; margin-right: 10px;">
-                                            Artificial Intelligence Bootcamp
-                                        </div>
-                                        <span class="badge badge-primary badge-pill">$1450</span>
-                                    </li>
-
-
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <img src="./assets/img/cplus.jpg" alt="Data Science" class=""
-                                                style="width: 50px; height: 50px; margin-right: 10px;">
-                                            Data Science with Python
-                                        </div>
-                                        <span class="badge badge-primary badge-pill">$2250</span>
-                                    </li>
+                                    <?php if (!empty($topCourses)): ?>
+                                        <?php foreach ($topCourses as $course): ?>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="<?= base_url('assets/img/' . $course['image']) ?>" alt="<?= $course['course_name'] ?>" style="width: 50px; height: 50px; margin-right: 10px;">
+                                                    <?= $course['course_name'] ?>
+                                                </div>
+                                                <span class="badge badge-primary badge-pill">$<?= number_format($course['price'], 2) ?></span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <li class="list-group-item">No courses available.</li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 

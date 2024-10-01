@@ -42,12 +42,16 @@ class Pages extends BaseController
         // Average Purchased (Percentage of users who purchased courses)
         $averagePurchased = $totalUsers > 0 ? ($totalPurchases / $totalUsers) * 100 : 0;
 
+        // Fetch top courses
+        $topCourses = $courseModel->getTopCourses(3); // Fetch top 3 courses
+
         // Passing the data to the view
         return view('admin/index.php', [
             'totalUsers' => $totalUsers,
             'totalCourses' => $totalCourses,
             'averagePurchased' => round($averagePurchased, 2),
-            'salesRevenue' => $salesRevenue
+            'salesRevenue' => $salesRevenue,
+            'topCourses' => $topCourses
         ]);
     }
 
