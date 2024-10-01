@@ -231,12 +231,11 @@
                     <div class="mt-1">
                         <div class="course-instructor d-flex align-items-center">
                             <div class="instructor">
-                                <img src="../assets/img/animated.jpeg" alt="">
+                                <img src="../assets/img/profile-img.jpg" alt="">
                             </div>
                             <div>
                                 Instructor: <span class="hero-section-instructor-name"><a
-                                        href="#instructor-section">Busola
-                                        Fajana</a></span>
+                                        href="#instructor-section">Mayomi Odewaye</a></span>
                             </div>
                         </div>
                         <div class="d-flex mt-2 align-items-center justify-content-between">
