@@ -58,7 +58,7 @@ class CourseModel extends Model
 
     public function getTopCourses($limit = 3)
     {
-        return $this->select('course_name, image, price')
+        return $this->select('course_title, course_image, price')
                     ->orderBy('price', 'DESC') // Adjust sorting as necessary
                     ->findAll($limit);
     }
