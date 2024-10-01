@@ -36,7 +36,8 @@ class Pages extends BaseController
         $totalPurchases = $enrollmentModel->countAll();
 
         // Sales Revenue
-        $salesRevenue = $enrollmentModel->selectSum('amount_paid')->get()->getRow()->amount_paid ?? 0;
+        // $salesRevenue = $enrollmentModel->selectSum('amount_paid')->get()->getRow()->amount_paid ?? 0;
+        $salesRevenue = $userModel->selectSum('amount_paid')->get()->getRow()->amount_paid ?? 0;
 
         // Average Purchased (Percentage of users who purchased courses)
         $averagePurchased = $totalUsers > 0 ? ($totalPurchases / $totalUsers) * 100 : 0;
