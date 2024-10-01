@@ -259,20 +259,14 @@
                 <li class="thumbnail-breadcrumb-item active" aria-current="page">JavaScript</li>
             </ol>
         </nav>
-
-
-        <div class="thumbnail-container" style="background-image: url('/uploads/<?= $course_image ?>');"></div>
-
-
-        <!-- For Video Thumbnail -->
-        <!-- <div class="thumbnail-container video-thumbnail" data-video-id="860473251" data-toggle="modal"
+        <div class="thumbnail-container video-thumbnail" data-video-id="860473251" data-toggle="modal"
             data-target="#videoModal">
             <div class="thumbnail-overlay"></div>
             <div class="play-icon">
                 <i class="fas fa-play-circle" data-toggle="modal" data-target="#videoModal"></i>
             </div>
             <div class="course-review-text text-center">Preview this course</div>
-        </div> -->
+        </div>
 
         <div class="container">
             <!-- Course Title for Mobile -->
@@ -440,20 +434,15 @@
                 <div class="sidebar-course-container">
 
 
-                <!-- Image Thumbnail -->
-                <div class="thumbnail-container" style="background-image: url('/uploads/<?= $course_image ?>');"></div>
-
-
-
-                    <!-- Video Thumbnail and Course Info (It will be used Later) -->
-                    <!-- <div class="thumbnail-container video-thumbnail" data-video-id="860473251" data-toggle="modal"
+                    <!-- Thumbnail and Course Info -->
+                    <div class="thumbnail-container video-thumbnail" data-video-id="860473251" data-toggle="modal"
                         data-target="#videoModal">
                         <div class="thumbnail-overlay"></div>
                         <div class="play-icon">
                             <i class="fas fa-play-circle" data-toggle="modal" data-target="#videoModal"></i>
                         </div>
                         <div class="course-review-text">Click to preview this course</div>
-                    </div> -->
+                    </div>
 
 
                     <div class="sidebar-course-content">
