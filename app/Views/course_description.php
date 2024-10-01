@@ -216,15 +216,16 @@
                         <h1><?= $title ?></h1>
                         <p><?= $tagline ?></p>
                         <div class="course-rating">
-                            <span class="rating">4.5</span>
+                            <span class="rating"><?= esc($rating) ?></span>
                             <span class="rating-stars" style="color: #ffc107;">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
+                                <?php for ($i = 0; $i < floor($rating); $i++) : ?>
+                                    <i class="fa fa-star"></i>
+                                <?php endfor; ?>
+                                <?php if ($rating - floor($rating) > 0) : ?>
+                                    <i class="fa fa-star-half-alt"></i>
+                                <?php endif; ?>
                             </span>
-                            <span class="rating-count">(1,234)</span>
+                            <span class="rating-count">(<?= esc($rating_count) ?>)</span>
                         </div>
                     </div>
                     <div class="mt-1">
@@ -288,16 +289,16 @@
 
             <!-- Course Rating -->
             <div class="course-rating">
-                <span class="rating">4.5</span>
+                <span class="rating"><?= esc($rating) ?></span>
                 <span class="rating-stars" style="color: #ffc107;">
-                    <?php for ($i = 0; $i < floor($course['rating']); $i++) : ?>
+                    <?php for ($i = 0; $i < floor($rating); $i++) : ?>
                         <i class="fa fa-star"></i>
                     <?php endfor; ?>
-                    <?php if ($course['rating'] - floor($course['rating']) > 0) : ?>
+                    <?php if ($rating - floor($rating) > 0) : ?>
                         <i class="fa fa-star-half-alt"></i>
                     <?php endif; ?>
                 </span>
-                <span class="rating-count">(<?= esc($course['rating_count']) ?>)</span>
+                <span class="rating-count">(<?= esc($rating_count) ?>)</span>
                 <span><b><?= $enrollment_count ?></b> Students already enrolled</span>
             </div>
 
