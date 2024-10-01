@@ -12,18 +12,18 @@
     
     <!-- Open Graph tags for social media sharing (Facebook, LinkedIn, etc.) -->
     <meta property="og:title" content="<?= $title ?>">
-    <meta property="og:description" content="<?= $course_description ?>">
+    <meta property="og:description" content="<?= $overview ?>">
     <meta property="og:image" content="<?= $image ?>">
     <meta property="og:type" content="article">
     
     <!-- Twitter Card for social media sharing -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?= $title ?>">
-    <meta name="twitter:description" content="<?= $course_description ?>">
+    <meta name="twitter:description" content="<?= $overview ?>">
     <meta name="twitter:image" content="<?= $image ?>">
     
     <!-- Optional: Keywords for SEO -->
-    <meta name="keywords" content="<?= $course_description ?>">
+    <meta name="keywords" content="<?= $overview ?>">
 
     <!-- Add any other meta tags for specific requirements -->
 
