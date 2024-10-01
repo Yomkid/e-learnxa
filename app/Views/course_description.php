@@ -4,26 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?> | LearnXa</title>
 
+
+    <title><?= $title ?> | LearnXa</title>
 
     <meta name="description" content="<?= $overview ?>">
     <meta name="author" content="<?= $instructor_id ?>">
-    
+
     <!-- Open Graph tags for social media sharing (Facebook, LinkedIn, etc.) -->
     <meta property="og:title" content="<?= $title ?>">
     <meta property="og:description" content="<?= $overview ?>">
     <meta property="og:image" content="<?= $image ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="<?= base_url('course/' . $slug) ?>"> <!-- Include slug here -->
     <meta property="og:type" content="article">
-    
+
     <!-- Twitter Card for social media sharing -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?= $title ?>">
     <meta name="twitter:description" content="<?= $overview ?>">
     <meta name="twitter:image" content="<?= $image ?>">
-    
+    <meta name="twitter:url" content="<?= base_url('course/' . $slug) ?>"> <!-- Include slug here -->
+
     <!-- Optional: Keywords for SEO -->
     <meta name="keywords" content="<?= $overview ?>">
+
 
     <!-- Add any other meta tags for specific requirements -->
 
