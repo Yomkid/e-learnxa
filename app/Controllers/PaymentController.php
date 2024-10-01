@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Users;
 use App\Models\Role;
 use App\Models\CourseEnrollmentModel;
+use App\Models\ActivityModel;
 use CodeIgniter\Controller;
 
 class PaymentController extends Controller
@@ -84,6 +85,8 @@ class PaymentController extends Controller
                 return redirect()->to('generate-invoice')->with('error', 'Failed to insert user data.');
             }
 
+            // Log the registration activity
+            $this->logActivity($inserted, 'User registered successfully.');
 
             // Send confirmation and password emails
             $this->sendConfirmationEmail($userData);
@@ -153,6 +156,19 @@ class PaymentController extends Controller
         }
     }
 
+    private function logActivity($userId, $activity)
+    {
+        $ActivityModel = new ActivityModel();
+
+        $logData = [
+            'user_id' => $userId,
+            'activity_type' => $activity,
+            'ip_address' => $this->request->getIPAddress(),
+            'user_agent' => $this->request->getUserAgent()->getAgentString(),
+        ];
+
+        $ActivityModel->insert($logData);
+    }
 
 
     // public function verifyEnrollmentPayment()

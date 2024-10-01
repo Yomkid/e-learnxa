@@ -8,6 +8,7 @@ use App\Models\TopicsModel;
 use App\Models\CourseModel;
 use App\Models\CourseEnrollmentModel;
 use App\Models\Users;
+use App\Models\ActivityModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Pages extends BaseController
@@ -25,6 +26,7 @@ class Pages extends BaseController
         $userModel = new Users();
         $courseModel = new CourseModel();
         $enrollmentModel = new CourseEnrollmentModel();
+        $activityModel = new ActivityModel(); // Create an instance of the ActivityModel
 
         // Total Learners
         $totalUsers = $userModel->countAll();
@@ -45,14 +47,25 @@ class Pages extends BaseController
         // Fetch top courses
         $topCourses = $courseModel->getTopCourses(3); // Fetch top 3 courses
 
+        // Fetch recent activities
+        $recentActivities = $activityModel->getRecentActivities(5); // Fetch latest 5 activities
+
         // Passing the data to the view
         return view('admin/index.php', [
             'totalUsers' => $totalUsers,
             'totalCourses' => $totalCourses,
             'averagePurchased' => round($averagePurchased, 2),
             'salesRevenue' => $salesRevenue,
-            'topCourses' => $topCourses
+            'topCourses' => $topCourses,
+            'recentActivities' => $recentActivities // Pass recent activities to the view
         ]);
+    }
+
+    // Example method to log an activity
+    public function logActivity($userId, $activityType, $details)
+    {
+        $activityModel = new ActivityModel();
+        $activityModel->addActivity($userId, $activityType, $details);
     }
 
 

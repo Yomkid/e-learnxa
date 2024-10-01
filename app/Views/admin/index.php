@@ -159,7 +159,7 @@
                                                     <img src="<?= base_url('uploads/' . $course['course_image']) ?>" alt="<?= $course['course_title'] ?>" style="width: 50px; height: 50px; margin-right: 10px;">
                                                     <?= $course['course_title'] ?>
                                                 </div>
-                                                <span class="badge badge-primary badge-pill">$<?= number_format($course['price']) ?></span>
+                                                <span class="badge badge-primary badge-pill">₦<?= number_format($course['price']) ?></span>
                                             </li>
                                         <?php endforeach; ?>
                                     <?php else: ?>
@@ -181,19 +181,18 @@
                             <div class="card-body">
                                 <h5 class="card-title">Recent Activity Feed</h5>
                                 <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between">
-                                        <div><strong>User Registration:</strong> John Doe registered.</div>
-                                        <div class="text-muted">1 hour ago</div>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between">
-                                        <div><strong>Test Submission:</strong> Jane Smith submitted Test 123.</div>
-                                        <div class="text-muted">2 hours ago</div>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between">
-                                        <div><strong>Test Submission:</strong> Jane Smith submitted Test 123.</div>
-                                        <div class="text-muted">2 hours ago</div>
-                                    </li>
-                                    <!-- Add more activity entries as needed -->
+                                    <?php if (!empty($recentActivities)): ?>
+                                        <?php foreach ($recentActivities as $activity): ?>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <div>
+                                                    <strong><?= esc($activity['activity_type']) ?>:</strong> <?= esc($activity['details']) ?>
+                                                </div>
+                                                <div class="text-muted"><?= timeAgo($activity['created_at']) ?></div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <li class="list-group-item">No recent activities available.</li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
