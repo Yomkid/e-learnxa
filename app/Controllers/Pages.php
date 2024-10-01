@@ -6,10 +6,53 @@ use App\Controllers\BaseController;
 use App\Models\CategoryModel;
 use App\Models\TopicsModel;
 use App\Models\CourseModel;
+use App\Models\CourseEnrollmentModel;
+use App\Models\Users;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Pages extends BaseController
 {
+
+    // public function Admin()
+    // {
+    //     return view('admin/index.php');
+    // }
+
+
+
+    public function Admin()
+{
+    $userModel = new Users();
+    $courseModel = new CourseModel();
+    $enrollmentModel = new CourseEnrollmentModel();
+
+    // Total Learners
+    $totalUsers = $userModel->countAll();
+
+    // Total Courses
+    $totalCourses = $courseModel->countAll();
+
+    // Total Purchases (Total Enrollments)
+    $totalPurchases = $enrollmentModel->countAll();
+
+    // Sales Revenue
+    $salesRevenue = $enrollmentModel->selectSum('amount_paid')->get()->getRow()->amount_paid;
+
+    // Average Purchased (Percentage of users who purchased courses)
+    $averagePurchased = $totalUsers > 0 ? ($totalPurchases / $totalUsers) * 100 : 0;
+
+    // Passing the data to the view
+    return view('admin/index.php', [
+        'totalUsers' => $totalUsers,
+        'totalCourses' => $totalCourses,
+        'averagePurchased' => round($averagePurchased, 2),
+        'salesRevenue' => $salesRevenue
+    ]);
+}
+
+
+
+
 
     
     public function calendar()
@@ -20,10 +63,10 @@ class Pages extends BaseController
     {
         return view('calend.php');
     }
-    public function Admin()
-    {
-        return view('admin/index.php');
-    }
+
+
+   
+
     public function login()
     {
         return view('login.php');

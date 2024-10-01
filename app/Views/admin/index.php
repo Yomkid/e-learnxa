@@ -58,7 +58,7 @@
                             <div class="card-body d-flex justify-content-between align-items-start">
                                 <div class="card-info">
                                     <h5 class="card-title small">Total Learners</h5>
-                                    <p class="card-text font-weight-400 fs-3">500</p>
+                                    <p class="card-text font-weight-400 fs-3"><?= $totalUsers ?></p>
                                 </div>
                                 <div class="icon-container">
                                     <i class="fas fa-users fa-2x"></i>
@@ -71,7 +71,7 @@
                             <div class="card-body d-flex justify-content-between align-items-start">
                                 <div class="card-info">
                                     <h5 class="card-title small">Total Courses</h5>
-                                    <p class="card-text font-weight-400 fs-3">100</p>
+                                    <p class="card-text font-weight-400 fs-3"><?= $totalCourses ?></p>
                                 </div>
                                 <div class="icon-container">
                                     <i class="fas fa-tasks fa-2x"></i>
@@ -84,7 +84,7 @@
                             <div class="card-body d-flex justify-content-between align-items-start">
                                 <div class="card-info">
                                     <h5 class="card-title small">Average Purchased</h5>
-                                    <p class="card-text font-weight-400 fs-3">85%</p>
+                                    <p class="card-text font-weight-400 fs-3"><?= $averagePurchased ?>%</p>
                                 </div>
                                 <div class="icon-container">
                                     <i class="fas fa-chart-line fa-2x"></i>
@@ -97,7 +97,7 @@
                             <div class="card-body d-flex justify-content-between align-items-start">
                                 <div class="card-info">
                                     <h5 class="card-title small">Sales Revenue</h5>
-                                    <p class="card-text font-weight-400 fs-3">&#x20A6;104,435</p>
+                                    <p class="card-text font-weight-400 fs-3">&#x20A6;<?= number_format($salesRevenue, 2) ?></p>
                                 </div>
                                 <div class="icon-container">
                                     <i class="fas fa-users fa-2x"></i>
@@ -251,13 +251,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
                 <!-- Calendar and Map Section -->
                 <div class="mt-4">
                     <div class="row">
@@ -281,12 +274,10 @@
                 </div>
 
             </section>
+        </div>
     </main>
 
 
-
-
-    </main>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

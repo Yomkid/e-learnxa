@@ -118,33 +118,6 @@ $routes->group('admin', function($routes) {
 
 
 // Admin Routes
-$routes->get('admin/analytics', 'Pages::analyticsAndReports'); //Good
-$routes->get('admin/announcements', 'Pages::Announcements'); //Good 
-$routes->get('admin/backup', 'Pages::backupRestore'); //Good
-$routes->get('admin/course-details', 'Pages::courseDetails');
-$routes->get('admin/course-performance-report', 'Pages::coursePerformanceReport'); //It should be in analytics
-$routes->get('admin/coupon', 'Pages::createAndEditCoupon'); //it should be under products
-$routes->get('admin/category', 'Pages::createAndEditCategory'); //Good it should be under course
-$routes->get('admin/topic', 'Pages::createAndEditTopic');//Good it should be under course
-$routes->get('admin/create-role', 'Pages::createRole'); //It should be under use management
-$routes->get('admin/edit-role', 'Pages::editRole'); //under role (modal)
-$routes->get('admin/createUser', 'Pages::createUser'); //Under usermanagement ***
-$routes->get('admin/editUser', 'Pages::editUser'); //Under User
-$routes->get('admin/emailTemplates', 'Pages::emailTemplates'); //Under announcement
-$routes->get('admin/enrollment-details', 'Pages::enrollmentDetails'); //Under Usermanagement
-$routes->get('admin/enrollment-list', 'Pages::enrollmentList'); //Under Usermanagement
-$routes->get('admin/enrollment-management', 'Pages::enrollmentManagement'); //Under Usermanagement or Enrollment
-$routes->get('admin/enrollment-request', 'Pages::enrollmentRequest'); //Under request
-$routes->get('admin/faq-management', 'Pages::faqManagement'); //faq
-$routes->get('admin/financial-management', 'Pages::financialManagement'); //Good
-$routes->get('admin/financial-report', 'Pages::financialReport'); //Under financial managemet
-$routes->get('admin/general-settings', 'Pages::generalSettings'); //Settings
-$routes->get('admin/instructor-assignment', 'Pages::instructorAssignment'); //Should be under User Management
-$routes->get('admin/integration-settings', 'Pages::integrationSettings'); //Should be under settings
-$routes->get('admin/payment-gateway-setup', 'Pages::paymentGatewaySetup'); //Under Payment Management (Settings)
-$routes->get('admin/transaction-list', 'Pages::transactionList');
-$routes->get('admin/user', 'Pages::user');
-$routes->get('admin/user-rofile', 'Pages::userProfile');
 
 
 
@@ -157,6 +130,35 @@ $routes->get('error', 'AdminController:::error');
 
 $routes->group('admin', function($routes) {
     $routes->get('/', 'Pages::Admin'); //Good
+    
+    $routes->get('analytics', 'Pages::analyticsAndReports'); //Good
+    $routes->get('announcements', 'Pages::Announcements'); //Good 
+    $routes->get('backup', 'Pages::backupRestore'); //Good
+    $routes->get('course-details', 'Pages::courseDetails');
+    $routes->get('course-performance-report', 'Pages::coursePerformanceReport'); //It should be in analytics
+    $routes->get('coupon', 'Pages::createAndEditCoupon'); //it should be under products
+    $routes->get('category', 'Pages::createAndEditCategory'); //Good it should be under course
+    $routes->get('topic', 'Pages::createAndEditTopic');//Good it should be under course
+    $routes->get('create-role', 'Pages::createRole'); //It should be under use management
+    $routes->get('edit-role', 'Pages::editRole'); //under role (modal)
+    $routes->get('createUser', 'Pages::createUser'); //Under usermanagement ***
+    $routes->get('editUser', 'Pages::editUser'); //Under User
+    $routes->get('emailTemplates', 'Pages::emailTemplates'); //Under announcement
+    $routes->get('enrollment-details', 'Pages::enrollmentDetails'); //Under Usermanagement
+    $routes->get('enrollment-list', 'Pages::enrollmentList'); //Under Usermanagement
+    $routes->get('enrollment-management', 'Pages::enrollmentManagement'); //Under Usermanagement or Enrollment
+    $routes->get('enrollment-request', 'Pages::enrollmentRequest'); //Under request
+    $routes->get('faq-management', 'Pages::faqManagement'); //faq
+    $routes->get('financial-management', 'Pages::financialManagement'); //Good
+    $routes->get('financial-report', 'Pages::financialReport'); //Under financial managemet
+    $routes->get('general-settings', 'Pages::generalSettings'); //Settings
+    $routes->get('instructor-assignment', 'Pages::instructorAssignment'); //Should be under User Management
+    $routes->get('integration-settings', 'Pages::integrationSettings'); //Should be under settings
+    $routes->get('payment-gateway-setup', 'Pages::paymentGatewaySetup'); //Under Payment Management (Settings)
+    $routes->get('transaction-list', 'Pages::transactionList');
+    $routes->get('user', 'Pages::user');
+    $routes->get('user-rofile', 'Pages::userProfile');
+
 
 
     $routes->group('course', function($routes) {
