@@ -55,6 +55,14 @@ class CourseModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
+
+    public function getTopCourses($limit = 3)
+    {
+        return $this->select('course_name, image, price')
+                    ->orderBy('price', 'DESC') // Adjust sorting as necessary
+                    ->findAll($limit);
+    }
+
     // Validation
     protected $validationRules      = [
         // 'title' => 'required',
