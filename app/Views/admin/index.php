@@ -157,7 +157,7 @@
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <div class="d-flex align-items-center">
                                                     <img src="<?= base_url('uploads/' . $course['course_image']) ?>" alt="<?= $course['course_title'] ?>" style="width: 50px; height: 50px; margin-right: 10px;">
-                                                    <?= $course['course_name'] ?>
+                                                    <?= $course['course_title'] ?>
                                                 </div>
                                                 <span class="badge badge-primary badge-pill">$<?= number_format($course['price']) ?></span>
                                             </li>
