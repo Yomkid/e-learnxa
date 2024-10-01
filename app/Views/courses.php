@@ -46,7 +46,7 @@
                                         // echo esc($instructor);
                                         ?>
                                     </div>
-                                    <div class="course-price">₦<?= esc($course['price']) ?></div>
+                                    <div class="course-price">₦<?= esc(number_format($course['price'])) ?></div>
                                 </div>
                             </div>
                         </a>

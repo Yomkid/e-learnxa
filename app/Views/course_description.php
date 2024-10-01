@@ -188,15 +188,16 @@
     <div class="course-heading hidden d-md-block">
         <h2 class="coursepage-title"><?= $title ?></h2>
         <div class="course-rating">
-            <span class="rating">4.5</span>
+            <span class="rating"><?= esc($rating) ?></span>
             <span class="rating-stars" style="color: #ffc107;">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-alt"></i>
+                <?php for ($i = 0; $i < floor($rating); $i++) : ?>
+                    <i class="fa fa-star"></i>
+                <?php endfor; ?>
+                <?php if ($rating - floor($rating) > 0) : ?>
+                    <i class="fa fa-star-half-alt"></i>
+                <?php endif; ?>
             </span>
-            <span class="rating-count">(1,234)</span>
+            <span class="rating-count">(<?= esc($rating_count) ?>)</span>
         </div>
     </div>
 
