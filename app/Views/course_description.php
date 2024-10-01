@@ -5,6 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?> | LearnXa</title>
+
+
+    <meta name="description" content="<?= $course_description ?>">
+    <meta name="author" content="<?= $instructor_id ?>">
+    
+    <!-- Open Graph tags for social media sharing (Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="<?= $title ?>">
+    <meta property="og:description" content="<?= $course_description ?>">
+    <meta property="og:image" content="<?= $image ?>">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter Card for social media sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= $title ?>">
+    <meta name="twitter:description" content="<?= $course_description ?>">
+    <meta name="twitter:image" content="<?= $image ?>">
+    
+    <!-- Optional: Keywords for SEO -->
+    <meta name="keywords" content="<?= $course_description ?>">
+
+    <!-- Add any other meta tags for specific requirements -->
+
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
