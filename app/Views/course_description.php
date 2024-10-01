@@ -7,7 +7,7 @@
     <title><?= $title ?> | LearnXa</title>
 
 
-    <meta name="description" content="<?= $course_description ?>">
+    <meta name="description" content="<?= $overview ?>">
     <meta name="author" content="<?= $instructor_id ?>">
     
     <!-- Open Graph tags for social media sharing (Facebook, LinkedIn, etc.) -->
