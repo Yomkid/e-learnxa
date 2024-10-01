@@ -21,34 +21,34 @@ class Pages extends BaseController
 
 
     public function Admin()
-{
-    $userModel = new Users();
-    $courseModel = new CourseModel();
-    $enrollmentModel = new CourseEnrollmentModel();
+    {
+        $userModel = new Users();
+        $courseModel = new CourseModel();
+        $enrollmentModel = new CourseEnrollmentModel();
 
-    // Total Learners
-    $totalUsers = $userModel->countAll();
+        // Total Learners
+        $totalUsers = $userModel->countAll();
 
-    // Total Courses
-    $totalCourses = $courseModel->countAll();
+        // Total Courses
+        $totalCourses = $courseModel->countAll();
 
-    // Total Purchases (Total Enrollments)
-    $totalPurchases = $enrollmentModel->countAll();
+        // Total Purchases (Total Enrollments)
+        $totalPurchases = $enrollmentModel->countAll();
 
-    // Sales Revenue
-    $salesRevenue = $enrollmentModel->selectSum('amount_paid')->get()->getRow()->amount_paid;
+        // Sales Revenue
+        $salesRevenue = $enrollmentModel->selectSum('amount_paid')->get()->getRow()->amount_paid ?? 0;
 
-    // Average Purchased (Percentage of users who purchased courses)
-    $averagePurchased = $totalUsers > 0 ? ($totalPurchases / $totalUsers) * 100 : 0;
+        // Average Purchased (Percentage of users who purchased courses)
+        $averagePurchased = $totalUsers > 0 ? ($totalPurchases / $totalUsers) * 100 : 0;
 
-    // Passing the data to the view
-    return view('admin/index.php', [
-        'totalUsers' => $totalUsers,
-        'totalCourses' => $totalCourses,
-        'averagePurchased' => round($averagePurchased, 2),
-        'salesRevenue' => $salesRevenue
-    ]);
-}
+        // Passing the data to the view
+        return view('admin/index.php', [
+            'totalUsers' => $totalUsers,
+            'totalCourses' => $totalCourses,
+            'averagePurchased' => round($averagePurchased, 2),
+            'salesRevenue' => $salesRevenue
+        ]);
+    }
 
 
 
