@@ -441,7 +441,7 @@
 
 
                 <!-- Image Thumbnail -->
-                <div class="thumbnail-container" style="background-image: url('/uploads/<?= $course_image ?>');"></div>
+                <div class="thumbnail-container" style="background-image: url('/uploads/<?= $image ?>');"></div>
 
 
 
