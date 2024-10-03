@@ -2,19 +2,28 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\ModuleModel;
+use App\Models\LessonModel;
+use App\Models\CourseModel;
+use App\Models\Users;
+use App\Models\VisitorModel;
+
+
 class Home extends BaseController
 {
     public function index(): string
     {
         return view('welcome_message');
     }
-}
+
 
 
 public function webStats()
     {
         $visitorModel = new VisitorModel();
-        $userModel = new UserModel();
+        $userModel = new Users();
 
         // Count total visitors
         $totalVisitors = $visitorModel->countAllResults();
@@ -61,3 +70,5 @@ public function webStats()
             $visitorModel->insertVisitor($visitorData);
         }
     }
+
+}

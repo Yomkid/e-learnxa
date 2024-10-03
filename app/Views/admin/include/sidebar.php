@@ -62,6 +62,12 @@
       </a>
     </li>
     <li>
+      <a href="/admin/users" class="nav-link link-dark">
+        <i class="bi bi-file-earmark-text me-2"></i>
+        User Management
+      </a>
+    </li>
+    <li>
       <a href="/admin/questionbank" class="nav-link link-dark">
         <i class="bi bi-journal-text me-2"></i>
         Question Bank
