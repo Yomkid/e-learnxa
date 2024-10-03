@@ -109,7 +109,7 @@ $routes->group('student', ['namespace' => 'App\Controllers'], function($routes) 
 
 $routes->group('admin', function($routes) {
     $routes->get('dashboard', 'Admin\Dashboard::index');
-    $routes->get('users', 'Admin\Users::index');
+    // $routes->get('users', 'Admin\Users::index');
     $routes->get('courses', 'Admin\Courses::index');
     $routes->get('instructors', 'Admin\Instructors::index');
     $routes->get('settings', 'Admin\Settings::index');
@@ -130,7 +130,7 @@ $routes->get('error', 'AdminController:::error');
 
 $routes->group('admin', function($routes) {
     $routes->get('/', 'Pages::Admin'); //Good
-    
+    $routes->get('users', 'Users::index');
     $routes->get('analytics', 'Pages::analyticsAndReports'); //Good
     $routes->get('announcements', 'Pages::Announcements'); //Good 
     $routes->get('backup', 'Pages::backupRestore'); //Good
