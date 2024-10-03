@@ -187,6 +187,7 @@
                                                 <div>
                                                     <strong><?= esc($activity['activity_type']) ?>:</strong> <?= esc($activity['details']) ?>
                                                 </div>
+
                                                 <div class="text-muted"><?= timeAgo($activity['created_at']) ?></div>
                                             </li>
                                         <?php endforeach; ?>
