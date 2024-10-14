@@ -13,9 +13,9 @@
 <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
 <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 <!-- Custom CSS -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/course.css">
-<link rel="stylesheet" href="/assets/css/home.css">
+<link rel="stylesheet" href="<?= base_url('/assets/css/styles.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('/assets/css/course.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('/assets/css/home.css'); ?>">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
