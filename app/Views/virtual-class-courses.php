@@ -2,19 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Class | LearnXa</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/course.css">
-    <link rel="stylesheet" href="/assets/css/home.css">
+<?php include(APPPATH . 'Views/include/head.php'); ?>
+
+    <title>Virtual Classes | LearnXa</title>
 </head>
 
 <body>
-<?php include(APPPATH . 'Views/include/newNav2.php'); ?>
+    <?php include(APPPATH . 'Views/include/newNav2.php'); ?>
 
     <section id="updates" class="py-5 bg-light">
         <div class=" container d-flex justify-content-between heading bg-light">
@@ -36,16 +30,71 @@
         </div>
     </section>
     <div class="container-fluid mt-4">
-        <h2 class="course-category">Web Development Class</h2>
+        <h2 class="course-category">VIRTUAL CLASSES</h2>
         <div class="row">
+            <?php foreach ($virtualClasses as $virtualClass): ?>
             <div class="col-lg-3 col-md-6 mb-4">
+                <div class="course-card">
+                    <img src="./assets/img/prog-lang-topic-img.jpg" alt="Course Image" />
+                    <div class="card-body">
+                        <h4 class="card-title"><?= esc($virtualClass['virtualclass_name']) ?></h4>
+
+                        <?php
+                                // Convert start and end dates to DateTime objects
+                                $startDate = new DateTime($virtualClass['virtualclass_start_date']);
+                                $endDate = new DateTime($virtualClass['virtualclass_end_date']);
+                                $currentDate = new DateTime(); // Current date
+
+                                // Format the start and end dates
+                                $formattedStartDate = $startDate->format('F j, Y'); // October 11, 2024
+                                $formattedEndDate = $endDate->format('F j, Y');
+
+                                // Calculate the duration in days
+                                $duration = $startDate->diff($endDate)->days;
+
+                                // Determine status
+                                if ($currentDate < $startDate) {
+                                    $status = '<span style="color:orange;">Upcoming!</span>';
+                                } elseif ($currentDate >= $startDate && $currentDate <= $endDate) {
+                                    $status = '<span style="color:green;">Ongoing!</span>';
+                                } else {
+                                    $status = '<span style="color:red;">Ended</span>';
+                                }
+                            ?>
+                        <div class="course-rating">
+                            <span class="rating">4.5</span>
+                            <span class="rating-stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="rating-count">(34 Students Enrolled)</span>
+                        </div>
+                        <div class="rating-count"><strong>Start Date:</strong> <?= esc($formattedStartDate) ?></div>
+                        <div class="rating-count"><strong>End Date:</strong> <?= esc($formattedEndDate) ?></div>
+                        <div class="d-flex justify-content-between">
+                            <span class="rating-count"><strong>Duration:</strong> <?= $duration ?> days</span>
+                            <span class="rating-count"><strong>Status:</strong> <?= $status ?></span>
+                        </div>
+                        <div class="course-instructor">Instructors: OMPPEAK TECHNOLOGY</div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="course-price">₦50,000</div>
+                            <button class="btn btn-primary">Enroll Now!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+
+            <!-- <div class="col-lg-3 col-md-6 mb-4">
                 <div class="course-card">
                     <img src="./assets/img/mobile-app-topic-img.webp" alt="Course Image" />
                     <div class="card-body">
                         <h4 class="card-title">Mobile App Development using Flutter (Complete Course)</h4>
-                        <!-- <p class="card-text">Dive in and learn
-                            React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and
-                            way more!</p> -->
+                        
                         <div class="course-rating">
                             <span class="rating">4.5</span>
                             <span class="rating-stars">
@@ -70,272 +119,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/datasci-topic-img.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Data Science Roadmap - A Complete Course Using Python and Excel</h4>
-                        <!-- <p class="card-text">Brief description of the course content goes here.</p> -->
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="rating-count">Duration: 3 Weeks</span>
-                            <span class="rating-count">Status: <span style="color:red;">Ended!</span></span>
-                        </div>
-                        <div class="course-instructor">Instructor Name</div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="course-price">₦43,900</div>
-                            <button class="btn btn-primary">Enroll Now!</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/webdev-topic-img.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Fullstack Web Development using CodeIgniter (Build 4 Giants Projects)
-                        </h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Instructor Name</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/fund-comp-topic-img.png" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Digital Computer Fundamental with full Hands on Projects</h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Kelvin Prank</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
+            </div> -->
 
-        <h2 class="course-category">Hair Dressing Class</h2>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/dbms-topic-img.png" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">DataBase Management System using SQL, MS-Access, MongoDB and MySQL</h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Alex Iwobi</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/prog-lang-topic-img.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">2024 Complete Introduction to Programming Language</h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Alex Iwobi</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/backend-web-course-img.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Build an Ecommerce Website with PHP from Scratch [Backend Full Course]
-                        </h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Alex Iwobi</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/front-end-web-course-img.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Certificate in FrontEnd Web Development using HTML, CSS, JS and
-                            Frameworks</h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Kolawole John</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <h2 class="course-category">Cake & Pasteries Class</h2>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/web_dev.jpeg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">React - The Complete Guide 2024 (incl. Next.js, Redux)</h4>
-                        <!-- <p class="card-text">Dive in and learn
-                            React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and
-                            way more!</p> -->
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Mayomi Peter</div>
-                        <div class="course-price">₦41,900</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/py4web.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Learn Python Programming for Web Development (In Ten Easy Steps)</h4>
-                        <!-- <p class="card-text">Brief description of the course content goes here.</p> -->
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Instructor Name</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/math.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Mathematics - Numerical Analysis</h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Instructor Name</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="course-card">
-                    <img src="./assets/img/math.jpg" alt="Course Image" />
-                    <div class="card-body">
-                        <h4 class="card-title">Introduction to Object Oriented Programming with C++</h4>
-                        <div class="course-rating">
-                            <span class="rating">4.5</span>
-                            <span class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                            </span>
-                            <span class="rating-count">(1,234)</span>
-                        </div>
-                        <div class="course-instructor">Instructor Name</div>
-                        <div class="course-price">$19.99</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <?php include(APPPATH . 'Views/include/footer1.php'); ?>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <?php include(APPPATH . 'Views/include/js.php'); ?>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         $(document).ready(function () {
             var prevScrollpos = window.pageYOffset;

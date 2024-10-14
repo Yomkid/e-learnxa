@@ -55,7 +55,7 @@ class Home extends BaseController
 
 
         // Pass the fetched courses and virtual classes to the view as a single array
-        return view('welcome_message', [
+        return view('index', [
             'courses' => $courses,
             'virtualClasses' => $virtualClasses,
             'categories' => $categories
