@@ -42,6 +42,159 @@ class CourseModel extends Model
         return $this->findAll();
     }
 
+
+
+    // Method to fetch courses along with category and topic
+    // public function getCoursesWithCategoryAndTopic()
+    // {
+    //     return $this->select('courses.*, topics.topic_name, categories.category_name, categories.category_description, categories.category_image')
+    //         ->join('topics', 'topics.topic_id = courses.topic_id')
+    //         ->join('categories', 'categories.category_id = topics.category_id')
+    //         ->findAll();
+    // }
+
+    // public function getCoursesWithCategories()
+    // {
+    //     return $this->select('courses.*, topics.topic_name, categories.category_name, categories.category_description, categories.category_image')
+    //         ->join('course_topics', 'course_topics.course_id = courses.course_id')
+    //         ->join('topics', 'topics.topic_id = course_topics.topic_id')
+    //         ->join('topic_categories', 'topic_categories.topic_id = topics.topic_id')
+    //         ->join('categories', 'categories.category_id = topic_categories.category_id')
+    //         ->findAll();
+    // }
+
+
+    // public function getCoursesWithCategories()
+    // {
+    //     return $this->select('courses.course_id, courses.course_title, courses.course_image, courses.price, courses.rating, courses.rating_count, courses.slug, instructors.first_name as instructor_name')
+    //     ->distinct()
+    //     ->join('course_topics', 'course_topics.course_id = courses.course_id')
+    //     ->join('topic_categories', 'topic_categories.topic_id = course_topics.topic_id') // Join with topic_categories
+    //     ->join('instructors', 'instructors.instructor_id = courses.instructor_id', 'left') // Assuming there's an instructors table
+    //     ->where('topic_categories.category_id')
+    //     ->findAll();
+    // }
+
+    // In CourseModel.php
+public function getCoursesByCategory($categoryId)
+{
+    return $this->select('courses.course_id, courses.course_title, courses.course_image, courses.price, courses.rating, courses.rating_count, courses.slug, instructors.first_name as instructor_name')
+        ->distinct()
+        ->join('course_topics', 'course_topics.course_id = courses.course_id')
+        ->join('topic_categories', 'topic_categories.topic_id = course_topics.topic_id') // Join with topic_categories
+        ->join('instructors', 'instructors.instructor_id = courses.instructor_id', 'left') // Assuming there's an instructors table
+        ->where('topic_categories.category_id', $categoryId)
+        ->findAll();
+}
+
+
+
+    // public function getCoursesByCategory($categoryId)
+    // {
+    //     return $this->select('courses.*, instructors.first_name, topics.topic_name, categories.category_name, categories.category_description, categories.category_image') // Use the correct column name
+    //         ->join('topics', 'topics.topic_id = course_topics.topic_id')
+    //         ->join('categories', 'categories.category_id = topic_categories.category_id')
+    //         ->join('course_topics', 'course_topics.course_id = courses.course_id')
+    //         ->join('topic_categories', 'topic_categories.topic_id = course_topics.topic_id')
+    //         ->join('instructors', 'instructors.instructor_id = courses.instructor_id') // Adjust if necessary
+    //         ->where('topic_categories.category_id', $categoryId)
+    //         ->findAll();
+    // }
+    
+
+//     public function getCoursesWithCategories()
+// {
+//     // Fetch all courses with their associated topics and categories
+//     $results = $this->select('courses.*, topics.topic_name, categories.category_id, categories.category_name, categories.category_description, categories.category_image')
+//         ->join('course_topics', 'course_topics.course_id = courses.course_id')
+//         ->join('topics', 'topics.topic_id = course_topics.topic_id')
+//         ->join('topic_categories', 'topic_categories.topic_id = topics.topic_id')
+//         ->join('categories', 'categories.category_id = topic_categories.category_id')
+//         ->findAll();
+
+//     // Initialize an array to hold the structured data
+//     $coursesByCategory = [];
+
+//     // Iterate through the results and group courses by category
+//     foreach ($results as $course) {
+//         // Get the category ID and name
+//         $categoryId = $course['category_id'];
+//         $categoryName = $course['category_name'];
+
+//         // Create a category entry if it doesn't exist
+//         if (!isset($coursesByCategory[$categoryId])) {
+//             $coursesByCategory[$categoryId] = [
+//                 'category_name' => $categoryName,
+//                 'courses' => []
+//             ];
+//         }
+
+//         // Append the course to the category's course list
+//         $coursesByCategory[$categoryId]['courses'][] = [
+//             'course_id' => $course['course_id'],
+//             'course_title' => $course['course_title'],
+//             'topic_name' => $course['topic_name'],
+//             'category_description' => $course['category_description'],
+//             'category_image' => $course['category_image'],
+//             // Add other course fields as necessary
+//         ];
+//     }
+
+//     return $coursesByCategory;
+// }
+
+
+
+// Method to fetch courses with their topics and categories
+// public function getCoursesWithCategories()
+// {
+//     return $this->select('courses.*, topics.topic_name, categories.category_name, categories.category_description, categories.category_image')
+//         ->join('course_topics', 'course_topics.course_id = courses.course_id')
+//         ->join('topics', 'topics.topic_id = course_topics.topic_id')
+//         ->join('topic_categories', 'topic_categories.topic_id = topics.topic_id')
+//         ->join('categories', 'categories.category_id = topic_categories.category_id')
+//         ->findAll();
+// }
+
+
+
+public function getCoursesByTopics()
+{
+    // Fetch courses along with their associated topics
+    return $this->select('courses.*, topics.topic_name')
+        ->join('course_topics', 'course_topics.course_id = courses.course_id')
+        ->join('topics', 'topics.topic_id = course_topics.topic_id')
+        ->findAll();
+}
+
+
+public function getCoursesByCategories()
+{
+    // Fetch courses along with their associated categories
+    return $this->select('courses.*, categories.category_name')
+        ->join('course_topics', 'course_topics.course_id = courses.course_id')
+        ->join('topics', 'topics.topic_id = course_topics.topic_id')
+        ->join('topic_categories', 'topic_categories.topic_id = topics.topic_id')
+        ->join('categories', 'categories.category_id = topic_categories.category_id')
+        ->findAll();
+}
+
+
+public function getCoursesByInstructors()
+{
+    // Fetch courses along with their associated instructors
+    return $this->select('courses.*, instructors.name as instructor_name')
+        ->join('course_topics', 'course_topics.course_id = courses.course_id')
+        ->join('instructors', 'instructors.id = courses.instructor_id') // Adjust this join based on your instructor table
+        ->findAll();
+}
+
+
+
+
+
+
+
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 
@@ -54,14 +207,6 @@ class CourseModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
-
-
-    public function getTopCourses($limit = 3)
-    {
-        return $this->select('course_title, course_image, price')
-                    ->orderBy('price', 'DESC') // Adjust sorting as necessary
-                    ->findAll($limit);
-    }
 
     // Validation
     protected $validationRules      = [
