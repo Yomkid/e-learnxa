@@ -5,19 +5,14 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CourseModel;
 use App\Models\CourseTopicModel;
-use App\Models\CategoryModel;
-use CodeIgniter\API\ResponseTrait;
+use App\Models\TopicsModel;
+use App\Models\CourseEnrollmentModel;
+use App\Models\ModuleModel;
+use App\Models\QuizModel;
 use DateTime;
 
 class CourseController extends BaseController
 {
-
-    protected $categoryModel;
-
-    public function __construct()
-    {
-        $this->categoryModel = new CategoryModel();
-    }
 
     public function index()
     {
@@ -25,6 +20,7 @@ class CourseController extends BaseController
         $data['courses'] = $courseModel->getCourses();
         echo view('courses', $data);
     }
+
 
     public function description($slug)
     {
@@ -103,6 +99,26 @@ class CourseController extends BaseController
 
         // Redirect to checkout page
         return redirect()->to('/checkout');
+    }
+
+
+
+
+    public function createAndEditCourse()
+    {
+        $courseModel = new courseModel();
+        $courses = $courseModel->findAll();
+
+        $topicModel = new TopicsModel();
+        $topics = $topicModel->findAll();
+
+        $data = [
+            'topics' => $topics,
+            'courses' => $courses,
+        ];
+
+        // return view('create_course', $data);
+        return view('admin/courses/index', $data);
     }
 
 
@@ -268,7 +284,6 @@ class CourseController extends BaseController
         }
     }
 
-
     public function deleteCourse($id)
     {
         $courseModel = new CourseModel();
@@ -281,54 +296,6 @@ class CourseController extends BaseController
         ->with('message', $successMessage);
     }
 
-    use ResponseTrait; // To use the JSON response helper
-
-    public function getCoursesWithCategories()
-    {
-        $categories = $this->categoryModel->getAllCategories();
-        return $this->response->setJSON($categories);
-    }
-
-
-    // In CourseController.php
-public function getCoursesByCategory($categoryId)
-{
-    $courseModel = new CourseModel();
-    $courses = $courseModel->getCoursesByCategory($categoryId);
-
-    if (!empty($courses)) {
-        return $this->respond($courses); // Return the courses as JSON
-    } else {
-        return $this->failNotFound('No courses found for this category');
-    }
-}
-
-
-    
-
-
-
-public function getCoursesByTopics()
-{
-    $courseModel = new CourseModel();
-    $courses = $courseModel->getCoursesByTopics();
-    return $this->response->setJSON($courses);
-}
-
-public function getCoursesByCategories()
-{
-    $courseModel = new CourseModel();
-    $courses = $courseModel->getCoursesByCategories();
-    return $this->response->setJSON($courses);
-}
-
-public function getCoursesByInstructors()
-{
-    $courseModel = new CourseModel();
-    $courses = $courseModel->getCoursesByInstructors();
-    return $this->response->setJSON($courses);
-}
-
-
+   
 
 }
