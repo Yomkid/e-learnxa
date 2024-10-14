@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 
 
 
- $routes->get('/', 'Launch::index');
+ $routes->get('/LAUNCH', 'Launch::index');
 
  $routes->get('/send-notifications', 'NotificationController::sendNotifications');
  
@@ -56,7 +56,7 @@ $routes->get('about', 'Pages::aboutUs');
 
 
 // General Route for the webpage
-$routes->get('/XXXXX', 'Home::index');
+$routes->get('/', 'Home::index');
 $routes->get('become-teacher', 'Pages::becomeTeacher');
 $routes->get('category', 'Pages::category');
 // $routes->get('course-description', 'Pages::courseDescription');
