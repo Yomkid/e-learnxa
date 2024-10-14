@@ -51,18 +51,13 @@ $routes->get('about', 'Pages::aboutUs');
 
 
 
-
-
-
-
 // General Route for the webpage
 $routes->get('/', 'Home::index');
 $routes->get('become-teacher', 'Pages::becomeTeacher');
 $routes->get('category', 'Pages::category');
-// $routes->get('course-description', 'Pages::courseDescription');
 $routes->get('virtual-courses', 'Pages::virtualClassCourses');
 $routes->get('instructor', 'Pages::instructor');
-$routes->get('XXXloginXXX', 'Pages::login');
+$routes->get('login', 'Pages::login');
 $routes->get('generate-invoice', 'AuthReg::generateInvoice');
 $routes->get('invoice', 'AuthReg::Invoice'); // Use POST for form submission
 $routes->get('acknowledgement-slip', 'AuthReg::acknowledgementSlip');
@@ -71,10 +66,8 @@ $routes->get('email-test', 'EmailTest::index');
 $routes->get('calendar', 'Pages::calendar');
 $routes->get('calend', 'Pages::calendarR');
 $routes->get('verify-payment', 'PaymentController::verifyPayment');
-// $routes->get('courses', 'Pages::courses');
 $routes->get('courses', 'CourseController::index');
 $routes->get('course/(:segment)', 'CourseController::description/$1'); // View course details by slug
-// $routes->get('checkout', 'Pages::courseCheckout');
 $routes->get('enroll/(:num)', 'CourseController::enroll/$1');
 $routes->get('checkout', 'CheckoutController::index');
 

@@ -19,7 +19,7 @@
                 <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                     <div class="col-lg-5 col-10 col-sm-8">
                         <img src="./assets/img/happyman.webp" class="d-block mx-lg-auto img-fluid"
-                            alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                            alt="LearnXa Hero Image" width="700" height="500" loading="lazy">
                     </div>
                     <div class="col-lg-7">
                         <h1 class="display-5 fwt-bold text-body-emphasis lh-1 mb-3 text-responsive">
@@ -66,22 +66,7 @@
                             class="fas fa-angle-left"></i></button>
                     <div class="button-container">
                         <div class="button-flex" id="buttonScrollContainer">
-                            <!-- <button type="button" class="btn btn-custom active" data-category="data-analyst"
-                                onclick="showCourses('data-analyst', this)">Data Analyst</button>
-                            <button type="button" class="btn btn-custom" data-category="python"
-                                onclick="showCourses('python', this)">Python</button>
-                            <button type="button" class="btn btn-custom" data-category="web-development"
-                                onclick="showCourses('web-development', this)">Web Development</button>
-                            <button type="button" class="btn btn-custom" data-category="past-question"
-                                onclick="showCourses('past-question', this)">Past Question</button>
-                            <button type="button" class="btn btn-custom" data-category="advertisement"
-                                onclick="showCourses('advertisement', this)">Advertisement</button>
-                            <button type="button" class="btn btn-custom" data-category="career-courses"
-                                onclick="showCourses('career-courses', this)">Career Courses</button>
-                            <button type="button" class="btn btn-custom" data-category="skills"
-                                onclick="showCourses('skills', this)">Skills</button>
-                            <button type="button" class="btn btn-custom" data-category="technology"
-                                onclick="showCourses('technology', this)">Technology</button> -->
+                           
                         </div>
                     </div>
                     <button class="scroll-button d-flex" onclick="scrollButtons(200)"><i
@@ -274,135 +259,6 @@
                     }
                 });
 
-
-                // // Fetch and render categories
-                // fetch('/api/categories') // Adjust the endpoint as necessary
-                //     .then(response => response.json())
-                //     .then(categories => {
-                //         const buttonContainer = document.getElementById('buttonScrollContainer');
-
-                //         // Reset the container before rendering
-                //         buttonContainer.innerHTML = '';
-
-                //         // Create category buttons dynamically
-                //         categories.forEach((category, index) => {
-                //             const categoryButton = document.createElement('button');
-                //             categoryButton.type = 'button';
-                //             categoryButton.className = 'btn btn-custom';
-                //             categoryButton.dataset.category = category
-                //             .category_name; // Use the category name for data-category
-                //             categoryButton.onclick = function () {
-                //                 showCourses(category.category_id, this);
-                //             };
-                //             categoryButton.textContent = category.category_name;
-                //             buttonContainer.appendChild(categoryButton);
-
-                //             // Automatically activate the first category button and load its courses
-                //             if (index === 0) {
-                //                 categoryButton.classList.add('active'); // Set the first button as active
-                //                 showCourses(category.category_id,
-                //                 categoryButton); // Load courses for the first category
-                //             }
-                //         });
-                //     })
-                //     .catch(error => {
-                //         console.error('There was a problem with the fetch operation:', error);
-                //     });
-
-                // // Function to show courses based on the clicked category
-                // function showCourses(categoryId, element) {
-                //     const coursesContainer = document.getElementById('coursesContainer');
-                //     const categoryHeader = document.getElementById('categoryHeader');
-                //     coursesContainer.innerHTML = '';
-                //     // Remove 'active' class from all buttons
-                //     const buttons = document.querySelectorAll('.btn-custom');
-                //     buttons.forEach(btn => btn.classList.remove('active'));
-
-                //     // Add 'active' class to the clicked button
-                //     element.classList.add('active');
-
-                //     // Fetch courses for the selected category
-                //     fetch(`/api/courses/category/${categoryId}`) // Adjust the endpoint as necessary
-                //         .then(response => response.json())
-                //         .then(courses => {
-                //             if (courses.length === 0) {
-                //                 coursesContainer.innerHTML = '<p>No courses available for this category.</p>';
-                //                 return;
-                //             }
-
-                //             // Render courses for the selected category
-                //             courses.forEach(course => {
-                //                 const card = document.createElement('div');
-                //                 card.className = 'course-card-homepage';
-
-                //                 const img = document.createElement('img');
-                //                 let courseImage = course.course_image ? `uploads/${course.course_image}` :
-                //                     'default-image.jpg';
-                //                 img.src = courseImage;
-                //                 img.alt = course.course_title;
-                //                 card.appendChild(img);
-
-                //                 const cardBody = document.createElement('div');
-                //                 cardBody.className = 'card-body';
-
-                //                 const title = document.createElement('h4');
-                //                 title.className = 'card-title';
-                //                 title.textContent = course.course_title;
-                //                 cardBody.appendChild(title);
-
-                //                 const ratingContainer = document.createElement('div');
-                //                 ratingContainer.className = 'course-rating';
-
-                //                 const rating = document.createElement('span');
-                //                 rating.className = 'rating';
-                //                 rating.textContent = course.course_rating;
-                //                 ratingContainer.appendChild(rating);
-
-                //                 const ratingStars = document.createElement('span');
-                //                 ratingStars.className = 'rating-stars';
-                //                 for (let i = 0; i < 5; i++) {
-                //                     const star = document.createElement('i');
-                //                     star.className = i < Math.floor(course.course_rating) ? 'fa fa-star' :
-                //                         'fa fa-star-half-alt';
-                //                     ratingStars.appendChild(star);
-                //                 }
-                //                 ratingContainer.appendChild(ratingStars);
-
-                //                 const ratingCount = document.createElement('span');
-                //                 ratingCount.className = 'rating-count';
-                //                 ratingCount.textContent = `(${course.rating_count})`;
-                //                 ratingContainer.appendChild(ratingCount);
-
-                //                 cardBody.appendChild(ratingContainer);
-
-                //                 const instructor = document.createElement('div');
-                //                 instructor.className = 'course-instructor';
-                //                 instructor.textContent = course.instructor_id;
-                //                 cardBody.appendChild(instructor);
-
-                //                 const price = document.createElement('div');
-                //                 price.className = 'course-price';
-
-                //                 // Format the price as a natural number with Naira currency
-                //                 const formattedPrice = new Intl.NumberFormat('en-NG', {
-                //                     style: 'currency',
-                //                     currency: 'NGN',
-                //                     maximumFractionDigits: 0
-                //                 }).format(course.price);
-
-                //                 price.textContent = formattedPrice;
-                //                 cardBody.appendChild(price);
-
-                //                 card.appendChild(cardBody);
-                //                 coursesContainer.appendChild(card);
-                //             });
-                //         })
-                //         .catch(error => {
-                //             console.error('Error fetching courses for category:', error);
-                //             coursesContainer.innerHTML =
-                //                 '<p>There was an error loading courses. Please try again later.</p>';
-                //         });
-                // }
 
 
                 // Optional: Scroll buttons functionality

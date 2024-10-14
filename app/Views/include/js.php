@@ -51,17 +51,13 @@
         });
 
 
-
-
-
-
         document.querySelectorAll('.scroll-btn').forEach(button => {
                 button.addEventListener('click', function () {
                         const scrollSection = document.querySelector('.' + this
                                 .getAttribute(
                                         'data-scroll-target'));
                         const scrollAmount =
-                        300; // Adjust the amount of scroll per button press
+                                300; // Adjust the amount of scroll per button press
 
                         if (this.classList.contains('left-scroll')) {
                                 scrollSection.scrollBy({
@@ -78,8 +74,6 @@
         });
 
 
-
-        // Select all scrollable sections on the page
         // Select all scrollable sections on the page
         const scrollableSections = document.querySelectorAll('.scrollable-section-container');
 
@@ -132,47 +126,4 @@
                 rightScrollBtn.addEventListener('click', checkScroll);
                 leftScrollBtn.addEventListener('click', checkScroll);
         });
-
-
-
-
-
-        // For SubNav Design on scroll
-        // $(document).ready(function () {
-        //         var prevScrollpos = window.pageYOffset;
-        //         var navbar = document.querySelector('.navbar');
-        //         var heading = document.querySelector('.heading');
-        //         var logo = document.querySelector('.heading .nav-logo');
-
-        //         // Function to handle the scroll event
-        //         function handleScroll() {
-        //                 var currentScrollPos = window.pageYOffset;
-
-        //                 // Show or hide the logo based on the scroll position
-        //                 if (prevScrollpos > currentScrollPos) {
-        //                         navbar.style.top = "0";
-        //                         heading.style.left = "0";
-        //                 } else {
-        //                         navbar.style.top = "-80px";
-        //                 }
-
-        //                 if (currentScrollPos > 0) {
-        //                         logo.style.display = "inline-block";
-        //                 } else {
-        //                         logo.style.display = "none";
-        //                         navbar.style.top = "0";
-        //                 }
-
-        //                 prevScrollpos = currentScrollPos;
-        //         }
-
-        //         // Attach the scroll event listener
-        //         window.addEventListener('scroll', handleScroll);
-
-        //         // Initial state
-        //         logo.style.display = "none";
-        // });
-        
 </script>
-
-       
