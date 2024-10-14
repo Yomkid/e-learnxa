@@ -2,27 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Login | LearnXa</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet"> -->
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/packages/bootstrap/bootstrap.main.min.css">
-    <link rel="stylesheet" href="/assets/css/course.css">
+    <?php include(APPPATH . 'Views/include/head.php'); ?>
+<style>
+    .input-group-text {
+            cursor: pointer;
+        }
+</style>
 </head>
 
 <body>
-    <?php //include "./include/newNav2.php"; ?>
-
-
-    <div class="form-wrapper">
+      <div class="form-wrapper">
         <div class="">
             <div class="container">
                 <div class="form-header mb-3 d-flex justify-content-between align-items-center">
@@ -60,13 +51,23 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputPassword4" class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" id="password">
+                                        <div class="input-group">
+                                        <input type="password" class="form-control" name="password" id="password" required
+                                        aria-required="true">
+                                        <span class="input-group-text" id="togglePassword"
+                                        aria-label="Toggle password visibility">
+                                        <i class="material-icons">visibility</i>
+                                </div>
+                                    </span>
                                     </div>
+                                    <?php if ($redirect = service('request')->getGet('redirect')): ?>
+                            <input type="hidden" name="redirect" value="<?= esc($redirect); ?>">
+                            <?php endif; ?>
                                     <button type="submit" class="enroll-btn mb-3">Login</button>
                                     <div>Don't have an account yet? <span style="color: #007bff;"><a
-                                                href="generate-invoice">Register</a></span></div>
+                                                href="generate-invoice.php">Register</a></span></div>
                                     <div>Forgot Password? <span style="color: #007bff;"><a
-                                                href="#forgot-password">Reset</a></span></div>
+                                                href="forgot-password.php">Reset</a></span></div>
                                 </form>
 
                             </div>
@@ -86,7 +87,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-
+// Toggle password visibility
+$('#togglePassword').on('click', function () {
+                var passwordInput = $('#password');
+                var icon = $(this).find('i');
+                if (passwordInput.attr('type') === 'password') {
+                    passwordInput.attr('type', 'text');
+                    icon.text('visibility_off');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    icon.text('visibility');
+                }
+            });
     </script>
 </body>
 

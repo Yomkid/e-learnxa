@@ -44,6 +44,13 @@ class AuthReg extends Controller
                 'isLoggedIn' => true,
             ]);
 
+            $redirectURL = $this->request->getPost('redirect');
+
+            // Validate the redirect URL
+            if ($redirectURL && filter_var($redirectURL, FILTER_VALIDATE_URL) && strpos($redirectURL, base_url()) === 0) {
+                return redirect()->to($redirectURL);
+            }
+            
             // Redirect based on role_id
             switch ($user['role_id']) {
                 case 1: // Assuming 1 is for 'admin'

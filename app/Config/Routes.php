@@ -21,6 +21,39 @@ $routes->get('/stats', 'Home::webStats');
 
 
 
+// NewChange
+$routes->get('/courses/getCoursesWithCategories', 'CourseController::getCoursesWithCategories');
+$routes->get('/courses/getCoursesByCategory/(:num)', 'CourseController::getCoursesByCategory/$1');
+
+
+
+$routes->get('/api/courses/category/(:num)', 'CourseController::getCoursesByCategory/$1');
+// $routes->get('/api/courses/category/(:any)', 'CourseController::getCoursesByCategory/$1');
+$routes->get('/api/categories', 'CategoryController::getAllCategories'); // Assuming this endpoint exists
+
+
+
+
+$routes->get('/courses/getCoursesByTopics', 'CourseController::getCoursesByTopics');
+$routes->get('/courses/getCoursesByCategories', 'CourseController::getCoursesByCategories');
+$routes->get('/courses/getCoursesByInstructors', 'CourseController::getCoursesByInstructors');
+$routes->get('/categories/getAll', 'CategoryController::getAllCategories');
+
+$routes->get('/category/(:any)', 'CategoryController::viewCategory/$1');
+
+
+// In CodeIgniter or Laravel (Routes/web.php)
+$routes->get('/api/categories-courses', 'CategoryController::getCategoriesWithCourses');
+$routes->get('about', 'Pages::aboutUs');
+
+
+
+
+
+
+
+
+
 
 // General Route for the webpage
 $routes->get('/XXXXX', 'Home::index');

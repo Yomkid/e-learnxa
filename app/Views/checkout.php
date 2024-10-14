@@ -57,21 +57,6 @@
 </div>
 
 
-                    <!-- <div class="payment-method-container border p-3 my-4">
-                        <h2>Payment Method</h2>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paymentMethod" id="paystack" value="paystack" checked>
-                            <label class="form-check-label" for="paystack">
-                                <img src="./assets/img/paystack-ii.webp" alt="Paystack">
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paymentMethod" id="flutterwave" value="flutterwave">
-                            <label class="form-check-label" for="flutterwave">
-                                <img src="./assets/img/flutterwave-logo.webp" alt="Flutterwave">
-                            </label>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -101,9 +86,14 @@
                         </div>
                         <p>By proceeding to make payment you agree to these <span style="color: #007bff;">Terms of
                                 Service.</span></p>
+                                <?php $session = session(); ?>
+            <?php if ($session->get('isLoggedIn')) : ?>
                         <button id="proceedToPayBtn" class="enroll-btn" onclick="payWithPaystack()">Proceed to Pay with Paystack</button>
                         <button class="fixed-bottom enroll-btn d-block d-md-none">Proceed to Pay ₦<?= number_format($coursePrice) ?></button>
-                        <p class="mt-5" style="font-size:12px">If you encountered any issue during the payment, kindly contact the Technical Support Desk. <br><strong>Tel:</strong> 08149594986 <br> <strong>Email:</strong> support@learnxa.com</p>
+                        <?php else : ?>
+                            <a href="<?= base_url('login?redirect=' . current_url()); ?>" ><button class="btn btn-outline-blue enroll-btn"><i class="fas fa-user"></i> Login before Enrollment</button></a>
+
+            <?php endif; ?>                        <p class="mt-5" style="font-size:12px">If you encountered any issue during the payment, kindly contact the Technical Support Desk. <br><strong>Tel:</strong> 08149594986 <br> <strong>Email:</strong> support@learnxa.com</p>
                     </div>
                 </div>
             </div>

@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses | LearnXa</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/course.css">
+    <?php include(APPPATH . 'Views/include/head.php'); ?>
 </head>
 <body>
-    <?php include(APPPATH . 'Views/include/newNav2.php'); ?>
+    <?php include(APPPATH . 'Views/include/navbar.php'); ?>
     <div class="container-fluid mt-0">
         <div class="d-flex justify-content-between heading mt-4">
             <a class="navbar-brand nav-logo" href="#">Learn<span style="color: #007bff;">X</span>a</a>
