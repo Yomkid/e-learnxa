@@ -128,7 +128,7 @@ class AuthReg extends Controller
         }
 
         // Load the dashboard view
-        return view('student');
+        return view('student/index');
     }
 
     public function acknowledgementSlip()
