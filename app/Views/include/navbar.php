@@ -60,7 +60,7 @@
                     <i class="fas fa-user"></i> Profile
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="profile">Dashboard</a>
+                    <a class="dropdown-item" href="/student">Dashboard</a>
                     <a class="dropdown-item" href="#">Settings</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a>
