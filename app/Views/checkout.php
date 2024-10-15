@@ -2,26 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | LearnXa</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/assets/css/course.css">
-    <link rel="stylesheet" href="/assets/css/home.css">
-    <style>
-
-    </style>
+    <?php include(APPPATH . 'Views/include/head.php'); ?>
 </head>
 
 <body>
-<?php include(APPPATH . 'Views/include/newNav2.php'); ?>
+<?php include(APPPATH . 'Views/include/navbar.php'); ?>
 
     <div class="row">
         <div class="col-lg-7 col-md-6 ">
@@ -103,11 +90,8 @@
     <?php include(APPPATH . 'Views/include/footer1.php'); ?>
 
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <?php include(APPPATH . 'Views/include/js.php'); ?>
+
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
 
