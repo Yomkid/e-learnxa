@@ -39,8 +39,9 @@
                                 <div class="col-md-6 profile-hero-text pt-3 pl-5">
                                     <!-- <div class="profile-hero-text"> -->
                                     <div class="text-white">
-                                        <p>May 30, 2024</p>
+                                        <p><?= date('F d, Y'); ?></p>
                                     </div>
+
                                     <div>
                                         <h5 class="fw-bolder" style="font-weight: bold; font-size: 24px;">Welcome
                                             back,

@@ -128,6 +128,7 @@ $routes->group('student', ['namespace' => 'App\Controllers'], function($routes) 
     $routes->get('assignments', 'Student\Assignments::index');
     $routes->get('assignments/(:num)', 'Student\Assignments::details/$1');
     $routes->get('profile', 'Student\Profile::index');
+    $routes->get('logout', 'AuthReg::logout');
 });
 
 

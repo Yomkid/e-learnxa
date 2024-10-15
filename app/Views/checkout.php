@@ -116,7 +116,7 @@
         function payWithPaystack() {
             var handler = PaystackPop.setup({
                 key: 'pk_test_18bd358872baeae63db2133cc291cd2e92df0015', // Replace with your Paystack public key
-                email: 'odewayemayomi@gmail.com', // Replace with user's email
+                email: '<?= session()->get('email'); ?>', // Replace with user's email
                 amount: <?= session()->get('course_data')['price'] * 100; ?>, // Amount in kobo
                 currency: 'NGN',
                 ref: '<?= uniqid('trx_'); ?>', // Generate a unique transaction reference
@@ -146,7 +146,7 @@
                     consumer_id: '<?= $courseId ?>'
                 },
                 customer: {
-                    email: "odewayemayomi@gmail.com",
+                    email: '<?= session()->get('email'); ?>',
                 },
                 onclose: function() {
                     alert('Payment process was not completed.');
