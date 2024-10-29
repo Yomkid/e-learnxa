@@ -97,11 +97,10 @@
         </div>
     </div>
 
-    <?php include(APPPATH . 'Views/include/footer.php'); ?>
+    <?php include(APPPATH . 'Views/include/footer1.php'); ?>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <?php include(APPPATH . 'Views/include/js.php'); ?>
+
 
     <script>
         $(document).ready(function () {

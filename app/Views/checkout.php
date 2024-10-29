@@ -89,11 +89,11 @@
 
     <?php include(APPPATH . 'Views/include/footer1.php'); ?>
 
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
 
     <?php include(APPPATH . 'Views/include/js.php'); ?>
 
-    <script src="https://js.paystack.co/v1/inline.js"></script>
-    <script src="https://checkout.flutterwave.com/v3.js"></script>
 
     <script>
         // Function to handle Paystack payment

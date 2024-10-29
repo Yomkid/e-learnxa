@@ -45,4 +45,10 @@ class ModuleModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getModulesByCourseId($courseId)
+{
+    return $this->where('course_id', $courseId)->findAll();
+}
+
 }

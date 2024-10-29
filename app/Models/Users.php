@@ -34,6 +34,7 @@ class Users extends Model
         'address',
         'created_at',
         'updated_at',
+        'last_login_date' 
     ];
 
     protected $useTimestamps = true; // Enable automatic timestamps

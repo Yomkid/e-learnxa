@@ -52,13 +52,8 @@
         </div>
     </div>
     <?php include(APPPATH . 'Views/include/footer1.php'); ?>
+    <?php include(APPPATH . 'Views/include/js.php'); ?>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         $(document).ready(function () {
             var prevScrollpos = window.pageYOffset;

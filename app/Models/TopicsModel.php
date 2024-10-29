@@ -17,6 +17,23 @@ class TopicsModel extends Model
         'category_id'
     ];
 
+
+
+    public function getCoursesByTopic($topicId)
+    {
+        return $this->db->table('courses')
+            ->distinct() // Ensure unique results
+            ->select('courses.course_id, courses.course_title, courses.course_image, courses.price, courses.rating, courses.rating_count, instructors.first_name as instructor_name')
+            ->join('course_topics', 'course_topics.course_id = courses.course_id')
+            ->join('topics', 'topics.topic_id = course_topics.topic_id') // Join with topics
+            ->join('instructors', 'instructors.instructor_id = courses.instructor_id', 'left') // Join with instructors
+            ->where('topics.topic_id', $topicId) // Filter on topic
+            ->get()->getResult();
+    }
+    
+
+
+
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 

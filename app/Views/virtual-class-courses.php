@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <?php include(APPPATH . 'Views/include/newNav2.php'); ?>
+    <?php include(APPPATH . 'Views/include/navbar.php'); ?>
 
     <section id="updates" class="py-5 bg-light">
         <div class=" container d-flex justify-content-between heading bg-light">

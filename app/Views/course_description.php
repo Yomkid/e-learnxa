@@ -8,17 +8,20 @@
 
     <title><?= $title ?> | LearnXa</title>
 
-    <meta name="description" content="<?= $overview ?>">
-    <meta name="author" content="<?= $instructor_id ?>">
+    
 
+   
     <!-- Open Graph tags for social media sharing (Facebook, LinkedIn, etc.) -->
     <meta property="og:title" content="<?= $title ?>">
     <meta property="og:description" content="<?= $overview ?>">
-    <meta property="og:image" content="<?= $image ?>">
+    <meta property="og:image" content="<?= base_url('uploads/' . $image) ?>">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="<?= base_url('course/' . $slug) ?>"> <!-- Include slug here -->
     <meta property="og:type" content="article">
+    <meta name="description" content="<?= $overview ?>">
+    <meta name="author" content="Odewaye Mayomi">
+
 
     <!-- Twitter Card for social media sharing -->
     <meta name="twitter:card" content="summary_large_image">
@@ -212,7 +215,8 @@
 </head>
 
 <body>
-    <?php include(APPPATH . 'Views/include/newNav2.php'); ?>
+<?php include(APPPATH . 'Views/include/navbar.php'); ?>
+
     <div class="course-heading hidden d-md-block">
         <h2 class="coursepage-title"><?= $title ?></h2>
         <div class="course-rating">
@@ -453,7 +457,7 @@
                                 <img src="../assets/img/profile-img.jpg" alt="">
                             </div>
                             <div class="instructor-details">
-                                <a href="instructor">
+                                <a href="<?= base_url('/instructor'); ?>">
                                     <h4 style="color: #007bff; font-weight:bold;">Mayomi Odewaye</h4>
                                 </a>
                                 <p style="font-size: 16px; font-weight:500;">Software Engineer / Data Analyst / Project Manager</p>
@@ -561,10 +565,8 @@
     <?php include(APPPATH . 'Views/include/footer1.php'); ?>
 
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <?php include(APPPATH . 'Views/include/js.php'); ?>
+
 
     <script>
         function fetchVimeoThumbnail(videoId, element) {

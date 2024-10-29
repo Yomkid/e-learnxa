@@ -18,6 +18,12 @@ class MaterialModel extends Model
         'material_file',
     ];
 
+
+    // Method to get materials by lesson ID
+    public function getMaterialsByLessonId($lessonId)
+    {
+        return $this->where('material_name', $lessonId)->findAll();
+    }
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 

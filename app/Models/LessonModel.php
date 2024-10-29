@@ -39,6 +39,14 @@ class LessonModel extends Model
         return $this->where('module_id', $moduleId)->first();
     }
 
+    // Method to get materials by lesson ID
+    public function getMaterialsByLessonId($lessonId)
+    {
+        return $this->where('lesson_id', $lessonId)->findAll();
+    }
+
+    
+
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 
@@ -68,4 +76,10 @@ class LessonModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getLessonsByModuleId($moduleId)
+{
+    return $this->where('module_id', $moduleId)->findAll();
+}
+
 }

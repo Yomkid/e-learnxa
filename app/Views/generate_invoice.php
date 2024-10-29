@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <?php include(APPPATH . 'Views/include/newNav3.php'); ?>
-    <div class="form-wrapper">
-        <div class="">
+        <?php include(APPPATH . 'Views/include/navbar.php'); ?>
+        <div class="form-wrapper">
+            <div class="">
             <div class="container">
                 <div class="form-header mb-3 text-center p-2">
                     <h4 class="form-head-text text-light text-center">Application Form Invoice</h4>
@@ -79,10 +79,10 @@
            
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script src="<?= base_url('/assets/js/main-scripts.js'); ?>"></script>
+    <?php include(APPPATH . 'Views/include/js.php'); ?>
+
 </body>
 
 </html>
