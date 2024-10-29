@@ -40,7 +40,7 @@
                                         <img src="../assets/img/student.png" alt="User"
                                             class="img-fluid rounded-circle mb-2" style="width: 100px;">
                                         <h4><?= session('first_name'); ?> <?= session('last_name'); ?></h4>
-                                        <p class="text-muted"><?= session('first_name'); ?></p>
+                                        <p class="text-muted"><?= session('payment_confirmation_code'); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,6 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <p><strong>Status:</strong> <?= session('status'); ?></p>
-                                                <!-- <p><strong>Year of Study:</strong> <?= session('first_name'); ?> -->
                                                 </p>
                                                 <p><strong>Enrollment Number:</strong>
                                                 <?= session('payment_confirmation_code'); ?></p>

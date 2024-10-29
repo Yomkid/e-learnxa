@@ -53,7 +53,10 @@ class AuthReg extends Controller
             $this->session->set([
                 'user_id' => $user['user_id'],
                 'email' => $user['email'],
+                'phone_numer' => $user['phone_number'],
                 'first_name' => $user['first_name'],
+                'status' => $user['status'],
+                'last_name' => $user['last_name'],
                 'role_id' => $user['role_id'],
                 'payment_confirmation_code' => $user['payment_confirmation_code'],
                 'isLoggedIn' => true,
