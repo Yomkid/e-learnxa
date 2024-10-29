@@ -28,7 +28,7 @@
                         <p class="lead text-responsive">
                             Discover a dynamic online learning marketplace with a growing selection of courses designed
                             to help you gain new skills. Learn from industry experts and embark on your educational
-                            journey for just <strong class="text-success">₦2,000</strong>!
+                            journey for just <strong class="text-danger">₦2,000</strong>!
                         </p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start" style="z-index: 1030;">
                             <a href="#startLearning">
