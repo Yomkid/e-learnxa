@@ -21,18 +21,14 @@ $routes->get('/stats', 'Home::webStats');
 
 
 
+
 // NewChange
 $routes->get('/courses/getCoursesWithCategories', 'CourseController::getCoursesWithCategories');
 $routes->get('/courses/getCoursesByCategory/(:num)', 'CourseController::getCoursesByCategory/$1');
 
-
-
 $routes->get('/api/courses/category/(:num)', 'CourseController::getCoursesByCategory/$1');
 // $routes->get('/api/courses/category/(:any)', 'CourseController::getCoursesByCategory/$1');
 $routes->get('/api/categories', 'CategoryController::getAllCategories'); // Assuming this endpoint exists
-
-
-
 
 $routes->get('/courses/getCoursesByTopics', 'CourseController::getCoursesByTopics');
 $routes->get('/courses/getCoursesByCategories', 'CourseController::getCoursesByCategories');
@@ -41,14 +37,9 @@ $routes->get('/categories/getAll', 'CategoryController::getAllCategories');
 
 $routes->get('/category/(:any)', 'CategoryController::viewCategory/$1');
 
-
 // In CodeIgniter or Laravel (Routes/web.php)
 $routes->get('/api/categories-courses', 'CategoryController::getCategoriesWithCourses');
 $routes->get('about', 'Pages::aboutUs');
-
-
-
-
 
 
 // General Route for the webpage
@@ -109,15 +100,35 @@ $routes->get('logout', 'AuthReg::logout');
 
 // $routes->group('student', function($routes) {
 $routes->group('student', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'AuthReg::dashboard');
-    $routes->get('enrolled-courses', 'Pages::enrolledCourses');
-    $routes->get('course-details', 'Pages::enrolledCourseDetails');
+    // $routes->get('/', 'AuthReg::dashboard');
+    $routes->get('/', 'StudentController::index');
+    // $routes->get('enrolled-courses', 'Pages::enrolledCourses');
+    $routes->get('enrolled-courses', 'StudentController::enrolledCourses');
+    $routes->get('course-details/(:num)', 'StudentController::courseDetail/$1');
+    // $routes->get('course-details', 'Pages::enrolledCourseDetails');
     $routes->get('e-learning', 'Pages::eLearning');
-    $routes->get('quiz', 'Pages::quiz');
+    // $routes->get('quiz', 'Pages::quiz');
     $routes->get('payment', 'Pages::payment');
     $routes->get('timetable', 'Pages::timeTable');
     $routes->get('profile', 'Pages::profile');
     // $routes->get('assignments', 'Pages::assignment');
+    $routes->get('assignments', 'StudentController::assignment');
+    $routes->get('assignments/(:num)', 'StudentController::viewAssignment/$1');
+    $routes->get('submit-assignment/(:num)', 'StudentController::submitAssignment/$1');
+    $routes->post('submit-assignment/(:num)', 'StudentController::processAssignmentSubmission/$1');
+    // Quiz;
+    $routes->get('quizzes', 'StudentController::quiz');
+    $routes->get('quiz/(:num)', 'StudentController::viewQuiz/$1');
+    $routes->get('quiz/(:num)/questions', 'StudentController::getQuestions/$1');
+    $routes->post('quiz/submit', 'StudentController::submitQuiz');
+    $routes->get('review/(:num)', 'StudentController::reviewQuiz/$1');
+    $routes->post('api/save-answers', 'StudentController::saveAnswers');
+    // $routes->get('student/continue-learning/(:num)/(:num)', 'StudentController::continueLearning/$1/$2');
+    $routes->get('e-learning/(:num)', 'StudentController::continueCourse/$1');
+    $routes->get('e-learning/(:num)/(:num)/(:num)', 'LessonController::getLesson/$1/$2/$3');
+    $routes->get('e-learning/(:num)/(:num)', 'LessonController::getLessonsByModule/$1/$2');
+    $routes->post('mark-module-completed', 'StudentController::markModuleCompleted');
+
     $routes->get('community', 'Pages::Community');
     $routes->get('notification', 'Pages::Notification');
     $routes->get('virtual-class', 'Pages::VirtualClass');
@@ -135,11 +146,7 @@ $routes->group('student', ['namespace' => 'App\Controllers'], function($routes) 
 
 
 $routes->group('admin', function($routes) {
-    $routes->get('dashboard', 'Admin\Dashboard::index');
-    // $routes->get('users', 'Admin\Users::index');
-    $routes->get('courses', 'Admin\Courses::index');
-    $routes->get('instructors', 'Admin\Instructors::index');
-    $routes->get('settings', 'Admin\Settings::index');
+    
 });
 
 
@@ -156,6 +163,11 @@ $routes->get('error', 'AdminController:::error');
 
 
 $routes->group('admin', function($routes) {
+    $routes->get('dashboard', 'Admin\Dashboard::index');
+    // $routes->get('users', 'Admin\Users::index');
+    $routes->get('courses', 'Admin\Courses::index');
+    $routes->get('instructors', 'Admin\Instructors::index');
+    $routes->get('settings', 'Admin\Settings::index');
     $routes->get('/', 'Pages::Admin'); //Good
     $routes->get('users', 'Users::index');
     $routes->get('analytics', 'Pages::analyticsAndReports'); //Good
@@ -214,21 +226,28 @@ $routes->group('admin', function($routes) {
         $routes->get('delete/(:num)', 'ModuleController::delete/$1'); // Delete an existing module
     });
 
-    // Quiz route
-    $routes->group('quizzes', ['namespace' => 'App\Controllers'], function($routes) {
-        $routes->get('/', 'QuizController::index'); // List all quizzes
-        $routes->get('create', 'QuizController::create'); // Show the form to create a new quiz
-        $routes->get('list', 'QuizController::list');
-        $routes->post('assignQuizzes', 'QuizController::assignQuizzes'); // Assign Quizzes to a course
-        $routes->post('store', 'QuizController::store'); // Handle the form submission to create a new quiz
-        $routes->get('edit/(:num)', 'QuizController::edit/$1'); // Show the form to edit an existing quiz
-        $routes->post('update', 'QuizController::update/$1'); // Handle the form submission to update an existing quiz
-        $routes->get('delete/(:num)', 'QuizController::delete/$1'); // Delete an existing quiz
-        $routes->get('view/(:num)', 'QuizController::viewCourse/$1');
-        $routes->post('addQuizzes', 'QuizController::addQuizzes');
-        $routes->post('removeQuiz/(:num)/(:num)', 'QuizController::removeQuiz/$1/$2');
-        $routes->get('getQuizzesForCourse/(:num)', 'QuizController::getQuizzesForCourse/$1');
-    });
+    
+// Quiz route
+$routes->group('quizzes', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('/', 'QuizController::index'); // List all quizzes
+    $routes->get('create', 'QuizController::create'); // Show the form to create a new quiz
+    $routes->get('list', 'QuizController::list');
+    $routes->post('assignQuizzes', 'QuizController::assignQuizzes'); // Assign Quizzes to a course
+    $routes->post('store', 'QuizController::store'); // Handle the form submission to create a new quiz
+    $routes->get('edit/(:num)', 'QuizController::edit/$1'); // Show the form to edit an existing quiz
+    $routes->post('update', 'QuizController::update/$1'); // Handle the form submission to update an existing quiz
+    $routes->get('delete/(:num)', 'QuizController::delete/$1'); // Delete an existing quiz
+    $routes->get('view/(:num)', 'QuizController::viewCourse/$1');
+    $routes->post('addQuizzes', 'QuizController::addQuizzes');
+    $routes->post('removeQuiz/(:num)/(:num)', 'QuizController::removeQuiz/$1/$2');
+    $routes->post('bulkUpload', 'QuizController::bulkUpload');
+    $routes->post('exportQuizzes', 'QuizController::exportQuizzes');
+    $routes->get('getQuizzesForCourse/(:num)', 'QuizController::getQuizzesForCourse/$1');
+    $routes->post('updateSettings', 'QuizController::updateSettings', ['as' => 'quizzes.updateSettings']);
+    $routes->get('getQuizSettings/(:num)', 'QuizController::getQuizSettings/$1');
+
+
+});
 
 
     // Questions Routes

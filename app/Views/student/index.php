@@ -82,7 +82,7 @@
                                     <!-- </div> -->
                                 </div>
                                 <div class="col-md-6 text-center text-md-right align-items-right justify-content-right">
-                                    <img src="../assets/img/student.PNG" alt=""
+                                    <img src="../assets/img/student.png" alt=""
                                         style="max-width: fit-content; width:140px;" class="img-fluid"
                                         style="max-width: 100%; height: auto;">
                                 </div>
@@ -158,7 +158,7 @@
                                         </div>
                                         <?php endforeach; ?>
                                         <?php else: ?>
-                                        <p>You have not enrolled in any courses yet.</p>
+                                        <p class="text-danger"><strong>You have not enrolled in any courses yet.</strong></p>
                                         <?php endif; ?>
                                     </div>
                                 </div>
