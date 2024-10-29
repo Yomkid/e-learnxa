@@ -1,7 +1,7 @@
 <div class="sidebar d-flex flex-column" id="sidebar">
     <span class="d-flex align-items-center gap-1">
         <img src="<?= base_url('./assets/img/learnxalogo.png'); ?>" alt="" width="32">
-        <a class="navbar-brand text-center text-light" href="/learnxa-lite">Learn<span
+        <a class="navbar-brand text-center text-light" href="/">Learn<span
                 style="color: #007bff;">X</span>a</a>
     </span>
     <hr style="color: #ffff;" class="my-1">
