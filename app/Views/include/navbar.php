@@ -1,15 +1,21 @@
 <nav class="navbar navbar-expand-lg px-3">
     <a class="navbar-brand" href="/">
-        Learn<span style="color: #007bff;">X</span>a
+        <span class="d-flex align-items-center gap-1"><img src="<?= base_url('./assets/img/learnxalogo.png'); ?>" alt=""
+                width="32">
+            Learn<span style="color: #007bff;">X</span>a
+        </span>
     </a>
     <div class="navbar-toggler" type="button" id="navbarToggle">
         <i class="fas fa-bars" style="font-size: 24px;"></i>
     </div>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-        <a class="navbar-brand d-lg-none text-center" href="/">
-        Learn<span style="color: #007bff;">X</span>a
-    </a>
+            <a class="navbar-brand d-lg-none text-center" href="/">
+                <span class="d-flex align-items-center gap-1"><img
+                        src="<?= base_url('./assets/img/learnxalogo.png'); ?>" alt="" width="32">
+                    Learn<span style="color: #007bff;">X</span>a
+                </span>
+            </a>
             <form class="form-inline my-2 my-lg-0 d-lg-none">
                 <div class="input-group w-100">
                     <input class="form-control" type="search" placeholder="Search Anything" aria-label="Search">
@@ -30,17 +36,17 @@
                 </div>
             </li>
             <!-- Other items go here -->
-             <!-- Search form for desktop devices only -->
-        <form class="form-inline my-2 my-lg-0 d-none d-lg-flex ml-auto">
-            <div class="input-group">
-                <input class="form-control" type="search" placeholder="Search Anything" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-blue" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+            <!-- Search form for desktop devices only -->
+            <form class="form-inline my-2 my-lg-0 d-none d-lg-flex ml-auto">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search Anything" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-blue" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -60,8 +66,8 @@
                     <i class="fas fa-user"></i> Profile
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="/student">Dashboard</a>
-                    <!-- <a class="dropdown-item" href="#">Settings</a> -->
+                    <a class="dropdown-item" href="profile">Dashboard</a>
+                    <a class="dropdown-item" href="#">Settings</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a>
                 </div>
@@ -80,90 +86,90 @@
 
 <script>
     document.getElementById('navbarToggle').addEventListener('click', function (event) {
-    event.stopPropagation(); // Prevents the click event from propagating to the document
-    const navbar = document.getElementById('navbarNav');
-    const icon = this.querySelector('i');
+        event.stopPropagation(); // Prevents the click event from propagating to the document
+        const navbar = document.getElementById('navbarNav');
+        const icon = this.querySelector('i');
 
-    navbar.classList.toggle('show');
-    if (navbar.classList.contains('show')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
+        navbar.classList.toggle('show');
+        if (navbar.classList.contains('show')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
 
-// Close navbar when clicking outside
-document.addEventListener('click', function (event) {
-    const navbar = document.getElementById('navbarNav');
-    const icon = document.getElementById('navbarToggle').querySelector('i');
+    // Close navbar when clicking outside
+    document.addEventListener('click', function (event) {
+        const navbar = document.getElementById('navbarNav');
+        const icon = document.getElementById('navbarToggle').querySelector('i');
 
-    if (navbar.classList.contains('show') && !navbar.contains(event.target)) {
-        navbar.classList.remove('show');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
-
+        if (navbar.classList.contains('show') && !navbar.contains(event.target)) {
+            navbar.classList.remove('show');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
 </script>
+
 <style>
 
 
-/* Base styles for the navbar */
-.navbar {
-    z-index: 1050;
-    padding: 0.5rem 1rem; /* Adjust padding as needed */
-}
-
-/* Mobile view adjustments */
-@media (max-width: 992px) {
+    /* Base styles for the navbar */
     .navbar {
-        height: auto; /* Ensure auto height for mobile */
-    }
-    
-    /* Adjust the padding for the navbar brand (logo) */
-    .navbar-brand {
-        padding: 5px; /* Remove extra padding */
+        z-index: 1050;
+        padding: 0.5rem 1rem; /* Adjust padding as needed */
     }
 
-    /* Adjust the navbar-toggler */
-    .navbar-toggler {
-        padding: 0.25rem 0.75rem; /* Adjust padding for the toggler */
-        margin: 0;
-        height: auto; /* Ensure it doesn't expand too much */
+    /* Mobile view adjustments */
+    @media (max-width: 992px) {
+        .navbar {
+            height: auto; /* Ensure auto height for mobile */
+        }
+        
+        /* Adjust the padding for the navbar brand (logo) */
+        .navbar-brand {
+            padding: 5px; /* Remove extra padding */
+        }
+
+        /* Adjust the navbar-toggler */
+        .navbar-toggler {
+            padding: 0.25rem 0.75rem; /* Adjust padding for the toggler */
+            margin: 0;
+            height: auto; /* Ensure it doesn't expand too much */
+        }
+        
+        .navbar-collapse {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #f8f9fa;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 0.5rem 1rem; /* Adjust as needed */
+
+        }
     }
-    
-    .navbar-collapse {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 250px;
-        height: 100%;
-        background-color: #f8f9fa;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-        padding: 0.5rem 1rem; /* Adjust as needed */
 
+
+
+    @media (min-width: 992px) {
+        .navbar-collapse {
+            position: static;
+            width: auto;
+            height: auto;
+            background-color: transparent;
+            box-shadow: none;
+            display: flex !important; /* Ensure it displays as flex on large screens */
+        }
+
+        .navbar-collapse.show {
+            left: auto;
+        }
     }
-}
-
-
-
-@media (min-width: 992px) {
-    .navbar-collapse {
-        position: static;
-        width: auto;
-        height: auto;
-        background-color: transparent;
-        box-shadow: none;
-        display: flex !important; /* Ensure it displays as flex on large screens */
-    }
-
-    .navbar-collapse.show {
-        left: auto;
-    }
-}
 
 </style>
