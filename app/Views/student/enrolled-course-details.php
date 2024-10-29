@@ -26,6 +26,13 @@
             height: 150px;
             object-fit: cover;
         }
+
+        .locked {
+            cursor: not-allowed;
+            /* Changes the cursor to show it's not clickable */
+            filter: grayscale(100%);
+            /* Optional: make the card appear grayed out */
+        }
     </style>
 </head>
 
@@ -45,22 +52,23 @@
 
                     <div class="">
                         <div class="category-header" style="font-size:17px;">
-                            React - The Complete Guide 2024 (incl. Next.js, Redux)
+                            <?= esc($course['course_title']); ?>
                         </div>
-                        <p>Below are the details of React - The Complete Guide 2024 (incl. Next.js, Redux)</p>
+                        <?= ($course['course_tagline']); ?>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-lg-3 col-md-6 mb-1">
                             <div class="course-card">
-                                <img src="../assets/img/web_dev.jpeg" alt="Course Image" />
+                                <img src="<?= base_url('uploads/' . $course['course_image']); ?>"
+                                    alt="<?= esc($course['course_title']); ?>" />
                             </div>
                             <div class="category-header" style="font-size:17px;">
                                 Course Instructor
                             </div>
                             <div class="instructor d-flex align-items-center justify-content-bettween mb-4">
-                                <img src="../assets/img/animated.jpeg" alt="">
-                                <div>Odewaye Mayomi <P></P>
+                                <img src="<?= base_url('../assets/img/profile-img.jpg'); ?>" alt="Instructor Image">
+                                <div>OMPPEAK TECHNOLOGY
                                 </div>
                             </div>
                             <div class="d-md-none">
@@ -72,7 +80,13 @@
                                         aria-valuemin="0" aria-valuemax="100">50%</div>
                                 </div>
                             </div>
-                            <a href="/student/e-learning"><button class="btn btn-primary w-100">Continue Learning</button></a>
+                           
+                            <a href="<?= base_url('student/e-learning/' . $course['course_id']) ?>">
+                                <button class="btn btn-primary w-100">
+                                    <?= $hasStarted ? 'Continue Learning' : 'Start Learning'; ?>
+                                </button>
+                            </a>
+
                             <hr>
                         </div>
                         <div class="col-lg-9 col-md-6 mb-4">
@@ -80,42 +94,44 @@
                                 <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-1">
                                         <div class="card-body">
-                                            <h5 class="card-title">10 Modules</h5>
+                                            <h5 class="card-title"><?= $moduleCount ?> Modules</h5>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
                                     <div class="card text-left bg-color-2">
-                                        <div class="card-body">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
                                             <h5 class="card-title">1 Certificate</h5>
+                                            <i class="fas fa-lock" style="color: #d9534f;"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
                                     <div class="card text-left bg-color-3">
-                                        <div class="card-body">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
                                             <h5 class="card-title">Final Exam</h5>
+                                            <i class="fas fa-lock" style="color: #d9534f;"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-4">
                                         <div class="card-body">
-                                            <h5 class="card-title">15 Assignments</h5>
+                                            <h5 class="card-title"><?= $assignmentCount ?> Assignments</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-5">
                                         <div class="card-body">
-                                            <h5 class="card-title">17 Quiz</h5>
+                                            <h5 class="card-title"><?= $quizCount ?> Quiz</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-6">
                                         <div class="card-body">
-                                            <h5 class="card-title">17 Materials</h5>
+                                            <h5 class="card-title"><?= $materialCount ?> Materials</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -126,8 +142,8 @@
                                     Course Progress
                                 </div>
                                 <div class="progress mb-4">
-                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100">50%</div>
+                                    <div class="progress-bar" role="progressbar" style="width: <?= $overallProgress; ?>%;" aria-valuenow="<?= $overallProgress; ?>"
+                                        aria-valuemin="0" aria-valuemax="100"><?= $overallProgress; ?>%</div>
                                 </div>
                             </div>
                         </div>

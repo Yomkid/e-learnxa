@@ -9,8 +9,8 @@
 
         <!-- Centered logo -->
         <div class="logo d-md-none m-aumto">
-            <a class="navbar-brand text-centter text-dark" href="/learnxa-lite">Learn<span
-                    style="color: #007bff;">X</span>a</a>
+            <span class="d-flex align-items-center gap-1"><img src="<?= base_url('./assets/img/learnxalogo.png'); ?>" alt="" width="32"><a class="navbar-brand text-centter text-dark" href="/">Learn<span
+            style="color: #007bff;">X</span>a</a></span>
         </div>
 
 
@@ -25,15 +25,15 @@
                 <div class="dropdown">
                     <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="../assets/img/profile-img.jpg" alt="User" class="mr-1"
+                        <img src="<?= base_url('../assets/img/animated.jpeg'); ?>" alt="User" class="mr-1"
                             style="width: 40px; height: 40px; border-radius: 50%;">
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <div class="p-2">
                             <div style="color: black;">
-                                <h5 class="mb-0">Mayor Odewaye</h5>
+                                <h5 class="mb-0"><?= session('first_name')?> <?= session('last_name')?></h5>
                             </div>
-                            <h6 class="username mb-0" style="color: grey;">3rd Year</h6>
+                            <h6 class="username mb-0" style="color: grey;"><?= session('payment_confirmation_code')?></h6>
                         </div>
                     </div>
                 </div>

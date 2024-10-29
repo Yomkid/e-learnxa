@@ -17,3 +17,5 @@
 <link rel="stylesheet" href="<?= base_url('packages/core/main.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('packages/daygrid/main.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('packages/list/main.css'); ?>">
+<script src="https://player.vimeo.com/api/player.js"></script>
+

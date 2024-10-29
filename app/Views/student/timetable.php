@@ -49,7 +49,7 @@
                     <section class="showcase">
                         <div class="container">
                             <div class="pb-2 mt-4 mb-2 border-bottom">
-                                <div class="mb-3 font-weight-bold">Python Programming Class Timetable</div>
+                                <div class="mb-3 font-weight-bold">LearnXa General Timetable for Virtual Classes</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 gedf-main">

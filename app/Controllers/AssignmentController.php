@@ -31,6 +31,21 @@ class AssignmentController extends BaseController
     }
 
 
+    // public function index()
+    // {
+    //     $assignmentModel = new AssignmentModel();
+    //     $courseModel = new CourseModel();
+        
+    //     $assignments = $assignmentModel->findAll();
+    //     $courses = $courseModel->findAll();
+    
+    //     // Corrected return statement with associative array
+    //     return view('assignments/index', [
+    //         'assignments' => $assignments,
+    //         'courses' => $courses
+    //     ]);
+    // }
+
     public function index()
 {
     $assignments = $this->assignmentModel->findAll();
@@ -51,7 +66,7 @@ class AssignmentController extends BaseController
 
     public function create()
     {
-        return view('admin/assignments/create');
+        return view('assignments/create');
     }
 
     public function store()
@@ -260,7 +275,7 @@ class AssignmentController extends BaseController
             }
         }
 
-        return redirect()->to(base_url('admin/assignments/'.$courseId))->with('success', 'assignments added successfully.');
+        return redirect()->to(base_url('assignments/'.$courseId))->with('success', 'assignments added successfully.');
     }
 
     public function removeassignment($courseId, $assignmentId)

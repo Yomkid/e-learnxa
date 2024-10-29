@@ -4,23 +4,28 @@
 <head>
     <title>Learning Page - eLearning Platform</title>
     <?php include(APPPATH . 'Views/student/include/student-head.php'); ?>
+    <meta name="csrf-token" content="<?= csrf_hash() ?>">
+
     <style>
         .sidebar-sticky {
-            /* position: -webkit-sticky;
-            position: sticky; */
             position: fixed;
             top: 80px;
-            /* padding: 20px; */
             z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             height: 100%;
             width: 320px;
-            /* overflow: auto; */
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: #007bff transparent;
             scroll-behavior: smooth;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
         }
+
+        .sidebar-sticky.open {
+            transform: translateX(0);
+            /* Slide sidebar in */
+        }
+
 
         .progress {
             height: 20px;
@@ -105,6 +110,11 @@
             background-color: #f8f9fa;
             border-radius: 100%;
             color: #007bff;
+        }
+
+        .module-button {
+            padding: 10px;
+            cursor: pointer;
         }
 
         .sidebar-module-list li::before {
@@ -255,6 +265,78 @@
             width: 100%;
             height: 100%;
         }
+
+
+        .responsive-iframe {
+            width: 100%;
+            /* Make the container fill the width of its parent */
+            position: relative;
+            /* Set the position to relative for absolute positioning of the iframe */
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            background: #000;
+            /* Optional background color */
+            overflow: hidden;
+            /* Ensures the iframe stays within the boundaries */
+        }
+
+
+        .responsive-iframe iframe,
+        .responsive-iframe embed,
+        .responsive-iframe object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+        .lesson-title {
+            background-color: #ffa938;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        #lesson-content h1 {
+            font-size: 20px;
+        }
+
+        #lesson-content h2 {
+            font-size: 20px;
+        }
+
+        #lesson-content h3 {
+            font-size: 18px;
+        }
+
+        #lesson-content h4 {
+            font-size: 14px;
+        }
+
+
+        .sidebar-slide {
+            transition: transform 0.3s ease;
+            transform: translateX(-320px);
+            /* Initially hide sidebar */
+        }
+
+        .sidebar-open {
+            transform: translateX(0);
+            /* Show sidebar */
+        }
+
+        .toggle-icon {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .module.completed {
+        background-color: #e0ffe0; /* Light green background for completed modules */
+        border-left: 5px solid #28a745; /* Green border */
+        }
+
     </style>
 </head>
 
@@ -263,111 +345,55 @@
     <div class="container mt-1">
         <div class="row">
             <div class="col-lg-4">
-                <div class="sidebar-sticky bg-light">
-                    <div class="text-center mt-2">
-                        <h5>Course Modules</h5>
-                    </div>
-                    <hr>
-                    <ul class="sidebar-module-list">
-                        <ul class="sidebar-module-list">
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 1: Introduction
-                                    to Web Development</a></li>
-                            <li class="completed active"><i class="fas fa-check-circle"></i><a href="#">Module 2: HTML &
-                                    CSS
-                                    Fundamentals</a></li>
-                            <li class="uncompleted"><i class="fas fa-check-circle"></i><a href="#">Module 3: JavaScript
-                                    Basics</a></li>
-                            <li class="uncompleted"><i class="fas fa-check-circle"></i><a href="#">Module 4: Advanced
-                                    JavaScript Concepts</a></li>
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 5: Responsive
-                                    Web Design</a></li>
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 6: Introduction
-                                    to Web Development</a></li>
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 7: HTML & CSS
-                                    Fundamentals</a></li>
-                            <li class="uncompleted"><i class="fas fa-check-circle"></i><a href="#">Module 8: JavaScript
-                                    Basics</a></li>
-                            <li class="uncompleted"><i class="fas fa-check-circle"></i><a href="#">Module 9: Advanced
-                                    JavaScript Concepts with plenty assignments and classworks</a></li>
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 10: Responsive
-                                    Web Design</a></li>
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 11: Introduction
-                                    to Web Development</a></li>
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 12: HTML & CSS
-                                    Fundamentals</a></li>
-                            <li class="uncompleted"><i class="fas fa-check-circle"></i><a href="#">Module 13: JavaScript
-                                    Basics</a></li>
-                            <li class="uncompleted"><i class="fas fa-check-circle"></i><a href="#">Module 14: Advanced
-                                    JavaScript Concepts</a></li>
-                            <li class="completed"><i class="fas fa-check-circle"></i><a href="#">Module 15: Responsive
-                                    Web Design</a></li>
+                
+
+                <div class="collapse d-lg-block" id="sidebar">
+                    <div class="sidebar-sticky bg-light mb-2">
+                        <div class="text-center mt-2">
+                            <h5>Course Modules</h5>
+                        </div>
+                        <hr>
+                        <ul class="sidebar-module-list" id="modules">
+                            <?php foreach ($modules as $index => $module): ?>
+                            <li class="module-button <?= $module['completed'] ? 'completed' : 'uncompleted'; ?> <?= $module['active'] ? 'active' : ''; ?>"
+                                data-module-id="<?= $module['module_id']; ?>" data-index="<?= $index; ?>">
+                                <i class="fas fa-check-circle"></i><?= $module['module_name']; ?>
+                            </li>
+                            <?php endforeach; ?>
                         </ul>
+                    </div>
                 </div>
             </div>
+
             <div class="col-lg-8 mt-3">
                 <div class="progress-container">
-                    <div class="progress-circle" data-percentage="75" style="--percentage: 270deg;"></div>
+                    <div class="progress-circle" data-percentage="<?= $overallProgress; ?>"
+                        style="--percentage: <?= $overallProgress * 3.6; ?>deg;">
+                    </div>
                 </div>
 
-                <script>
-                    // document.querySelectorAll('.progress-circle').forEach(function (circle) {
-                    //     var percentage = circle.getAttribute('data-percentage');
-                    //     var degrees = (percentage / 100) * 360;
-                    //     circle.style.setProperty('--percentage', degrees + 'deg');
-                    // });
-
-                    document.querySelectorAll('.progress-circle').forEach(function (circle) {
-                        var percentage = circle.getAttribute('data-percentage');
-                        var degrees = (percentage / 100) * 360;
-                        var color1 = percentage >= 25 ? '#4caf50' : '#e0e0e0';
-                        var color2 = percentage >= 50 ? '#ffeb3b' : '#e0e0e0';
-                        var color3 = percentage >= 75 ? '#ff9800' : '#e0e0e0';
-                        var color4 = percentage == 100 ? '#f44336' : '#e0e0e0';
-
-                        circle.style.setProperty('--color1', color1);
-                        circle.style.setProperty('--color2', color2);
-                        circle.style.setProperty('--color3', color3);
-                        circle.style.setProperty('--color4', color4);
-                        circle.style.setProperty('--percentage', degrees + 'deg');
-                    });
-                </script>
-                <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-primary">Previous</button>
-                    <button type="button" class="btn btn-primary">Next Module</button>
-                </div>
-                
-                <div class="video-container mt-3">
-                    <iframe
-                        src="https://player.vimeo.com/video/860473251?h=780dcf5138&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    <script src="https://player.vimeo.com/api/player.js"></script>
+                <div class="d-flex justify-content-between mt-0">
+                    <button type="button" class="btn btn-primary" id="prev-button" style="display: none;">Previous Module</button>
+                    <button type="button" class="btn btn-primary" id="next-button" style="display: none;">Next Module</button>
                 </div>
 
                 <div class="mt-1">
-                    <h6>Module 1: Introduction to Web Development</h6>
-                    <p>Course description goes here. This will provide an overview of what the course covers,
-                        including
-                        key
-                        topics and learning objectives.</p>
-
-                    <div class="course-materials">
-                        <h4>Course Materials</h4>
-                        <ul>
-                            <li><i class="fas fa-file-alt"></i> <a href="#">Downloadable Resource 1</a></li>
-                            <li><i class="fas fa-file-alt"></i> <a href="#">Downloadable Resource 2</a></li>
-                            <li><i class="fas fa-file-alt"></i> <a href="#">Downloadable Resource 3</a></li>
-                        </ul>
-                    </div>
+                    <div id="lesson-content" class="mt-1"></div>
 
                     <div class="mt-4">
-                        <h3>Progress</h3>
+                        <h5>Progress</h5>
                         <div class="progress mb-4">
-                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
-                                aria-valuemin="0" aria-valuemax="100">50%</div>
+                            
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                role="progressbar" style="width: <?= $overallProgress; ?>%;"
+                                aria-valuenow="<?= $overallProgress; ?>" aria-valuemin="0" aria-valuemax="100">
+                                <?= $overallProgress; ?>%
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
+
                 <footer class="bg-light py-4 mt-5">
                     <div class="container text-center">
                         <p>&copy; 2024 LearnXa. All rights reserved.</p>
@@ -377,10 +403,187 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    let modules = $('.module-button');
+    let currentModuleIndex = 0;
+    let lessons = [];
+
+    function loadModule(index) {
+        if (modules.length > 0) {
+            const module = $(modules[index]);
+            const moduleId = module.data('module-id');
+
+            $('.module-button').removeClass('active');
+            module.addClass('active');
+
+            $.ajax({
+                url: '<?= base_url('student/e-learning/' . $courseId . '/') ?>' + moduleId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success' && response.data.length > 0) {
+                        lessons = response.data;
+                        loadLesson(0);
+                    } else {
+                        $('#lesson-content').html('<p>No lessons available for this module.</p>');
+                        $('#prev-button').hide();
+                        $('#next-button').hide();
+                    }
+                },
+                error: function () {
+                    $('#lesson-content').html('<p>An error occurred while fetching lesson data.</p>');
+                    $('#prev-button').hide();
+                    $('#next-button').hide();
+                }
+            });
+
+            // Update button visibility
+            updateButtonVisibility(index);
+        }
+    }
+
+    function loadLesson(index) {
+        if (lessons.length > 0) {
+            const lesson = lessons[index];
+            const contentWithMedia = processOembed(lesson.lesson_content);
+            $('#lesson-content').html(`
+                <div class="lesson-title mb-1"><h2>${lesson.lesson_title}</h2></div>
+                <div class="lesson-content">${contentWithMedia}</div>
+            `);
+        } else {
+            $('#lesson-content').html('<p>No lessons available for this module.</p>');
+        }
+    }
+
+    function updateButtonVisibility(index) {
+        $('#prev-button').toggle(index > 0); // Show "Previous" if not on the first module
+        $('#next-button').toggle(index < modules.length - 1); // Show "Next" if not on the last module
+    }
+
+    function markModuleAsCompleted(moduleId, courseId) {
+        const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+        if (!csrfTokenMeta) {
+            console.error('CSRF token meta tag is missing.');
+            return;
+        }
+
+        const csrfToken = csrfTokenMeta.getAttribute('content');
+
+        fetch('<?= base_url('student/mark-module-completed') ?>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({ module_id: moduleId, course_id: courseId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Module marked as completed.');
+            } else {
+                alert('Failed to mark module as completed: ' + data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    $(document).ready(function () {
+        loadModule(currentModuleIndex); // Load the first module on page load
+
+        $('#next-button').click(function () {
+            if (currentModuleIndex < modules.length - 1) {
+                const currentModuleId = $(modules[currentModuleIndex]).data('module-id');
+                markModuleAsCompleted(currentModuleId, <?= $courseId ?>); // Pass courseId here
+
+                $(this).prop('disabled', true);
+                $('#prev-button').prop('disabled', true);
+
+                currentModuleIndex++;
+                loadModule(currentModuleIndex);
+
+                setTimeout(() => {
+                    $(this).prop('disabled', false);
+                    $('#prev-button').prop('disabled', false);
+                }, 500);
+            }
+        });
+
+        $('#prev-button').click(function () {
+            if (currentModuleIndex > 0) {
+                const currentModuleId = $(modules[currentModuleIndex]).data('module-id');
+                markModuleAsCompleted(currentModuleId, <?= $courseId ?>);
+
+                $(this).prop('disabled', true);
+                $('#next-button').prop('disabled', true);
+
+                currentModuleIndex--;
+                loadModule(currentModuleIndex);
+
+                setTimeout(() => {
+                    $(this).prop('disabled', false);
+                    $('#next-button').prop('disabled', false);
+                }, 500);
+            }
+        });
+
+        $('.module-button').click(function () {
+            const previousModuleId = $(modules[currentModuleIndex]).data('module-id');
+            markModuleAsCompleted(previousModuleId, <?= $courseId ?>);
+
+            currentModuleIndex = $(this).data('index');
+            loadModule(currentModuleIndex);
+        });
+
+        
+
+        // Progress Circle Styling
+        document.querySelectorAll('.progress-circle').forEach(function (circle) {
+            var percentage = circle.getAttribute('data-percentage');
+            var degrees = (percentage / 100) * 360;
+            circle.style.setProperty('--percentage', degrees + 'deg');
+            circle.style.setProperty('--color1', percentage >= 25 ? '#f44336' : '#e0e0e0');
+            circle.style.setProperty('--color2', percentage >= 50 ? '#ff9800' : '#e0e0e0');
+            circle.style.setProperty('--color3', percentage >= 75 ? '#ffeb3b' : '#e0e0e0');
+            circle.style.setProperty('--color4', percentage === 100 ? '#4caf50' : '#e0e0e0');
+        });
+    });
+
+    function processOembed(html) {
+        return html.replace(/<oembed url="([^"]+)"><\/oembed>/g, function (match, url) {
+            if (url.includes('vimeo.com')) {
+                const videoId = url.split('/').pop().split('?')[0];
+                return `<div class="responsive-iframe"><iframe src="https://player.vimeo.com/video/${videoId}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+            } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                const videoId = new URL(url).searchParams.get('v') || url.split('/').pop().split('?')[0];
+                return `<div class="responsive-iframe"><iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+            } else {
+                return `<p>Unsupported media type or URL: ${url}</p>`;
+            }
+        });
+    }
+
+    // Sidebar toggling
+    $('#toggle-sidebar').click(function () {
+            const sidebar = $('#sidebar .sidebar-sticky');
+            sidebar.toggleClass('open');
+            $(this).find('i').toggleClass('fa-bars fa-times');
+        });
+
+        $(window).resize(function () {
+            const windowWidth = $(window).width();
+            const sidebar = $('#sidebar .sidebar-sticky');
+            if (windowWidth >= 992) sidebar.addClass('open');
+            else sidebar.removeClass('open').find('#toggle-sidebar i').removeClass('fa-times').addClass('fa-bars');
+        }).trigger('resize');
+</script>
+
+
+
 </body>
 
 </html>

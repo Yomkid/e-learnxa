@@ -39,7 +39,6 @@
 </head>
 
 <body style="background-color: #f2f2f2;">
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 col-md-6">
@@ -58,44 +57,26 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <!-- Example Assignment Card -->
-                        <div class="col-lg-4 col-md-6 mb-1">
-                            <div class="assignment-card">
-                                <img src="../assets/img/assignment1.jpeg" alt="Assignment Image" />
-                                <div class="p-2">
-                                    <div class="category-header">
-                                        Assignment 1: Introduction to Programming
+                        <?php if (!empty($assignments)) : ?>
+                            <?php foreach ($assignments as $assignment) : ?>
+                                <div class="col-lg-4 col-md-6 mb-1">
+                                    <div class="assignment-card">
+                                        <div class="p-2">
+                                            <div class="category-header">
+                                                <?= esc($assignment['assignment_name']) ?>
+                                            </div>
+                                            <p>Given Date: <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p>
+                                            <p>Due Date: <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p>
+                                            <a href="/student/assignments/<?= esc($assignment['assignment_id']) ?>" class="btn btn-primary w-100">View Assignment</a>
+                                        </div>
                                     </div>
-                                    <p>Due Date: 20th August 2024</p>
-                                    <a href="/student/assignments/1" class="btn btn-primary w-100">View Assignment</a>
                                 </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <div class="col-12">
+                                <p>No assignments available.</p>
                             </div>
-                        </div>
-                        <!-- Add more assignment cards as needed -->
-                        <div class="col-lg-4 col-md-6 mb-1">
-                            <div class="assignment-card">
-                                <img src="../assets/img/assignment2.jpeg" alt="Assignment Image" />
-                                <div class="p-2">
-                                    <div class="category-header">
-                                        Assignment 2: Advanced CSS Techniques
-                                    </div>
-                                    <p>Due Date: 25th August 2024</p>
-                                    <a href="/student/assignments/2" class="btn btn-primary w-100">View Assignment</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-1">
-                            <div class="assignment-card">
-                                <img src="../assets/img/assignment3.jpeg" alt="Assignment Image" />
-                                <div class="p-2">
-                                    <div class="category-header">
-                                        Assignment 3: JavaScript Basics
-                                    </div>
-                                    <p>Due Date: 30th August 2024</p>
-                                    <a href="/student/assignments/3" class="btn btn-primary w-100">View Assignment</a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

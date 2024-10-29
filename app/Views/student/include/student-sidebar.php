@@ -1,6 +1,10 @@
 <div class="sidebar d-flex flex-column" id="sidebar">
-    <a class="navbar-brand text-center text-light" href="/learnxa-lite">Learn<span style="color: #007bff;">X</span>a</a>
-    <!-- <hr style="color: #ffff"> -->
+    <span class="d-flex align-items-center gap-1">
+        <img src="<?= base_url('./assets/img/learnxalogo.png'); ?>" alt="" width="32">
+        <a class="navbar-brand text-center text-light" href="/learnxa-lite">Learn<span
+                style="color: #007bff;">X</span>a</a>
+    </span>
+    <hr style="color: #ffff;" class="my-1">
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
             <a href="/student" class="nav-link">
@@ -21,14 +25,14 @@
             </a>
         </li>
         <li>
-            <a href="quiz" class="nav-link">
+            <a href="/student/quizzes" class="nav-link">
                 <i class="fas fa-pencil-alt"></i>
                 Quiz
             </a>
         </li>
         <li>
             <a href="/student/timetable" class="nav-link">
-                <i class="fas fa-pencil-alt"></i>
+                <i class="fas fa-calendar-alt"></i>
                 Timetable
             </a>
         </li>
@@ -81,7 +85,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= base_url('logout'); ?>" class="nav-link">
+            <a href="logout" class="nav-link">
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>

@@ -39,13 +39,43 @@
                                 <div class="col-md-6 profile-hero-text pt-3 pl-5">
                                     <!-- <div class="profile-hero-text"> -->
                                     <div class="text-white">
-                                        <p><?= date('F d, Y'); ?></p>
+                                        <p><?= date('F j, Y'); ?></p>
                                     </div>
-
                                     <div>
-                                        <h5 class="fw-bolder" style="font-weight: bold; font-size: 24px;">Welcome
+                                        <!-- <h5 class="fw-bolder" style="font-weight: bold; font-size: 24px;">Welcome
                                             back,
-                                            <?= session('first_name'); ?>!</h5>
+                                            <?= session('first_name'); ?>!</h5> -->
+
+                                        <?php
+                                            date_default_timezone_set('Africa/Lagos'); // Set your timezone, e.g., 'Africa/Lagos'
+                                            $hour = date('H');
+                                            $greeting = '';
+
+                                            if ($hour >= 5 && $hour < 12) {
+                                                $greeting = 'Good morning';
+                                            } elseif ($hour >= 12 && $hour < 17) {
+                                                $greeting = 'Good afternoon';
+                                            } else {
+                                                $greeting = 'Good evening';
+                                            }
+
+
+                                            $isFirstLoginToday = session('isFirstLoginToday');
+                                            $greetingMessage = '';
+
+                                            if ($isFirstLoginToday) {
+                                                $greetingMessage = $greeting . ', ' . session('first_name') . '! <br>Welcome onboard!';
+                                            } else {
+                                                $greetingMessage = $greeting . ', ' . session('first_name') . '! <br>Welcome back!';
+                                            }
+                                        ?>
+
+
+                                        <h5 class="fw-bolder" style="font-weight: bold; font-size: 24px;">
+                                            <?= $greetingMessage; ?>
+                                        </h5>
+
+
                                         <p style="font-size: small;">Always stay connected in your student portal
                                         </p>
                                     </div>
@@ -70,73 +100,66 @@
                                         </div>
                                     </div>
                                     <div class="row card-group">
-                                        <div class="col-md-4 col-sm-6 mb-3">
+                                        <a href="student/enrolled-courses" class="col-md-4 col-sm-6 mb-3">
                                             <div class="card card-custom">
                                                 <div class="card-body text-center">
                                                     <i class="fas fa-graduation-cap card-icon"></i>
                                                     <h5 class="card-title mt-3">Courses</h5>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
 
-                                        <div class="col-md-4 col-sm-6 mb-3">
+                                        <a href="student/assignments" class="col-md-4 col-sm-6 mb-3">
                                             <div class="card card-custom">
                                                 <div class="card-body text-center">
                                                     <i class="fas fa-tasks card-icon"></i>
                                                     <h5 class="card-title mt-3">Assignment</h5>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
 
-                                        <div class="col-md-4 col-sm-6 mb-3">
+                                        <a href="student/timetable" class="col-md-4 col-sm-6 mb-3">
                                             <div class="card card-custom">
                                                 <div class="card-body text-center">
                                                     <i class="far fa-clock card-icon"></i>
                                                     <h5 class="card-title mt-3">Timetable</h5>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1">
                                         <div class="category-header" style="font-size:17px;">
                                             Enrolled Courses
                                         </div>
-                                        <div class="seeAll">See all</div>
+                                        <a href="student/enrolled-courses" class="seeAll">See all</a>
                                     </div>
                                     <div class="row card-group">
+                                        <?php if (!empty($enrolledCourses)): ?>
+                                        <?php foreach (array_slice($enrolledCourses, 0, 2) as $course): ?>
                                         <div class="col-md-6 col-sm-6 mb-3">
-                                            <a href="learningPage.php">
+                                            <a
+                                                href="<?= base_url('student/course-details/' . $course['course_id']); ?>">
                                                 <div class="card card-custom" style="background-color: #f0f8ff;">
                                                     <div class="card-body d-flex justify-content-between">
                                                         <div>
-                                                            <h5 class="card-title" style="font-size:16px;">Fundamental
-                                                                of
-                                                                Python
-                                                                Programming</h5>
+                                                            <h5 class="card-title" style="font-size:16px;">
+                                                                <?= esc($course['course_title']); ?></h5>
                                                             <button class="btn btn-blue px-4">View</button>
+                                                            <div class="progress my-1">
+                                                                <div class="progress-bar" role="progressbar"
+                                                                    style="width: <?= $course['overallProgress']; ?>%;" aria-valuenow="<?= $course['overallProgress']; ?>"
+                                                                    aria-valuemin="0" aria-valuemax="100"><?= $course['overallProgress']; ?>%</div>
+                                                            </div>
                                                         </div>
-                                                        <i class="fas fa-laptop-code card-icon"></i>
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
-
-                                        <div class="col-md-6 col-sm-6 mb-3">
-                                            <a href="learningPage.php">
-                                                <div class="card card-custom" style="background-color: #f0f8ff;">
-                                                    <div class="card-body d-flex justify-content-between">
-                                                        <div>
-                                                            <h5 class="card-title" style="font-size:16px;">Object
-                                                                Oriented
-                                                                Programming</h5>
-                                                            <button class="btn btn-blue px-4">View</button>
-                                                        </div>
-                                                        <i class="fas fa-cogs card-icon"></i>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                        <?php endforeach; ?>
+                                        <?php else: ?>
+                                        <p>You have not enrolled in any courses yet.</p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -149,9 +172,11 @@
                                                 <div class="seeAll">See all</div>
                                             </div>
                                             <div class="instructor d-flex align-items-center justify-content-between">
+                                                <img src="../assets/img/profile-img.jpg" alt="">
+
+                                                <!-- <img src="../assets/img/animated.jpeg" alt="">
                                                 <img src="../assets/img/animated.jpeg" alt="">
-                                                <img src="../assets/img/animated.jpeg" alt="">
-                                                <img src="../assets/img/animated.jpeg" alt="">
+                                                <img src="../assets/img/animated.jpeg" alt=""> -->
                                             </div>
                                             <div class="list-group mt-3">
                                                 <div class="d-flex align-items-center justify-content-between mb-1">

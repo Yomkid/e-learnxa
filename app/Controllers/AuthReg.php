@@ -30,48 +30,77 @@ class AuthReg extends Controller
     {
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
-
+    
         $usersModel = new Users();
         $user = $usersModel->where('email', $email)->first();
-
+    
         if ($user && password_verify($password, $user['password_hash'])) {
+            // Get the current date in 'Y-m-d' format
+            $currentDate = date('Y-m-d');
+    
+            // Check if the user has logged in today
+            $lastLoginDate = $user['last_login_date'] ?? null; // Assume you store this in the users table
+    
+            // Determine if it's the user's first login of the day
+            $isFirstLoginToday = !$lastLoginDate || $lastLoginDate !== $currentDate;
+    
+            // Update the last login date in the database if it's the first login of the day
+            if ($isFirstLoginToday) {
+                $usersModel->update($user['user_id'], ['last_login_date' => $currentDate]);
+            }
+    
+            // Set session data
             $this->session->set([
                 'user_id' => $user['user_id'],
                 'email' => $user['email'],
                 'first_name' => $user['first_name'],
-                'role_id' => $user['role_id'], // Add role_id to session data
+                'role_id' => $user['role_id'],
                 'payment_confirmation_code' => $user['payment_confirmation_code'],
                 'isLoggedIn' => true,
+                'isFirstLoginToday' => $isFirstLoginToday, // Store this for greeting logic
             ]);
-
+    
             $redirectURL = $this->request->getPost('redirect');
-
+    
             // Validate the redirect URL
             if ($redirectURL && filter_var($redirectURL, FILTER_VALIDATE_URL) && strpos($redirectURL, base_url()) === 0) {
                 return redirect()->to($redirectURL);
             }
-            
+    
             // Redirect based on role_id
             switch ($user['role_id']) {
-                case 1: // Assuming 1 is for 'admin'
-                    return redirect()->to(base_url('admin'));
-                case 2: // Assuming 2 is for 'super_admin'
-                    return redirect()->to(base_url('/super_admin'));
-                case 3: // Assuming 3 is for 'instructor'
-                    return redirect()->to(base_url('/instructor'));
-                case 4: // Assuming 4 is for 'moderator'
-                    return redirect()->to(base_url('/moderator'));
-                case 5: // Assuming 5 is for 'student'
-                    return redirect()->to(base_url('/student'));
+                case 1:
+                    return redirect()->to(base_url('admin/dashboard'));
+                case 2:
+                    return redirect()->to(base_url('super_admin/dashboard'));
+                case 3:
+                    return redirect()->to(base_url('instructor/dashboard'));
+                case 4:
+                    return redirect()->to(base_url('moderator/dashboard'));
+                case 5:
+                    return redirect()->to(base_url('student'));
                 default:
-                    return redirect()->to(base_url('/student'));
+                    return redirect()->to(base_url('student'));
             }
         } else {
             $this->session->setFlashdata('error', 'Invalid Email or Password.');
-            // $this->session->setFlashdata('error', 'Invalid Email or Password.');
             return redirect()->back();
         }
     }
+    
+
+    public function dashboard()
+    {
+        // Assuming you have a session to check if the user is logged in
+        $session = session();
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to('login')->with('error', 'Please log in first.');
+        }
+
+        // Load the dashboard view
+        return view('student/index');
+    }
+
 
 
     public function logout()
@@ -119,18 +148,7 @@ class AuthReg extends Controller
         }
     }
 
-    public function dashboard()
-    {
-        // Assuming you have a session to check if the user is logged in
-        $session = session();
-        if (!$session->get('isLoggedIn')) {
-            return redirect()->to('login')->with('error', 'Please log in first.');
-        }
-
-        // Load the dashboard view
-        return view('student/index');
-    }
-
+   
     public function acknowledgementSlip()
     {
         return view('slip/acknowledgement_slip');
