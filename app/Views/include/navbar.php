@@ -56,7 +56,7 @@
                 <a class="nav-link" href="/become-teacher">Become a Teacher</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/virtual-courses">Live Class</a>
+                <a class="nav-link" href="/about">About</a>
             </li>
             <?php $session = session(); ?>
             <?php if ($session->get('isLoggedIn')) : ?>
@@ -74,10 +74,10 @@
             </li>
             <?php else : ?>
             <li class="nav-item">
-                <a href="login"><button class="btn mr-2 btn-outline-blue"><i class="fas fa-user"></i> Login</button></a>
+                <a href="/login"><button class="btn mr-2 btn-outline-blue"><i class="fas fa-user"></i> Login</button></a>
             </li>
             <li class="nav-item">
-                <a href="generate-invoice"><button class="btn btn-outline-blue join">Join Now!</button></a>
+                <a href="/generate-invoice"><button class="btn btn-outline-blue join">Join Now!</button></a>
             </li>
             <?php endif; ?>
         </ul>

@@ -246,6 +246,7 @@
                                 <li class="breadcrumb-item active" aria-current="page"><a href="#">JavaScript</a></li>
                             </ol>
                         </nav> -->
+                        <br>
                         <h1><?= $title ?></h1>
                         <p><?= $tagline ?></p>
                         <div class="course-rating">
@@ -285,13 +286,13 @@
     <!-- Container for Mobile Thumbnail and Course Info -->
     <div class="d-md-none">
         <!-- Thumbnail for Mobile -->
-        <nav class="container mt-3" aria-label="breadcrumb">
+        <!-- <nav class="container mt-3" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="thumbnail-breadcrumb-item"><a href="#">Development</a></li>
                 <li class="thumbnail-breadcrumb-item"><a href="#">Web Development</a></li>
                 <li class="thumbnail-breadcrumb-item active" aria-current="page">JavaScript</li>
             </ol>
-        </nav>
+        </nav> -->
 
 
         <div class="thumbnail-container" style="background-image: url('/uploads/<?= $image ?>');"></div>

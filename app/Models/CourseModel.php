@@ -88,6 +88,15 @@ public function getCoursesByCategory($categoryId)
 }
 
 
+// Method to get top courses
+public function getTopCourses($limit = 5)
+{
+    return $this->orderBy('rating', 'DESC')
+                ->limit($limit)
+                ->findAll();
+}
+
+
 
     // public function getCoursesByCategory($categoryId)
     // {

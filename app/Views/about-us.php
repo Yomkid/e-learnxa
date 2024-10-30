@@ -31,14 +31,36 @@
 
 <body>
     <?php include(APPPATH . 'Views/include/navbar.php'); ?>
+    <section id="updates" class="py-5 bg-light">
+        <div class=" container d-flex justify-content-between heading bg-light">
+            <a class="navbar-brand nav-logo" href="#">Learn<span style="color: #007bff;">X</span>a</a>
+            <h2 class="course-category">About LearnXa<i class="fas fa-chalkboard-teacher"></i></h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 update-content">
+                    <h1>Experience Learning Like Never Before</h1>
+                    <p>Welcome to LearnXa, your one-stop destination for transforming your learning experience. LearnXa is an
+                innovative online learning marketplace designed to empower individuals and organizations to embrace the
+                boundless possibilities of knowledge and growth. We offer a wide selection of courses aimed at helping
+                you gain new skills, taught by industry experts to ensure you stay ahead in your educational and
+                professional journey.</p>
+                    <a href="#" class="btn btn-success">Join a Live Class</a>
+                </div>
+                <div class="col-lg-6 col-md-6 update-image">
+                    <img src="./assets/img/liveclass.jpg" alt="Live Class Image">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div class="container about-page mt-4">
 
-        <a href="javascript:history.back()" class="text-dark d-flex align-items-center gap-1 sticky-back-button">
+        <!-- <a href="javascript:history.back()" class="text-dark d-flex align-items-center gap-1 sticky-back-button">
             <i class="far fa-arrow-alt-circle-left fa-1x sticky-top mr-5"></i> <span>Back</span>
-        </a>
+        </a> -->
         <div class="content-section">
-            <h2>About LearnXa</h2>
+            <!-- <h2>About LearnXa</h2>
             <hr>
             <p>
                 Welcome to LearnXa, your one-stop destination for transforming your learning experience. LearnXa is an
@@ -46,7 +68,7 @@
                 boundless possibilities of knowledge and growth. We offer a wide selection of courses aimed at helping
                 you gain new skills, taught by industry experts to ensure you stay ahead in your educational and
                 professional journey.
-            </p>
+            </p> -->
             <p>
                 At LearnXa, we are committed to making learning accessible and affordable for all. With courses starting
                 at just ₦2,000, you can embark on a journey of continuous education and skill development that fits your

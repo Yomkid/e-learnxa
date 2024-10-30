@@ -68,6 +68,11 @@ class Pages extends BaseController
         $activityModel->addActivity($userId, $activityType, $details);
     }
 
+    public function aboutUs()
+    {
+        return view('about-us');
+    }
+
 
 
 

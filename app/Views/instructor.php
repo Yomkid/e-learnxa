@@ -2,19 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include(APPPATH . 'Views/include/head.php'); ?>
     <title>Odewaye Mayomi | LearnXa</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet"> -->
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/assets/css/course.css">
+    
     <style>
         .about-instructor-page {
             max-width: 800px;
@@ -104,97 +94,7 @@
             </div>
 
             <hr>
-            <div class="instructor-courses">
-                <h2>Instructor courses</h2>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="course-card">
-                            <img src="./assets/img/web_dev.jpeg" alt="Course Image" />
-                            <div class="card-body">
-                                <h4 class="card-title">React - The Complete Guide 2024 (incl. Next.js, Redux)</h4>
-
-                                <div class="course-rating">
-                                    <span class="rating">4.5</span>
-                                    <span class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-alt"></i>
-                                    </span>
-                                    <span class="rating-count">(1,234)</span>
-                                </div>
-                                <div class="course-instructor">Mayomi Peter</div>
-                                <div class="course-price">₦41,900</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="course-card">
-                            <img src="./assets/img/py4web.jpg" alt="Course Image" />
-                            <div class="card-body">
-                                <h4 class="card-title">Learn Python Programming for Web Development (In Ten Easy
-                                    Steps)</h4>
-                                <div class="course-rating">
-                                    <span class="rating">4.5</span>
-                                    <span class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-alt"></i>
-                                    </span>
-                                    <span class="rating-count">(1,234)</span>
-                                </div>
-                                <div class="course-instructor">Instructor Name</div>
-                                <div class="course-price">$19.99</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="course-card">
-                            <img src="./assets/img/math.jpg" alt="Course Image" />
-                            <div class="card-body">
-                                <h4 class="card-title">Mathematics - Numerical Analysis</h4>
-                                <div class="course-rating">
-                                    <span class="rating">4.5</span>
-                                    <span class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-alt"></i>
-                                    </span>
-                                    <span class="rating-count">(1,234)</span>
-                                </div>
-                                <div class="course-instructor">Instructor Name</div>
-                                <div class="course-price">$19.99</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="course-card">
-                            <img src="./assets/img/c++.jpg" alt="Course Image" />
-                            <div class="card-body">
-                                <h4 class="card-title">Introduction to Object Oriented Programming with C++</h4>
-                                <div class="course-rating">
-                                    <span class="rating">4.5</span>
-                                    <span class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-alt"></i>
-                                    </span>
-                                    <span class="rating-count">(1,234)</span>
-                                </div>
-                                <div class="course-instructor">Instructor Name</div>
-                                <div class="course-price">$19.99</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 
