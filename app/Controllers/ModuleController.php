@@ -15,7 +15,7 @@ class ModuleController extends BaseController
         $moduleModel = new ModuleModel();
         $modules = $moduleModel->findAll();
 
-        return view('admin/modules/index', ['modules' => $modules]);
+        return view('/admin/modules/index', ['modules' => $modules]);
     }
 
     public function create()
@@ -23,7 +23,7 @@ class ModuleController extends BaseController
         $courseModel = new CourseModel();
         $courses = $courseModel->findAll();
 
-        return view('admin/modules/create', ['courses' => $courses]);
+        return view('/admin/modules/create', ['courses' => $courses]);
     }
 
     public function store()
@@ -46,7 +46,7 @@ class ModuleController extends BaseController
         $module = $moduleModel->find($id);
         $courses = $courseModel->findAll();
 
-        return view('admin/modules/edit', ['module' => $module, 'courses' => $courses]);
+        return view('/admin/modules/edit', ['module' => $module, 'courses' => $courses]);
     }
 
     public function update($id)

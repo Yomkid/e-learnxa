@@ -38,8 +38,8 @@
                     <div class="short-about-footer">
                         <h6 style="font-weight: bold;">LearnXa</h6>
                         <ul>
-                            <li>About</li>
-                            <li>What We Offer</li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/about">What We Offer</a></li>
                             <li>Leadership</li>
                             <li>Careers</li>
                             <li>Contact Us</li>
@@ -57,7 +57,7 @@
                             <li>Generative AI</li>
                             <li>Project Management</li>
                             <li>Python</li>
-                            <li>All Courses</li>
+                            <li><a href="/courses">All Courses</a></li>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <li>Partners</li>
                             <li>Beta Testers</li>
                             <li>Blog</li>
-                            <li>The Coursera Podcast</li>
+                            <li>The LearnXa Podcast</li>
                             <li>Tech Blog</li>
                             <li>Teaching Center</li>
                         </ul>

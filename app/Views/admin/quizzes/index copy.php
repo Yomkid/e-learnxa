@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
+    <title>Quiz Management | LearnXa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -36,7 +37,7 @@
             <!-- Tab Navigation -->
             <ul class="nav nav-tabs" id="quizTabs" role="tablist">
                 <li class="nav-item">
-                    <a class="btn nav-link btn-primary shadow bg-primary" id="add-quiz-tab" data-toggle="modal" data-target="#createQuizModal" role="tab"
+                    <a class="btn nav-link" id="add-quiz-tab" data-toggle="modal" data-target="#createQuizModal" role="tab"
                         aria-controls="add-quiz" aria-selected="false">ADD QUIZ</a>
                 </li>
                 <li class="nav-item">
@@ -118,12 +119,11 @@
                     
                     <form id="bulkUploadForm" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="quizzes_file">Upload Quiz File (CSV/Excel)</label>
-                            <input type="file" id="quizzes_file" name="quizzes_file" class="form-control" accept=".csv, .xlsx" required>
+                            <label for="quiz_file">Upload Quiz File (CSV/Excel)</label>
+                            <input type="file" id="quiz_file" name="quiz_file" class="form-control" accept=".csv, .xlsx" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </form>
-
                 </div>
 
                 <!-- Export to CSV -->
@@ -172,152 +172,73 @@
                     </form>
                 </div>
 
+
+
                 <!-- Quiz Settings -->
                 <div class="tab-pane fade mt-2" id="quiz-settings" role="tabpanel" aria-labelledby="quiz-settings-tab">
                     <form id="quizSettingsForm" action="<?= base_url('admin/quizzes/updateSettings') ?>" method="post">
                         <!-- Select Quiz -->
                         <div class="form-group">
                             <label for="quiz_id">Select Quiz</label>
-                            <select id="settingQuizId" name="quiz_id" class="form-control" required>
+                            <select id="quiz_id" name="quiz_id" class="form-control">
                                 <!-- Populate with existing quizzes -->
                                 <?php foreach ($quizzes as $quiz): ?>
-                                    <option value="<?= $quiz['quiz_id'] ?>"><?= $quiz['quiz_name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-
-                        <!-- Quiz Name -->
+                        
+                        <!-- Quiz Status -->
                         <div class="form-group">
-                            <label for="quiz_name">Quiz Name</label>
-                            <input type="text" id="quiz_name" name="quiz_name" class="form-control" required>
+                            <label for="quiz_status">Quiz Status</label>
+                            <select id="quiz_status" name="quiz_status" class="form-control">
+                                <option value="not_published">Not Published (Hidden)</option>
+                                <option value="unlocked">Unlocked (Early Access)</option>
+                                <option value="published">Published (Publicly Visible)</option>
+                            </select>
                         </div>
-
-                        <!-- Quiz Description -->
+                        
+                        <!-- Assign Quiz and Dates -->
                         <div class="form-group">
-                            <label for="quiz_description">Quiz Description</label>
-                            <textarea id="quiz_description" name="quiz_description" class="form-control"></textarea>
+                            <label for="assign_quiz_dates">Assign Quiz and Dates</label>
+                            <input type="text" id="assign_quiz_dates" name="assign_quiz_dates" class="form-control" placeholder="Enter course and date details">
                         </div>
-
-                        <!-- Total Marks -->
+                        
+                        <!-- Time Limit -->
                         <div class="form-group">
-                            <label for="total_marks">Total Marks</label>
-                            <input type="number" id="total_marks" name="total_marks" class="form-control" placeholder="Enter total marks">
+                            <label for="time_limit">Time Limit (minutes)</label>
+                            <input type="number" id="time_limit" name="time_limit" class="form-control" placeholder="Enter time limit in minutes">
                         </div>
-
-                        <!-- Duration -->
+                        
+                        <!-- Attempts Allowed -->
                         <div class="form-group">
-                            <label for="duration">Duration (minutes)</label>
-                            <input type="number" id="duration" name="duration" class="form-control" placeholder="Enter time limit in minutes">
+                            <label for="attempts_allowed">Attempts Allowed</label>
+                            <input type="number" id="attempts_allowed" name="attempts_allowed" class="form-control" placeholder="Enter number of attempts allowed">
                         </div>
-
+                        
                         <!-- Passing Score -->
                         <div class="form-group">
                             <label for="passing_score">Passing Score (%)</label>
                             <input type="number" id="passing_score" name="passing_score" class="form-control" placeholder="Enter passing score percentage">
                         </div>
-
-                        <!-- Max Attempts -->
-                        <div class="form-group">
-                            <label for="max_attempts">Max Attempts</label>
-                            <input type="number" id="max_attempts" name="max_attempts" class="form-control" placeholder="Enter maximum attempts allowed">
-                        </div>
-
-                        <!-- Quiz Status -->
-                        <div class="form-group">
-                            <label for="is_active">Quiz Status</label>
-                            <select id="is_active" name="is_active" class="form-control">
-                                <option value="0">Inactive</option>
-                                <option value="1">Active</option>
-                            </select>
-                        </div>
-
-                        <!-- Start Date -->
-                        <div class="form-group">
-                            <label for="start_date">Start Date</label>
-                            <input type="date" id="start_date" name="start_date" class="form-control">
-                        </div>
-
-                        <!-- End Date -->
-                        <div class="form-group">
-                            <label for="end_date">End Date</label>
-                            <input type="date" id="end_date" name="end_date" class="form-control">
-                        </div>
-
-                        <!-- Shuffle Questions -->
-                        <div class="form-group">
-                            <label for="shuffle_questions">Shuffle Questions</label>
-                            <input type="checkbox" id="shuffle_questions" name="shuffle_questions" value="1">
-                        </div>
-
-                        <!-- Shuffle Answers -->
-                        <div class="form-group">
-                            <label for="shuffle_answers">Shuffle Answers</label>
-                            <input type="checkbox" id="shuffle_answers" name="shuffle_answers" value="1">
-                        </div>
-
-                        <!-- Published Status -->
-                        <div class="form-group">
-                            <label for="published">Published</label>
-                            <input type="checkbox" id="published" name="published" value="1">
-                        </div>
-
-                        <!-- Access Code -->
-                        <div class="form-group">
-                            <label for="access_code">Access Code (if required)</label>
-                            <input type="text" id="access_code" name="access_code" class="form-control" placeholder="Enter access code">
-                        </div>
-
-                        <!-- Quiz Type -->
-                        <div class="form-group">
-                            <label for="quiz_type">Quiz Type</label>
-                            <select id="quiz_type" name="quiz_type" class="form-control">
-                                <option value="graded">Graded</option>
-                                <option value="practice">Practice</option>
-                            </select>
-                        </div>
-
-                        <!-- Attempt Mode -->
-                        <div class="form-group">
-                            <label for="attempt_mode">Attempt Mode</label>
-                            <select id="attempt_mode" name="attempt_mode" class="form-control">
-                                <option value="single">Single Attempt</option>
-                                <option value="multiple">Multiple Attempts</option>
-                            </select>
-                        </div>
-
-                        <!-- Retake Delay (hours) -->
-                        <div class="form-group">
-                            <label for="retake_delay">Retake Delay (hours)</label>
-                            <input type="number" id="retake_delay" name="retake_delay" class="form-control" placeholder="Delay between attempts">
-                        </div>
-
-                        <!-- Allow Review -->
-                        <div class="form-group">
-                            <label for="allow_review">Allow Review</label>
-                            <input type="checkbox" id="allow_review" name="allow_review" value="1">
-                        </div>
-
-                        <!-- Feedback Enabled -->
-                        <div class="form-group">
-                            <label for="feedback_enabled">Feedback Enabled</label>
-                            <input type="checkbox" id="feedback_enabled" name="feedback_enabled" value="1">
-                        </div>
-
-                        <!-- Feedback Message -->
-                        <div class="form-group">
-                            <label for="feedback_message">Feedback Message</label>
-                            <textarea id="feedback_message" name="feedback_message" class="form-control" placeholder="Enter feedback message"></textarea>
-                        </div>
-
                         
-
-                    
-
+                        <!-- Grades -->
+                        <div class="form-group">
+                            <label for="grades">Grades</label>
+                            <select id="grades" name="grades" class="form-control">
+                                <option value="letter">Letter Grades</option>
+                                <option value="percentage">Percentage</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Retakes -->
+                        <div class="form-group">
+                            <label for="retakes">Retakes Allowed</label>
+                            <input type="number" id="retakes" name="retakes" class="form-control" placeholder="Enter number of retakes allowed">
+                        </div>
+                        
                         <button type="submit" class="btn btn-primary">Save Settings</button>
                     </form>
                 </div>
-
-
 
             </div>
     </main>
@@ -333,7 +254,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="quizForm" action="<?= base_url('admin/quizzes/store') ?>" method="post" enctype="multipart/form-data">
+                    <form id="quizForm" action="<?= base_url('admin/quizzes/store') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="quiz_name">Quiz Name</label>
@@ -342,103 +263,6 @@
                         <div class="form-group">
                             <label for="quiz_description">Description</label>
                             <textarea id="quiz_description" name="quiz_description" class="form-control" rows="4"><?= old('quiz_description') ?></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="total_marks">Total Marks</label>
-                            <input type="number" name="total_marks" id="total_marks" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="duration">Duration (in minutes)</label>
-                            <input type="number" name="duration" id="duration" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="passing_score">Passing Score</label>
-                            <input type="number" name="passing_score" id="passing_score" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="max_attempts">Maximum Attempts</label>
-                            <input type="number" name="max_attempts" id="max_attempts" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="is_active">Is Active</label>
-                            <input type="checkbox" name="is_active" id="is_active" value="1">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="start_date">Start Date</label>
-                            <input type="date" name="start_date" id="start_date" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="end_date">End Date</label>
-                            <input type="date" name="end_date" id="end_date" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="shuffle_questions">Shuffle Questions</label>
-                            <input type="checkbox" name="shuffle_questions" id="shuffle_questions" value="1">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="shuffle_answers">Shuffle Answers</label>
-                            <input type="checkbox" name="shuffle_answers" id="shuffle_answers" value="1">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="published">Published</label>
-                            <input type="checkbox" name="published" id="published" value="1">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="access_code">Access Code</label>
-                            <input type="text" name="access_code" id="access_code" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="quiz_type">Quiz Type</label>
-                            <select name="quiz_type" id="quiz_type" class="form-control">
-                                <option value="practice">Practice</option>
-                                <option value="test">Test</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="attempt_mode">Attempt Mode</label>
-                            <select name="attempt_mode" id="attempt_mode" class="form-control">
-                                <option value="single">Single</option>
-                                <option value="multiple">Multiple</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="retake_delay">Retake Delay (in hours)</label>
-                            <input type="number" name="retake_delay" id="retake_delay" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="allow_review">Allow Review</label>
-                            <input type="checkbox" name="allow_review" id="allow_review" value="1">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedback_enabled">Enable Feedback</label>
-                            <input type="checkbox" name="feedback_enabled" id="feedback_enabled" value="1">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedback_message">Feedback Message</label>
-                            <textarea name="feedback_message" id="feedback_message" class="form-control" rows="2"></textarea>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="image_url">Image</label>
-                            <input type="file" name="image_url" id="image_url" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary">Save Quiz</button>
                     </form>
@@ -807,73 +631,6 @@
                 event.returnValue = 'Changes you made may not be saved.';
             }
         });
-
-
-
-        document.getElementById('settingQuizId').addEventListener('change', function () {
-    let quizId = this.value;
-    // let quizId = 1;
-
-    if (quizId) {
-        fetch(`<?= base_url('admin/quizzes/getQuizSettings/') ?>${quizId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Fetched quiz data:', data);  // Log fetched data
-                if (data) {
-                    document.getElementById('quiz_name').value = data.quiz_name || '';
-                    document.getElementById('quiz_description').value = data.quiz_description || '';
-                    document.getElementById('total_marks').value = data.total_marks || '';
-                    document.getElementById('duration').value = data.duration || '';
-                    document.getElementById('passing_score').value = data.passing_score || '';
-                    document.getElementById('max_attempts').value = data.max_attempts || '';
-                    document.getElementById('is_active').checked = data.is_active == 1;
-                    document.getElementById('start_date').value = data.start_date || '';
-                    document.getElementById('end_date').value = data.end_date || '';
-                    document.getElementById('shuffle_questions').checked = data.shuffle_questions == 1;
-                    document.getElementById('shuffle_answers').checked = data.shuffle_answers == 1;
-                    document.getElementById('published').checked = data.published == 1;
-                    document.getElementById('access_code').value = data.access_code || '';
-                    document.getElementById('quiz_type').value = data.quiz_type || 'graded';
-                    document.getElementById('attempt_mode').value = data.attempt_mode || 'single';
-                    document.getElementById('retake_delay').value = data.retake_delay || '';
-                    document.getElementById('allow_review').checked = data.allow_review == 1;
-                    document.getElementById('feedback_enabled').checked = data.feedback_enabled == 1;
-                    document.getElementById('feedback_message').value = data.feedback_message || '';
-                    document.getElementById('category_id').value = data.category_id || '';
-                    document.getElementById('course_id').value = data.course_id || '';
-                }
-            })
-            .catch(error => console.error('Error fetching quiz settings:', error));
-    }
-});
-
-
-document.getElementById('bulkUploadForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    let formData = new FormData(this);
-
-    axios.post('<?= base_url('admin/quizzes/bulkUpload') ?>', formData)
-        .then(response => {
-            if (response.data.success) {
-                alert(response.data.success);
-                // Reload the list of quizzes or update UI as needed
-            } else {
-                alert('Error: ' + response.data.error);
-            }
-        })
-        .catch(error => {
-            console.error('An error occurred:', error);
-        });
-});
-
-
-
     </script>
 
 

@@ -79,7 +79,7 @@ class AssignmentController extends BaseController
         ];
 
         if ($assignmentModel->save($data)) {
-            return redirect()->to('/assignments')->with('success', 'assignment created successfully.');
+            return redirect()->to('/admin/assignments')->with('success', 'assignment created successfully.');
         } else {
             return redirect()->back()->with('errors', $assignmentModel->errors());
         }
@@ -158,7 +158,7 @@ class AssignmentController extends BaseController
         $assignmentModel = new AssignmentModel();
         
         if ($assignmentModel->delete($id)) {
-            return redirect()->to('/assignments')->with('success', 'assignment deleted successfully.');
+            return redirect()->to('/admin/assignments')->with('success', 'assignment deleted successfully.');
         } else {
             return redirect()->back()->with('errors', 'Failed to delete assignment.');
         }
@@ -226,7 +226,7 @@ class AssignmentController extends BaseController
         }
     
         $successMessage = "The assignments have been assigned to the course successfully";
-        return redirect()->to('/assignments')
+        return redirect()->to('/admin/assignments')
             ->with('success', $successMessage)
             ->with('message_type', 'success')
             ->with('message', $successMessage);

@@ -227,27 +227,27 @@ $routes->group('admin', function($routes) {
     });
 
     
-// Quiz route
-$routes->group('quizzes', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->get('/', 'QuizController::index'); // List all quizzes
-    $routes->get('create', 'QuizController::create'); // Show the form to create a new quiz
-    $routes->get('list', 'QuizController::list');
-    $routes->post('assignQuizzes', 'QuizController::assignQuizzes'); // Assign Quizzes to a course
-    $routes->post('store', 'QuizController::store'); // Handle the form submission to create a new quiz
-    $routes->get('edit/(:num)', 'QuizController::edit/$1'); // Show the form to edit an existing quiz
-    $routes->post('update', 'QuizController::update/$1'); // Handle the form submission to update an existing quiz
-    $routes->get('delete/(:num)', 'QuizController::delete/$1'); // Delete an existing quiz
-    $routes->get('view/(:num)', 'QuizController::viewCourse/$1');
-    $routes->post('addQuizzes', 'QuizController::addQuizzes');
-    $routes->post('removeQuiz/(:num)/(:num)', 'QuizController::removeQuiz/$1/$2');
-    $routes->post('bulkUpload', 'QuizController::bulkUpload');
-    $routes->post('exportQuizzes', 'QuizController::exportQuizzes');
-    $routes->get('getQuizzesForCourse/(:num)', 'QuizController::getQuizzesForCourse/$1');
-    $routes->post('updateSettings', 'QuizController::updateSettings', ['as' => 'quizzes.updateSettings']);
-    $routes->get('getQuizSettings/(:num)', 'QuizController::getQuizSettings/$1');
+    // Quiz route
+    $routes->group('quizzes', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'QuizController::index'); // List all quizzes
+        $routes->get('create', 'QuizController::create'); // Show the form to create a new quiz
+        $routes->get('list', 'QuizController::list');
+        $routes->post('assignQuizzes', 'QuizController::assignQuizzes'); // Assign Quizzes to a course
+        $routes->post('store', 'QuizController::store'); // Handle the form submission to create a new quiz
+        $routes->get('edit/(:num)', 'QuizController::edit/$1'); // Show the form to edit an existing quiz
+        $routes->post('update', 'QuizController::update/$1'); // Handle the form submission to update an existing quiz
+        $routes->get('delete/(:num)', 'QuizController::delete/$1'); // Delete an existing quiz
+        $routes->get('view/(:num)', 'QuizController::viewCourse/$1');
+        $routes->post('addQuizzes', 'QuizController::addQuizzes');
+        $routes->post('removeQuiz/(:num)/(:num)', 'QuizController::removeQuiz/$1/$2');
+        $routes->post('bulkUpload', 'QuizController::bulkUpload');
+        $routes->post('exportQuizzes', 'QuizController::exportQuizzes');
+        $routes->get('getQuizzesForCourse/(:num)', 'QuizController::getQuizzesForCourse/$1');
+        $routes->post('updateSettings', 'QuizController::updateSettings', ['as' => 'quizzes.updateSettings']);
+        $routes->get('getQuizSettings/(:num)', 'QuizController::getQuizSettings/$1');
 
 
-});
+    });
 
 
     // Questions Routes
