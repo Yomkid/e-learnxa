@@ -239,13 +239,13 @@
             <div class="col-md-8 py-4">
                 <div class="d-flex flex-column justify-content-between">
                     <div>
-                        <nav aria-label="breadcrumb">
+                        <!-- <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Development</a></li>
                                 <li class="breadcrumb-item"><a href="#">Web Development</a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><a href="#">JavaScript</a></li>
                             </ol>
-                        </nav>
+                        </nav> -->
                         <h1><?= $title ?></h1>
                         <p><?= $tagline ?></p>
                         <div class="course-rating">
@@ -497,9 +497,15 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="coursepage-price">₦<?= number_format($price) ?></div>
                                 </div>
-                                <a href="<?= site_url('enroll/' . $course_id) ?>">
-                                    <button class="enroll-btn">Enroll Now</button>
-                                </a>
+                                <?php if ($isEnrolled): ?>
+                                    <a href="<?= site_url('student/course-details/' . $course_id) ?>">
+                                        <button class="enroll-btn">Enrolled (Continue Learning)</button>
+                                    </a>
+                                <?php else: ?>
+                                    <a href="<?= site_url('enroll/' . $course_id) ?>">
+                                        <button class="enroll-btn">Enroll Now</button>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -549,12 +555,16 @@
                 <div class="bg-white border-top py-2 px-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="coursepage-price">₦<?= number_format($price) ?></div>
-                        <!-- <a href="checkout.php">
-                            <button class="enroll-btn">Enroll Now</button>
-                        </a> -->
-                        <a href="<?= site_url('enroll/' . $course_id) ?>">
-                            <button class="enroll-btn">Enroll Now</button>
-                        </a>
+                        
+                        <?php if ($isEnrolled): ?>
+                            <a href="<?= site_url('student/course-details/' . $course_id) ?>">
+                                <button class="enroll-btn">Enrolled (Continue Learning)</button>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?= site_url('enroll/' . $course_id) ?>">
+                                <button class="enroll-btn">Enroll Now</button>
+                            </a>
+                        <?php endif; ?>
 
                     </div>
                 </div>
