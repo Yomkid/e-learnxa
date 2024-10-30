@@ -47,7 +47,34 @@
                         <p>Below are your enrolled courses. Kindly continue where you stopped and finish to earn your certificate.</p>
                     </div>
                     <hr>
-                    <div class="row">
+                    <!-- <div class="row">
+                        <?php if (!empty($enrolledCourses)): ?>
+                            <?php foreach ($enrolledCourses as $course): ?>
+                                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                                    <a href="<?= base_url('student/course-details/' . $course['course_id']); ?>">
+                                        <div class="course-card">
+                                            <img src="<?= base_url('uploads/' . $course['course_image']); ?>" alt="<?= esc($course['course_title']); ?>" />
+                                            <div class="card-body">
+                                                <h4 class="card-title"><?= esc($course['course_title']); ?></h4>
+                                                <div class="progress mb-4">
+                                                    <div class="progress-bar" role="progressbar" style="width: <?= $course['overallProgress']; ?>%;" aria-valuenow="<?= $course['overallProgress']; ?>" aria-valuemin="0" aria-valuemax="100"><?= $course['overallProgress']; ?>%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="text-danger"><strong>You have not enrolled in any courses yet.</strong></p>
+                            <a class="btn btn-primary" href="<?= base_url('/courses'); ?>">Check Courses and Enroll</a>
+                        <?php endif; ?>
+                    </div> -->
+                    <div class="row">               
+                        <?php if (session()->getFlashdata('success')): ?>
+                            <div class="alert alert-success">
+                                <strong><?= session()->getFlashdata('success'); ?></strong>
+                            </div>
+                        <?php endif; ?>
                         <?php if (!empty($enrolledCourses)): ?>
                             <?php foreach ($enrolledCourses as $course): ?>
                                 <div class="col-lg-3 col-md-6 col-sm-6 mb-4">

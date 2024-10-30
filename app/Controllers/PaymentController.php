@@ -257,6 +257,102 @@ class PaymentController extends Controller
     //     }
     // }
 
+    // public function verifyEnrollmentPayment()
+    // {
+    //     $reference = $this->request->getGet('reference');
+
+    //     if (!$reference) {
+    //         return redirect()->to('/checkout')->with('error', 'No payment reference found.');
+    //     }
+
+    //     // $paystackSecretKey = getenv('PAYSTACK_SECRET_KEY'); // Store this securely
+    //     $paystackSecretKey = 'pk_test_18bd358872baeae63db2133cc291cd2e92df0015';
+
+    //     $curl = curl_init();
+    //     curl_setopt_array($curl, [
+    //         CURLOPT_URL => "https://api.paystack.co/transaction/verify/{$reference}",
+    //         CURLOPT_RETURNTRANSFER => true,
+    //         CURLOPT_HTTPHEADER => [
+    //             "Authorization: Bearer {$paystackSecretKey}",
+    //             "Content-Type: application/json",
+    //             "cache-control: no-cache"
+    //         ],
+    //     ]);
+
+    //     $response = curl_exec($curl);
+    //     $err = curl_error($curl);
+
+    //     curl_close($curl);
+
+    //     if ($err) {
+    //         return redirect()->to('/checkout')->with('error', 'Error verifying payment.');
+    //     }
+
+    //     $paymentDetails = json_decode($response);
+
+    //     // Log the response from Paystack
+    //     log_message('debug', 'Paystack Response: ' . json_encode($paymentDetails));
+
+    //     // Check if course_data and course_id exist in the session
+    //     $sessionCourseData = session()->get('course_data');
+    //     log_message('debug', 'Session Data: ' . json_encode($sessionCourseData));
+
+    //     if (!$sessionCourseData || !isset($sessionCourseData['course_id'])) {
+    //         return redirect()->to('/checkout')->with('error', 'Course data is missing. Please select a course.');
+    //     }
+
+    //     $courseId = $sessionCourseData['course_id'];
+    //     $userId = session()->get('user_id');
+
+    //     if ($paymentDetails && $paymentDetails->status && $paymentDetails->data->status === 'success') {
+    //         // Extract payment information
+    //         $amountPaid = $paymentDetails->data->amount / 100; // Paystack returns amount in kobo
+    //         $paymentReference = $paymentDetails->data->reference;
+
+    //         // Validate ENUM values for status and payment_status
+    //         $validStatuses = ['enrolled', 'active', 'completed', 'cancelled', 'refunded'];
+    //         $validPaymentStatuses = ['paid', 'pending', 'failed'];
+
+    //         if (!in_array(strtolower('enrolled'), $validStatuses) || !in_array(strtolower('paid'), $validPaymentStatuses)) {
+    //             return redirect()->to('/checkout')->with('error', 'Invalid status or payment status.');
+    //         }
+
+    //         // Prepare data to be inserted into the database
+    //         $enrollmentData = [
+    //             // 'user_id' => 26,
+    //             'user_id' => $userId,
+    //             'course_id' => $courseId,
+    //             'enrollment_date' => date('Y-m-d H:i:s'),
+    //             'price' => $amountPaid,
+    //             'status' => 'enrolled', // Ensure lowercase to match ENUM values
+    //             'payment_reference' => $paymentReference,
+    //             'payment_status' => 'paid' // Ensure lowercase to match ENUM values
+    //         ];
+
+    //         // Log the data to be inserted
+    //         log_message('debug', 'Enrollment Data: ' . json_encode($enrollmentData));
+
+    //         // Insert data into the database
+    //         $enrollmentModel = new CourseEnrollmentModel();
+    //         $inserted = $enrollmentModel->insert($enrollmentData);
+
+    //         if (!$inserted) {
+    //             log_message('error', 'Failed to insert enrollment data: ' . json_encode($enrollmentData));
+    //             return redirect()->to('checkout')->with('error', 'Failed to process your enrollment. Please try again.');
+    //         }
+
+    //         // Clear session data
+    //         session()->remove('course_data');
+    //         session()->remove('user_id');
+
+    //         // Redirect to a confirmation page
+    //         // return view('/payment_status/course_enrollment_success');
+    //         return view('/student/enrolled-courses');
+    //     } else {
+    //         return redirect()->to('/checkout')->with('error', 'Payment verification failed.');
+    //     }
+    // }
+
     public function verifyEnrollmentPayment()
     {
         $reference = $this->request->getGet('reference');
@@ -265,9 +361,9 @@ class PaymentController extends Controller
             return redirect()->to('/checkout')->with('error', 'No payment reference found.');
         }
 
-        // $paystackSecretKey = getenv('PAYSTACK_SECRET_KEY'); // Store this securely
         $paystackSecretKey = 'pk_test_18bd358872baeae63db2133cc291cd2e92df0015';
 
+        // Initialize cURL for Paystack verification
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => "https://api.paystack.co/transaction/verify/{$reference}",
@@ -281,7 +377,6 @@ class PaymentController extends Controller
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
 
         if ($err) {
@@ -290,13 +385,10 @@ class PaymentController extends Controller
 
         $paymentDetails = json_decode($response);
 
-        // Log the response from Paystack
         log_message('debug', 'Paystack Response: ' . json_encode($paymentDetails));
 
-        // Check if course_data and course_id exist in the session
+        // Check if course_data exists in session
         $sessionCourseData = session()->get('course_data');
-        log_message('debug', 'Session Data: ' . json_encode($sessionCourseData));
-
         if (!$sessionCourseData || !isset($sessionCourseData['course_id'])) {
             return redirect()->to('/checkout')->with('error', 'Course data is missing. Please select a course.');
         }
@@ -304,52 +396,43 @@ class PaymentController extends Controller
         $courseId = $sessionCourseData['course_id'];
         $userId = session()->get('user_id');
 
+        // Validate payment success
         if ($paymentDetails && $paymentDetails->status && $paymentDetails->data->status === 'success') {
-            // Extract payment information
-            $amountPaid = $paymentDetails->data->amount / 100; // Paystack returns amount in kobo
+            $amountPaid = $paymentDetails->data->amount / 100;
             $paymentReference = $paymentDetails->data->reference;
 
-            // Validate ENUM values for status and payment_status
-            $validStatuses = ['enrolled', 'active', 'completed', 'cancelled', 'refunded'];
-            $validPaymentStatuses = ['paid', 'pending', 'failed'];
-
-            if (!in_array(strtolower('enrolled'), $validStatuses) || !in_array(strtolower('paid'), $validPaymentStatuses)) {
-                return redirect()->to('/checkout')->with('error', 'Invalid status or payment status.');
-            }
-
-            // Prepare data to be inserted into the database
+            // Prepare data for database insertion
             $enrollmentData = [
-                // 'user_id' => 26,
                 'user_id' => $userId,
                 'course_id' => $courseId,
                 'enrollment_date' => date('Y-m-d H:i:s'),
                 'price' => $amountPaid,
-                'status' => 'enrolled', // Ensure lowercase to match ENUM values
+                'status' => 'enrolled',
                 'payment_reference' => $paymentReference,
-                'payment_status' => 'paid' // Ensure lowercase to match ENUM values
+                'payment_status' => 'paid'
             ];
 
-            // Log the data to be inserted
             log_message('debug', 'Enrollment Data: ' . json_encode($enrollmentData));
 
-            // Insert data into the database
+            // Insert enrollment data into the database
             $enrollmentModel = new CourseEnrollmentModel();
-            $inserted = $enrollmentModel->insert($enrollmentData);
-
-            if (!$inserted) {
+            if (!$enrollmentModel->insert($enrollmentData)) {
                 log_message('error', 'Failed to insert enrollment data: ' . json_encode($enrollmentData));
-                return redirect()->to('checkout')->with('error', 'Failed to process your enrollment. Please try again.');
+                return redirect()->to('/checkout')->with('error', 'Failed to process your enrollment. Please try again.');
             }
 
-            // Clear session data
-            session()->remove('course_data');
-            session()->remove('user_id');
+            // Fetch all enrolled courses for the user
+            $enrolledCourses = $enrollmentModel->getUserEnrollments($userId);
 
-            // Redirect to a confirmation page
-            return view('/payment_status/course_enrollment_success');
-        } else {
-            return redirect()->to('/checkout')->with('error', 'Payment verification failed.');
+            // Clear session data
+            session()->remove(['course_data']);
+
+
+            // Redirect to enrolled courses page with the updated enrollment data
+            return redirect()->to('/student/enrolled-courses')->with('success', 'Enrollment completed successfully!')->with('enrolledCourses', $enrolledCourses);
         }
+
+        return redirect()->to('/checkout')->with('error', 'Payment verification failed.');
     }
 
 

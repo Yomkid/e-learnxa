@@ -6,72 +6,22 @@ use App\Controllers\BaseController;
 use App\Models\CategoryModel;
 use App\Models\TopicsModel;
 use App\Models\CourseModel;
-use App\Models\CourseEnrollmentModel;
-use App\Models\Users;
-use App\Models\ActivityModel;
+use App\Models\VirtualClassModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Pages extends BaseController
 {
 
-    // public function Admin()
-    // {
-    //     return view('admin/index.php');
-    // }
+    protected $categoryModel;
+    protected $VirtualClassModel;
+    protected $sharedData;
 
-
-
-    public function Admin()
+    public function __construct()
     {
-        $userModel = new Users();
-        $courseModel = new CourseModel();
-        $enrollmentModel = new CourseEnrollmentModel();
-        $activityModel = new ActivityModel(); // Create an instance of the ActivityModel
-
-        // Total Learners
-        $totalUsers = $userModel->countAll();
-
-        // Total Courses
-        $totalCourses = $courseModel->countAll();
-
-        // Total Purchases (Total Enrollments)
-        $totalPurchases = $enrollmentModel->countAll();
-
-        // Sales Revenue
-        // $salesRevenue = $enrollmentModel->selectSum('amount_paid')->get()->getRow()->amount_paid ?? 0;
-        $salesRevenue = $userModel->selectSum('amount_paid')->get()->getRow()->amount_paid ?? 0;
-
-        // Average Purchased (Percentage of users who purchased courses)
-        $averagePurchased = $totalUsers > 0 ? ($totalPurchases / $totalUsers) * 100 : 0;
-
-        // Fetch top courses
-        $topCourses = $courseModel->getTopCourses(3); // Fetch top 3 courses
-
-        // Fetch recent activities
-        $recentActivities = $activityModel->getRecentActivities(5); // Fetch latest 5 activities
-
-        // Passing the data to the view
-        return view('admin/index.php', [
-            'totalUsers' => $totalUsers,
-            'totalCourses' => $totalCourses,
-            'averagePurchased' => round($averagePurchased, 2),
-            'salesRevenue' => $salesRevenue,
-            'topCourses' => $topCourses,
-            'recentActivities' => $recentActivities // Pass recent activities to the view
-        ]);
+        $this->categoryModel = new CategoryModel();
+        $this->VirtualClassModel = new VirtualClassModel();
+        
     }
-
-    // Example method to log an activity
-    public function logActivity($userId, $activityType, $details)
-    {
-        $activityModel = new ActivityModel();
-        $activityModel->addActivity($userId, $activityType, $details);
-    }
-
-
-
-
-
     
     public function calendar()
     {
@@ -81,10 +31,10 @@ class Pages extends BaseController
     {
         return view('calend.php');
     }
-
-
-   
-
+    public function Admin()
+    {
+        return view('admin/index.php');
+    }
     public function login()
     {
         return view('login.php');
@@ -161,7 +111,13 @@ class Pages extends BaseController
     }
     public function virtualClassCourses()
     {
-        return view('virtual-class-courses.php');
+        // $virtualClasses = $this->VirtualClassModel->findAll();
+        $virtualClasses = $this->VirtualClassModel
+        ->orderBy('virtualclass_start_date', 'DESC') // Order by start date in descending order
+        // ->limit(10) // Limit to 5 records
+        ->findAll();
+        return view('virtual-class-courses', ['virtualClasses' => $virtualClasses]
+    );
     }
     public function instructor()
     {
@@ -178,7 +134,11 @@ class Pages extends BaseController
     }
     public function profile()
     {
-        return view('student/profile.php');
+        return view('student/profile');
+    }
+    public function aboutUs()
+    {
+        return view('about-us');
     }
 
     // :::::::::::::: ADMIN CONTROLLER FOR VIEWS :::::::::::::::::::
@@ -186,59 +146,69 @@ class Pages extends BaseController
     // Analytics and Reports
     public function AnalyticsAndReports()
     {
-        return view('admin/analytics/AnalyticsAndReports.php');
+        return view('admin/AnalyticsAndReports.php');
     }
 
     // Announcements (Notification)
     public function Announcements()
     {
-        return view('admin/announcement/Announcements.php');
+        return view('admin/Announcements.php');
     }
 
     // Backup and Restore
     public function BackupRestore()
     {
-        return view('admin/settings/backupRestore.php');
+        return view('admin/backupRestore.php');
     }
 
     // Course Details
     public function courseDetails()
     {
-        return view('admin/course_management/courseDetails.php');
+        return view('admin/courseDetails.php');
     }
 
     // Course Management\
     public function courseManagement()
     {
-        return view('admin/course_management/courseManagement.php');
+        return view('admin/courseManagement.php');
     }
 
     // Course Performance Reports
     public function coursePerformanceReport()
     {
-        return view('admin/course_management/coursePerformanceReport.php');
+        return view('admin/coursePerformanceReport.php');
     }
 
     // Create and Edit Coupon
     public function createAndEditCoupon()
     {
-        return view('admin/course_management/createAndEditCoupon.php');
+        return view('admin/createAndEditCoupon.php');
     }
 
     // Create and Edit Course
-    // public function createAndEditCourse()
-    // {
-    //     $topicModel = new TopicsModel();
-    //     $data['topics'] = $topicModel->findAll();
+    public function createAndEditCourse()
+    {
+        $courseModel = new courseModel();
+        $courses = $courseModel->findAll();
 
-    //     // return view('create_course', $data);
-    //     return view('admin/course_management/createAndEditCourse', $data);
-    // }
+        // return view('admin/course_management/createAndEditCourse', ['course' => $courses]);
+        $topicModel = new TopicsModel();
+        // $data['topics'] = $topicModel->findAll();
+        $topics = $topicModel->findAll();
+
+        $data = [
+            'topics' => $topics,
+            'courses' => $courses,
+        ];
+
+        // return view('create_course', $data);
+        return view('admin/course_management/createAndEditCourse', $data);
+    }
 
     // Create and Edit Category
     public function createAndEditCategory()
     {
-        return view('admin/course_management/createAndEditCategory.php');
+        return view('admin/createAndEditCategory.php');
     }
 
     
@@ -248,7 +218,7 @@ class Pages extends BaseController
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
 
-        return view('admin/course_management/createAndEditTopic.php', ['categories' => $categories]);
+        return view('admin/createAndEditTopic.php', ['categories' => $categories]);
     }
 
     // Create and Edit Lesson\
@@ -256,24 +226,28 @@ class Pages extends BaseController
     {
         $courseModel = new CourseModel();
         $data['courses'] = $courseModel->findAll();
-        return view('admin/course_management/createAndEditLesson', $data);
+        return view('admin/createAndEditLesson', $data);
     }
 
-   
+    // Create and Edit Module
+    public function createAndEditModule()
+    {
+        return view('admin/createAndEditModule.php');
+    }
 
     // Create and Edit Assignment
     public function createAndEditAssignment()
     {
         $courseModel = new CourseModel();
         $data['courses'] = $courseModel->findAll();
-        return view('admin/course_management/createAndEditAssignment', $data);
+        return view('admin/createAndEditAssignment', $data);
     }
     // Create and Edit Videos
     public function createAndEditVideo()
     {
         $courseModel = new CourseModel();
         $data['courses'] = $courseModel->findAll();
-        return view('admin/videos/createAndEditVideo', $data);
+        return view('admin/videos/index', $data);
     }
     // Create and Edit Quiz
     public function createAndEditQuiz()
@@ -286,13 +260,13 @@ class Pages extends BaseController
     // Create Role
     public function createRole()
     {
-        return view('admin/role_management/createRole.php');
+        return view('admin/createRole.php');
     }
 
     // Edit Role
     public function editRole()
     {
-        return view('admin/role_management/editRole.php');
+        return view('admin/editRole.php');
     }
 
     // Create User
@@ -322,43 +296,43 @@ class Pages extends BaseController
     // Enrollment List
     public function enrollmentList()
     {
-        return view('admin/course_management/enrollmentList.php');
+        return view('admin/enrollmentList.php');
     }
 
     // Enrollment Management
     public function enrollmentManagement()
     {
-        return view('admin/course_management/enrollmentManagement.php');
+        return view('admin/enrollmentManagement.php');
     }
 
     // Enrollment Request
     public function enrollmentRequest()
     {
-        return view('admin/course_management/enrollmentRequest.php');
+        return view('admin/enrollmentRequest.php');
     }
 
     // FAQ Management (Frequently Ask Question)
     public function faqManagement()
     {
-        return view('admin/settings/faqManagement.php');
+        return view('admin/faqManagement.php');
     }
 
     // Financial Management
     public function financialManagement()
     {
-        return view('admin/financial_management/financialManagement.php');
+        return view('admin/financialManagement.php');
     }
 
     // Financial Report
     public function financialReport()
     {
-        return view('admin/financial_management/financialReport.php');
+        return view('admin/financialReport.php');
     }
 
     // General Settings
     public function generalSettings()
     {
-        return view('admin/settings/generalSettings.php');
+        return view('admin/generalSettings.php');
     }
 
     // Instructor Assignment
@@ -373,48 +347,63 @@ class Pages extends BaseController
         return view('admin/integrationSettings.php');
     }
 
-    
+    // Lesson List
+    public function lessonList()
+    {
+        return view('admin/lessonList.php');
+    }
+
+    // Module List
+    public function moduleList()
+    {
+        return view('admin/moduleList.php');
+    }
 
     // Payment Gateway Setup
     public function paymentGatewaySetup()
     {
-        return view('admin/settings/paymentGatewaySetup.php');
+        return view('admin/paymentGatewaySetup.php');
     }
 
-    
+    // Quiz Management
+    public function quizManagement()
+    {
+        return view('admin/quizManagement.php');
+    }
+
     // Role Management
     public function roleManagement()
     {
-        return view('admin/role_management/roleManagement.php');
+        return view('admin/roleManagement.php');
     }
 
     // Security Settings
     public function securitySettings()
     {
-        return view('admin/settings/securitySettings.php');
+        return view('admin/securitySettings.php');
     }
 
     // Transaction List
     public function transactionList()
     {
-        return view('admin/financial_management/transactionList.php');
+        return view('admin/transactionList.php');
     }
 
     // Users
     public function user()
     {
-        return view('admin/user_management/user.php');
+        return view('admin/user.php');
     }
 
     // User Management
     public function userManagement()
     {
-        return view('admin/user_management/userManagement.php');
+        return view('admin/userManagement.php');
     }
 
     // User Profile
     public function userProfile()
     {
-        return view('admin/user_management/userProfile.php');
+        return view('admin/userProfile.php');
     }
 }

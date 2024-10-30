@@ -58,6 +58,11 @@ class CourseEnrollmentModel extends Model
         return $this->where('user_id', $user_id)->findAll();
     }
 
+    public function getUserEnrollments($userId)
+    {
+        return $this->where('user_id', $userId)->findAll();
+    }
+
     public function getEnrollmentByCourse($course_id)
     {
         return $this->where('course_id', $course_id)->findAll();
