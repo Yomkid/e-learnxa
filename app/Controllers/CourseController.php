@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\CourseModel;
 use App\Models\CourseTopicModel;
 use App\Models\CategoryModel;
+use App\Models\CourseEnrollmentModel;
 use CodeIgniter\API\ResponseTrait;
 use DateTime;
 
@@ -26,6 +27,64 @@ class CourseController extends BaseController
         echo view('courses', $data);
     }
 
+    // public function description($slug)
+    // {
+    //     $courseModel = new CourseModel();
+    //     $course = $courseModel->where('slug', $slug)->first();
+
+    //     if (!$course) {
+    //         throw new \CodeIgniter\Exceptions\PageNotFoundException("Course with slug $slug not found");
+    //     }
+
+
+    //     // For Course Compact
+    //     $courseCompactjsonData = $course['course_compact'];
+    //     $compactData = json_decode($courseCompactjsonData, true);
+    //     $compactTitles = $compactData['titles'];
+    //     $compactContents = $compactData['contents'];
+
+
+    //     $uploaded_date = $course['created_at'];
+
+    //     // Convert the date string to a DateTime object
+    //     $date = new DateTime($uploaded_date);
+
+    //     // Format the date to "June 3, 2024"
+    //     $formatted_date = $date->format('F j, Y');
+
+    //     $data = [
+    //         'course_id' => $course['course_id'],
+    //         'title' => $course['course_title'],
+    //         'slug' => $course['slug'],
+    //         'tagline' => $course['course_tagline'],
+    //         'overview' => $course['course_overview'],
+    //         'acquiring_skills' => $course['course_aquiring_skills'],
+    //         // 'compact' => $course['course_compact'],
+    //         'compactTitles' => $compactTitles,
+    //         'compactContents' => $compactContents,
+    //         'requirements' => $course['course_requirements'],
+    //         'descriptions' => $course['course_descriptions'],
+    //         'image' => $course['course_image'],
+    //         'rating' => $course['rating'],
+    //         'rating_count' => $course['rating_count'],
+    //         'instructor_id' => $course['instructor_id'],
+    //         'price' => $course['price'],
+    //         'duration' => $course['duration'],
+    //         'language' => $course['language'],
+    //         'enrollment_count' => $course['enrollment_count'],
+    //         // 'uploaded_date' => $course['uploaded_date'],
+    //         'modules' => $course['modules'],
+    //         'features' => $course['features'],
+    //         // 'created_at' => $course['created_at'],
+    //         'created_at' => $formatted_date,
+    //         'updated_at' => $course['updated_at'],
+    //         'topic_id' => $course['topic_id'],
+    //     ];
+        
+
+    //     return view('course_description', $data);
+    // }
+
     public function description($slug)
     {
         $courseModel = new CourseModel();
@@ -35,6 +94,12 @@ class CourseController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException("Course with slug $slug not found");
         }
 
+        // Check if the user is enrolled in this course
+        $userId = session()->get('user_id');
+        $enrollmentModel = new CourseEnrollmentModel();
+        $isEnrolled = $enrollmentModel->where('user_id', $userId)
+                                    ->where('course_id', $course['course_id'])
+                                    ->countAllResults() > 0;
 
         // For Course Compact
         $courseCompactjsonData = $course['course_compact'];
@@ -42,13 +107,8 @@ class CourseController extends BaseController
         $compactTitles = $compactData['titles'];
         $compactContents = $compactData['contents'];
 
-
         $uploaded_date = $course['created_at'];
-
-        // Convert the date string to a DateTime object
         $date = new DateTime($uploaded_date);
-
-        // Format the date to "June 3, 2024"
         $formatted_date = $date->format('F j, Y');
 
         $data = [
@@ -58,7 +118,6 @@ class CourseController extends BaseController
             'tagline' => $course['course_tagline'],
             'overview' => $course['course_overview'],
             'acquiring_skills' => $course['course_aquiring_skills'],
-            // 'compact' => $course['course_compact'],
             'compactTitles' => $compactTitles,
             'compactContents' => $compactContents,
             'requirements' => $course['course_requirements'],
@@ -71,15 +130,13 @@ class CourseController extends BaseController
             'duration' => $course['duration'],
             'language' => $course['language'],
             'enrollment_count' => $course['enrollment_count'],
-            // 'uploaded_date' => $course['uploaded_date'],
             'modules' => $course['modules'],
             'features' => $course['features'],
-            // 'created_at' => $course['created_at'],
             'created_at' => $formatted_date,
             'updated_at' => $course['updated_at'],
             'topic_id' => $course['topic_id'],
+            'isEnrolled' => $isEnrolled  // Add enrollment status to data
         ];
-        
 
         return view('course_description', $data);
     }
