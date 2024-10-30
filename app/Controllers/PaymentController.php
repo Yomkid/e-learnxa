@@ -361,7 +361,8 @@ class PaymentController extends Controller
             return redirect()->to('/checkout')->with('error', 'No payment reference found.');
         }
 
-        $paystackSecretKey = 'pk_test_18bd358872baeae63db2133cc291cd2e92df0015';
+        // $paystackSecretKey = 'pk_test_18bd358872baeae63db2133cc291cd2e92df0015';
+        $paystackSecretKey = 'sk_live_15989fc19c95dad4542259213c01d25b3f4c7ad4';
 
         // Initialize cURL for Paystack verification
         $curl = curl_init();

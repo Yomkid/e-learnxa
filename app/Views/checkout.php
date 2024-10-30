@@ -99,7 +99,7 @@
         // Function to handle Paystack payment
         function payWithPaystack() {
             var handler = PaystackPop.setup({
-                key: 'pk_test_18bd358872baeae63db2133cc291cd2e92df0015', // Replace with your Paystack public key
+                key: 'pk_live_36904b6efa931af23c7e4d04a60a911d2719a194', // Replace with your Paystack public key
                 email: '<?= session()->get('email'); ?>', // Replace with user's email
                 amount: <?= session()->get('course_data')['price'] * 100; ?>, // Amount in kobo
                 currency: 'NGN',
