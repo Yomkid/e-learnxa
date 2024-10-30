@@ -176,7 +176,7 @@ class QuizController extends BaseController
         // Update the quiz settings in the database
         $quizId = $this->request->getPost('quiz_id');
         if ($quizModel->update($quizId, $data)) {
-            return redirect()->to('/quizzes')->with('success', 'Quiz settings updated successfully.');
+            return redirect()->to('admin/quizzes')->with('success', 'Quiz settings updated successfully.');
         } else {
             return redirect()->back()->with('errors', $quizModel->errors());
         }
@@ -254,9 +254,9 @@ class QuizController extends BaseController
         $data = $this->request->getPost();
 
         if ($quizModel->save($data)) {
-            return redirect()->to(base_url('quizzes'))->with('success', 'Quiz updated successfully');
+            return redirect()->to(base_url('admin/quizzes'))->with('success', 'Quiz updated successfully');
         } else {
-            return redirect()->to(base_url('quizzes'))->with('error', 'Failed to update quiz');
+            return redirect()->to(base_url('admin/quizzes'))->with('error', 'Failed to update quiz');
         }
     }
 
@@ -267,7 +267,7 @@ class QuizController extends BaseController
         $quizModel = new QuizModel();
         
         if ($quizModel->delete($id)) {
-            return redirect()->to('/quizzes')->with('success', 'Quiz deleted successfully.');
+            return redirect()->to('admin/quizzes')->with('success', 'Quiz deleted successfully.');
         } else {
             return redirect()->back()->with('errors', 'Failed to delete quiz.');
         }
@@ -290,7 +290,7 @@ class QuizController extends BaseController
         ];
 
         if ($questionModel->save($data)) {
-            return redirect()->to('/questions')->with('success', 'Question created successfully.');
+            return redirect()->to('/admin/questions')->with('success', 'Question created successfully.');
         } else {
             return redirect()->back()->with('errors', $questionModel->errors());
         }
@@ -335,7 +335,7 @@ class QuizController extends BaseController
         }
     
         $successMessage = "The quizzes have been assigned to the course successfully";
-        return redirect()->to('/quizzes')
+        return redirect()->to('/admin/quizzes')
             ->with('success', $successMessage)
             ->with('message_type', 'success')
             ->with('message', $successMessage);
