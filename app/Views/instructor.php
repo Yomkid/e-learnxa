@@ -28,8 +28,6 @@
                             <h4>Mayomi Odewaye P</h4>
                             <p>Software Engineer/Data Analyst/Project Manager</p>
                             <p>OMPPEAK TECHNOLOGY, Inc.</p>
-                            <p>35 Courses</p>
-                            <p>89 Students</p>
                         </div>
                     </div>
                 </div>
