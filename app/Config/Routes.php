@@ -168,7 +168,7 @@ $routes->group('admin', function($routes) {
     $routes->get('courses', 'Admin\Courses::index');
     $routes->get('instructors', 'Admin\Instructors::index');
     $routes->get('settings', 'Admin\Settings::index');
-    $routes->get('/XX', 'Pages::Admin'); //Good
+    $routes->get('/LearnXa', 'Pages::Admin'); //Good
     $routes->get('users', 'Users::index');
     $routes->get('analytics', 'Pages::analyticsAndReports'); //Good
     $routes->get('announcements', 'Pages::Announcements'); //Good 
