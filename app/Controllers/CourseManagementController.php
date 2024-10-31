@@ -41,11 +41,14 @@ class CourseManagementController extends BaseController
             $errors = $validation->getErrors();
             return redirect()->back()->withInput()->with('errors', $errors)->with('message_type', 'error')->with('message', implode('<br>', $errors));
         }
+        $categoryName = $this->request->getPost('category-name');
+        $slug = generateSlug($categoryName);
 
         $data = [
             'category_name' => $this->request->getPost('category-name'),
             'category_description' => $this->request->getPost('category-description'),
             'category_image' => $this->request->getPost('category-image'),
+            'slug' => $slug,
         ];
 
         $categoryModel = new CategoryModel();
@@ -85,6 +88,8 @@ class CourseManagementController extends BaseController
             $errors = $validation->getErrors();
             return redirect()->back()->withInput()->with('errors', $errors)->with('message_type', 'error')->with('message', implode('<br>', $errors));
         }
+        $topicName = $this->request->getPost('topic-name');
+        $slug = generateSlug($topicName);
 
 
         $topicModel = new TopicsModel();
@@ -92,7 +97,8 @@ class CourseManagementController extends BaseController
         $successMessage = 'Topic saved successfully';
 
         $data = [
-            'topic_name' => $this->request->getPost('topic-name')
+            'topic_name' => $this->request->getPost('topic-name'),
+            'slug' => $slug,
         ];
 
         $topicId = $topicModel->insert($data);

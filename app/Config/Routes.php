@@ -168,7 +168,7 @@ $routes->group('admin', function($routes) {
     $routes->get('courses', 'Admin\Courses::index');
     $routes->get('instructors', 'Admin\Instructors::index');
     $routes->get('settings', 'Admin\Settings::index');
-    $routes->get('/', 'Pages::Admin'); //Good
+    $routes->get('/XX', 'Pages::Admin'); //Good
     $routes->get('users', 'Users::index');
     $routes->get('analytics', 'Pages::analyticsAndReports'); //Good
     $routes->get('announcements', 'Pages::Announcements'); //Good 
@@ -202,10 +202,12 @@ $routes->group('admin', function($routes) {
 
     $routes->group('course', function($routes) {
         // Course Management Backend Logics
-        $routes->get('/', 'CourseController::createAndEditCourse'); //Good
+        $routes->get('/', 'CourseController::createCourse'); //Good
         $routes->post('save', 'CourseController::saveCourse');
         $routes->post('update/(:num)', 'CourseController::updateCourse/$1'); // Update an existing course by ID
+        $routes->post('courseUpdate', 'CourseController::courseUpdate'); // Update an existing course by ID
         $routes->get('delete/(:num)', 'CourseController::deleteCourse/$1'); // Delete Course by ID
+        $routes->get('getCourseDetails/(:num)', 'CourseController::getCourseDetails/$1');
     });
 
     $routes->post('category/save', 'CourseManagementController::saveCategory');
