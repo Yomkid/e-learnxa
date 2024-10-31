@@ -22,7 +22,7 @@
                                     <h4 class="card-title"><?= esc($course['course_title']) ?></h4>
                                     <!-- <div class="course-tagline"><esc($course['course_tagline']) ?></div> -->
                                     <div class="course-rating">
-                                        <span class="rating"><?= esc($course['rating']) ?></span>
+                                        <span class="rating"><?= esc(number_format($course['rating'], 1)) ?></span>
                                         <span class="rating-stars">
                                             <?php for ($i = 0; $i < floor($course['rating']); $i++) : ?>
                                                 <i class="fa fa-star"></i>

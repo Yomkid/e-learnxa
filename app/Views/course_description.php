@@ -233,7 +233,7 @@ s0.parentNode.insertBefore(s1,s0);
     <div class="course-heading hidden d-md-block">
         <h2 class="coursepage-title"><?= $title ?></h2>
         <div class="course-rating">
-            <span class="rating"><?= esc($rating) ?></span>
+            <span class="rating"><?= esc(number_format($rating), 1) ?></span>
             <span class="rating-stars" style="color: #ffc107;">
                 <?php for ($i = 0; $i < floor($rating); $i++) : ?>
                     <i class="fa fa-star"></i>

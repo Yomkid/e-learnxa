@@ -400,7 +400,7 @@
                         <h1>Experience Learning Like Never Before</h1>
                         <p>Join our virtual classes and get access to top-notch education from the comfort of your home.
                             Engage with expert instructors and collaborate with peers in real-time.</p>
-                        <a href="virtual-class-courses" class="btn btn-success">Join a Live Class</a>
+                        <a href="/generate-invoice" class="btn btn-success">Join a Live Class</a>
                     </div>
                     <div class="col-lg-6 col-md-6 update-image">
                         <img src="./assets/img/liveclass.jpg" alt="Live Class Image">
