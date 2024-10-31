@@ -167,9 +167,7 @@
 
             .thumbnail-container {
                 display: block;
-                margin-top: 20px;
-
-                
+                /* margin-top: 20px; */
             }
 
             .thumbnail-breadcrumb-item + .thumbnail-breadcrumb-item::before {
