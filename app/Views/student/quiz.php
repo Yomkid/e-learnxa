@@ -350,7 +350,7 @@ ini_set('display_errors', 1);
                             <img src="<?= base_url('../assets/img/animated.jpeg'); ?>" alt="Instructor Image">
                         </div>
 
-                        <div class="student-name-container w-10o0">JOHNSON <?= strtoupper(session('first_name'))?>
+                        <div class="student-name-container w-10o0"><?= strtoupper(session('first_name'))?>
                             <?= strtoupper(session('last_name'))?></div>
                         <div class="personal-details">
 
