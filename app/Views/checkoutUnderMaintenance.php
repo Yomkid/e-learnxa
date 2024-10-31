@@ -40,8 +40,6 @@
         
         <input type="radio" id="flutterwave" name="paymentMethod" value="flutterwave">
         <label for="flutterwave"><img src="./assets/img/flutterwave-logo.png" alt="Flutterwave"></label>
-        <!-- <input type="radio" id="flutterwave" name="paymentMethod" value="flutterwave" disabled>
-    <label for="flutterwave"><img src="./assets/img/flutterwave-logo.png" alt="Flutterwave"></label> -->
     </div>
 </div>
 
@@ -162,25 +160,27 @@
 
     // Function to update the button based on the selected payment method
     function updateButton(selectedPayment) {
-    const proceedToPayBtn = $('#proceedToPayBtn');
-    const mobilePayBtn = $('.fixed-bottom.enroll-btn.d-block.d-md-none');
-    
-    if (selectedPayment === 'paystack') {
-        proceedToPayBtn.text('Proceed to Pay with Paystack');
-        proceedToPayBtn.attr('onclick', 'payWithPaystack()');
-        proceedToPayBtn.css('background-color', primaryColors.paystack);
+        const proceedToPayBtn = $('#proceedToPayBtn');
+        const mobilePayBtn = $('.fixed-bottom.enroll-btn.d-block.d-md-none');
         
-        mobilePayBtn.text('Proceed to Pay ₦<?= number_format($coursePrice) ?> with Paystack');
-        mobilePayBtn.attr('onclick', 'payWithPaystack()');
-        mobilePayBtn.css('background-color', primaryColors.paystack);
-    } else if (selectedPayment === 'flutterwave') {
-        // Add a fallback message or make the button inactive if Flutterwave is selected
-        proceedToPayBtn.text('Flutterwave payment option is currently unavailable');
-        proceedToPayBtn.attr('onclick', '');
-        proceedToPayBtn.css('background-color', '#ccc');  // Optional: gray out the button
+        if (selectedPayment === 'paystack') {
+            proceedToPayBtn.text('Proceed to Pay with Paystack');
+            proceedToPayBtn.attr('onclick', 'payWithPaystack()');
+            proceedToPayBtn.css('background-color', primaryColors.paystack);
+            
+            mobilePayBtn.text('Proceed to Pay ₦<?= number_format($coursePrice) ?> with Paystack');
+            mobilePayBtn.attr('onclick', 'payWithPaystack()');
+            mobilePayBtn.css('background-color', primaryColors.paystack);
+        } else if (selectedPayment === 'flutterwave') {
+            proceedToPayBtn.text('Proceed to Pay with Flutterwave');
+            proceedToPayBtn.attr('onclick', 'payWithFlutterwave()');
+            proceedToPayBtn.css('background-color', primaryColors.flutterwave);
+            
+            mobilePayBtn.text('Proceed to Pay ₦<?= number_format($coursePrice) ?> with Flutterwave');
+            mobilePayBtn.attr('onclick', 'payWithFlutterwave()');
+            mobilePayBtn.css('background-color', primaryColors.flutterwave);
+        }
     }
-}
-
 
     // Event listener for changing the payment method
     $('input[name="paymentMethod"]').on('change', function() {

@@ -32,7 +32,7 @@
 
                             <div class="course-rating">
                             
-                                        <span class="rating"><?= esc(number_format($course->rating), 1) ?></span>
+                                        <span class="rating"><?= number_format($course->rating, 1) ?></span>
                                         <span class="rating-stars">
                                             <?php for ($i = 0; $i < floor($course->rating); $i++) : ?>
                                                 <i class="fa fa-star"></i>
