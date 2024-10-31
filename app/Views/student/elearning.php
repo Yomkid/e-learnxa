@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Learning Page - eLearning Platform</title>
+    <title><?= $courseTitle ?> - LearnXa eLearning Platform</title>
     <?php include(APPPATH . 'Views/student/include/student-head.php'); ?>
     <meta name="csrf-token" content="<?= csrf_hash() ?>">
 

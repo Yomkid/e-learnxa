@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>React - The Complete Guide 2024 (incl. Next.js, Redux) | LearnXa</title>
+    <title><?= esc($course['course_title']); ?> | LearnXa</title>
     <?php include(APPPATH . 'Views/student/include/student-head.php'); ?>
     <style>
         .course-card {
