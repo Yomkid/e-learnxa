@@ -347,7 +347,7 @@ ini_set('display_errors', 1);
                     <hr>
                     <div>
                         <div class="student-img-lg d-flex text-center align-items-center justify-content-center mb-4">
-                            <img src="<?= base_url('../assets/img/profile-img.jpg'); ?>" alt="Instructor Image">
+                            <img src="<?= base_url('../assets/img/animated.jpeg'); ?>" alt="Instructor Image">
                         </div>
 
                         <div class="student-name-container w-10o0">JOHNSON <?= strtoupper(session('first_name'))?>
