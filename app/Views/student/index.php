@@ -148,8 +148,8 @@
                                                             <button class="btn btn-blue px-4">View</button>
                                                             <div class="progress my-1">
                                                                 <div class="progress-bar" role="progressbar"
-                                                                    style="width: <?= $course['overallProgress']; ?>%;" aria-valuenow="<?= $course['overallProgress']; ?>"
-                                                                    aria-valuemin="0" aria-valuemax="100"><?= $course['overallProgress']; ?>%</div>
+                                                                    style="width: <?= number_format($course['overallProgress'], 1); ?>%;" aria-valuenow="<?= number_format(number_format($course['overallProgress'], 1), 1); ?>"
+                                                                    aria-valuemin="0" aria-valuemax="100"><?= number_format($course['overallProgress'], 1); ?>%</div>
                                                             </div>
                                                         </div>
                                                     </div>

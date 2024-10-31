@@ -367,8 +367,8 @@
 
             <div class="col-lg-8 mt-3">
                 <div class="progress-container">
-                    <div class="progress-circle" data-percentage="<?= $overallProgress; ?>"
-                        style="--percentage: <?= $overallProgress * 3.6; ?>deg;">
+                    <div class="progress-circle" data-percentage="<?= number_format($overallProgress, 1); ?>"
+                        style="--percentage: <?= number_format($overallProgress, 1) * 3.6; ?>deg;">
                     </div>
                 </div>
 
@@ -385,9 +385,9 @@
                         <div class="progress mb-4">
                             
                             <div class="progress-bar progress-bar-striped progress-bar-animated" 
-                                role="progressbar" style="width: <?= $overallProgress; ?>%;"
-                                aria-valuenow="<?= $overallProgress; ?>" aria-valuemin="0" aria-valuemax="100">
-                                <?= $overallProgress; ?>%
+                                role="progressbar" style="width: <?= number_format($overallProgress, 1); ?>%;"
+                                aria-valuenow="<?= number_format($overallProgress, 1); ?>" aria-valuemin="0" aria-valuemax="100">
+                                <?= number_format($overallProgress, 1); ?>%
                             </div>
 
                         </div>
