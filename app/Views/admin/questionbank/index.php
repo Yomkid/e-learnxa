@@ -3,7 +3,6 @@
 
 <head>
     <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
-    <title>Question Bank Management | LearnXa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -123,10 +122,10 @@
                                 <label for="correct_answer">Correct Answer</label>
                                 <select id="correct_answer" name="correct_answer" class="form-control" required>
                                     <option value="">Select Correct Answer</option>
-                                    <option value="option_a">A</option>
-                                    <option value="option_b">B</option>
-                                    <option value="option_c">C</option>
-                                    <option value="option_d">D</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -204,7 +203,7 @@
 
                 <!-- Export to CSV -->
                 <div class="tab-pane fade" id="export-question" role="tabpanel" aria-labelledby="export-question-tab">
-                    <form action="<?= base_url('admin/questionbank/exportQuestions') ?>" method="post">
+                    <form action="<?= base_url('questionbank/exportQuestions') ?>" method="post">
                         <div class="form-group">
                             <label for="quiz_id">Select Quiz</label>
                             <select id="quiz_id" name="quiz_id" class="form-control">
@@ -344,7 +343,7 @@
             // document.getElementById('uploadForm').addEventListener('submit', function (e) {
             //     e.preventDefault();
             //     let formData = new FormData(this);
-            //     axios.post('<base_url('admin/questionbank/upload') ?>', formData)
+            //     axios.post('<base_url('questionbank/upload') ?>', formData)
             //         .then(response => {
             //             alert('Questions uploaded successfully');
             //             loadQuestions();
@@ -362,7 +361,7 @@
                 let quizId = document.getElementById('quiz_id_bulk').value;
                 formData.append('quiz_id', quizId);
 
-                axios.post('<?= base_url('admin/questionbank/bulkUpload') ?>', formData)
+                axios.post('<?= base_url('questionbank/bulkUpload') ?>', formData)
                     .then(response => {
                         if (response.data.success) {
                             alert(response.data.success);
@@ -386,7 +385,7 @@
             document.getElementById('addQuestionForm').addEventListener('submit', function (e) {
                 e.preventDefault();
                 let formData = new FormData(this);
-                axios.post('<?= base_url('admin/questionbank/store') ?>', formData)
+                axios.post('<?= base_url('questionbank/store') ?>', formData)
                     .then(response => {
                         // Check if the response has an error or success message
                         if (response.data.success) {
@@ -442,7 +441,7 @@
 
             // Function to open the edit modal
             function openEditModal(questionId) {
-                axios.get('<?= base_url('admin/questionbank/edit/') ?>' + questionId)
+                axios.get('<?= base_url('questionbank/edit/') ?>' + questionId)
                     .then(response => {
                         const question = response.data.question;
 
@@ -468,7 +467,7 @@
             document.getElementById('editQuestionForm').addEventListener('submit', function (e) {
                 e.preventDefault();
                 let formData = new FormData(this);
-                axios.post('<?= base_url('admin/questionbank/update') ?>', formData)
+                axios.post('<?= base_url('questionbank/update') ?>', formData)
                     .then(response => {
                         alert('Question updated successfully');
                         loadQuestions();
@@ -510,10 +509,10 @@
                             <label for="correct_answer_${questionIndex}">Correct Answer</label>
                             <select id="correct_answer_${questionIndex}" class="form-control correct-answer" name="correct_answer" required>
                                 <option value="">Select Correct Answer</option>
-                                <option value="option_a_${questionIndex}">Option A</option>
-                                <option value="option_b_${questionIndex}">Option B</option>
-                                <option value="option_c_${questionIndex}">Option C</option>
-                                <option value="option_d_${questionIndex}">Option D</option>
+                                <option value="A">Option A</option>
+                                <option value="B">Option B</option>
+                                <option value="C">Option C</option>
+                                <option value="D">Option D</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -560,7 +559,7 @@
                 let formData = new FormData();
                 formData.append('questions', JSON.stringify(questions)); // Send questions array as JSON
 
-                axios.post('<?= base_url('admin/questionbank/multiQuestionStore') ?>', formData)
+                axios.post('<?= base_url('questionbank/multiQuestionStore') ?>', formData)
                     .then(response => {
                         if (response.data.success) {
                             alert(response.data.success);
@@ -583,7 +582,7 @@
                 const search = document.getElementById('search').value;
                 const sort = document.getElementById('sort').value;
 
-                axios.get('<?= base_url('admin/questionbank/list') ?>', {
+                axios.get('<?= base_url('questionbank/list') ?>', {
                     params: {search, sort}
                 })
                 .then(response => {
@@ -611,7 +610,7 @@
                                 <td>
                                     <button class="btn btn-success btn-sm" onclick="openPreviewModal(${question.question_id})" data-toggle="modal" data-target="#previewQuestionModal">Preview</button>
                                     <button class="btn btn-warning btn-sm" onclick="openEditModal(${question.question_id})" data-toggle="modal" data-target="#editQuestionModal">Edit</button>
-                                    <a href="<?= base_url('admin/questionbank/delete/') ?>${question.question_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a>
+                                    <a href="<?= base_url('questionbank/delete/') ?>${question.question_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a>
                                 </td>
                             </tr>
                         `;
@@ -637,7 +636,7 @@
 
             // Function to load a specific page of questions
             function loadPage(page) {
-                axios.get('<?= base_url('admin/questionbank/list') ?>', {
+                axios.get('<?= base_url('questionbank/list') ?>', {
                         params: {
                             search: document.getElementById('search').value,
                             sort: document.getElementById('sort').value,
@@ -667,7 +666,7 @@
                                     <td>${question.correct_answer}</td>
                                     <td>
                                         <button class="btn btn-warning btn-sm" onclick="openEditModal(${question.question_id})">Edit</button>
-                                        <a href="<?= base_url('admin/questionbank/delete/') ?>${question.question_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a>
+                                        <a href="<?= base_url('questionbank/delete/') ?>${question.question_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a>
                                     </td>
                                 </tr>
                             `;
@@ -702,6 +701,32 @@
 // How can that be done and will it be hard to implement?
 // Cause I am using this quiz for my lms portal
 
+
+
+
+$('#bulkUploadForm').submit(function (e) {
+    e.preventDefault();
+    let formData = new FormData(this);
+    formData.append('quiz_id_bulk', $('#quiz_id_bulk').val());
+
+    $.ajax({
+        url: '<?= base_url("questionbank/bulkUpload") ?>',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            alert(response.message);
+            if (response.skipped_rows) {
+                console.log('Skipped Rows:', response.skipped_rows);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', error);
+            alert('An error occurred during the upload.');
+        }
+    });
+});
 
 
     </script>
