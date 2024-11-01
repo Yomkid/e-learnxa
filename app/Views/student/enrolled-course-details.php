@@ -95,50 +95,50 @@
                         </div>
                         <div class="col-lg-9 col-md-6 mb-4">
                             <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                <a href="<?= base_url('student/e-learning/' . $course['course_id']) ?>" class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-1">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $moduleCount ?> Modules</h5>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
+                                </a>
+                                <a href="#" class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
                                     <div class="card text-left bg-color-2">
                                         <div class="card-body d-flex justify-content-between align-items-center">
                                             <h5 class="card-title">1 Certificate</h5>
                                             <i class="fas fa-lock" style="color: #d9534f;"></i>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
+                                </a>
+                                <a href="#" class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
                                     <div class="card text-left bg-color-3">
                                         <div class="card-body d-flex justify-content-between align-items-center">
                                             <h5 class="card-title">Final Exam</h5>
                                             <i class="fas fa-lock" style="color: #d9534f;"></i>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                </a>
+                                <a href="/student/assignments" class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-4">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $assignmentCount ?> Assignments</h5>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                </a>
+                                <a href="<?= base_url('student/quizzes'); ?>" class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-5">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $quizCount ?> Quiz</h5>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                </a>
+                                <a href="#" class="col-lg-4 col-md-6 col-sm-6 mb-1">
                                     <div class="card text-left bg-color-6">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $materialCount ?> Materials</h5>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
 
                             </div>
                             <div class="">
@@ -146,8 +146,8 @@
                                     Course Progress
                                 </div>
                                 <div class="progress mb-4">
-                                    <div class="progress-bar" role="progressbar" style="width: <?= number_format($overallProgress, 1); ?>%;" aria-valuenow="<?= number_format($overallProgress, 1); ?>"
-                                        aria-valuemin="0" aria-valuemax="100"><?= number_format($overallProgress, 1); ?>%</div>
+                                    <div class="progress-bar" role="progressbar" style="width: <?= $overallProgress; ?>%;" aria-valuenow="<?= $overallProgress; ?>"
+                                        aria-valuemin="0" aria-valuemax="100"><?= $overallProgress; ?>%</div>
                                 </div>
                             </div>
                         </div>
