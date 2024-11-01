@@ -81,7 +81,7 @@
                                 </div> -->
                                 <div class="progress mb-4">
                                     <div class="progress-bar" role="progressbar" style="width: <?= number_format($overallProgress, 1); ?>%;" aria-valuenow="<?= number_format($overallProgress, 1); ?>"
-                                        aria-valuemin="0" aria-valuemax="100"><?= number_format(number_format($overallProgress, 1), 1); ?>%</div>
+                                        aria-valuemin="0" aria-valuemax="100"><?= number_format($overallProgress, 1); ?>%</div>
                                 </div>
                             </div>
                            
@@ -146,8 +146,8 @@
                                     Course Progress
                                 </div>
                                 <div class="progress mb-4">
-                                    <div class="progress-bar" role="progressbar" style="width: <?= $overallProgress; ?>%;" aria-valuenow="<?= $overallProgress; ?>"
-                                        aria-valuemin="0" aria-valuemax="100"><?= $overallProgress; ?>%</div>
+                                    <div class="progress-bar" role="progressbar" style="width: <?= number_format($overallProgress, 1); ?>%;" aria-valuenow="<?= number_format($overallProgress, 1); ?>"
+                                        aria-valuemin="0" aria-valuemax="100"><?= number_format($overallProgress, 1); ?>%</div>
                                 </div>
                             </div>
                         </div>
