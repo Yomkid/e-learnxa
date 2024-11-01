@@ -92,7 +92,7 @@
                                 <?= esc($assignment['assignment_name']) ?>
                             </div>
                             <p><strong>Course: <span class="text-primary"><?= esc($assignment['course_title']) ?></span></strong></p>
-                            <p><strong class="text-danger">Due Date:</strong> <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p>
+                            <!-- <p><strong class="text-danger">Due Date:</strong> <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p> -->
                         </div>
                         <?php if ($grade !== null): ?>
                         <div class="grade-circle" id="gradeCircle" data-grade="<?= $grade ?>">

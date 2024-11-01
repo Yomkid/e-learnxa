@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg px-3">
-    <a class="navbar-brand" href="/student">Learn<span style="color: #007bff;">X</span>a |<span class="sub-brand">CBTApp</span></a>
+    <a class="navbar-brand" href="/student/quizzes">Learn<span style="color: #007bff;">X</span>a |<span class="sub-brand">CBTApp</span></a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <!-- <li class="nav-item dropdown">

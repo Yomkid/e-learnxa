@@ -66,7 +66,7 @@
                                                 <?= esc($assignment['assignment_name']) ?>
                                             </div>
                                             <p>Given Date: <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p>
-                                            <p>Due Date: <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p>
+                                            <!-- <p>Due Date: <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p> -->
                                             <a href="/student/assignments/<?= esc($assignment['assignment_id']) ?>" class="btn btn-primary w-100">View Assignment</a>
                                         </div>
                                     </div>

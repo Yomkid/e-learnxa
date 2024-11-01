@@ -53,7 +53,7 @@ class AuthReg extends Controller
             $this->session->set([
                 'user_id' => $user['user_id'],
                 'email' => $user['email'],
-                'phone_numer' => $user['phone_number'],
+                'phone_number' => $user['phone_number'],
                 'first_name' => $user['first_name'],
                 'status' => $user['status'],
                 'last_name' => $user['last_name'],
@@ -143,7 +143,7 @@ class AuthReg extends Controller
             $session->setFlashdata('success', 'Account activated successfully!');
 
             // Redirect to dashboard
-            return redirect()->to(base_url('dashboard'));
+            return redirect()->to(base_url('student'));
         } else {
             // Set error message
             session()->setFlashdata('error', 'Invalid Payment Confirmation Code.');

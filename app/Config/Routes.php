@@ -354,6 +354,29 @@ $routes->group('admin', function($routes) {
         $routes->post('save', 'LessonController::saveLesson');
     });
 
+
+
+
+     // User route
+     $routes->group('users', ['namespace' => 'App\Controllers'], function($routes) {
+        $routes->get('/', 'UserController::index'); // List all quizzes
+        $routes->get('create', 'UserController::create'); // Show the form to create a new quiz
+        $routes->get('list', 'UserController::list');
+        $routes->post('assignQuizzes', 'UserController::assignQuizzes'); // Assign Quizzes to a course
+        $routes->post('store', 'UserController::store'); // Handle the form submission to create a new quiz
+        $routes->get('edit/(:num)', 'UserController::edit/$1'); // Show the form to edit an existing quiz
+        $routes->post('update', 'UserController::update/$1'); // Handle the form submission to update an existing quiz
+        $routes->get('delete/(:num)', 'UserController::delete/$1'); // Delete an existing quiz
+        $routes->get('view/(:num)', 'UserController::viewCourse/$1');
+        $routes->post('addQuizzes', 'UserController::addQuizzes');
+        $routes->post('removeQuiz/(:num)/(:num)', 'UserController::removeQuiz/$1/$2');
+        $routes->post('bulkUpload', 'UserController::bulkUpload');
+        $routes->post('exportUsers', 'UserController::exportUsers');
+        $routes->get('getUsersForCourse/(:num)', 'UserController::getUsersForCourse/$1');
+        $routes->post('updateSettings', 'UserController::updateSettings', ['as' => 'quizzes.updateSettings']);
+        $routes->get('getUserSettings/(:num)', 'UserController::getUserSettings/$1');
+    });
+
 });
 
 

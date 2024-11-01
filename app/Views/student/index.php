@@ -159,6 +159,7 @@
                                         <?php endforeach; ?>
                                         <?php else: ?>
                                         <p class="text-danger"><strong>You have not enrolled in any courses yet.</strong></p>
+                                        <a class="btn btn-primary mt-1" href="<?= base_url('/courses'); ?>">Check Courses and Enroll</a>
                                         <?php endif; ?>
                                     </div>
                                 </div>
