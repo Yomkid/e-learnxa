@@ -106,7 +106,7 @@ class QuizController extends BaseController
     }
 
     if ($quizModel->save($data)) {
-        return redirect()->to('/quizzes')->with('success', 'Quiz created successfully.');
+        return redirect()->to('/admin/quizzes')->with('success', 'Quiz created successfully.');
     } else {
         return redirect()->back()->withInput()->with('errors', $quizModel->errors());
     }
