@@ -157,7 +157,7 @@
 
                 <!-- User Settings Section -->
                 <div class="tab-pane fade mt-2" id="user-settings" role="tabpanel" aria-labelledby="user-settings-tab">
-                    <form id="userSettingsForm" action="<?= base_url('users/updateSettings') ?>" method="post">
+                    <form id="userSettingsForm" action="<?= base_url('admin/users/updateSettings') ?>" method="post">
                         <div class="form-group">
                             <label for="default_role">Default User Role</label>
                             <select id="default_role" name="default_role" class="form-control">
@@ -196,7 +196,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="userForm" action="<?= base_url('users/store') ?>" method="post" enctype="multipart/form-data">
+                    <form id="userForm" action="<?= base_url('admin/users/store') ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="user_name">User Name</label>
@@ -320,7 +320,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editUserForm" action="<?= base_url('users/update') ?>" method="post">
+                    <form id="editUserForm" action="<?= base_url('admin/users/update') ?>" method="post">
                         <?= csrf_field() ?>
                         <input type="hidden" id="edit_user_id" name="user_id">
                         <div class="form-group">
