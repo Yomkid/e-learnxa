@@ -207,108 +207,108 @@ class QuestionBankController extends Controller
 
 
 
-public function bulkUpload()
-{
-    // Retrieve the quiz_id from the POST request
-    $quizId = $this->request->getPost('quiz_id_bulk');
-    $file = $this->request->getFile('questions_file');
+    public function bulkUpload()
+    {
+        // Retrieve the quiz_id from the POST request
+        $quizId = $this->request->getPost('quiz_id_bulk');
+        $file = $this->request->getFile('questions_file');
 
-    if ($file->isValid() && !$file->hasMoved()) {
-        $extension = $file->getClientExtension();
+        if ($file->isValid() && !$file->hasMoved()) {
+            $extension = $file->getClientExtension();
 
-        if ($extension === 'csv') {
-            try {
-                $csvReader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Csv');
-                $spreadsheet = $csvReader->load($file->getTempName());
-                $data = $spreadsheet->getActiveSheet()->toArray();
+            if ($extension === 'csv') {
+                try {
+                    $csvReader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Csv');
+                    $spreadsheet = $csvReader->load($file->getTempName());
+                    $data = $spreadsheet->getActiveSheet()->toArray();
 
-                $headers = array_map('strtolower', $data[0]);
-                $requiredHeaders = [
-                    'question_text', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_option', 'explanation'
-                ];
+                    $headers = array_map('strtolower', $data[0]);
+                    $requiredHeaders = [
+                        'question_text', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_option', 'explanation'
+                    ];
 
-                // Check for missing required columns
-                $columnIndices = [];
-                foreach ($requiredHeaders as $header) {
-                    if (!in_array($header, $headers)) {
-                        return $this->response->setJSON([
-                            'status' => 'error',
-                            'message' => "Missing required column: $header"
-                        ]);
-                    }
-                    $columnIndices[$header] = array_search($header, $headers);
-                }
-
-                $skippedRows = [];
-                foreach ($data as $key => $row) {
-                    if ($key === 0) continue; // Skip header row
-
-                    $questionData = ['quiz_id' => $quizId]; // Add quiz_id here
+                    // Check for missing required columns
+                    $columnIndices = [];
                     foreach ($requiredHeaders as $header) {
-                        $questionData[$header] = isset($row[$columnIndices[$header]]) ? trim($row[$columnIndices[$header]]) : null;
+                        if (!in_array($header, $headers)) {
+                            return $this->response->setJSON([
+                                'status' => 'error',
+                                'message' => "Missing required column: $header"
+                            ]);
+                        }
+                        $columnIndices[$header] = array_search($header, $headers);
                     }
 
-                    // Validate essential fields
-                    if (!$questionData['quiz_id'] || !$questionData['question_text'] || !$questionData['correct_option']) {
-                        log_message('error', "Row $key skipped due to missing essential data.");
-                        $skippedRows[] = $key;
-                        continue;
+                    $skippedRows = [];
+                    foreach ($data as $key => $row) {
+                        if ($key === 0) continue; // Skip header row
+
+                        $questionData = ['quiz_id' => $quizId]; // Add quiz_id here
+                        foreach ($requiredHeaders as $header) {
+                            $questionData[$header] = isset($row[$columnIndices[$header]]) ? trim($row[$columnIndices[$header]]) : null;
+                        }
+
+                        // Validate essential fields
+                        if (!$questionData['quiz_id'] || !$questionData['question_text'] || !$questionData['correct_option']) {
+                            log_message('error', "Row $key skipped due to missing essential data.");
+                            $skippedRows[] = $key;
+                            continue;
+                        }
+
+                        // Check if the question already exists in the quiz
+                        $existingQuestion = $this->questionsModel
+                            ->where('quiz_id', $questionData['quiz_id'])
+                            ->where('question_text', $questionData['question_text'])
+                            ->first();
+
+                        if ($existingQuestion) {
+                            log_message('info', "Row $key skipped due to duplicate question.");
+                            $skippedRows[] = $key;
+                            continue;
+                        }
+
+                        // Insert question into the database
+                        $questionData['created_at'] = date('Y-m-d H:i:s');
+                        $questionData['updated_at'] = date('Y-m-d H:i:s');
+
+                        if (!$this->questionsModel->insert($questionData)) {
+                            log_message('error', 'Database Insert Error for Row ' . $key . ': ' . json_encode($this->questionsModel->errors()));
+                            $skippedRows[] = $key;
+                            continue;
+                        }
                     }
 
-                    // Check if the question already exists in the quiz
-                    $existingQuestion = $this->questionsModel
-                        ->where('quiz_id', $questionData['quiz_id'])
-                        ->where('question_text', $questionData['question_text'])
-                        ->first();
-
-                    if ($existingQuestion) {
-                        log_message('info', "Row $key skipped due to duplicate question.");
-                        $skippedRows[] = $key;
-                        continue;
-                    }
-
-                    // Insert question into the database
-                    $questionData['created_at'] = date('Y-m-d H:i:s');
-                    $questionData['updated_at'] = date('Y-m-d H:i:s');
-
-                    if (!$this->questionsModel->insert($questionData)) {
-                        log_message('error', 'Database Insert Error for Row ' . $key . ': ' . json_encode($this->questionsModel->errors()));
-                        $skippedRows[] = $key;
-                        continue;
-                    }
+                    return $this->response->setJSON([
+                        'status' => 'success',
+                        'message' => 'Questions uploaded successfully.',
+                        'skipped_rows' => $skippedRows
+                    ]);
+                } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
+                    log_message('error', 'Spreadsheet Reader Error: ' . $e->getMessage());
+                    return $this->response->setJSON([
+                        'status' => 'error',
+                        'message' => 'File parsing failed due to an unexpected error.'
+                    ]);
+                } catch (\Exception $e) {
+                    log_message('error', 'General Error: ' . $e->getMessage());
+                    return $this->response->setJSON([
+                        'status' => 'error',
+                        'message' => 'An unexpected error occurred while processing the file.'
+                    ]);
                 }
-
-                return $this->response->setJSON([
-                    'status' => 'success',
-                    'message' => 'Questions uploaded successfully.',
-                    'skipped_rows' => $skippedRows
-                ]);
-            } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
-                log_message('error', 'Spreadsheet Reader Error: ' . $e->getMessage());
+            } else {
                 return $this->response->setJSON([
                     'status' => 'error',
-                    'message' => 'File parsing failed due to an unexpected error.'
-                ]);
-            } catch (\Exception $e) {
-                log_message('error', 'General Error: ' . $e->getMessage());
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'An unexpected error occurred while processing the file.'
+                    'message' => 'Invalid file format. Please upload a CSV file.'
                 ]);
             }
         } else {
             return $this->response->setJSON([
                 'status' => 'error',
-                'message' => 'Invalid file format. Please upload a CSV file.'
+                'message' => 'File upload failed.'
             ]);
         }
-    } else {
-        return $this->response->setJSON([
-            'status' => 'error',
-            'message' => 'File upload failed.'
-        ]);
     }
-}
 
 
 
