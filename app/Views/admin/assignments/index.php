@@ -156,7 +156,7 @@
 
                 <!-- Export to CSV -->
                 <div class="tab-pane fade" id="export-assignment" role="tabpanel" aria-labelledby="export-assignment-tab">
-                    <form action="<?= base_url('admin/assiexportAssignments') ?>" method="post">
+                    <form action="<?= base_url('admin/assignments/exportAssignments') ?>" method="post">
                         <div class="form-group">
                             <label for="assignment_id">Select assignment</label>
                             <select id="assignment_id" name="assignment_id" class="form-control">
@@ -182,7 +182,7 @@
 
                 <!-- Assign assignments to Course --> <!-- Assign assignments to Course -->
                 <div class="tab-pane fade mt-2" id="assign-assignments" role="tabpanel" aria-labelledby="assign-assignments-tab">
-                    <form id="assignAssignmentsForm" action="<?= base_url('admin/assiassignAssignments') ?>" method="post">
+                    <form id="assignAssignmentsForm" action="<?= base_url('admin/assignments/assignAssignments') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="course_id">Select Course</label>
@@ -205,7 +205,7 @@
 
                 <!-- assignment Settings -->
                 <div class="tab-pane fade mt-2" id="assignment-settings" role="tabpanel" aria-labelledby="assignment-settings-tab">
-                    <form id="assignmentSettingsForm" action="<?= base_url('admin/assiupdateSettings') ?>" method="post">
+                    <form id="assignmentSettingsForm" action="<?= base_url('admin/assignments/updateSettings') ?>" method="post">
                         <!-- Select assignment -->
                         <div class="form-group">
                             <label for="assignment_id">Select assignment</label>
@@ -332,7 +332,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="assignmentForm" action="<?= base_url('admin/assistore') ?>" method="post" enctype="multipart/form-data">
+                <form id="assignmentForm" action="<?= base_url('admin/assignments/store') ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="assignment_name">Assignment Name</label>
@@ -369,7 +369,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editassignmentForm" action="<?= base_url('admin/assiupdate') ?>" method="post" enctype="multipart/form-data">
+                    <form id="editassignmentForm" action="<?= base_url('admin/assignments/update') ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field() ?>
                         <input type="hidden" id="edit_assignment_id" name="assignment_id">
                         <div class="form-group">
@@ -430,7 +430,7 @@
         });
 
         function fetchassignmentsForCourse(course_id) {
-            axios.get(`<?= base_url('admin/assigetAssignmentsForCourse') ?>/${course_id}`)
+            axios.get(`<?= base_url('admin/assignments/getAssignmentsForCourse') ?>/${course_id}`)
                 .then(response => {
                     var assignments = response.data.assignedAssignments;
                     var availableAssignments = response.data.allAssignments;
@@ -499,7 +499,7 @@
                     return;
                 }
 
-                axios.post(`<?= base_url('admin/assiremoveAssignment') ?>/${courseId}/${assignmentId}`, {}, {
+                axios.post(`<?= base_url('admin/assignments/removeAssignment') ?>/${courseId}/${assignmentId}`, {}, {
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     }
@@ -578,7 +578,7 @@
             const search = document.getElementById('search').value;
             const sort = document.getElementById('sort').value;
 
-            axios.get('<?= base_url('admin/assilist') ?>', {
+            axios.get('<?= base_url('admin/assignments/list') ?>', {
                 params: {
                     search: search,
                     sort: sort
@@ -611,7 +611,7 @@
                             <td>
                                 <button class="btn btn-success btn-sm" onclick="openPreviewModal(${assignment.assignment_id})" data-toggle="modal" data-target="#previewassignmentModal">Preview</button>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${assignment.assignment_id})" data-toggle="modal" data-target="#editassignmentModal">Edit</button>
-                                <a href="<?= base_url('admin/assidelete/') ?>${assignment.assignment_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this assignment?')">Delete</a>
+                                <a href="<?= base_url('admin/assignments/delete/') ?>${assignment.assignment_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this assignment?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -636,7 +636,7 @@
         }
 
         function loadPage(page) {
-            axios.get('<?= base_url('admin/assilist') ?>', {
+            axios.get('<?= base_url('admin/assignments/list') ?>', {
                 params: {
                     search: document.getElementById('search').value,
                     sort: document.getElementById('sort').value,
@@ -668,7 +668,7 @@
                             <td>
                                 <button class="btn btn-success btn-sm" onclick="openPreviewModal(${assignment.assignment_id})" data-toggle="modal" data-target="#previewassignmentModal">Preview</button>
                                 <button class="btn btn-warning btn-sm" onclick="openEditModal(${assignment.assignment_id})" data-toggle="modal" data-target="#editassignmentModal">Edit</button>
-                                <a href="<?= base_url('admin/assidelete/') ?>${assignment.assignment_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this assignment?')">Delete</a>
+                                <a href="<?= base_url('admin/assignments/delete/') ?>${assignment.assignment_id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this assignment?')">Delete</a>
                             </td>
                         </tr>
                     `;
@@ -694,7 +694,7 @@
 
 
         function openEditModal(assignmentId) {
-            axios.get('<?= base_url('admin/assiedit/') ?>' + assignmentId)
+            axios.get('<?= base_url('admin/assignments/edit/') ?>' + assignmentId)
             .then(response => {
                 const assignment = response.data.assignment;
 
@@ -713,7 +713,7 @@
 
         // Open the Preview modal with assignment data
         function openPreviewModal(assignmentId) {
-            axios.get('<?= base_url('admin/assipreview/') ?>' + assignmentId)
+            axios.get('<?= base_url('admin/assignments/preview/') ?>' + assignmentId)
             .then(response => {
                 const assignment = response.data.assignment;
                 document.getElementById('preview_assignment_name').textContent = assignment.assignment_name;
@@ -767,7 +767,7 @@
              * Fetch submission counts for graded and ungraded assignments and update badges
              */
             function fetchSubmissionCounts() {
-                fetch('admin/assigetSubmissionCounts')
+                fetch('assignments/getSubmissionCounts')
                     .then(response => response.json())
                     .then(data => {
                         const { ungradedCount, gradedCount } = data;
@@ -803,7 +803,7 @@
                 console.log("Fetching assignments with search term:", searchTerm);
                 console.log("Sort option:", sortOption);
 
-                fetch(`admin/assigetSubmittedAssignments?search=${encodeURIComponent(searchTerm)}&sort=${sortOption}`)
+                fetch(`admin/assignments/getSubmittedAssignments?search=${encodeURIComponent(searchTerm)}&sort=${sortOption}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok: ' + response.statusText);
@@ -863,7 +863,7 @@
         function updateGrade(submissionId, formElement) {
             const formData = new FormData(formElement);
 
-            fetch('admin/assiupdateGrade', {
+            fetch('admin/assignments/updateGrade', {
                 method: 'POST',
                 body: new URLSearchParams({
                     submission_id: submissionId,
