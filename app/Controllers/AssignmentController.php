@@ -6,6 +6,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\AssignmentModel;
 use App\Models\CourseModel;
 use App\Models\CourseAssignmentModel;
+use App\Models\AssignmentSubmissionModel;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 // use App\Models\CourseQuizModel;
@@ -19,6 +20,8 @@ class AssignmentController extends BaseController
     protected $assignmentModel;
     protected $courseModel;
     protected $courseAssignmentModel;
+    protected $assignmentSubmissionModel;
+
     // protected $courseQuizModel;
 
     public function __construct()
@@ -26,6 +29,8 @@ class AssignmentController extends BaseController
         $this->assignmentModel = new AssignmentModel();
         $this->courseModel = new CourseModel();
         $this->courseAssignmentModel = new CourseAssignmentModel();
+        $this->assignmentSubmissionModel = new AssignmentSubmissionModel();
+
         // $this->courseQuizModel = new CourseQuizModel();
         helper('csv'); // Load the CSV helper
     }
@@ -398,6 +403,40 @@ class AssignmentController extends BaseController
                     ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
                     ->setBody($csvContent);
     }
+    
+
+    public function getSubmissionCounts()
+    {
+        $ungradedCount = $this->assignmentSubmissionModel->where('grade', null)->countAllResults();
+        $gradedCount = $this->assignmentSubmissionModel->where('grade IS NOT NULL', null, false)->countAllResults();
+
+        return $this->response->setJSON([
+            'ungradedCount' => $ungradedCount,
+            'gradedCount' => $gradedCount
+        ]);
+    }
+
+    
+
+public function getSubmittedAssignments()
+{
+    // Get the search and sort parameters from the request
+    $searchTerm = $this->request->getVar('search') ?? '';
+    $sortOption = $this->request->getVar('sort') ?? 'date_desc'; // Default sorting
+
+    // Load your model
+    $assignmentModel = new \App\Models\AssignmentSubmissionModel();
+
+    // Fetch submitted assignments based on the search term and sort option
+    $assignments = $assignmentModel->getSubmittedAssignments($searchTerm, $sortOption);
+
+    // Return the results as JSON
+    return $this->response->setJSON($assignments);
+}
+
+
+
+
 
 
 
