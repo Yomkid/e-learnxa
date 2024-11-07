@@ -863,7 +863,7 @@
         function updateGrade(submissionId, formElement) {
             const formData = new FormData(formElement);
 
-            fetch('admin/assignments/updateGrade', {
+            fetch('assignments/updateGrade', {
                 method: 'POST',
                 body: new URLSearchParams({
                     submission_id: submissionId,
