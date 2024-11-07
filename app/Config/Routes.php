@@ -169,7 +169,6 @@ $routes->group('admin', function($routes) {
     $routes->get('instructors', 'Admin\Instructors::index');
     $routes->get('settings', 'Admin\Settings::index');
     $routes->get('/', 'Pages::Admin'); //Good
-    $routes->get('users', 'Users::index');
     $routes->get('analytics', 'Pages::analyticsAndReports'); //Good
     $routes->get('announcements', 'Pages::Announcements'); //Good 
     $routes->get('backup', 'Pages::backupRestore'); //Good

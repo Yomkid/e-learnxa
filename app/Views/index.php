@@ -420,7 +420,7 @@
                         <h1>Become an Instructor on LearnXa</h1>
                         <p>Share your expertise and passion with a global audience. Create and deliver engaging courses,
                             grow your personal brand, and make a difference in the lives of learners worldwide.</p>
-                        <a href="become-teacher-on-learnxa" class=""
+                        <a href="become-teacher" class=""
                             style="border-radius: none; background-color: black; color:white; padding: 10px; font-size: 16px">Start
                             Teaching Today</a>
                     </div>
