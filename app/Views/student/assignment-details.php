@@ -108,10 +108,13 @@
                             <?php endif; ?>
                         </div>
                         <?php if ($grade !== null): ?>
-                        <div class="grade-circle shadow-sm" id="gradeCircle" data-grade="<?= $grade ?>">
+                            <div>
+                            <div class="grade-circle shadow-sm" id="gradeCircle" data-grade="<?= $grade ?>">
                             <div class="grade-text" id="gradeText"><?= $grade ?>%</div>
                         </div>
                         <div id="gradeLabel" class="grade-label"></div>
+                            </div>
+                        
                         <?php else: ?>
                         <p class="text-danger">No grade available yet.</p>
                         <?php endif; ?>
