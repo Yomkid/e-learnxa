@@ -72,16 +72,45 @@ class AssignmentController extends BaseController
     public function store()
     {
         $assignmentModel = new AssignmentModel();
-        
+
+        // Validate form inputs including file attachment and due date
+        $validationRules = [
+            'assignment_name' => 'required|min_length[3]',
+            'assignment_description' => 'permit_empty|string',
+            'due_date' => 'required|valid_date',
+            'assignment_attachment' => 'uploaded[assignment_attachment]|max_size[assignment_attachment,2048]|ext_in[assignment_attachment,pdf,doc,docx,ppt,pptx,zip,jpg,png,webp]'
+        ];
+
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Process the attachment
+        $assignmentName = $this->request->getPost('assignment_name');
+        $attachment = $this->request->getFile('assignment_attachment');
+        $attachmentPath = '';
+
+        $cleanAssignmentName = preg_replace('/[^A-Za-z0-9\-]/', '_', $assignmentName);
+        $newFileName = "{$cleanAssignmentName}." . $attachment->getExtension();
+
+        if ($attachment->isValid() && !$attachment->hasMoved()) {
+            // Generate a new file name and move to uploads folder
+            $attachmentPath = 'uploads/assignments/' . $newFileName;
+            $attachment->move('uploads/assignments', $newFileName);
+        }
+
+        // Collect all the data to save
         $data = [
             'assignment_name' => $this->request->getPost('assignment_name'),
             'assignment_description' => $this->request->getPost('assignment_description'),
+            'due_date' => $this->request->getPost('due_date'),
+            'attachment_path' => $attachmentPath,
         ];
 
         if ($assignmentModel->save($data)) {
-            return redirect()->to('/admin/assignments')->with('success', 'assignment created successfully.');
+            return redirect()->to('/assignments')->with('success', 'Assignment created successfully.');
         } else {
-            return redirect()->back()->with('errors', $assignmentModel->errors());
+            return redirect()->back()->withInput()->with('errors', $assignmentModel->errors());
         }
     }
 
@@ -372,5 +401,39 @@ class AssignmentController extends BaseController
 
 
 
+
+    public function updateGrade()
+{
+    // Verify the request method
+    if ($this->request->getMethod() !== 'POST') {
+        return $this->response->setStatusCode(405)->setJSON(['success' => false, 'message' => 'Method not allowed.']);
+    }
+
+    // Retrieve `submission_id` and `grade` from POST data
+    $submissionId = $this->request->getPost('submission_id');
+    $grade = $this->request->getPost('grade');
+
+    // Validate the inputs
+    if (empty($submissionId) || !is_numeric($grade) || $grade < 0 || $grade > 100) {
+        return $this->response->setStatusCode(400)->setJSON(['success' => false, 'message' => 'Invalid submission ID or grade.']);
+    }
+
+    // Use the query builder to directly update the grade and set the updated_at timestamp
+    $db = \Config\Database::connect();
+    $builder = $db->table('assignment_submissions');
+
+    $updateResult = $builder->where('submission_id', $submissionId)
+                            ->update([
+                                'grade' => $grade,
+                                'updated_at' => date('Y-m-d H:i:s')
+                            ]);
+
+    // Check if the update was successful
+    if ($updateResult) {
+        return $this->response->setJSON(['success' => true, 'message' => 'Grade updated successfully.']);
+    } else {
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to update grade.']);
+    }
+}
     
 }

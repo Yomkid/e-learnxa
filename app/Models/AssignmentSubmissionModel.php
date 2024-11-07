@@ -14,6 +14,7 @@ class AssignmentSubmissionModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'assignment_id',
+        'course_id',
         'user_id',
         'file_path',
         'comments',

@@ -280,7 +280,15 @@ $routes->group('admin', function($routes) {
         $routes->get('view/(:num)', 'AssignmentController::viewCourse/$1');
         $routes->post('addQuizzes', 'AssignmentController::addQuizzes');
         $routes->post('removeAssignment/(:num)/(:num)', 'AssignmentController::removeAssignment/$1/$2');
+        // $routes->post('removeQuiz', 'QuizController::removeQuiz');
         $routes->get('getAssignmentsForCourse/(:num)', 'AssignmentController::getAssignmentsForCourse/$1');
+        
+        // Newly added
+        // Assignment SubmissionCount
+        $routes->get('getSubmissionCounts', 'AssignmentController::getSubmissionCounts');
+        $routes->get('getSubmittedAssignments', 'AssignmentController::getSubmittedAssignments');
+        $routes->post('updateGrade', 'AssignmentController::updateGrade');
+        // $routes->get('updateGrade', 'AssignmentController::updateGrade');
     });
 
     // Materials route

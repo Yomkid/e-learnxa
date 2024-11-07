@@ -15,6 +15,8 @@ class AssignmentModel extends Model
     protected $allowedFields    = [
         'assignment_name',
         'assignment_description',
+        'due_date',
+        'attachment_path',
     ];
 
     protected bool $allowEmptyInserts = false;

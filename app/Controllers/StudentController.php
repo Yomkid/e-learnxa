@@ -357,6 +357,8 @@ class StudentController extends Controller
 
         $file = $this->request->getFile('assignment_file'); // Fetch the file input
         $comments = $this->request->getPost('comments');
+        $courseId = $this->request->getPost('assignment_course_id');
+
 
         // Check if there's an existing submission
         $existingSubmission = $assignmentSubmissionModel->where('assignment_id', $assignmentId)
@@ -388,6 +390,7 @@ class StudentController extends Controller
                 // Update the existing submission
                 $data = [
                     'file_path' => $filePath,
+                    'course_id' => $courseId,
                     'comments'  => $comments,
                     'submitted_at' => date('Y-m-d H:i:s'),
                 ];
@@ -408,6 +411,7 @@ class StudentController extends Controller
                 // Prepare data for insertion
                 $data = [
                     'assignment_id' => $assignmentId,
+                    'course_id'     => $courseId,
                     'user_id'       => $userId,
                     'file_path'     => $filePath,
                     'comments'      => $comments,

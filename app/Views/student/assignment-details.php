@@ -71,6 +71,14 @@
                 margin-left: 10px;
             }
         }
+
+        .grade-label {
+            text-align: center;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
     </style>
 </head>
 
@@ -92,12 +100,18 @@
                                 <?= esc($assignment['assignment_name']) ?>
                             </div>
                             <p><strong>Course: <span class="text-primary"><?= esc($assignment['course_title']) ?></span></strong></p>
-                            <!-- <p><strong class="text-danger">Due Date:</strong> <?= date('jS F Y', strtotime($assignment['created_at'])) ?></p> -->
+                            <p><strong class="text-danger">Due Date:</strong> <?= date('jS F Y', strtotime($assignment['due_date'])) ?></p>
+                            <?php if ($assignment['attachment_path'] !== null): ?>
+                            <a class="btn btn-primary" href="<?= base_url($assignment['attachment_path']) ?>" download="<?= basename($assignment['attachment_path']) ?>">Download Attachment<a>
+                            <?php else: ?>
+                            <!-- <p class="text-danger">No Attachment for the assignment.</p> -->
+                            <?php endif; ?>
                         </div>
                         <?php if ($grade !== null): ?>
-                        <div class="grade-circle" id="gradeCircle" data-grade="<?= $grade ?>">
+                        <div class="grade-circle shadow-sm" id="gradeCircle" data-grade="<?= $grade ?>">
                             <div class="grade-text" id="gradeText"><?= $grade ?>%</div>
                         </div>
+                        <div id="gradeLabel" class="grade-label"></div>
                         <?php else: ?>
                         <p class="text-danger">No grade available yet.</p>
                         <?php endif; ?>
@@ -144,6 +158,7 @@
                             <form action="/student/submit-assignment/<?= esc($assignment['assignment_id']) ?>"
                                 method="post" enctype="multipart/form-data">
                                 <?= csrf_field() ?>
+                                <input type="hidden" name="assignment_course_id" value="<?= esc($assignment['course_id']) ?>">
                                 <div class="mb-3">
                                     <label for="submissionFile" class="form-label">Upload File</label>
                                     <input type="file" class="form-control" id="submissionFile" name="assignment_file"
@@ -186,30 +201,45 @@
     <!-- FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script>
-        // Function to update the grade circle dynamically
+       // Function to update the grade circle and label dynamically
         function updateGradeCircle(grade) {
             const gradeCircle = document.getElementById('gradeCircle');
             const gradeText = document.getElementById('gradeText');
+            const gradeLabel = document.getElementById('gradeLabel'); // Label for performance level
 
             // Update the text inside the circle
             gradeText.textContent = `${grade}%`;
 
-            // Determine the color based on the grade
-            let color;
-            if (grade >= 75) {
-                color = 'green';
+            // Determine the color and performance label based on the grade
+            let color, label;
+            if (grade >= 90) {
+                color = '#006400'; // Dark Green for Excellent
+                label = 'Excellent';
+            } else if (grade >= 75) {
+                color = 'green'; // Green for Good
+                label = 'Good';
             } else if (grade >= 50) {
-                color = 'orange';
+                color = 'yellow'; // Yellow for Average
+                label = 'Average';
+            } else if (grade >= 25) {
+                color = 'orange'; // Orange for Below Average
+                label = 'Below Average';
             } else {
-                color = 'red';
+                color = 'red'; // Red for Poor
+                label = 'Poor';
             }
 
-            // Set the background to represent the percentage
+            // Set the background to represent the percentage with the selected color
             gradeCircle.style.background = `conic-gradient(${color} ${grade}%, #d3d3d3 ${grade}%)`;
+
+            // Update the performance level text
+            gradeLabel.textContent = label;
         }
 
-        // Example usage: Update the grade circle with 80%
+        // Example usage: Update the grade circle with the actual grade from the data attribute
+        const grade = parseInt(document.getElementById('gradeCircle').getAttribute('data-grade'), 10);
         updateGradeCircle(grade);
+
 
         // Toggle sidebar when the toggle button is clicked
         document.getElementById('sidebarToggle').addEventListener('click', function () {
