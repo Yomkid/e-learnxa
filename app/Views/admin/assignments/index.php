@@ -598,7 +598,7 @@
                 // Render the assignments
                 assignments.forEach(assignment => {
                     const attachmentLink = assignment.attachment_path 
-                        ? `<a href="/${assignment.attachment_path}" target="_blank">Attachment</a>` 
+                        ? `<a href="${assignment.attachment_path}" target="_blank">Attachment</a>` 
                         : 'No attachment';
                     const row = `
                         <tr>
@@ -655,7 +655,7 @@
                 // Render the assignments
                 assignments.forEach(assignment => {
                     const attachmentLink = assignment.attachment_path 
-                        ? `<a href="/${assignment.attachment_path}" target="_blank">Attachment</a>` 
+                        ? `<a href="${assignment.attachment_path}" target="_blank">Attachment</a>` 
                         : 'No attachment';
                     const row = `
                         <tr>
