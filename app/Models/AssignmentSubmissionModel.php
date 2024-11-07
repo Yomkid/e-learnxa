@@ -50,4 +50,47 @@ public function getGrade($assignmentId, $userId)
                 ->first();
 }
 
+
+
+
+// AssignmentSubmissionModel.php
+
+    public function getSubmittedAssignments($searchTerm, $sortOption)
+    {
+        // Assuming you have a related 'users' table to join for user names
+        $builder = $this->db->table($this->table)
+                            ->join('users', 'users.user_id = assignment_submissions.user_id', 'left')
+                            ->select('assignment_submissions.*, users.username, assignment_submissions.grade') // Include username and grade
+                            ->join('assignments', 'assignments.assignment_id = assignment_submissions.assignment_id', 'left'); // Assuming this relationship exists
+
+        // Filter by search term
+        if (!empty($searchTerm)) {
+            $builder->like('users.username', $searchTerm);
+        }
+
+        // Sorting options
+        switch ($sortOption) {
+            case 'date_asc':
+                $builder->orderBy('submitted_at', 'ASC');
+                break;
+            case 'date_desc':
+                $builder->orderBy('submitted_at', 'DESC');
+                break;
+            case 'grade_asc':
+                $builder->orderBy('assignments.grade', 'ASC'); // Assuming grade is in the assignments table
+                break;
+            case 'grade_desc':
+                $builder->orderBy('assignments.grade', 'DESC');
+                break;
+            default:
+                $builder->orderBy('submitted_at', 'DESC'); // Default sorting
+                break;
+        }
+
+        // Execute the query and return results
+        return $builder->get()->getResultArray();
+    }
+
+
+
 }
