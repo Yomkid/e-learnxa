@@ -56,13 +56,13 @@
                         <?php endif; ?>
                         <?php if (!empty($enrolledCourses)): ?>
                             <?php foreach ($enrolledCourses as $course): ?>
-                                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                                <div class="col-lg-3 col-md-6 mb-1">
                                     <a href="<?= base_url('student/course-details/' . $course['course_id']); ?>">
                                         <div class="course-card">
                                             <img src="<?= base_url('uploads/' . $course['course_image']); ?>" alt="<?= esc($course['course_title']); ?>" />
                                             <div class="card-body">
                                                 <h4 class="card-title"><?= esc($course['course_title']); ?></h4>
-                                                <div class="progress mb-4">
+                                                <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: <?= number_format($course['overallProgress'], 1); ?>%;" aria-valuenow="<?= number_format($course['overallProgress'], 1); ?>" aria-valuemin="0" aria-valuemax="100"><?= number_format($course['overallProgress'], 1); ?>%</div>
                                                 </div>
                                             </div>

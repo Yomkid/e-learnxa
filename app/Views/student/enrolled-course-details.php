@@ -58,7 +58,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 mb-1">
+                        <div class="col-lg-3 col-md-6mb-1">
                             <div class="course-card">
                                 <img src="<?= base_url('uploads/' . $course['course_image']); ?>"
                                     alt="<?= esc($course['course_title']); ?>" />
@@ -95,14 +95,14 @@
                         </div>
                         <div class="col-lg-9 col-md-6 mb-4">
                             <div class="row">
-                                <a href="<?= base_url('student/e-learning/' . $course['course_id']) ?>" class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                <a href="<?= base_url('student/e-learning/' . $course['course_id']) ?>" class="col-lg-4 col-md-6 mb-1">
                                     <div class="card text-left bg-color-1">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $moduleCount ?> Modules</h5>
                                         </div>
                                     </div>
                                 </a>
-                                <a href="#" class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
+                                <a href="#" class="col-lg-4 col-md-6 mb-1 locked">
                                     <div class="card text-left bg-color-2">
                                         <div class="card-body d-flex justify-content-between align-items-center">
                                             <h5 class="card-title">1 Certificate</h5>
@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a href="#" class="col-lg-4 col-md-6 col-sm-6 mb-1 locked">
+                                <a href="#" class="col-lg-4 col-md-6 mb-1 locked">
                                     <div class="card text-left bg-color-3">
                                         <div class="card-body d-flex justify-content-between align-items-center">
                                             <h5 class="card-title">Final Exam</h5>
@@ -118,21 +118,21 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a href="/student/assignments" class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                <a href="/student/assignments" class="col-lg-4 col-md-6 mb-1">
                                     <div class="card text-left bg-color-4">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $assignmentCount ?> Assignments</h5>
                                         </div>
                                     </div>
                                 </a>
-                                <a href="<?= base_url('student/quizzes'); ?>" class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                <a href="<?= base_url('student/quizzes'); ?>" class="col-lg-4 col-md-6 mb-1">
                                     <div class="card text-left bg-color-5">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $quizCount ?> Quiz</h5>
                                         </div>
                                     </div>
                                 </a>
-                                <a href="#" class="col-lg-4 col-md-6 col-sm-6 mb-1">
+                                <a href="#" class="col-lg-4 col-md-6 mb-1">
                                     <div class="card text-left bg-color-6">
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $materialCount ?> Materials</h5>
