@@ -16,7 +16,7 @@
             border: solid #f2f2f2 1px;
             margin: 50px auto;
             background: white;
-            place-items: center;
+            /* place-items: center; */
         }
 
         .invoice-head-name {
