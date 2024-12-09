@@ -113,7 +113,8 @@ s0.parentNode.insertBefore(s1,s0);
                 <img src="./assets/img/payment-qrcode.jpg" alt="Payment QR Code" width="100px">
             </div>
             <div class="col-md-6 col-sm-6">
-                <button type="submit" class="btn btn-success" onclick="payWithCard()">Pay with Card</button>
+                <!-- <button type="submit" class="btn btn-success" onclick="payWithCard()">Pay with Card</button> -->
+                <button type="submit" class="btn btn-success" onclick="payWithCard()">Click to Pay</button>
                 <img src="./assets/img/paystack.webp" alt="Paystack">
             </div>
         </div>
