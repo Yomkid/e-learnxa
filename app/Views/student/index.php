@@ -137,7 +137,7 @@
                                     <div class="row card-group">
                                         <?php if (!empty($enrolledCourses)): ?>
                                         <?php foreach (array_slice($enrolledCourses, 0, 2) as $course): ?>
-                                        <div class="col-md-6 col-sm-6 mb-3">
+                                        <div class="col-md-6 mb-3">
                                             <a
                                                 href="<?= base_url('student/course-details/' . $course['course_id']); ?>">
                                                 <div class="card card-custom" style="background-color: #f0f8ff;">
