@@ -55,7 +55,7 @@ class Email extends BaseConfig
      * SMTP Password
      */
     // public string $SMTPPass = 'wlrorxycddjqkuvh';
-    public string $SMTPPass = 'notification@learnxa';
+    public string $SMTPPass = 'notifications@learnxa';
     // wlro rxyc ddjq kuvh
 
     /**
