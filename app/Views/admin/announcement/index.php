@@ -212,7 +212,7 @@
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <form id="announcementForm" method="POST"
-                                    action="<?= site_url('admin/send_announcement'); ?>">
+                                    action="<?= site_url('admin/announcement/send_announcement'); ?>">
                                     <div class="mb-3">
                                         <label for="userSelection" class="form-label">Select Recipients</label>
                                         <select class="form-control" id="userSelection" name="recipients[]"
