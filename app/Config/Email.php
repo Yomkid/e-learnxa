@@ -6,8 +6,8 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = 'elearnxa@gmail.com';
-    // public string $fromEmail  = 'notifications@learnxa.com';
+    // public string $fromEmail  = 'elearnxa@gmail.com';
+    public string $fromEmail  = 'notifications@learnxa.com';
     public string $fromName   = 'LearnXa';
     // public string $recipients = [];
 
@@ -42,20 +42,20 @@ class Email extends BaseConfig
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = 'smtp.gmail.com';
-    // public string $SMTPHost = 'mail.learnxa.com';
+    // public string $SMTPHost = 'smtp.gmail.com';
+    public string $SMTPHost = 'mail.learnxa.com';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'elearnxa@gmail.com';
-    // public string $SMTPUser = 'notifications@learnxa.com';
+    // public string $SMTPUser = 'elearnxa@gmail.com';
+    public string $SMTPUser = 'notifications@learnxa.com';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = 'wlrorxycddjqkuvh';
-    // public string $SMTPPass = 'notification@learnxa';
+    // public string $SMTPPass = 'wlrorxycddjqkuvh';
+    public string $SMTPPass = 'notification@learnxa';
     // wlro rxyc ddjq kuvh
 
     /**
