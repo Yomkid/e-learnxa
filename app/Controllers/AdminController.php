@@ -215,7 +215,7 @@ public function Announcements()
     $users = $userModel->findAll(); // Ensure the 'users' table exists and contains data
 
     // Pass the users to the view
-    return view('admin/announcement/index', ['users' => $users]);
+    return view('admin/announcements/index', ['users' => $users]);
 }
 
 public function sendAnnouncement()
