@@ -145,11 +145,6 @@ $routes->group('student', ['namespace' => 'App\Controllers'], function($routes) 
 
 
 
-$routes->group('admin', function($routes) {
-    
-});
-
-
 
 // Admin Routes
 
@@ -196,6 +191,12 @@ $routes->group('admin', function($routes) {
     $routes->get('transaction-list', 'Pages::transactionList');
     $routes->get('user', 'Pages::user');
     $routes->get('user-rofile', 'Pages::userProfile');
+
+    $routes->group('announcement', function($routes) {
+        $routes->get('announcements', 'AdminController::Announcements'); //Good 
+        $routes->post('/send_announcement', 'AdminController::sendAnnouncement'); //Good 
+
+    });
 
 
 

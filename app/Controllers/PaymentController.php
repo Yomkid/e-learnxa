@@ -119,7 +119,7 @@ class PaymentController extends Controller
     {
         $email = \Config\Services::email();
 
-        $email->setFrom('elearnxa@gmail.com', 'LearnXa');
+        // $email->setFrom('elearnxa@gmail.com', 'LearnXa');
         $email->setTo($userData['email']);
         $email->setSubject('LearnXa Registration Confirmation');
 
@@ -141,7 +141,7 @@ class PaymentController extends Controller
     {
         $emailService = \Config\Services::email();
 
-        $emailService->setFrom('elearnxa@gmail.com', 'LearnXa');
+        // $emailService->setFrom('elearnxa@gmail.com', 'LearnXa');
         $emailService->setTo($email);
         $emailService->setSubject('LearnXa Registration - Your Password');
 

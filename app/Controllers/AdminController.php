@@ -4,10 +4,26 @@ namespace App\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\Role;
+use App\Models\Users;
+use App\Models\AnnouncementModel;
+use App\Models\PendingEmails;
 use CodeIgniter\Controller;
 
 class AdminController extends BaseController
 {
+    protected $announcementModel;
+    protected $pendingEmails;
+    protected $users;
+   
+
+    public function __construct()
+    {
+        $this->announcementModel = new AnnouncementModel();
+        $this->pendingEmails = new PendingEmails();
+        $this->users = new Users();
+        
+    }
+    
     public function register()
     {
         return view('/admin/register_admin');
@@ -188,4 +204,116 @@ public function error()
 {
     return view('include/error_message');
 }
+
+
+public function Announcements()
+{
+    // Load the UserModel to fetch user data
+    $userModel = new Users();
+
+    // Fetch all users from the database
+    $users = $userModel->findAll(); // Ensure the 'users' table exists and contains data
+
+    // Pass the users to the view
+    return view('admin/announcement/index', ['users' => $users]);
+}
+
+public function sendAnnouncement()
+    {
+        $title = $this->request->getPost('title');
+        $content = $this->request->getPost('content');
+        $recipients = $this->request->getPost('recipients');
+
+        // Retrieve all user emails if "all" is selected
+        if (in_array('all', $recipients)) {
+            $recipients = array_column($this->users->findAll(), 'email');
+        }
+
+        // Handle file uploads
+        $uploadedFiles = $this->request->getFiles();
+        $attachments = [];
+
+        if ($uploadedFiles && isset($uploadedFiles['attachments'])) {
+            foreach ($uploadedFiles['attachments'] as $file) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $newName = $file->getRandomName();
+                    $file->move(WRITEPATH . 'uploads/attachments', $newName);
+                    $attachments[] = WRITEPATH . 'uploads/attachments/' . $newName;
+                }
+            }
+        }
+
+        // Store the announcement in the database
+        $announcementId = $this->announcementModel->insert([
+            'title' => $title,
+            'content' => $content,
+            'recipients' => json_encode($recipients),
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        if (!$announcementId) {
+            return redirect()->back()->with('error', 'Failed to save announcement to the database.');
+        }
+
+        // Track email sending status
+        $responseMessages = [];
+        $allSuccess = true;
+
+        foreach ($recipients as $email) {
+            $emailResult = $this->send_email($email, $title, $content, $attachments);
+
+            if ($emailResult['status']) {
+                $responseMessages[] = "Successfully sent to {$email}";
+            } else {
+                $allSuccess = false;
+                $responseMessages[] = "Failed to send to {$email}: " . $emailResult['error'];
+            }
+
+            // Optional: Insert into a "pending_emails" table for tracking
+            $this->pendingEmails->insert([
+                'announcement_id' => $announcementId,
+                'email' => $email,
+                'status' => $emailResult['status'] ? 'sent' : 'failed',
+                'error_message' => $emailResult['error'] ?? null,
+                'created_at' => date('Y-m-d H:i:s'),
+            ]);
+        }
+
+        // Redirect with appropriate message
+        if ($allSuccess) {
+            return $this->response->setJSON(['message' => 'Announcement sent successfully.']);
+        } else {
+            return $this->response->setJSON(['error' => implode('<br>', $responseMessages)]);
+        }
+    }
+
+    private function send_email($to, $subject, $message, $attachments = [])
+    {
+        $email = \Config\Services::email();
+
+        $email->setTo($to);
+        $email->setSubject($subject);
+        $email->setMessage($message);
+
+        // Attach files
+        foreach ($attachments as $filePath) {
+            $email->attach($filePath);
+        }
+
+        try {
+            if ($email->send()) {
+                return ['status' => true];
+            } else {
+                return [
+                    'status' => false,
+                    'error' => $email->printDebugger(['headers']),
+                ];
+            }
+        } catch (\Exception $e) {
+            return [
+                'status' => false,
+                'error' => $e->getMessage(),
+            ];
+        }
+    }
 }
