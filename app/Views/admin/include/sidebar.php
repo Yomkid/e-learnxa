@@ -116,7 +116,7 @@
       </a>
     </li>
     <li>
-      <a href="/admin/announcements" class="nav-link link-dark">
+      <a href="/admin/announcement" class="nav-link link-dark">
         <i class="bi bi-megaphone me-2"></i>
         Announcements
       </a>

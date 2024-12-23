@@ -193,7 +193,7 @@ $routes->group('admin', function($routes) {
     $routes->get('user-rofile', 'Pages::userProfile');
 
     $routes->group('announcement', function($routes) {
-        $routes->get('announcements', 'AdminController::Announcements'); //Good 
+        $routes->get('/', 'AdminController::Announcements'); //Good 
         $routes->post('/send_announcement', 'AdminController::sendAnnouncement'); //Good 
 
     });
