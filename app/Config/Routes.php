@@ -193,7 +193,7 @@ $routes->group('admin', function($routes) {
 
     $routes->group('announcements', function($routes) {
         $routes->get('/', 'AdminController::Announcements'); //Good 
-        $routes->post('/send_announcement', 'AdminController::sendAnnouncement'); //Good 
+        $routes->post('send_announcement', 'AdminController::sendAnnouncement'); //Good 
 
     });
 
