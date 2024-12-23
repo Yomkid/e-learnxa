@@ -165,7 +165,6 @@ $routes->group('admin', function($routes) {
     $routes->get('settings', 'Admin\Settings::index');
     $routes->get('/', 'Pages::Admin'); //Good
     $routes->get('analytics', 'Pages::analyticsAndReports'); //Good
-    $routes->get('announcements', 'Pages::Announcements'); //Good 
     $routes->get('backup', 'Pages::backupRestore'); //Good
     $routes->get('course-details', 'Pages::courseDetails');
     $routes->get('course-performance-report', 'Pages::coursePerformanceReport'); //It should be in analytics
