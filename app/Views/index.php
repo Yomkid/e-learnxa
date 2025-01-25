@@ -3,8 +3,39 @@
 
 <head>
     <?php include(APPPATH . 'Views/include/head.php'); ?>
-    <title>LearnXa | Online Platform to eXplore courses, learn and Archieve Skills</title>
+    <title>LearnXa | Online Platform to Explore Courses, Learn, and Achieve Skills</title>
+    <meta name="description" content="LearnXa offers a dynamic online learning marketplace to explore courses and gain new skills. Start learning for as low as ₦2,000 today!">
+    <meta name="keywords" content="online learning, e-learning, LearnXa, skill development, affordable courses, career growth">
+    <meta name="author" content="LearnXa">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://learnxa.com">
+    <meta property="og:title" content="LearnXa | Online Platform to Explore Courses, Learn, and Achieve Skills">
+    <meta property="og:description" content="Discover LearnXa, the ultimate online learning marketplace where you can explore courses and achieve your educational goals.">
+    <meta property="og:image" content="https://learnxa.com/assets/img/hero_image.png">
+    <meta property="og:url" content="https://learnxa.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LearnXa | Online Platform to Explore Courses, Learn, and Achieve Skills">
+    <meta name="twitter:description" content="Learn from industry experts with LearnXa. Affordable courses starting from ₦2,000.">
+    <meta name="twitter:image" content="https://learnxa.com/assets/img/hero_image.png">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Company",
+      "name": "LearnXa",
+      "url": "https://learnxa.com",
+      "logo": "https://learnxa.com/assets/img/learnxalogo.png",
+      "sameAs": [
+        "https://www.facebook.com/LearnXa",
+        "https://twitter.com/LearnXa",
+        "https://www.instagram.com/LearnXa"
+      ],
+      "description": "LearnXa is a dynamic online learning platform offering affordable courses to help you develop new skills and grow your career."
+    }
+    </script>
 </head>
+
 
 <body>
     <!-- Navigation Bar -->
