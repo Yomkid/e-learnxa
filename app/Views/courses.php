@@ -4,6 +4,15 @@
     <title>Courses | LearnXa</title>
     <?php include(APPPATH . 'Views/include/head.php'); ?>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-90XYHBSS6Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-90XYHBSS6Z');
+</script>
 <body>
     <?php include(APPPATH . 'Views/include/navbar.php'); ?>
     <div class="container-fluid mt-0">

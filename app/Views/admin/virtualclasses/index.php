@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
     <?php include(APPPATH . 'Views/admin/include/head.php'); ?>
     <title>Virtual Class Management | LearnXa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -102,9 +100,16 @@
             height: auto;
         }
 </style>
-
-
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-90XYHBSS6Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-90XYHBSS6Z');
+</script>
 <body>
     <?php include(APPPATH . 'Views/admin/include/sidebar.php'); ?>
     <main id="main" class="main thecontent p-0">
