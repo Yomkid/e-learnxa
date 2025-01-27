@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://learnxa.com">
     <meta property="og:title" content="LearnXa | Online Platform to Explore Courses, Learn, and Achieve Skills">
     <meta property="og:description" content="Discover LearnXa, the ultimate online learning marketplace where you can explore courses and achieve your educational goals.">
-    <meta property="og:image" content="https://learnxa.com/assets/img/LearnXa_publicity_design.jpg">
+    <meta property="og:image" content="https://learnxa.com/assets/img/learnxa_public_ads_img.PNG">
     <meta property="og:url" content="https://learnxa.com">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
