@@ -11,13 +11,13 @@
     <link rel="canonical" href="https://learnxa.com">
     <meta property="og:title" content="LearnXa | Online Platform to Explore Courses, Learn, and Achieve Skills">
     <meta property="og:description" content="Discover LearnXa, the ultimate online learning marketplace where you can explore courses and achieve your educational goals.">
-    <meta property="og:image" content="https://learnxa.com/assets/img/hero_image.png">
+    <meta property="og:image" content="https://learnxa.com/assets/img/LearnXa_publicity_design.jpg">
     <meta property="og:url" content="https://learnxa.com">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LearnXa | Online Platform to Explore Courses, Learn, and Achieve Skills">
     <meta name="twitter:description" content="Learn from industry experts with LearnXa. Affordable courses starting from ₦2,000.">
-    <meta name="twitter:image" content="https://learnxa.com/assets/img/hero_image.png">
+    <meta name="twitter:image" content="https://learnxa.com/assets/img/LearnXa_publicity_design.jpg">
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <script type="application/ld+json">
     {
@@ -28,7 +28,7 @@
       "logo": "https://learnxa.com/assets/img/learnxalogo.png",
       "sameAs": [
         "https://www.facebook.com/LearnXa",
-        "https://twitter.com/LearnXa",
+        "https://X.com/LearnXa",
         "https://www.instagram.com/LearnXa"
       ],
       "description": "LearnXa is a dynamic online learning platform offering affordable courses to help you develop new skills and grow your career."
