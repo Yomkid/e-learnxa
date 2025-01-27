@@ -19,7 +19,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="<?= base_url('course/' . $slug) ?>"> <!-- Include slug here -->
     <meta property="og:type" content="article">
-    <meta name="description" content="<?= $overview ?>">
+    <!-- <meta name="description" content="<?= $overview ?>"> -->
     <meta property="og:description" content="<?= $overview ?>">
     <meta name="author" content="Odewaye Mayomi">
 
